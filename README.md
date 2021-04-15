@@ -1,37 +1,78 @@
-## Welcome to GitHub Pages
+# Project Portfolio
+#### By Siddhartha Pratap Singh(sidps@iitk.ac.in) 
 
-You can use the [editor on GitHub](https://github.com/sps1112/sps1112.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+A collection of self-projects in the field of Game Development.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Roaming Ruins
+A 3D dungeon-crawler/puzzle game made in 1 week as part of Brackey’s Game Jam 2020.02. 
 
-### Markdown
+It is currently hosted at https://kingcrimson1112.itch.io/roaming-ruins. This is a solo project with all the art done during the 1 week period.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+The main features implemented in the project are:-
+- A 3d character controller with the ability to go back in time.
+- A standard key-lock form of dungeon which the player has to traverse.
+- Standard Enemies with path finding and Traps in the dungeon.
+- Movable Platforms, Treasure Chests and Loot.
+- Projectile Spells.
 
-```markdown
-Syntax highlighted code block
+## The Tests
+A platformer/metroidvania made in Unity as part of a 3 day Game Jam. It is currently hosted at https://kingcrimson1112.itch.io/the-tests. 
 
-# Header 1
-## Header 2
-### Header 3
+Features implemented in the game:-
+- Standard Platformer character controller
+- A smooth camera
+- A room system where enemies are allotted a room in the world environment and the enemies are reset/turned off based on the room the player is in.
+- Simple Dash which functions as an alternate form of movement and also a mode of interaction with the world.
 
-- Bulleted
-- List
+I have further broken down the development process in this blog that i wrote in the aftermath of said Game Jam at https://gds.sntiitk.in/2020/09/20/fall-game-jam.html 
 
-1. Numbered
-2. List
+## Renderer, OpenGL
+A basic OpenGL Renderer written in C++. Currently it is hosted on Github at https://github.com/sps1112/opengl-project . 
 
-**Bold** and _Italic_ and `Code` text
+The work done on the renderer includes:-
+- A basic primitive system to easily render primitives like Cube and Rects.
+- Blinn-Phong Shading with Gamma Correction implemented.
+- A movable Camera system with Orthographic and Perspective Camera with easily configurable properties.
+- Model Loading with Assimp.
+- A Shader and Light Class to set up multiple lights in a Scene.
+- GUI with ImGui to debug the scene and alter the properties of Scene Objects and Renderer.
+- FrameBuffer Rendering to implement post-processing effects.
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Libraries used include GLFW, Assimp, ImGui.
 
-### Jekyll Themes
+Current work is being done to implement a Scene System with UI to easily create new Scenes and populate them with Objects. 
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sps1112/sps1112.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+## FPS: Arena
+This is a self-project wherein I implemented a level-based FPS game where the player has to survive waves of zombie enemies. The game includes:-
+- Adventure mode with 10 defined levels with a set number of enemy waves.
+- Survival Mode with 3 levels and unlimited waves.
+- A shop to upgrade/buy weapons, upgrade player and upgrade power-ups
+- Saving game data to a file to save progress/player data.
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Tactics:RPG
+An Isometric Tactics RPG as seen in games like Final Fantasy Tactics. It includes 
+- A configurable 10X10 grid with settings for height of each tile, empty tile, obstacles, etc.
+- Enemies with pathfinding on the grid.
+- A UI to show all the valid points of movement.
+- Turn-based Battle System with a Speed parameter.
+
+## Generic: JRPG
+A template implementation of the JRPG genre with:-
+- A well-defined party based battle system
+- Multiple Enemy types
+- Possible Actions such as:-
+  - Attack
+  - Spell
+  - Item
+- An overworld with roaming enemies.
+
+## Procedural Map Generation
+A Procedural Map Generator based on Pernil Noise. The project was made in Unity using C# and is not-hosted anywhere.
+Features implemented in the project:-
+- Develop a 2d height-map to a texture from configurable Perlin-Noise settings
+- Generate a Color-map from the height map and apply to a plane.
+- Generate Mesh from Color-map to draw 3D mesh of the map
+- Apply fall-off to create enclosed maps.
+- Infinite world generation using LODs and terrain-chunk generation
