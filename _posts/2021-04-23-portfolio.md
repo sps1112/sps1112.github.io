@@ -2,6 +2,7 @@
 layout: post
 title:  "Portfolio!"
 categories: /portfolio/
+permalink: /portfolio/
 ---
 
 # **Project Portfolio**
