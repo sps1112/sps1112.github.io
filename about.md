@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: project
 title: "Details"
+author: Siddhartha
 permalink: /about/
 ---
 

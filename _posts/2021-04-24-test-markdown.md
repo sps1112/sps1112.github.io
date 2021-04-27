@@ -1,6 +1,7 @@
 ---
-layout: "post"
+layout: "project"
+author: Siddhartha
 permalink: /markdown/
 ---
 
-Test Markdown
+### A standard post written in Markdown

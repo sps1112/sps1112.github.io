@@ -1,0 +1,25 @@
+---
+layout: wrapper
+---
+
+<p>Written by {{page.author}}</p>
+<hr>
+
+<li><a style="color:blue;" href="/">Home</a></li>
+
+{% for post in site.posts %}
+
+{% if page.url==post.url %}
+<li><a style="color: red;" href="{{post.url}}">{{post.title}}</a></li>
+{% else %}
+<li><a style="color:blue;" href="{{post.url}}">{{post.title}}</a></li>
+{% endif %}
+
+{% endfor %}
+<hr>
+
+{{content}}
+
+<hr>
+
+<h4><a style="color: black;" href="/"> Back to Home</a></h4>

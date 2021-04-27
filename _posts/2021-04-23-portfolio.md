@@ -1,7 +1,7 @@
 ---
-layout: post
+layout: project
 title:  "Portfolio!"
-categories: /portfolio/
+author: Siddhartha
 permalink: /portfolio/
 ---
 

@@ -1,0 +1,19 @@
+---
+layout: wrapper
+---
+
+{% for post in site.posts %}
+
+<li><a href="{{post.url}}"> {{post.title}} <br> </a></li>
+
+{% endfor %}
+<hr>
+
+<h3>All Projects</h3>
+{% for person in site.data.info %}
+<p>Project Name: {{person.name}}<br>Written in: {{person.engine}}<br></p>
+{% endfor %}
+<hr>
+
+<h3>Download Resume: <li><a href="/assets/SiddharthaPratapSingh_Resume.pdf"> Resume <br> </a></li>
+</h3>
