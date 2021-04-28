@@ -9,7 +9,7 @@ permalink: /portfolio/
 ### By *Siddhartha Pratap Singh*(sidps@iitk.ac.in) 
 
 
-Here, I have compiled a list of some of my prominent Projects concerning Game Development and Graphics Programming. All the available can be accessed in the project description.
+Here, I have compiled a list of some of my prominent Projects concerning Game Development and Graphics Programming. All the available links can be accessed in the project description.
 
 ## Roaming Ruins
 
