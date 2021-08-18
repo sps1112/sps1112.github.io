@@ -1,17 +1,23 @@
 - name: "Roaming Ruins"
   engine: "Unity"
+  language: "C#"
 
 - name: "The Tests"
   engine: "Unity"
+  language: "C#"
 
 - name: "3D Renderer"
-  engine: "C++/OpenGL"
+  engine: "None"
+  language: "C++"
 
 - name: "Tactics: RPG"
   engine: "Unity"
+  language: "C#"
 
 - name: "Generic JRPG"
   engine: "Unity"
+  language: "C#"
 
 - name: "Procedural Map Generator"
   engine: "Unity"
+  language: "C#"
