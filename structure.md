@@ -8,6 +8,10 @@
   - Template
     - Top
     - Footer
+- Project
+  - Template
+- Article
+  - Template
 
 ### **Previous**
 
@@ -27,64 +31,107 @@
 
 ### **Home Page Structure**
 
-- Navbar
+- *Navbar*
   - Name
   - Quick Links
-- Banner
+- *Banner*
   - Name
   - Role
-  - Current Job
-  - Resume Link
-  - Profile Pic
-  - Background
-- About Section
+  - Background Slide
+- *About Section*
   - Intro
+    - Background
+    - Education
+  - Profile Pic
+  - Currently working at
   - Games Made
+  - Hobbies
+  - Quote
+- *Resume*
   - Skills
-- Projects
-  - Project Name
+    - Language
+    - Engine
+    - Utlities
+    - Fields in gamedev
+  - Achievements
+  - Resume button
+- *Professional Projects*
+  - Project Card
+    - Name
     - Company
+    - Role
     - Image/BG
-  - Role
-    - Project Details
-    - Work Details
-    - Images
-- CV / Work Experience
+  - Card Details
+    - Engine Used
+    - Language Used
+    - Brief Description
+- *CV / Work Experience*
   - Company
     - Image
   - Role
     - Timeline
   - Work Done
-- Personal Projects
-  - Project Cad
+- *Personal Projects*
+  - Project Card
     - Name
     - Images/BG
-    - Engine/Language
-    - Points
-  - Role
-    - Project Details
-    - Work Details
-    - Images  
-- Blog
+  - Card Details
+    - Engine Used
+    - Language Used
+    - Brief Description
+- *Blogs*
   - Headline
     - Description
     - Banner
-- Contact Me
+    - Date
+- *Contact Me*
   - Details
   - Links
-    - Image
+    - Logo
     - Title
-- Credits
+- *Credits*
   - Links
     - Logo
   - Copyright
 
 ### **Project Page Structure**
 
-- Navbar
-- Credits
+- *Navbar*
+- *Project*
+  - Project Banner/Background
+  - Project Heading
+    - Project Name
+    - Company?
+    - Trailer/Gameplay
+  - Project Details
+    - Type:- Pro/Self
+    - Engine Used
+    - Languages Used
+    - Target Platform
+    - Role
+  - Work Details
+    - Project details
+    - Work Done
+      - Detail
+      - Code-snippet
+      - Screenshot
+    - Images
+  - Links
+    - Website
+    - Github
+    - Itch/Download link
+  - Back Button
+- *Credits*
 
 ### **Blog Page Structure**s
 
-- Navbar
-- Credits
+- *Navbar*
+- *Blog*
+  - Blog banner
+  - Heading
+    - Blog Title
+    - Written By
+    - Date
+  - Article
+  - Back button
+- *Credits*
