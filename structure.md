@@ -47,14 +47,6 @@
   - Games Made
   - Hobbies
   - Quote
-- *Resume*
-  - Skills
-    - Language
-    - Engine
-    - Utlities
-    - Fields in gamedev
-  - Achievements
-  - Resume button
 - *Professional Projects*
   - Project Card
     - Name
@@ -65,12 +57,6 @@
     - Engine Used
     - Language Used
     - Brief Description
-- *CV / Work Experience*
-  - Company
-    - Image
-  - Role
-    - Timeline
-  - Work Done
 - *Personal Projects*
   - Project Card
     - Name
@@ -79,6 +65,20 @@
     - Engine Used
     - Language Used
     - Brief Description
+- *CV / Work Experience*
+  - Company
+    - Image
+  - Role
+    - Timeline
+  - Work Done
+- *Resume*
+  - Skills
+    - Language
+    - Engine
+    - Utlities
+    - Fields in gamedev
+  - Achievements
+  - Resume button
 - *Blogs*
   - Headline
     - Description
