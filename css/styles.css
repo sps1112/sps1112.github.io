@@ -3,6 +3,7 @@
   --bg-col: #61a8e7;
   --text-col: rgb(5, 3, 3);
   --link-col: #ffd900;
+  --nav-col: rgb(14, 14, 14);
   --foot-col: rgb(65, 65, 65);
 }
 
@@ -20,7 +21,7 @@ body {
 }
 
 .navbar {
-  background: rgb(14, 14, 14);
+  background: var(--nav-col);
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -113,13 +114,82 @@ body {
 }
 
 .banner-name {
-  font-size: 3em;
+  font-size: 3.25em;
 }
 
 .banner-role {
-  font-size: 1.25em;
+  font-size: 1.35em;
   font-weight: bold;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.about-me {
+  background-color: var(--nav-col);
+  color: white;
+}
+
+.about-me > .container {
+  text-align: center;
+  padding: 15px;
+}
+
+.about-me > .container > .title {
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 3em;
+  color: var(--bg-col);
+}
+
+.about-container {
+  margin-top: 10px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.about-left {
+  text-align: left;
+  padding-right: 100px;
+  padding-left: 50px;
+  font-size: 1.25em;
+}
+
+.intro-para {
+  padding: 10px;
+}
+
+.about-right {
+  padding-right: 50px;
+}
+
+.profile {
+  max-height: 320px;
+  border-radius: 1000px;
+}
+
+.profile-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.work-status {
+  font-style: italic;
+  padding-top: 5px;
+  font-size: 0.9em;
+}
+
+.hobbies {
+  padding: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.quote {
+  color: var(--bg-col);
+  font-style: italic;
+  font-size: 1.2em;
+  margin-top: 10px;
 }
 
 .foot {
