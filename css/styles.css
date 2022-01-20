@@ -25,7 +25,7 @@ body {
   position: fixed;
   z-index: 999;
   width: 100%;
-  opacity: 95%;
+  opacity: 90%;
 }
 
 .navbar > .container {
@@ -37,7 +37,7 @@ body {
 
 .name {
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.35em;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding-left: 5px;
@@ -55,6 +55,7 @@ body {
   color: white;
   background-color: transparent;
   font-size: 1.02em;
+  transition: 0.2s;
 }
 
 .nav-links {
@@ -86,6 +87,7 @@ body {
   color: var(--bg-col);
   background-color: transparent;
   font-weight: bold;
+  transition: 0.15s;
 }
 
 .banner {
@@ -123,20 +125,29 @@ body {
   padding-bottom: 5px;
 }
 
+.container {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 3em;
+  letter-spacing: 1.5px;
+}
+
 .about-me {
   background-color: var(--nav-col);
   color: white;
 }
 
 .about-me > .container {
-  text-align: center;
   padding: 15px;
 }
 
-.about-me > .container > .title {
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-size: 3em;
+.about-me > .title {
+  background-color: black;
+  /* background-image: linear-gradient(black, var(--nav-col)); */
   color: var(--bg-col);
 }
 
@@ -161,11 +172,13 @@ body {
 
 .about-right {
   padding-right: 50px;
+  padding-left: 25px;
 }
 
 .profile {
   max-height: 320px;
   border-radius: 1000px;
+  border: 5px solid black;
 }
 
 .profile-name {
@@ -190,6 +203,134 @@ body {
   font-style: italic;
   font-size: 1.2em;
   margin-top: 10px;
+}
+
+.projects {
+  background-color: var(--foot-col);
+  color: white;
+}
+
+.projects > .container > .pro-projects > .title {
+  background-color: black;
+  color: var(--bg-col);
+}
+
+.projects > .container > .self-projects > .title {
+  background-color: black;
+  color: var(--bg-col);
+}
+
+.project-container {
+  margin-top: 10px;
+  padding: 15px;
+}
+
+.project-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.portfolio-project {
+  background-color: var(--nav-col);
+  color: white;
+  margin: 10px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--bg-col);
+  border-radius: 5px;
+}
+
+.project-card {
+  padding-right: 5px;
+}
+
+.img-border {
+  width: 300px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 3px solid black;
+}
+
+.project-img:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.project-title {
+  padding: 3px;
+  text-transform: uppercase;
+}
+
+.project-title > a:link,
+.project-title > a:visited {
+  color: white;
+  font-size: 1.1em;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.project-title > a:hover,
+.project-title > a:active {
+  color: var(--bg-col);
+  font-size: 1.1em;
+  background-color: transparent;
+  font-weight: bold;
+  transition: 0.15s;
+}
+
+.project-head {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.project-role {
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
+.project-details {
+  display: grid;
+  grid-template-rows: 1fr 1fr 3fr;
+  align-items: center;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.engine-used {
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--bg-col);
+  font-weight: bold;
+}
+
+.language-used {
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--bg-col);
+  font-weight: bold;
+}
+
+.project-description {
+  font-size: 0.95em;
+  padding-top: 15px;
+}
+
+.work-and-resume {
+  background: var(--nav-col);
+  color: white;
 }
 
 .foot {
