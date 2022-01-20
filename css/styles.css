@@ -1,5 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+:root {
+  --bg-col: #61a8e7;
+  --text-col: rgb(5, 3, 3);
+  --link-col: #ffd900;
+  --foot-col: rgb(65, 65, 65);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  background-color: var(--bg-col);
+  color: var(--text-col);
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar {
+  background: rgb(14, 14, 14);
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  opacity: 95%;
+}
+
+.navbar > .container {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding-left: 5px;
+}
+
+.name > a:link,
+.name > a:visited {
+  color: var(--bg-col);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.name > a:hover,
+.name > a:active {
+  color: white;
+  background-color: transparent;
+  font-size: 1.02em;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 5px;
+}
+
+.nav-item > a:link,
+.nav-item > a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.nav-item > a:hover,
+.nav-item > a:active {
+  color: var(--bg-col);
+  background-color: transparent;
+  font-weight: bold;
+}
+
+.banner {
+  background: var(--foot-col);
+}
+
+.banner > .container {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-img {
+  opacity: 65%;
+  width: 100%;
+  min-height: 320px;
+}
+
+.banner-text {
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 3px;
+  text-align: center;
+  position: absolute;
+}
+
+.banner-name {
+  font-size: 3em;
+}
+
+.banner-role {
+  font-size: 1.25em;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+
+.foot {
+  background: var(--foot-col);
 }
