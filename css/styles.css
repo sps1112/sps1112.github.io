@@ -55,7 +55,7 @@ body {
   color: white;
   background-color: transparent;
   font-size: 1.02em;
-  transition: 0.2s;
+  transition: 0.2s ease-in-out;
 }
 
 .nav-links {
@@ -87,7 +87,7 @@ body {
   color: var(--bg-col);
   background-color: transparent;
   font-weight: bold;
-  transition: 0.15s;
+  transition: 0.15s ease-in-out;
 }
 
 .banner {
@@ -147,7 +147,6 @@ body {
 
 .about-me > .title {
   background-color: black;
-  /* background-image: linear-gradient(black, var(--nav-col)); */
   color: var(--bg-col);
 }
 
@@ -264,7 +263,7 @@ body {
 
 .project-img:hover {
   transform: scale(1.05);
-  transition: 0.2s;
+  transition: 0.2s ease-in-out;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -288,7 +287,7 @@ body {
   font-size: 1.1em;
   background-color: transparent;
   font-weight: bold;
-  transition: 0.15s;
+  transition: 0.15s ease-in-out;
 }
 
 .project-head {
@@ -381,7 +380,7 @@ body {
   color: var(--bg-col);
   background-color: transparent;
   font-weight: bold;
-  transition: 0.15s;
+  transition: 0.15s ease-in-out;
 }
 
 .company-logo > img {
@@ -488,10 +487,6 @@ body {
 
 .resume-link {
   font-size: 1.25em;
-}
-
-.resume-link {
-  font-size: 1.25em;
   padding: 15px;
 }
 
@@ -506,10 +501,199 @@ body {
 .resume-link > a:active {
   color: white;
   background-color: transparent;
-  transition: 0.15s;
+  transition: 0.15s ease-in-out;
+  font-weight: bold;
+}
+
+.blogs {
+  background-color: var(--foot-col);
+  color: white;
+}
+
+.blogs > .container > .title {
+  background-color: black;
+  color: var(--bg-col);
+}
+
+.blogs-container {
+  padding: 15px;
+}
+
+.blogs-list {
+  list-style: none;
+}
+
+.blog-item {
+  margin: 20px;
+  background-color: var(--nav-col);
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.banner-parent {
+  width: 480px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.blog-banner {
+  height: 100%;
+  width: 100%;
+  opacity: 60%;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.blog-banner:hover {
+  transform: scale(1.1);
+  opacity: 80%;
+  transition: 0.2s ease-in-out;
+}
+
+.blog-details {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: grid;
+  grid-template-rows: 2fr 0.5fr 2fr;
+  align-content: center;
+  text-align: center;
+}
+
+.headline {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+
+.headline > a:link,
+.headline > a:visited {
+  color: var(--bg-col);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.headline > a:hover,
+.headline > a:active {
+  color: white;
+  background-color: transparent;
+  transition: 0.15s ease-in-out;
+  font-weight: bold;
+}
+
+.blog-date {
+  font-style: italic;
+  padding-bottom: 10px;
+}
+
+.blog-description {
+  font-size: 1.2em;
+  margin: 10px;
+  text-align: left;
+}
+
+.contacts {
+  background-color: var(--nav-col);
+  color: white;
+}
+
+.contacts > .container > .title {
+  background-color: black;
+  color: var(--bg-col);
+}
+
+.contacts-container {
+  padding: 15px;
+}
+
+.title-details {
+  padding: 20px;
+  font-size: 1.4em;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.contact-item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.contact-logo > img {
+  opacity: 50%;
+  border-radius: 30px;
+  width: 80px;
+}
+
+.contact-logo > img:hover {
+  opacity: 90%;
+  border-radius: 10px;
+  width: 80px;
+  transition: 0.2s ease-in-out;
+}
+
+.contact-title {
+  text-transform: uppercase;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.contact-title > a:link,
+.contact-title > a:visited {
+  color: var(--bg-col);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.contact-title > a:hover,
+.contact-title > a:active {
+  color: white;
+  background-color: transparent;
+  transition: 0.15s ease-in-out;
   font-weight: bold;
 }
 
 .foot {
   background: var(--foot-col);
+  color: white;
+}
+
+.foot > .container {
+  padding: 10px;
+  padding-bottom: 5px;
+}
+
+.credits-list {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.credits-link {
+  margin: 5px;
+  padding: 5px;
+}
+
+.credits-link > a:link,
+.credits-link > a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.credits-link > a:hover,
+.credits-link > a:active {
+  color: var(--bg-col);
+  background-color: transparent;
+  transition: 0.15s ease-in-out;
+  font-weight: bold;
+}
+
+.copyright {
+  font-size: 1.1em;
+  margin-top: 5px;
 }
