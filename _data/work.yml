@@ -1,5 +1,5 @@
 - company: "Studio Centauri, IITK"
-  logo: "/assets/gamedev.png"
+  logo: "/assets/logos/gamedev.png"
   url: "https://gds.sntiitk.in/"
   position: "Group Leader"
   timeline: "April 2021 - Present"
@@ -9,7 +9,7 @@
     - task: "Mentored the Summer Projects 2021 as part of SNT Summer Camp."
 
 - company: "Counselling Service, IITK"
-  logo: "/assets/cs.png"
+  logo: "/assets/logos/cs.png"
   url: "https://www.iitk.ac.in/counsel/"
   position: "Student Guide"
   timeline: "November 2020 - July 2021"

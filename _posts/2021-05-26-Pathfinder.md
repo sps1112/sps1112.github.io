@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "NA"
 language: "C++"
 description: "Pathfinder written in C++."
-image: "/assets/images/Path0.png"
+image: "/assets/projects/Path0.png"
 ---
 
 # **Pathfinder**

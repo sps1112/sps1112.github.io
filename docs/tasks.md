@@ -16,4 +16,4 @@
 - [ ] Add blog page
 - [ ] Update to new projects
 - [ ] Update to new blogs
-- [ ] Clean up repo
+- [X] Clean up repo

@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "OpenGL API, GLFW"
 language: "C++"
 description: "A basic OpenGL Renderer written in C++. Includes Renderer, Shader, Material and Model classes."
-image: "/assets/images/Renderer1.png"
+image: "/assets/projects/Renderer1.png"
 ---
 
 # **3D Renderer**
@@ -23,9 +23,9 @@ The work done on the renderer includes:-
 - GUI with ImGui to debug the scene and alter the properties of Scene Objects and Renderer. The GUI is abstracted to instantiate multiple windows with configurable properties.
 - Rendering to a Framebuffer. This helps in implementing post-processing effects to the final render.
 
-![](../assets/images/Renderer0.png)
+![](../assets/projects/Renderer0.png)
 
-![](../assets/images/Renderer1.png)
+![](../assets/projects/Renderer1.png)
 
 Third-Party libraries that are used in the project include GLFW, GLM, Assimp, ImGui.
 
@@ -36,6 +36,6 @@ The current plan for the renderer is to:-
 
 These would help the user in creating their own scenes and easily debug effect on pre-defined template scenes.
 
-![](../assets/images/Renderer2.png)
+![](../assets/projects/Renderer2.png)
 
-![](../assets/images/Renderer3.png)
+![](../assets/projects/Renderer3.png)
