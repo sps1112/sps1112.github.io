@@ -4,6 +4,12 @@ layout: template
 
 <div class="banner">
   <div class="container">
+    <!-- <iframe
+      class="banner-img"
+      frameborder="0"
+      src="https://www.shadertoy.com/embed/fdtGRs?gui=false&t=0&paused=false&muted=true"
+      allowfullscreen
+    ></iframe> -->
     <img class="banner-img" src="/assets/banner.png" alt="" />
 
     <div class="banner-text">
@@ -209,6 +215,30 @@ layout: template
               </div>
             </div>
           </li>
+
+          {% for project in site.posts %}
+          <li class="portfolio-project">
+            <div class="project-card">
+              <div class="img-border">
+                <img class="project-img" src="{{project.image}}" alt="" />
+              </div>
+
+              <div class="project-title">
+                <a href="{{project.permalink}}">{{project.title}}</a>
+              </div>
+
+              <div class="project-head">{{project.type}}</div>
+            </div>
+
+            <div class="project-details">
+              <div class="engine-used">Engine:- {{project.engine}}</div>
+
+              <div class="language-used">Language:- {{project.language}}</div>
+
+              <div class="project-description">{{project.description}}</div>
+            </div>
+          </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
