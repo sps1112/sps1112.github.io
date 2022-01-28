@@ -13,20 +13,6 @@
 - Article
   - Template
 
-### **Previous**
-
-- Main
-  - Wrapper
-    - Header
-
-- About
-  - Page
-    - Wrapper
-
-- Portfolio
-  - Project
-    - Wrapper
-
 ## Page Structure
 
 ### **Home Page Structure**
