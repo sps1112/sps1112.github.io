@@ -6,11 +6,10 @@ permalink: /noise-gen/
 type: "Self-project"
 engine: "NA"
 language: "C++"
+platform: "PC"
 description: "Noise Generator written in C++."
 image: "/assets/projects/ProMap1.png"
 ---
-
-# **Noise Genarator**
 
 A Procedural Map Generator based on Perlin-Noise. The project was made in C++.
 

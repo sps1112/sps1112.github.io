@@ -6,11 +6,10 @@ permalink: /roaming-ruins/
 type: "Self-project"
 engine: "Unity"
 language: "C#"
+platform: "PC"
 description: "A 3D dungeon-crawler/puzzle game made in 1 week as part of Brackey's Game Jam 2020.02. This is a solo project with all the artwork done during the 1 week period."
 image: "/assets/projects/Roaming0.png"
 ---
-
-# **Roaming Ruins**
 
 Itch: https://kingcrimson1112.itch.io/roaming-ruins
 

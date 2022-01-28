@@ -8,8 +8,6 @@ description: "Devlog for the game, \"The Tests\" made for Fall Game Jam 2020"
 image: "/assets/projects/Tests1.png"
 ---
 
-# **The Tests: Devlog**
-
 ## Concept
 
 ![concept](https://img.itch.zone/aW1nLzQxNDY4OTcucG5n/original/va0S4i.png)

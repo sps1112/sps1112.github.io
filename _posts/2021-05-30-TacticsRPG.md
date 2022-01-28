@@ -6,11 +6,11 @@ permalink: /tactics-rpg/
 type: "Self-project"
 engine: "Unity"
 language: "C#"
+platform: "PC"
 description: "An Isometric Tactics RPG as seen in games like Final Fantasy Tactics. Team based battle system and custom pathfinding."
 image: "/assets/projects/Tactics0.jpg"
 ---
 
-# **Tactics: RPG**
 An Isometric Tactics RPG as seen in games like Final Fantasy Tactics. This project is currently not hosted anywhere. 
 
 The main features that were implemented as part of this were:- 

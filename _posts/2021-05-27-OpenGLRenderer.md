@@ -6,11 +6,10 @@ permalink: /opengl-renderer/
 type: "Self-project"
 engine: "OpenGL API, GLFW"
 language: "C++"
+platform: "PC"
 description: "A basic OpenGL Renderer written in C++. Includes Renderer, Shader, Material and Model classes."
 image: "/assets/projects/Renderer1.png"
 ---
-
-# **3D Renderer**
 
 A basic OpenGL Renderer written in C++. Currently, it is hosted on Github at https://github.com/sps1112/opengl-project. 
 

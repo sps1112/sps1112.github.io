@@ -6,11 +6,10 @@ permalink: /path-finder/
 type: "Self-project"
 engine: "NA"
 language: "C++"
+platform: "PC"
 description: "Pathfinder written in C++."
 image: "/assets/projects/Path0.png"
 ---
-
-# **Pathfinder**
 
 sadasjkdhkasjdhaskjdhkasdha
 ahsdjaskhdjsadks
