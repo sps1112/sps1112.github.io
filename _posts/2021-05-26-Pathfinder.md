@@ -2,12 +2,12 @@
 layout: project
 title: "Pathfinder"
 author: Siddhartha
-permalink: /pathfinder/
+permalink: /path-finder/
 type: "Self-project"
 engine: "NA"
 language: "C++"
 description: "Pathfinder written in C++."
-image: "/assets/images/Roaming0.png"
+image: "/assets/images/Path0.png"
 ---
 
 # **Pathfinder**

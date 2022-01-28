@@ -2,7 +2,7 @@
 layout: project
 title: "Noise Generator"
 author: Siddhartha
-permalink: /noise/
+permalink: /noise-gen/
 type: "Self-project"
 engine: "NA"
 language: "C++"
