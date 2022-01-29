@@ -2,258 +2,261 @@
 layout: template
 ---
 
-<div class="banner">
-  <div class="container">
-    <img class="banner-img" src="{{site.banner-img}}" alt="" />
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <img class="banner-img" src="{{site.banner-img}}" alt="" />
 
-    <div class="banner-text">
-      <div class="banner-name">{{site.name}}</div>
-      <div class="banner-role">{{site.role}}</div>
+      <div class="banner-text">
+        <div class="banner-name">{{site.name}}</div>
+        <div class="banner-role">{{site.role}}</div>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="about-me" id="about">
-  <div class="title">About Me</div>
+  <div class="about-me" id="about">
+    <div class="title">About Me</div>
 
-  <div class="container">
-    <div class="about-container">
-      <div class="about-left">
-        <div class="introduction">
-          {% for block in site.data.intro %}
-          <p class="intro-para">{{block.para}}</p>
+    <div class="container">
+      <div class="about-container">
+        <div class="about-left">
+          <div class="introduction">
+            {% for block in site.data.intro %}
+            <p class="intro-para">{{block.para}}</p>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="about-right">
+          <img class="profile" src="{{site.profile-img}}" alt="" />
+
+          <div class="profile-name">{{site.name}}</div>
+
+          <div class="work-status">{{site.work-status}}</div>
+        </div>
+      </div>
+
+      <div class="hobbies">
+        Things I like:- {{site.likes}}. My favourite games include
+        {{site.games}}.
+      </div>
+
+      <div class="quote">{{site.quote}}</div>
+    </div>
+  </div>
+
+  <div class="projects" id="project">
+    <div class="container">
+      <div class="pro-projects">
+        <div class="title">Professional Projects</div>
+
+        <div class="project-container">
+          <ul class="project-list">
+            {% for project in site.posts %} {% if project.layout == "project" %}
+            {% unless project.type == "Self-project" %}
+            <li class="portfolio-project">
+              <div class="project-card">
+                <div class="img-border">
+                  <img class="project-img" src="{{project.image}}" alt="" />
+                </div>
+
+                <div class="project-title">
+                  <a href="{{project.permalink}}">{{project.title}}</a>
+                </div>
+
+                <div class="project-head">{{project.type}}</div>
+
+                <div class="project-role">{{project.role}}</div>
+              </div>
+
+              <div class="project-details">
+                <div class="engine-used">Engine:- {{project.engine}}</div>
+
+                <div class="language-used">Language:- {{project.language}}</div>
+
+                <div class="project-description">{{project.description}}</div>
+              </div>
+            </li>
+            {% endunless %} {% endif %} {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="self-projects">
+        <div class="title">Self Projects</div>
+
+        <div class="project-container">
+          <ul class="project-list">
+            {% for project in site.posts %} {% if project.layout == "project" %}
+            {% if project.type == "Self-project" %}
+            <li class="portfolio-project">
+              <div class="project-card">
+                <div class="img-border">
+                  <img class="project-img" src="{{project.image}}" alt="" />
+                </div>
+
+                <div class="project-title">
+                  <a href="{{project.permalink}}">{{project.title}}</a>
+                </div>
+
+                <div class="project-head">{{project.type}}</div>
+              </div>
+
+              <div class="project-details">
+                <div class="engine-used">Engine:- {{project.engine}}</div>
+
+                <div class="language-used">Language:- {{project.language}}</div>
+
+                <div class="project-description">{{project.description}}</div>
+              </div>
+            </li>
+            {% endif %} {% endif %} {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="work-and-resume" id="resume">
+    <div class="container">
+      <div class="work-experience">
+        <div class="title">Work Experience</div>
+
+        <div class="work-container">
+          <ul class="work-list">
+            {% for job in site.data.work %}
+            <li class="work-item">
+              <div class="work-location">
+                <div class="company-name">
+                  <a href="{{job.url}}">{{job.company}}</a>
+                </div>
+
+                <div class="company-logo">
+                  <img src="{{job.logo}}" alt="" />
+                </div>
+
+                <div class="work-role">{{job.position}}</div>
+
+                <div class="work-timeline">{{job.timeline}}</div>
+              </div>
+
+              <div class="work-description">
+                {% for point in job.tasks %}
+                <p class="work-point">{{point.task}}</p>
+                {% endfor %}
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="resume-and-skills">
+        <div class="title">Resume</div>
+
+        <div class="resume-container">
+          <div class="skills">
+            <div class="title">Skills</div>
+
+            <div class="skill-container">
+              <ul class="skill-list">
+                {% for skill in site.data.skills %}
+                <li class="skill-section">
+                  <div class="skill-type">{{skill.type}}</div>
+
+                  <ul class="type-list">
+                    {% for item in skill.list %}
+                    <li class="type-data">{{item.data}}</li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="achievements">
+            <div class="title">Achievements</div>
+
+            <div class="achievement-container">
+              <ul class="achievement-list">
+                {% for ach in site.data.achievements %}
+                <li class="achievement-section">
+                  <div class="achievement-type">{{ach.type}}</div>
+
+                  <ul class="type-list">
+                    {% for item in ach.list %}
+                    <li class="type-data">{{item.data}}</li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-link">
+            You can access my complete resume at:-
+            <a
+              href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
+              >Resume_Siddhartha</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blogs" id="blog">
+    <div class="container">
+      <div class="title">Blogs</div>
+
+      <div class="blogs-container">
+        <ul class="blogs-list">
+          {% for blog in site.posts %} {% if blog.layout == "article" %}
+          <li class="blog-item">
+            <div class="banner-parent">
+              <img class="blog-banner" src="{{blog.image}}" alt="" />
+            </div>
+
+            <div class="blog-details">
+              <div class="headline">
+                <a href="{{blog.permalink}}">{{blog.title}}</a>
+              </div>
+
+              <div class="blog-date">{{blog.time}}</div>
+
+              <div class="blog-description">{{blog.description}}</div>
+            </div>
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacts" id="contact">
+    <div class="container">
+      <div class="title">Contacts</div>
+
+      <div class="contacts-container">
+        <div class="title-details">
+          You can contact me by going over the following links:-
+        </div>
+
+        <ul class="contact-list">
+          {% for contact in site.data.contacts %}
+          <li class="contact-item">
+            <div class="contact-logo">
+              <img src="{{contact.logo}}" alt="" />
+            </div>
+            <div class="contact-title">
+              <a href="{{contact.link}}">{{contact.type}}</a>
+            </div>
+          </li>
           {% endfor %}
-        </div>
-      </div>
-
-      <div class="about-right">
-        <img class="profile" src="{{site.profile-img}}" alt="" />
-
-        <div class="profile-name">{{site.name}}</div>
-
-        <div class="work-status">{{site.work-status}}</div>
-      </div>
-    </div>
-
-    <div class="hobbies">
-      Things I like:- {{site.likes}}. My favourite games include {{site.games}}.
-    </div>
-
-    <div class="quote">{{site.quote}}</div>
-  </div>
-</div>
-
-<div class="projects" id="project">
-  <div class="container">
-    <div class="pro-projects">
-      <div class="title">Professional Projects</div>
-
-      <div class="project-container">
-        <ul class="project-list">
-          {% for project in site.posts %} {% if project.layout == "project" %}
-          {% unless project.type == "Self-project" %}
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img class="project-img" src="{{project.image}}" alt="" />
-              </div>
-
-              <div class="project-title">
-                <a href="{{project.permalink}}">{{project.title}}</a>
-              </div>
-
-              <div class="project-head">{{project.type}}</div>
-
-              <div class="project-role">{{project.role}}</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- {{project.engine}}</div>
-
-              <div class="language-used">Language:- {{project.language}}</div>
-
-              <div class="project-description">{{project.description}}</div>
-            </div>
-          </li>
-          {% endunless %} {% endif %} {% endfor %}
         </ul>
       </div>
-    </div>
-
-    <div class="self-projects">
-      <div class="title">Self Projects</div>
-
-      <div class="project-container">
-        <ul class="project-list">
-          {% for project in site.posts %} {% if project.layout == "project" %}
-          {% if project.type == "Self-project" %}
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img class="project-img" src="{{project.image}}" alt="" />
-              </div>
-
-              <div class="project-title">
-                <a href="{{project.permalink}}">{{project.title}}</a>
-              </div>
-
-              <div class="project-head">{{project.type}}</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- {{project.engine}}</div>
-
-              <div class="language-used">Language:- {{project.language}}</div>
-
-              <div class="project-description">{{project.description}}</div>
-            </div>
-          </li>
-          {% endif %} {% endif %} {% endfor %}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="work-and-resume" id="resume">
-  <div class="container">
-    <div class="work-experience">
-      <div class="title">Work Experience</div>
-
-      <div class="work-container">
-        <ul class="work-list">
-          {% for job in site.data.work %}
-          <li class="work-item">
-            <div class="work-location">
-              <div class="company-name">
-                <a href="{{job.url}}">{{job.company}}</a>
-              </div>
-
-              <div class="company-logo">
-                <img src="{{job.logo}}" alt="" />
-              </div>
-
-              <div class="work-role">{{job.position}}</div>
-
-              <div class="work-timeline">{{job.timeline}}</div>
-            </div>
-
-            <div class="work-description">
-              {% for point in job.tasks %}
-              <p class="work-point">{{point.task}}</p>
-              {% endfor %}
-            </div>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </div>
-
-    <div class="resume-and-skills">
-      <div class="title">Resume</div>
-
-      <div class="resume-container">
-        <div class="skills">
-          <div class="title">Skills</div>
-
-          <div class="skill-container">
-            <ul class="skill-list">
-              {% for skill in site.data.skills %}
-              <li class="skill-section">
-                <div class="skill-type">{{skill.type}}</div>
-
-                <ul class="type-list">
-                  {% for item in skill.list %}
-                  <li class="type-data">{{item.data}}</li>
-                  {% endfor %}
-                </ul>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-
-        <div class="achievements">
-          <div class="title">Achievements</div>
-
-          <div class="achievement-container">
-            <ul class="achievement-list">
-              {% for ach in site.data.achievements %}
-              <li class="achievement-section">
-                <div class="achievement-type">{{ach.type}}</div>
-
-                <ul class="type-list">
-                  {% for item in ach.list %}
-                  <li class="type-data">{{item.data}}</li>
-                  {% endfor %}
-                </ul>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-
-        <div class="resume-link">
-          You can access my complete resume at:-
-          <a
-            href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
-            >Resume_Siddhartha</a
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="blogs" id="blog">
-  <div class="container">
-    <div class="title">Blogs</div>
-
-    <div class="blogs-container">
-      <ul class="blogs-list">
-        {% for blog in site.posts %} {% if blog.layout == "article" %}
-        <li class="blog-item">
-          <div class="banner-parent">
-            <img class="blog-banner" src="{{blog.image}}" alt="" />
-          </div>
-
-          <div class="blog-details">
-            <div class="headline">
-              <a href="{{blog.permalink}}">{{blog.title}}</a>
-            </div>
-
-            <div class="blog-date">{{blog.time}}</div>
-
-            <div class="blog-description">{{blog.description}}</div>
-          </div>
-        </li>
-        {% endif %} {% endfor %}
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="contacts" id="contact">
-  <div class="container">
-    <div class="title">Contacts</div>
-
-    <div class="contacts-container">
-      <div class="title-details">
-        You can contact me by going over the following links:-
-      </div>
-
-      <ul class="contact-list">
-        {% for contact in site.data.contacts %}
-        <li class="contact-item">
-          <div class="contact-logo">
-            <img src="{{contact.logo}}" alt="" />
-          </div>
-          <div class="contact-title">
-            <a href="{{contact.link}}">{{contact.type}}</a>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
     </div>
   </div>
 </div>

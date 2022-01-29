@@ -12,7 +12,7 @@
 - [ ] Update links on homepage
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
-- [ ] Add project page
+- [X] Add project page
 - [ ] Add blog page
 - [ ] Update to new projects
 - [ ] Update to new blogs
