@@ -9,6 +9,10 @@
   --code-col: rgb(9, 209, 9);
 }
 
+/* -----------------------------------
+ CSS for Website
+----------------------------------- */
+
 html {
   scroll-behavior: smooth;
 }
@@ -25,6 +29,10 @@ body {
   color: var(--text-col);
   font-family: "Montserrat", sans-serif;
 }
+
+/* -----------------------------------
+ CSS for Navbar
+----------------------------------- */
 
 .navbar * {
   margin: 0;
@@ -101,6 +109,10 @@ body {
   font-weight: bold;
   transition: 0.15s ease-in-out;
 }
+
+/* -----------------------------------
+ CSS for Homepage
+----------------------------------- */
 
 .home-page * {
   margin: 0;
@@ -725,7 +737,9 @@ body {
 @media only screen and (max-width: 960px) {
 }
 
-/* CSS for the Project Page */
+/* -----------------------------------
+ CSS for the Project Page 
+----------------------------------- */
 
 .project {
   background-color: var(--nav-col);
@@ -802,6 +816,123 @@ body {
   padding-top: 5px;
 }
 
+/* Detail List after blog section */
+
+.project-work {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-screenshot {
+  width: 40%;
+  min-height: 240px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-block {
+  background-color: var(--nav-col);
+  color: var(--code-col);
+  width: 80%;
+  padding: 15px;
+}
+
+/* -----------------------------------
+ CSS for the Blog Page
+----------------------------------- */
+.blog {
+  background-color: var(--nav-col);
+}
+
+.banner-blog {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-blog > img {
+  opacity: 80%;
+  width: auto;
+  min-height: 320px;
+  max-height: 640px;
+}
+
+.blog-article {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 75px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+}
+
+.blog-container {
+  background-color: var(--foot-col);
+  border-radius: 10px;
+}
+
+.blog-heading * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-heading {
+  background-color: black;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+}
+
+.blog-name {
+  font-size: 3em;
+  color: var(--alt-col);
+  text-transform: uppercase;
+  padding: 3px;
+}
+
+.blog-desc {
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+
+.blog-detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-detail {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  padding-top: 5px;
+}
+
+.blog-work {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----------------------------------
+Detail list for Project and Blog
+----------------------------------- */
 .detail-list {
   font-size: 0.9em;
   list-style: none;
@@ -824,31 +955,6 @@ body {
   font-style: italic;
   text-align: left;
 }
-
-.project-work {
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.project-screenshot {
-  width: 40%;
-  min-height: 240px;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0%);
-}
-
-.code-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.code-block {
-  background-color: var(--nav-col);
-  color: var(--code-col);
-  width: 80%;
-  padding: 15px;
-}
+/* -----------------------------------
+ End
+----------------------------------- */

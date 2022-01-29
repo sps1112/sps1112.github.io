@@ -13,7 +13,7 @@
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
 - [X] Add project page
-- [ ] Add blog page
+- [X] Add blog page
 - [ ] Update to new projects
 - [ ] Update to new blogs
 - [X] Clean up repo
