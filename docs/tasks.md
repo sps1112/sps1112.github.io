@@ -2,6 +2,8 @@
 
 - [X] Make the navbar functional
 - [ ] New profile picture
+- [ ] Add favicon for website
+- [ ] Add awesome fonts icons to footer
 - [ ] Refer to portfolio websites
 - [ ] Refer to Templates
 - [ ] Shift achievements
@@ -14,6 +16,7 @@
 - [ ] Fix for mobile
 - [X] Add project page
 - [X] Add blog page
+- [ ] Add Error Page
 - [ ] Update to new projects
 - [ ] Update to new blogs
 - [X] Clean up repo
