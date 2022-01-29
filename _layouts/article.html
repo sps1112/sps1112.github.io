@@ -1,0 +1,34 @@
+---
+layout: template
+---
+
+<div class="blog">
+  <div class="banner-blog"><img src="{{page.image}}" alt="" /></div>
+
+  <div class="blog-article">
+    <div class="blog-container">
+      <div class="blog-heading">
+        <div class="blog-name">{{page.title}}</div>
+        <div class="blog-desc">{{page.description}}</div>
+      </div>
+
+      <div class="blog-detail">
+        <ul class="detail-list">
+          <li class="detail-item">
+            <div class="detail-tag">Date:-</div>
+            <div class="detail-val">{{page.time}}</div>
+          </li>
+
+          <li class="detail-item">
+            <div class="detail-tag">Written By:-</div>
+            <div class="detail-val">{{page.author}}</div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="blog-work">
+        <div class="blog-content">{{content}}</div>
+      </div>
+    </div>
+  </div>
+</div>

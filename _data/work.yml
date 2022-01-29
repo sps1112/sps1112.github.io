@@ -1,0 +1,19 @@
+- company: "Studio Centauri, IITK"
+  logo: "/assets/logos/gamedev.png"
+  url: "https://gds.sntiitk.in/"
+  position: "Group Leader"
+  timeline: "April 2021 - Present"
+  tasks:
+    - task: "Acted as the group leader of the Game Development Society, IIT Kanpur also known as Studio Centauri."
+    - task: "Organized Summer Projects, Internal Projects, Introductory sessions and workshops for the junior batches."
+    - task: "Mentored the Summer Projects 2021 as part of SNT Summer Camp."
+
+- company: "Counselling Service, IITK"
+  logo: "/assets/logos/cs.png"
+  url: "https://www.iitk.ac.in/counsel/"
+  position: "Student Guide"
+  timeline: "November 2020 - July 2021"
+  tasks:
+    - task: "Acted as a Student Guide for CS, IITK for the Y20 batch."
+    - task: "Guided 5 Y20 freshers during their first year."
+    - task: "Helped them in their academics and provided holistice support."

@@ -1,23 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
 :root {
-  --bg-col: #61a8e7;
+  --alt-col: #61a8e7;
   --text-col: rgb(5, 3, 3);
   --link-col: #ffd900;
   --nav-col: rgb(14, 14, 14);
   --foot-col: rgb(65, 65, 65);
+  --code-col: rgb(9, 209, 9);
+}
+
+/* -----------------------------------
+ CSS for Website
+----------------------------------- */
+
+html {
+  scroll-behavior: smooth;
 }
 
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
   text-decoration: none;
 }
 
 body {
-  background-color: var(--bg-col);
+  margin: 0;
+  padding: 0;
+  background-color: var(--alt-col);
   color: var(--text-col);
-  font-family: "Poppins", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* -----------------------------------
+ CSS for Navbar
+----------------------------------- */
+
+.navbar * {
+  margin: 0;
+  padding: 0;
 }
 
 .navbar {
@@ -25,7 +44,7 @@ body {
   position: fixed;
   z-index: 999;
   width: 100%;
-  opacity: 90%;
+  opacity: 80%;
 }
 
 .navbar > .container {
@@ -37,15 +56,16 @@ body {
 
 .name {
   font-weight: bold;
-  font-size: 1.35em;
+  font-size: 1.4em;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding-left: 5px;
+  padding-left: 10px;
+  font-family: "Poppins", sans-serif;
 }
 
 .name > a:link,
 .name > a:visited {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   text-decoration: none;
 }
@@ -54,7 +74,7 @@ body {
 .name > a:active {
   color: white;
   background-color: transparent;
-  font-size: 1.02em;
+  font-size: 1.05em;
   transition: 0.2s ease-in-out;
 }
 
@@ -84,10 +104,19 @@ body {
 
 .nav-item > a:hover,
 .nav-item > a:active {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   font-weight: bold;
   transition: 0.15s ease-in-out;
+}
+
+/* -----------------------------------
+ CSS for Homepage
+----------------------------------- */
+
+.home-page * {
+  margin: 0;
+  padding: 0;
 }
 
 .banner {
@@ -102,7 +131,7 @@ body {
 }
 
 .banner-img {
-  opacity: 65%;
+  opacity: 70%;
   width: 100%;
   min-height: 320px;
 }
@@ -134,6 +163,7 @@ body {
   text-transform: uppercase;
   font-size: 3em;
   letter-spacing: 1.5px;
+  font-family: "Poppins", sans-serif;
 }
 
 .about-me {
@@ -147,7 +177,7 @@ body {
 
 .about-me > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .about-container {
@@ -198,7 +228,7 @@ body {
 }
 
 .quote {
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-style: italic;
   font-size: 1.2em;
   margin-top: 10px;
@@ -211,12 +241,12 @@ body {
 
 .pro-projects > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .self-projects > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .project-container {
@@ -238,7 +268,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid var(--bg-col);
+  border: 1px solid var(--alt-col);
   border-radius: 5px;
 }
 
@@ -283,7 +313,7 @@ body {
 
 .project-title > a:hover,
 .project-title > a:active {
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-size: 1.1em;
   background-color: transparent;
   font-weight: bold;
@@ -311,14 +341,14 @@ body {
 .engine-used {
   font-size: 0.9em;
   font-style: italic;
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-weight: bold;
 }
 
 .language-used {
   font-size: 0.9em;
   font-style: italic;
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-weight: bold;
 }
 
@@ -334,7 +364,7 @@ body {
 
 .work-experience > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .work-container {
@@ -366,6 +396,7 @@ body {
   padding: 5px;
   margin-bottom: 5px;
   text-transform: uppercase;
+  font-size: 1.2em;
 }
 
 .company-name > a:link,
@@ -377,7 +408,7 @@ body {
 
 .company-name > a:hover,
 .company-name > a:active {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   font-weight: bold;
   transition: 0.15s ease-in-out;
@@ -408,7 +439,7 @@ body {
 
 .resume-and-skills > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .resume-container {
@@ -443,7 +474,7 @@ body {
 }
 
 .skill-type {
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-weight: bold;
   font-size: 1.25em;
 }
@@ -480,7 +511,7 @@ body {
 }
 
 .achievement-type {
-  color: var(--bg-col);
+  color: var(--alt-col);
   font-weight: bold;
   font-size: 1.25em;
 }
@@ -492,7 +523,7 @@ body {
 
 .resume-link > a:link,
 .resume-link > a:visited {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   text-decoration: none;
 }
@@ -512,7 +543,7 @@ body {
 
 .blogs > .container > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .blogs-container {
@@ -568,7 +599,7 @@ body {
 
 .headline > a:link,
 .headline > a:visited {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   text-decoration: none;
 }
@@ -599,7 +630,7 @@ body {
 
 .contacts > .container > .title {
   background-color: black;
-  color: var(--bg-col);
+  color: var(--alt-col);
 }
 
 .contacts-container {
@@ -614,13 +645,13 @@ body {
 .contact-list {
   list-style: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 15px;
 }
 
 .contact-item {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .contact-logo > img {
@@ -644,7 +675,7 @@ body {
 
 .contact-title > a:link,
 .contact-title > a:visited {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   text-decoration: none;
 }
@@ -655,6 +686,11 @@ body {
   background-color: transparent;
   transition: 0.15s ease-in-out;
   font-weight: bold;
+}
+
+.foot * {
+  margin: 0;
+  padding: 0;
 }
 
 .foot {
@@ -687,7 +723,7 @@ body {
 
 .credits-link > a:hover,
 .credits-link > a:active {
-  color: var(--bg-col);
+  color: var(--alt-col);
   background-color: transparent;
   transition: 0.15s ease-in-out;
   font-weight: bold;
@@ -697,3 +733,228 @@ body {
   font-size: 1.1em;
   margin-top: 5px;
 }
+
+@media only screen and (max-width: 960px) {
+}
+
+/* -----------------------------------
+ CSS for the Project Page 
+----------------------------------- */
+
+.project {
+  background-color: var(--nav-col);
+}
+
+.project-banner {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-banner > img {
+  opacity: 80%;
+  width: auto;
+  min-height: 320px;
+  max-height: 640px;
+}
+
+.project-article {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 75px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+}
+
+.article-container {
+  background-color: var(--foot-col);
+  border-radius: 10px;
+}
+
+.project-heading * {
+  margin: 0;
+  padding: 0;
+}
+
+.project-heading {
+  background-color: black;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: "Poppins", sans-serif;
+}
+
+.project-name {
+  font-size: 3em;
+  padding: 3px;
+  color: var(--alt-col);
+}
+
+.project-company {
+  font-size: 1.5em;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.project-detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.project-detail {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  padding-top: 5px;
+}
+
+/* Detail List after blog section */
+
+.project-work {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-screenshot {
+  width: 40%;
+  min-height: 240px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-block {
+  background-color: var(--nav-col);
+  color: var(--code-col);
+  width: 80%;
+  padding: 15px;
+}
+
+/* -----------------------------------
+ CSS for the Blog Page
+----------------------------------- */
+.blog {
+  background-color: var(--nav-col);
+}
+
+.banner-blog {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-blog > img {
+  opacity: 80%;
+  width: auto;
+  min-height: 320px;
+  max-height: 640px;
+}
+
+.blog-article {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 75px;
+  padding-top: 15px;
+  padding-bottom: 50px;
+}
+
+.blog-container {
+  background-color: var(--foot-col);
+  border-radius: 10px;
+}
+
+.blog-heading * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-heading {
+  background-color: black;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+}
+
+.blog-name {
+  font-size: 3em;
+  color: var(--alt-col);
+  text-transform: uppercase;
+  padding: 3px;
+}
+
+.blog-desc {
+  font-size: 1.2em;
+  padding-bottom: 10px;
+}
+
+.blog-detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-detail {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  padding-top: 5px;
+}
+
+.blog-work {
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----------------------------------
+Detail list for Project and Blog
+----------------------------------- */
+.detail-list {
+  font-size: 0.9em;
+  list-style: none;
+  text-align: center;
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail-tag {
+  font-weight: bold;
+  text-align: right;
+}
+
+.detail-val {
+  color: var(--alt-col);
+  padding-left: 20px;
+  font-style: italic;
+  text-align: left;
+}
+/* -----------------------------------
+ End
+----------------------------------- */

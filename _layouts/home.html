@@ -2,464 +2,261 @@
 layout: template
 ---
 
-<div class="banner">
-  <div class="container">
-    <img class="banner-img" src="/assets/banner.png" alt="" />
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <img class="banner-img" src="{{site.banner-img}}" alt="" />
 
-    <div class="banner-text">
-      <div class="banner-name">Siddhartha Pratap Singh</div>
-      <div class="banner-role">Game and Graphics Programmer</div>
-    </div>
-  </div>
-</div>
-
-<div class="about-me">
-  <div class="title">About Me</div>
-
-  <div class="container">
-    <div class="about-container">
-      <div class="about-left">
-        <div class="introduction">
-          <p class="intro-para">
-            Hi, I am Siddhartha Pratap Singh, a Gameplay and Graphics Programmer
-            from India. I am currently studying at the Indian Institute of
-            Technology, Kanpur, India expected to graduate in 2023.
-          </p>
-          <p class="intro-para">
-            I have been involved in the field of Game Development since early
-            2020. I love making games and am especially interested in RPGs and
-            Graphics Programming(OpenGL and writing Shaders).
-          </p>
-        </div>
-      </div>
-
-      <div class="about-right">
-        <img class="profile" src="/assets/Profile.jpg" alt="" />
-
-        <div class="profile-name">Siddhartha Pratap Singh</div>
-
-        <div class="work-status">Group Leader, Studio Centauri, IIT Kanpur</div>
-      </div>
-    </div>
-
-    <div class="hobbies">
-      Things I like:- Video games, Anime, Manga, Comic books, Fantasy and
-      Sci-fi. My favourite games include Fallout: New Vegas, Mass Effect 2 and
-      Dark Souls.
-    </div>
-
-    <div class="quote">
-      "In the darkest times, hope is something you give yourself. That is the
-      meaning of inner strength" - Iroh
-    </div>
-  </div>
-</div>
-
-<div class="projects">
-  <div class="container">
-    <!-- <div class="pro-projects">
-      <div class="title">Professional Projects</div>
-
-      <div class="project-container">
-        <ul class="project-list">
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img
-                  class="project-img"
-                  src="/assets/images/Renderer3.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="project-title"><a href="">Renderer</a></div>
-
-              <div class="project-head">Self</div>
-
-              <div class="project-role">Graphics Programmer</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- OpenGL</div>
-
-              <div class="language-used">Language:- C++</div>
-
-              <div class="project-description">
-                A basic OpenGL Renderer written in C++. Includes Renderer,
-                Shader, Material and Model classes.
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div> -->
-
-    <div class="self-projects">
-      <div class="title">Self Projects</div>
-
-      <div class="project-container">
-        <ul class="project-list">
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img
-                  class="project-img"
-                  src="/assets/images/Renderer1.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="project-title"><a href="">OpenGL Renderer</a></div>
-
-              <div class="project-head">Self-project</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- OpenGL API, GLFW</div>
-
-              <div class="language-used">Language:- C++</div>
-
-              <div class="project-description">
-                A basic OpenGL Renderer written in C++. Includes Renderer,
-                Shader, Material and Model classes.
-              </div>
-            </div>
-          </li>
-
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img
-                  class="project-img"
-                  src="/assets/images/Roaming0.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="project-title"><a href="">Roaming Ruins</a></div>
-
-              <div class="project-head">Self-project</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- Unity</div>
-
-              <div class="language-used">Language:- C#</div>
-
-              <div class="project-description">
-                A 3D dungeon-crawler/puzzle game made in 1 week as part of
-                Brackey's Game Jam 2020.02. This is a solo project with all the
-                artwork done during the 1 week period.
-              </div>
-            </div>
-          </li>
-
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img
-                  class="project-img"
-                  src="/assets/images/Tests0.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="project-title"><a href="">The Tests</a></div>
-
-              <div class="project-head">Self-project</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- Unity</div>
-
-              <div class="language-used">Language:- C#</div>
-
-              <div class="project-description">
-                A Platformer/Metroidvania made in Unity as part of a 3-day Game
-                Jam. This Game Jam had no theme and I made this to test out my
-                skills making a 2D game.
-              </div>
-            </div>
-          </li>
-
-          <li class="portfolio-project">
-            <div class="project-card">
-              <div class="img-border">
-                <img
-                  class="project-img"
-                  src="/assets/images/ProMap3.png"
-                  alt=""
-                />
-              </div>
-
-              <div class="project-title"><a href="">Procedural Map</a></div>
-
-              <div class="project-head">Self-project</div>
-            </div>
-
-            <div class="project-details">
-              <div class="engine-used">Engine:- Unity</div>
-
-              <div class="language-used">Language:- C#</div>
-
-              <div class="project-description">
-                A procedural map generator, made in Unity. Involves use of
-                Perlin noise layered in octaves to generate Height maps and
-                subsequent Color maps and 3d meshes.
-              </div>
-            </div>
-          </li>
-        </ul>
+      <div class="banner-text">
+        <div class="banner-name">{{site.name}}</div>
+        <div class="banner-role">{{site.role}}</div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="work-and-resume">
-  <div class="container">
-    <div class="work-experience">
-      <div class="title">Work Experience</div>
+  <div class="about-me" id="about">
+    <div class="title">About Me</div>
 
-      <div class="work-container">
-        <ul class="work-list">
-          <li class="work-item">
-            <div class="work-location">
-              <div class="company-name"><a href="">Studio Centauri</a></div>
-
-              <div class="company-logo">
-                <img src="/assets/gamedev.png" alt="" />
-              </div>
-
-              <div class="work-role">Group Leader</div>
-
-              <div class="work-timeline">April 2021 - Present</div>
-            </div>
-
-            <div class="work-description">
-              <p class="work-point">
-                Acted as the group leader of the Game Development Society, IIT
-                Kanpur also known as Studio Centauri.
-              </p>
-              <p class="work-point">
-                Organized Summer Projects, Internal Projects, Introductory
-                sessions and workshops for the junior batches.
-              </p>
-              <p class="work-point">
-                Mentored the Summer Projects 2021 as part of SNT Summer Camp.
-              </p>
-            </div>
-          </li>
-
-          <li class="work-item">
-            <div class="work-location">
-              <div class="company-name">
-                <a href="">Counselling Service, IITK</a>
-              </div>
-
-              <div class="company-logo">
-                <img src="/assets/cs.png" alt="" />
-              </div>
-
-              <div class="work-role">Student Guide</div>
-
-              <div class="work-timeline">November 2020 - July 2021</div>
-            </div>
-
-            <div class="work-description">
-              <p class="work-point">
-                Acted as a Student Guide for CS, IITK for the Y20 batch.
-              </p>
-              <p class="work-point">
-                Guided 5 Y20 freshers during their first year.
-              </p>
-              <p class="work-point">
-                Helped them in their academics and provided holistice support.
-              </p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="resume-and-skills">
-      <div class="title">Resume</div>
-
-      <div class="resume-container">
-        <div class="skills">
-          <div class="title">Skills</div>
-
-          <div class="skill-container">
-            <ul class="skill-list">
-              <li class="skill-section">
-                <div class="skill-type">Languages</div>
-
-                <ul class="type-list">
-                  <li class="type-data">C/C++</li>
-                  <li class="type-data">C#</li>
-                  <li class="type-data">Java</li>
-                  <li class="type-data">Python</li>
-                </ul>
-              </li>
-
-              <li class="skill-section">
-                <div class="skill-type">Engines + API</div>
-
-                <ul class="type-list">
-                  <li class="type-data">Unity</li>
-                  <li class="type-data">Unreal Engine</li>
-                  <li class="type-data">Godot</li>
-                  <li class="type-data">OpenGL</li>
-                  <li class="type-data">Twine</li>
-                </ul>
-              </li>
-
-              <li class="skill-section">
-                <div class="skill-type">Utilities</div>
-
-                <ul class="type-list">
-                  <li class="type-data">Git/Github</li>
-                  <li class="type-data">Linux</li>
-                  <li class="type-data">CMake</li>
-                  <li class="type-data">Blender</li>
-                </ul>
-              </li>
-
-              <li class="skill-section">
-                <div class="skill-type">Fields</div>
-
-                <ul class="type-list">
-                  <li class="type-data">Game Mechanics</li>
-                  <li class="type-data">Computer Graphics</li>
-                  <li class="type-data">Game Design</li>
-                  <li class="type-data">Worldbuilding</li>
-                </ul>
-              </li>
-            </ul>
+    <div class="container">
+      <div class="about-container">
+        <div class="about-left">
+          <div class="introduction">
+            {% for block in site.data.intro %}
+            <p class="intro-para">{{block.para}}</p>
+            {% endfor %}
           </div>
         </div>
 
-        <div class="achievements">
-          <div class="title">Achievements</div>
+        <div class="about-right">
+          <img class="profile" src="{{site.profile-img}}" alt="" />
 
-          <div class="achievement-container">
-            <ul class="achievement-list">
-              <li class="achievement-section">
-                <div class="achievement-type">Academic Achievements</div>
+          <div class="profile-name">{{site.name}}</div>
 
-                <ul class="type-list">
-                  <li class="type-data">
-                    Cleared JEE Advanced 2019 with AIR 5012
-                  </li>
-                  <li class="type-data">
-                    Cleared JEE Mains 2019 with AIR 2507
-                  </li>
-                </ul>
-              </li>
-
-              <li class="achievement-section">
-                <div class="achievement-type">Competitions</div>
-
-                <ul class="type-list">
-                  <li class="type-data">
-                    Participated in Brackeys Game Jam 2020.2
-                  </li>
-
-                  <li class="type-data">Participated in GMTK Game Jam 2020</li>
-
-                  <li class="type-data">
-                    First position in Fall Game Jam 2020
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          <div class="work-status">{{site.work-status}}</div>
         </div>
+      </div>
 
-        <div class="resume-link">
-          You can access my complete resume at:-
-          <a
-            href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
-            >Resume_Siddhartha</a
-          >
+      <div class="hobbies">
+        Things I like:- {{site.likes}}. My favourite games include
+        {{site.games}}.
+      </div>
+
+      <div class="quote">{{site.quote}}</div>
+    </div>
+  </div>
+
+  <div class="projects" id="project">
+    <div class="container">
+      <div class="pro-projects">
+        <div class="title">Professional Projects</div>
+
+        <div class="project-container">
+          <ul class="project-list">
+            {% for project in site.posts %} {% if project.layout == "project" %}
+            {% unless project.type == "Self-project" %}
+            <li class="portfolio-project">
+              <div class="project-card">
+                <div class="img-border">
+                  <img class="project-img" src="{{project.image}}" alt="" />
+                </div>
+
+                <div class="project-title">
+                  <a href="{{project.permalink}}">{{project.title}}</a>
+                </div>
+
+                <div class="project-head">{{project.type}}</div>
+
+                <div class="project-role">{{project.role}}</div>
+              </div>
+
+              <div class="project-details">
+                <div class="engine-used">Engine:- {{project.engine}}</div>
+
+                <div class="language-used">Language:- {{project.language}}</div>
+
+                <div class="project-description">{{project.description}}</div>
+              </div>
+            </li>
+            {% endunless %} {% endif %} {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <div class="self-projects">
+        <div class="title">Self Projects</div>
+
+        <div class="project-container">
+          <ul class="project-list">
+            {% for project in site.posts %} {% if project.layout == "project" %}
+            {% if project.type == "Self-project" %}
+            <li class="portfolio-project">
+              <div class="project-card">
+                <div class="img-border">
+                  <img class="project-img" src="{{project.image}}" alt="" />
+                </div>
+
+                <div class="project-title">
+                  <a href="{{project.permalink}}">{{project.title}}</a>
+                </div>
+
+                <div class="project-head">{{project.type}}</div>
+              </div>
+
+              <div class="project-details">
+                <div class="engine-used">Engine:- {{project.engine}}</div>
+
+                <div class="language-used">Language:- {{project.language}}</div>
+
+                <div class="project-description">{{project.description}}</div>
+              </div>
+            </li>
+            {% endif %} {% endif %} {% endfor %}
+          </ul>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="blogs">
-  <div class="container">
-    <div class="title">Blogs</div>
+  <div class="work-and-resume" id="resume">
+    <div class="container">
+      <div class="work-experience">
+        <div class="title">Work Experience</div>
 
-    <div class="blogs-container">
-      <ul class="blogs-list">
-        <li class="blog-item">
-          <div class="banner-parent">
-            <img class="blog-banner" src="/assets/images/Tests1.png" alt="" />
-          </div>
+        <div class="work-container">
+          <ul class="work-list">
+            {% for job in site.data.work %}
+            <li class="work-item">
+              <div class="work-location">
+                <div class="company-name">
+                  <a href="{{job.url}}">{{job.company}}</a>
+                </div>
 
-          <div class="blog-details">
-            <div class="headline"><a href="">The Tests: Devlog</a></div>
+                <div class="company-logo">
+                  <img src="{{job.logo}}" alt="" />
+                </div>
 
-            <div class="blog-date">Aug, 2020</div>
+                <div class="work-role">{{job.position}}</div>
 
-            <div class="blog-description">
-              Devlog for the game, "The Tests" made for Fall Game Jam 2020
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
+                <div class="work-timeline">{{job.timeline}}</div>
+              </div>
 
-<div class="contacts">
-  <div class="container">
-    <div class="title">Contacts</div>
-
-    <div class="contacts-container">
-      <div class="title-details">
-        You can contact me by going over the following links:-
+              <div class="work-description">
+                {% for point in job.tasks %}
+                <p class="work-point">{{point.task}}</p>
+                {% endfor %}
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
       </div>
 
-      <ul class="contact-list">
-        <li class="contact-item">
-          <div class="contact-logo">
-            <img src="/assets/mail.png" alt="" />
-          </div>
-          <div class="contact-title">
-            <a href="mailto:sidps1112@gmail.com">Mail</a>
-          </div>
-        </li>
+      <div class="resume-and-skills">
+        <div class="title">Resume</div>
 
-        <li class="contact-item">
-          <div class="contact-logo">
-            <img src="/assets/github.png" alt="" />
-          </div>
-          <div class="contact-title">
-            <a href="https://github.com/sps1112">Github</a>
-          </div>
-        </li>
+        <div class="resume-container">
+          <div class="skills">
+            <div class="title">Skills</div>
 
-        <li class="contact-item">
-          <div class="contact-logo"><img src="/assets/itch.png" alt="" /></div>
-          <div class="contact-title">
-            <a href="https://kingcrimson1112.itch.io/">Itch.io</a>
-          </div>
-        </li>
+            <div class="skill-container">
+              <ul class="skill-list">
+                {% for skill in site.data.skills %}
+                <li class="skill-section">
+                  <div class="skill-type">{{skill.type}}</div>
 
-        <li class="contact-item">
-          <div class="contact-logo">
-            <img src="/assets/linkedin.png" alt="" />
+                  <ul class="type-list">
+                    {% for item in skill.list %}
+                    <li class="type-data">{{item.data}}</li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
-          <div class="contact-title">
+
+          <div class="achievements">
+            <div class="title">Achievements</div>
+
+            <div class="achievement-container">
+              <ul class="achievement-list">
+                {% for ach in site.data.achievements %}
+                <li class="achievement-section">
+                  <div class="achievement-type">{{ach.type}}</div>
+
+                  <ul class="type-list">
+                    {% for item in ach.list %}
+                    <li class="type-data">{{item.data}}</li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <div class="resume-link">
+            You can access my complete resume at:-
             <a
-              href="https://www.linkedin.com/in/siddhartha-pratap-singh-013340149/"
-              >LinkedIn</a
+              href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
+              >Resume_Siddhartha</a
             >
           </div>
-        </li>
-      </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blogs" id="blog">
+    <div class="container">
+      <div class="title">Blogs</div>
+
+      <div class="blogs-container">
+        <ul class="blogs-list">
+          {% for blog in site.posts %} {% if blog.layout == "article" %}
+          <li class="blog-item">
+            <div class="banner-parent">
+              <img class="blog-banner" src="{{blog.image}}" alt="" />
+            </div>
+
+            <div class="blog-details">
+              <div class="headline">
+                <a href="{{blog.permalink}}">{{blog.title}}</a>
+              </div>
+
+              <div class="blog-date">{{blog.time}}</div>
+
+              <div class="blog-description">{{blog.description}}</div>
+            </div>
+          </li>
+          {% endif %} {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="contacts" id="contact">
+    <div class="container">
+      <div class="title">Contacts</div>
+
+      <div class="contacts-container">
+        <div class="title-details">
+          You can contact me by going over the following links:-
+        </div>
+
+        <ul class="contact-list">
+          {% for contact in site.data.contacts %}
+          <li class="contact-item">
+            <div class="contact-logo">
+              <img src="{{contact.logo}}" alt="" />
+            </div>
+            <div class="contact-title">
+              <a href="{{contact.link}}">{{contact.type}}</a>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </div>

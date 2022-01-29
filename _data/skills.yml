@@ -1,0 +1,28 @@
+- type: "Languages"
+  list:
+    - data: "C/C++"
+    - data: "C#"
+    - data: "Java"
+    - data: "Python"
+
+- type: "Engines + API"
+  list:
+    - data: "Unity"
+    - data: "Unreal Engine"
+    - data: "Godot"
+    - data: "OpenGL"
+    - data: "Twine"
+
+- type: "Utilities"
+  list:
+    - data: "Git/Github"
+    - data: "Linux"
+    - data: "CMake"
+    - data: "Blender"
+
+- type: "Fields"
+  list:
+    - data: "Game Programming"
+    - data: "Computer Graphics"
+    - data: "Game Design"
+    - data: "Worldbuilding"
