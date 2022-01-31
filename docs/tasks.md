@@ -1,7 +1,7 @@
 ## Tasks to do with website
 
 - [X] Make the navbar functional
-- [ ] New profile picture
+- [X] New profile picture
 - [ ] Add favicon for website
 - [ ] Add awesome fonts icons to footer
 - [ ] Refer to portfolio websites
@@ -19,4 +19,6 @@
 - [ ] Add Error Page
 - [ ] Update to new projects
 - [ ] Update to new blogs
+- [ ] New content
+- [ ] Highlight important content
 - [X] Clean up repo

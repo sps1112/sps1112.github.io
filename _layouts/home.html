@@ -5,6 +5,10 @@ layout: template
 <div class="home-page">
   <div class="banner">
     <div class="container">
+      <!-- <iframe
+        class="banner-img"
+        src="https://www.shadertoy.com/embed/fdtGRs?gui=false&t=0&paused=false&muted=true"
+      ></iframe> -->
       <img class="banner-img" src="{{site.banner-img}}" alt="" />
 
       <div class="banner-text">
@@ -70,9 +74,15 @@ layout: template
               </div>
 
               <div class="project-details">
-                <div class="engine-used">Engine:- {{project.engine}}</div>
+                <div class="project-detail-item">
+                  <div class="project-detail-type">Engine:-</div>
+                  <div class="project-detail-val">{{project.engine}}</div>
+                </div>
 
-                <div class="language-used">Language:- {{project.language}}</div>
+                <div class="project-detail-item">
+                  <div class="project-detail-type">Language:-</div>
+                  <div class="project-detail-val">{{project.language}}</div>
+                </div>
 
                 <div class="project-description">{{project.description}}</div>
               </div>
@@ -103,9 +113,15 @@ layout: template
               </div>
 
               <div class="project-details">
-                <div class="engine-used">Engine:- {{project.engine}}</div>
+                <div class="project-detail-item">
+                  <div class="project-detail-type">Engine:-</div>
+                  <div class="project-detail-val">{{project.engine}}</div>
+                </div>
 
-                <div class="language-used">Language:- {{project.language}}</div>
+                <div class="project-detail-item">
+                  <div class="project-detail-type">Language:-</div>
+                  <div class="project-detail-val">{{project.language}}</div>
+                </div>
 
                 <div class="project-description">{{project.description}}</div>
               </div>
@@ -142,7 +158,10 @@ layout: template
 
               <div class="work-description">
                 {% for point in job.tasks %}
-                <p class="work-point">{{point.task}}</p>
+                <div class="work-point">
+                  <div class="work-arrow">*</div>
+                  <div class="work-task">{{point.task}}</div>
+                </div>
                 {% endfor %}
               </div>
             </li>
