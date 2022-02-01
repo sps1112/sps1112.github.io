@@ -2,7 +2,7 @@
 
 - [X] Make the navbar functional
 - [X] New profile picture
-- [ ] Add favicon for website
+- [X] Add favicon for website
 - [ ] Add awesome fonts icons to footer
 - [ ] Refer to portfolio websites
 - [ ] Refer to Templates
