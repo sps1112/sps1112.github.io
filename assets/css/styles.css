@@ -6,7 +6,7 @@
   --link-col: #ffd900;
   --nav-col: rgb(14, 14, 14);
   --foot-col: rgb(65, 65, 65);
-  --code-col: rgb(9, 209, 9);
+  --code-col: rgb(30, 210, 70);
 }
 
 /* -----------------------------------
@@ -775,10 +775,10 @@ body {
 }
 
 .project-banner > img {
-  opacity: 80%;
-  width: auto;
-  min-height: 320px;
+  opacity: 90%;
+  min-height: 300px;
   max-height: 640px;
+  width: auto;
 }
 
 .project-article {
@@ -788,13 +788,13 @@ body {
   justify-content: center;
   align-items: center;
   padding: 75px;
-  padding-top: 15px;
-  padding-bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 40px;
 }
 
 .article-container {
   background-color: var(--foot-col);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .project-heading * {
@@ -807,14 +807,13 @@ body {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   font-family: "Poppins", sans-serif;
 }
 
 .project-name {
-  font-size: 3em;
-  padding: 3px;
+  font-size: 3.5em;
   color: var(--alt-col);
 }
 
@@ -841,7 +840,7 @@ body {
 /* Detail List after blog section */
 
 .project-work {
-  padding: 25px;
+  padding: 15px 25px 15px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -864,8 +863,9 @@ body {
 .code-block {
   background-color: var(--nav-col);
   color: var(--code-col);
-  width: 80%;
+  width: 75%;
   padding: 15px;
+  border-radius: 5px;
 }
 
 /* -----------------------------------
@@ -883,10 +883,10 @@ body {
 }
 
 .banner-blog > img {
-  opacity: 80%;
-  width: auto;
-  min-height: 320px;
+  opacity: 90%;
+  min-height: 300px;
   max-height: 640px;
+  width: auto;
 }
 
 .blog-article {
@@ -896,13 +896,13 @@ body {
   justify-content: center;
   align-items: center;
   padding: 75px;
-  padding-top: 15px;
-  padding-bottom: 50px;
+  padding-top: 25px;
+  padding-bottom: 40px;
 }
 
 .blog-container {
   background-color: var(--foot-col);
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .blog-heading * {
@@ -913,14 +913,14 @@ body {
 .blog-heading {
   background-color: black;
   text-align: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   font-family: "Poppins", sans-serif;
   letter-spacing: 2px;
 }
 
 .blog-name {
-  font-size: 3em;
+  font-size: 3.25em;
   color: var(--alt-col);
   text-transform: uppercase;
   padding: 3px;
@@ -946,7 +946,7 @@ body {
 }
 
 .blog-work {
-  padding: 25px;
+  padding: 15px 25px 15px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -973,6 +973,7 @@ Detail list for Project and Blog
 
 .detail-val {
   color: var(--alt-col);
+  font-weight: bold;
   padding-left: 20px;
   font-style: italic;
   text-align: left;
