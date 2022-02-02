@@ -4,7 +4,9 @@
       <ul class="credits-list">
         {% for contact in site.data.contacts %}
         <li class="credits-link">
-          <a href="{{contact.link}}">{{contact.type}}</a>
+          <a href="{{contact.link}}">
+            <img class="credits-logo" src="{{contact.logo}}" alt=""
+          /></a>
         </li>
         {% endfor %}
       </ul>

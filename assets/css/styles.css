@@ -676,25 +676,29 @@ body {
 }
 
 .contact-item {
+  display: grid;
+  grid-template-rows: 3fr 1fr;
   margin-left: 25px;
   margin-right: 25px;
 }
 
 .contact-logo > img {
   opacity: 50%;
-  border-radius: 40%;
+  border-radius: 80%;
   width: 72px;
+  border: 2px solid white;
+  background-color: white;
 }
 
 .contact-logo > img:hover {
+  transform: scale(1.02);
   opacity: 90%;
-  border-radius: 10%;
   transition: 0.3s ease-in-out;
 }
 
 .contact-title {
   text-transform: uppercase;
-  margin-top: 10px;
+  margin-top: 3px;
   letter-spacing: 1px;
 }
 
@@ -735,28 +739,38 @@ body {
 }
 
 .credits-link {
-  margin: 5px;
-  padding: 5px;
+  margin: 6px;
+  padding: 3px;
+}
+
+.credits-link > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid white;
+}
+
+.credits-logo {
+  width: 40px;
+  border-radius: 100%;
 }
 
 .credits-link > a:link,
 .credits-link > a:visited {
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
+  background-color: rgb(192, 192, 192);
 }
 
 .credits-link > a:hover,
 .credits-link > a:active {
-  color: var(--alt-col);
-  background-color: transparent;
+  background-color: white;
   transition: 0.15s ease-in-out;
-  font-weight: bold;
 }
 
 .copyright {
   font-size: 1.15em;
-  margin-top: 5px;
+  margin-top: 2px;
+  margin-bottom: 7px;
 }
 
 /* -----------------------------------

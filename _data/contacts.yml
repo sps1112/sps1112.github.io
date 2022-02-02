@@ -1,15 +1,15 @@
 - type: "Mail"
   link: "mailto:sidps1112@gmail.com"
-  logo: "/assets/logos/mail.png"
+  logo: "/assets/svg/mail.svg"
 
 - type: "Github"
   link: "https://github.com/sps1112"
-  logo: "/assets/logos/github.png"
+  logo: "/assets/svg/github.svg"
 
 - type: "Itch.io"
   link: "https://kingcrimson1112.itch.io/"
-  logo: "/assets/logos/itch.png"
+  logo: "/assets/svg/itch.svg"
 
 - type: "LinkedIn"
   link: "https://www.linkedin.com/in/siddhartha-pratap-singh-013340149/"
-  logo: "/assets/logos/linkedin.png"
+  logo: "/assets/svg/linkedin.svg"

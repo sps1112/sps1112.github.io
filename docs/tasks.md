@@ -3,7 +3,7 @@
 - [X] Make the navbar functional
 - [X] New profile picture
 - [X] Add favicon for website
-- [ ] Add awesome fonts icons to footer
+- [X] Add icons to footer
 - [ ] Refer to portfolio websites
 - [ ] Refer to Templates
 - [ ] Shift achievements
