@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
 :root {
   --alt-col: #61a8e7;
-  --text-col: rgb(5, 3, 3);
   --link-col: #ffd900;
   --nav-col: rgb(14, 14, 14);
   --foot-col: rgb(65, 65, 65);
@@ -25,8 +24,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--alt-col);
-  color: var(--text-col);
+  background-color: var(--nav-col);
+  color: white;
   font-family: "Montserrat", sans-serif;
 }
 

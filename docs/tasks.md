@@ -4,21 +4,21 @@
 - [X] New profile picture
 - [X] Add favicon for website
 - [X] Add icons to footer
+- [X] Add project page
+- [X] Add blog page
+- [X] Clean up repo
+- [X] Add Error Page
 - [ ] Refer to portfolio websites
 - [ ] Refer to Templates
 - [ ] Shift achievements
 - [ ] Shift contacts
-- [ ] Update fonts
-- [ ] Update colors
-- [ ] Update homepage structure based on feedback
 - [ ] Update links on homepage
+- [ ] Update homepage structure based on feedback
+- [ ] Update colors
+- [ ] Update fonts
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
-- [X] Add project page
-- [X] Add blog page
-- [ ] Add Error Page
 - [ ] Update to new projects
 - [ ] Update to new blogs
-- [ ] New content
+- [ ] Update  to new content
 - [ ] Highlight important content
-- [X] Clean up repo
