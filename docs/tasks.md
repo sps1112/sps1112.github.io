@@ -8,6 +8,7 @@
 - [X] Add blog page
 - [X] Clean up repo
 - [X] Add Error Page
+- [X] Hide navbar on scroll
 - [ ] Refer to portfolio websites
 - [ ] Refer to Templates
 - [ ] Shift achievements
