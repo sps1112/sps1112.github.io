@@ -10,7 +10,7 @@
 - [X] Add Error Page
 - [X] Hide navbar on scroll
 - [ ] Refer to portfolio websites
-- [ ] Refer to Templates
+- [X] Refer to Templates
 - [ ] Shift achievements
 - [ ] Shift contacts
 - [ ] Update links on homepage

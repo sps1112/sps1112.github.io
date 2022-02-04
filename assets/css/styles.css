@@ -130,7 +130,8 @@ a:active {
 }
 
 .banner {
-  background: var(--foot-col);
+  background-color: var(--foot-col);
+  /* background-image: linear-gradient(to right, black, white); */
 }
 
 .banner > .container {
@@ -207,11 +208,11 @@ a:active {
   text-align: left;
   padding-right: 50px;
   padding-left: 50px;
-  font-size: 1.25em;
+  font-size: 1.15em;
 }
 
 .intro-para {
-  padding: 20px 10px 20px 0px;
+  padding: 15px 10px 15px 0px;
 }
 
 .about-right {
@@ -240,6 +241,24 @@ a:active {
   padding: 5px;
   margin-top: 15px;
   margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hobby {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.hobby-title {
+  color: var(--alt-col);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hobby-list {
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 .quote {
@@ -927,6 +946,7 @@ a:active {
 /* -----------------------------------
  CSS for the Blog Page
 ----------------------------------- */
+
 .blog {
   background-color: var(--nav-col);
 }
@@ -1011,6 +1031,7 @@ a:active {
 /* -----------------------------------
 Detail list for Project and Blog
 ----------------------------------- */
+
 .detail-list {
   font-size: 0.9em;
   list-style: none;
@@ -1034,9 +1055,10 @@ Detail list for Project and Blog
   font-style: italic;
   text-align: left;
 }
-/* -----------------------------------
- End
------------------------------------ */
 
 @media only screen and (max-width: 640px) {
 }
+
+/* -----------------------------------
+ End
+----------------------------------- */

@@ -29,6 +29,18 @@ layout: template
             <p class="intro-para">{{block.para}}</p>
             {% endfor %}
           </div>
+
+          <div class="hobbies">
+            <div class="hobby">
+              <div class="hobby-title">Things I like:-</div>
+              <div class="hobby-list">{{site.likes}}.</div>
+            </div>
+
+            <div class="hobby">
+              <div class="hobby-title">My favourite games include:-</div>
+              <div class="hobby-list">{{site.games}}.</div>
+            </div>
+          </div>
         </div>
 
         <div class="about-right">
@@ -38,11 +50,6 @@ layout: template
 
           <div class="work-status">{{site.work-status}}</div>
         </div>
-      </div>
-
-      <div class="hobbies">
-        Things I like:- {{site.likes}}. My favourite games include
-        {{site.games}}.
       </div>
 
       <div class="quote">{{site.quote}}</div>
