@@ -183,11 +183,13 @@ layout: template
                 <li class="skill-section">
                   <div class="skill-type">{{skill.type}}</div>
 
-                  <ul class="type-list">
-                    {% for item in skill.list %}
-                    <li class="type-data">{{item.data}}</li>
-                    {% endfor %}
-                  </ul>
+                  <div class="skill-data-list">
+                    <ul class="type-list">
+                      {% for item in skill.list %}
+                      <li class="type-data">{{item.data}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </li>
                 {% endfor %}
               </ul>
@@ -203,11 +205,13 @@ layout: template
                 <li class="achievement-section">
                   <div class="achievement-type">{{ach.type}}</div>
 
-                  <ul class="type-list">
-                    {% for item in ach.list %}
-                    <li class="type-data">{{item.data}}</li>
-                    {% endfor %}
-                  </ul>
+                  <div class="skill-data-list">
+                    <ul class="type-list">
+                      {% for item in ach.list %}
+                      <li class="type-data">{{item.data}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </li>
                 {% endfor %}
               </ul>

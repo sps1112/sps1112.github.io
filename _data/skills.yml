@@ -4,6 +4,7 @@
     - data: "C#"
     - data: "Java"
     - data: "Python"
+    - data: "GLSL"
 
 - type: "Engines + API"
   list:
@@ -24,5 +25,6 @@
   list:
     - data: "Game Programming"
     - data: "Computer Graphics"
+    - data: "Shader writing"
     - data: "Game Design"
     - data: "Worldbuilding"

@@ -29,6 +29,16 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+a:link,
+a:visited {
+  color: var(--alt-col);
+}
+
+a:hover,
+a:active {
+  color: white;
+}
+
 /* -----------------------------------
  CSS for Navbar
 ----------------------------------- */
@@ -297,6 +307,7 @@ body {
   object-fit: cover;
   border-radius: 10px;
   border: 3px solid black;
+  opacity: 80%;
 }
 
 .project-img:hover {
@@ -304,6 +315,7 @@ body {
   transition: 0.2s ease-in-out;
   object-fit: cover;
   border-radius: 10px;
+  opacity: 100%;
 }
 
 .project-title {
@@ -503,13 +515,20 @@ body {
   font-size: 1.25em;
 }
 
+.skill-data-list {
+  display: flex;
+  justify-content: center;
+}
+
 .type-list {
   list-style: none;
   padding-top: 10px;
 }
 
 .type-data {
+  display: flex;
   font-style: italic;
+  text-align: left;
 }
 
 .achievements {
@@ -751,7 +770,7 @@ body {
 }
 
 .credits-logo {
-  width: 40px;
+  width: 36px;
   border-radius: 100%;
 }
 
