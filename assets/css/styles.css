@@ -787,8 +787,8 @@ a:active {
 
 .copyright {
   font-size: 1.15em;
-  margin-top: 2px;
-  margin-bottom: 7px;
+  margin-top: 10px;
+  margin-bottom: 15px;
 }
 
 /* -----------------------------------
@@ -898,6 +898,30 @@ a:active {
   width: 75%;
   padding: 15px;
   border-radius: 5px;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+  margin-top: 0px;
+}
+
+.button-bg {
+  background-color: black;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.button-text {
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button-text:hover,
+.button-text:active {
+  font-weight: bold;
 }
 
 /* -----------------------------------
