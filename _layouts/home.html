@@ -37,7 +37,7 @@ layout: template
             </div>
 
             <div class="hobby">
-              <div class="hobby-title">My favourite games include:-</div>
+              <div class="hobby-title">Favourite Games:-</div>
               <div class="hobby-list">{{site.games}}.</div>
             </div>
           </div>
@@ -151,7 +151,7 @@ layout: template
             <li class="work-item">
               <div class="work-location">
                 <div class="company-name">
-                  <a href="{{job.url}}">{{job.company}}</a>
+                  <a target="_blank" href="{{job.url}}">{{job.company}}</a>
                 </div>
 
                 <div class="company-logo">
@@ -226,8 +226,9 @@ layout: template
           </div>
 
           <div class="resume-link">
-            You can access my complete resume at:-
+            You can download the pdf version of my complete resume from:-
             <a
+              target="_blank"
               href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
               >Resume_Siddhartha</a
             >
@@ -250,13 +251,15 @@ layout: template
             </div>
 
             <div class="blog-details">
-              <div class="headline">
-                <a href="{{blog.permalink}}">{{blog.title}}</a>
+              <div class="details-container">
+                <div class="headline">
+                  <a href="{{blog.permalink}}">{{blog.title}}</a>
+                </div>
+
+                <div class="blog-date">{{blog.time}}</div>
+
+                <div class="blog-description">{{blog.description}}</div>
               </div>
-
-              <div class="blog-date">{{blog.time}}</div>
-
-              <div class="blog-description">{{blog.description}}</div>
             </div>
           </li>
           {% endif %} {% endfor %}
@@ -281,11 +284,16 @@ layout: template
               <img src="{{contact.logo}}" alt="" />
             </div>
             <div class="contact-title">
-              <a href="{{contact.link}}">{{contact.type}}</a>
+              <a target="_blank" href="{{contact.link}}">{{contact.type}}</a>
             </div>
           </li>
           {% endfor %}
         </ul>
+
+        <div class="contact-method">
+          If you want to get in touch, mail at:
+          <a href="mailto:sidps@iitk.ac.in" class="email">sidps@iitk.ac.in</a>
+        </div>
       </div>
     </div>
   </div>

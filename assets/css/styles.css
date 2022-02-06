@@ -209,6 +209,7 @@ a:active {
   padding-right: 50px;
   padding-left: 50px;
   font-size: 1.15em;
+  margin-top: 10px;
 }
 
 .intro-para {
@@ -221,6 +222,7 @@ a:active {
 }
 
 .profile {
+  margin-bottom: 15px;
   max-height: 360px;
   border-radius: 100%;
   border: 5px solid black;
@@ -239,8 +241,8 @@ a:active {
 
 .hobbies {
   padding: 5px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 25px;
+  margin-bottom: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -596,6 +598,7 @@ a:active {
   background-color: transparent;
   transition: 0.15s ease-in-out;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 .blogs {
@@ -620,7 +623,7 @@ a:active {
   margin: 20px;
   background-color: var(--nav-col);
   display: grid;
-  grid-template-columns: 5fr 6fr;
+  grid-template-columns: 2fr 3fr;
   align-items: center;
   border-radius: 5px;
 }
@@ -646,6 +649,12 @@ a:active {
 }
 
 .blog-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-container {
   padding-left: 10px;
   padding-right: 20px;
   display: grid;
@@ -752,6 +761,16 @@ a:active {
   background-color: transparent;
   transition: 0.15s ease-in-out;
   font-weight: bold;
+}
+
+.contact-method {
+  margin: 15px;
+  font-size: 1.2em;
+}
+
+.contact-method > a:hover,
+.contact-method > a:active {
+  text-decoration: underline;
 }
 
 .foot * {
