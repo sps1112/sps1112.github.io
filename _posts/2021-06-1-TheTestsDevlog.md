@@ -4,7 +4,7 @@ title: "The Tests: Devlog"
 time: "Aug, 2020"
 author: Siddhartha
 permalink: /thetests-devlog/
-description: "Devlog for the game, \"The Tests\" made for Fall Game Jam 2020"
+description: "Devlog for the game, \"The Tests\" developed for Fall Game Jam 2020"
 image: "/assets/projects/Tests1.png"
 ---
 # Contents

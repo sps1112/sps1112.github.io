@@ -20,6 +20,6 @@
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
 - [ ] Update to new projects
-- [ ] Update to new blogs
+- [X] Update to new blogs
 - [ ] Update  to new content
 - [ ] Highlight important content
