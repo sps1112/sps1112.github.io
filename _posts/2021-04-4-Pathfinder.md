@@ -8,16 +8,37 @@ engine: "NA"
 language: "C++"
 platform: "PC"
 description: "Pathfinder written in C++."
-image: "/assets/projects/Path0.png"
+image: "/assets/projects/path0.png"
 ---
 
-sadasjkdhkasjdhaskjdhkasdha
-ahsdjaskhdjsadks
-adhakdjhsakjd
+Itch:  https://kingcrimson1112.itch.io/the-tests.
 
-ashdkjashdkjashd
+Github: https://github.com/sps1112/The-Tests.
 
-ashdkjashdkjsahdkas
+A Platformer/Metroidvania made in Unity as part of a 3-day Game Jam. This Game Jam had no theme and I made this to test out my skills making a 2D game. 
 
+<img class="article-screenshot" src="/assets/projects/path1.png" alt=""/>
 
-asdhkjahdkjsahdksja
+<img class="article-screenshot" src="/assets/projects/path0.png" alt=""/>
+
+The main features were implemented as:-
+- A 2D Rigidbody character controller with a Camera following it. Extensive work was put in to tweak the Player to provide a smooth movement.
+- A Smooth camera which lerps to the player position but is bound to the confines of the current room. All of this was done via Code without using third-party Plugins.
+
+<img class="article-screenshot" src="/assets/projects/path2.png" alt=""/>
+
+- A Modular Room system where enemies are allotted a room in the world environment and they are reset/turned off based on the room the player is in. This was done mainly to save processing power.
+
+<img class="article-screenshot" src="/assets/projects/path3.png" alt=""/>
+
+- A Simple Dash functions as an alternate form of movement and also a mode of interaction with the world. The Dash would also be used to open doors and thus act as a versatile action available to the player.
+
+<img class="article-screenshot" src="/assets/projects/path4.png" alt=""/>
+
+<img class="article-screenshot" src="/assets/projects/path5.png" alt=""/>
+
+I have further broken down the development process in this blog that I wrote after said Game Jam at <a href="https://gds.sntiitk.in/2020/09/20/fall-game-jam.html">Fall Game Jam</a> or [The Tests: Devlog](/thetests-devlog/)
+
+<img class="article-screenshot" src="/assets/projects/path6.png" alt=""/>
+
+<img class="article-screenshot" src="/assets/projects/path7.png" alt=""/>

@@ -1,15 +1,15 @@
 ---
 layout: project
-title: "PBR"
+title: "Who Done It?"
 author: Siddhartha
-permalink: /pbr/
-type: "Stamatics, IITK"
-role: "Graphics Programmer"
-engine: "None"
-language: "C++"
+permalink: /who-done-it/
+type: "GameDev Society, IITK"
+role: "Game Programmer, Designer"
+engine: "Unity"
+language: "C#"
 platform: "PC"
-description: "An scene renderer using the principals of physically based rendering to render objects."
-image: "/assets/projects/pbr.png"
+description: "An mystery detective game made for the BYOG Game Jam 2021"
+image: "/assets/projects/who-done0.jpg"
 ---
 
 Itch:  https://kingcrimson1112.itch.io/the-tests.
@@ -24,10 +24,10 @@ The main features were implemented as:-
 - A Modular Room system where enemies are allotted a room in the world environment and they are reset/turned off based on the room the player is in. This was done mainly to save processing power.
 - A Simple Dash functions as an alternate form of movement and also a mode of interaction with the world. The Dash would also be used to open doors and thus act as a versatile action available to the player.
 
-<img class="article-screenshot" src="/assets/projects/Tests0.png" alt=""/>
+<img class="article-screenshot" src="/assets/projects/who-done1.png" alt=""/>
 
 I have further broken down the development process in this blog that I wrote after said Game Jam at https://gds.sntiitk.in/2020/09/20/fall-game-jam.html 
 
-<img class="article-screenshot" src="/assets/projects/Tests1.png" alt=""/>
+<img class="article-screenshot" src="/assets/projects/who-done2.png" alt=""/>
 
-<img class="article-screenshot" src="/assets/projects/Tests2.png" alt=""/>
+<img class="article-screenshot" src="/assets/projects/who-done3.png" alt=""/>
