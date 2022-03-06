@@ -20,6 +20,7 @@
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
 - [ ] Update to new projects
+- [ ] Add code samples for the projects
 - [X] Update to new blogs
 - [ ] Update  to new content
 - [ ] Highlight important content
