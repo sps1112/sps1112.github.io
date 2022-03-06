@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "A 3D dungeon-crawler/puzzle game made in 1 week as part of Brackey's Game Jam 2020.02. This is a solo project with all the artwork done during the 1 week period."
+description: "A 3D dungeon-crawler/puzzle game made in 1 week for the Brackey's Game Jam 2020.02. This was a solo project and the time reversal mechanic, artwork was made from scartch."
 image: "/assets/projects/roaming0.png"
 ---
 

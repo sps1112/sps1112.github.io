@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "A Platformer/Metroidvania made in Unity as part of a 3-day Game Jam. This Game Jam had no theme and I made this to test out my skills making a 2D game."
+description: "A platformer-metroidvania game made in Unity as part of a 3-day Game Jam. Developed the character controller, camera system, room manager during the period of the jam."
 image: "/assets/projects/tests0.png"
 ---
 

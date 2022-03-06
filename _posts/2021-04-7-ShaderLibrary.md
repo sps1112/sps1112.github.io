@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "ShaderToy"
 language: "GLSL"
 platform: "PC"
-description: "A collection of pixel shaders written in ShaderToy employing procedural generations"
+description: "A collection of pixel shaders written on the ShaderToy platform. Utilizing perlin, fractal, voronoi noise to generate complex shaders."
 image: "/assets/projects/shader0.png"
 ---
 

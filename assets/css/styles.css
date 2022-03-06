@@ -372,7 +372,7 @@ a:active {
 
 .project-details {
   display: grid;
-  grid-template-rows: 1fr 1fr 3fr;
+  grid-template-rows: 1fr 3fr;
   align-items: center;
   text-align: left;
   margin-left: 15px;
@@ -383,6 +383,8 @@ a:active {
   grid-template-columns: 1fr 3fr;
   font-size: 0.9em;
   font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
 }
 
 .project-detail-type {
@@ -922,6 +924,17 @@ a:active {
   position: relative;
   left: 50%;
   transform: translate(-50%, 0%);
+}
+
+.two-images {
+  display: flex;
+  justify-content: center;
+}
+
+.article-screenshots {
+  width: 30%;
+  min-height: 240px;
+  margin: 10px;
 }
 
 .code-container {

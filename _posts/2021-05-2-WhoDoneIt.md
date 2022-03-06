@@ -8,10 +8,11 @@ role: "Game Programmer, Designer"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "An mystery detective game made for the BYOG Game Jam 2021"
+description: "An mystery detective game made in Unity for the BYOG Game Jam 2021. Developed the camera system, Input manager and oversaw production/design of the game."
 image: "/assets/projects/who-done0.jpg"
 ---
 
+Note:- The Art implemented in the project include some third-party assets and some were made by the artists.
 Itch:  https://kingcrimson1112.itch.io/the-tests.
 
 Github: https://github.com/sps1112/The-Tests.

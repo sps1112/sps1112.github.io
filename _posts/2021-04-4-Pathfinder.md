@@ -1,13 +1,13 @@
 ---
 layout: project
-title: "Pathfinder"
+title: "A* Pathfinder"
 author: Siddhartha
 permalink: /path-finder/
 type: "Self-project"
 engine: "NA"
 language: "C++"
 platform: "PC"
-description: "Pathfinder written in C++."
+description: "A pathfinder utlizing the A* algorithm for finding the optimal path on a 2d map. Used the sbt_image library for rendering pixel data into a png file."
 image: "/assets/projects/path0.png"
 ---
 
@@ -17,9 +17,11 @@ Github: https://github.com/sps1112/The-Tests.
 
 A Platformer/Metroidvania made in Unity as part of a 3-day Game Jam. This Game Jam had no theme and I made this to test out my skills making a 2D game. 
 
-<img class="article-screenshot" src="/assets/projects/path1.png" alt=""/>
+<div class="two-images">
+<img class="article-screenshots" src="/assets/projects/path1.png" alt=""/>
 
-<img class="article-screenshot" src="/assets/projects/path0.png" alt=""/>
+<img class="article-screenshots" src="/assets/projects/path0.png" alt=""/>
+</div>
 
 The main features were implemented as:-
 - A 2D Rigidbody character controller with a Camera following it. Extensive work was put in to tweak the Player to provide a smooth movement.
@@ -33,12 +35,16 @@ The main features were implemented as:-
 
 - A Simple Dash functions as an alternate form of movement and also a mode of interaction with the world. The Dash would also be used to open doors and thus act as a versatile action available to the player.
 
-<img class="article-screenshot" src="/assets/projects/path4.png" alt=""/>
+<div class="two-images">
+<img class="article-screenshots" src="/assets/projects/path4.png" alt=""/>
 
-<img class="article-screenshot" src="/assets/projects/path5.png" alt=""/>
+<img class="article-screenshots" src="/assets/projects/path5.png" alt=""/>
+</div>
 
 I have further broken down the development process in this blog that I wrote after said Game Jam at <a href="https://gds.sntiitk.in/2020/09/20/fall-game-jam.html">Fall Game Jam</a> or [The Tests: Devlog](/thetests-devlog/)
 
-<img class="article-screenshot" src="/assets/projects/path6.png" alt=""/>
+<div class="two-images">
+<img class="article-screenshots" src="/assets/projects/path6.png" alt=""/>
 
-<img class="article-screenshot" src="/assets/projects/path7.png" alt=""/>
+<img class="article-screenshots" src="/assets/projects/path7.png" alt=""/>
+</div>

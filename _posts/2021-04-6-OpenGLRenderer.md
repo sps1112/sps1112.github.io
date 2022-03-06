@@ -5,9 +5,9 @@ author: Siddhartha
 permalink: /opengl-renderer/
 type: "Self-project"
 engine: "OpenGL API, GLFW"
-language: "C++"
+language: "C++, GLSL"
 platform: "PC"
-description: "A basic OpenGL Renderer written in C++. Includes Renderer, Shader, Material and Model classes."
+description: "A 3D renderer written in C++ utlising the OpenGL API. Implemented a Scene system to rapidly test new scenes. Shaders use the Blinn-phong shading model for lighting."
 image: "/assets/projects/renderer1.png"
 ---
 

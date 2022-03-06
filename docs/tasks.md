@@ -1,7 +1,7 @@
 ## Tasks to do with website
 
 - [X] Make the navbar functional
-- [X] New profile picture
+- [ ] New profile picture
 - [X] Add favicon for website
 - [X] Add icons to footer
 - [X] Add project page
