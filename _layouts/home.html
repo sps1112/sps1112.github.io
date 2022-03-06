@@ -68,7 +68,9 @@ layout: template
             <li class="portfolio-project">
               <div class="project-card">
                 <div class="img-border">
-                  <img class="project-img" src="{{project.image}}" alt="" />
+                  <a href="{{project.permalink}}">
+                    <img class="project-img" src="{{project.image}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="project-title">
@@ -111,7 +113,9 @@ layout: template
             <li class="portfolio-project">
               <div class="project-card">
                 <div class="img-border">
-                  <img class="project-img" src="{{project.image}}" alt="" />
+                  <a href="{{project.permalink}}">
+                    <img class="project-img" src="{{project.image}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="project-title">
@@ -159,7 +163,9 @@ layout: template
                 </div>
 
                 <div class="company-logo">
-                  <img src="{{job.logo}}" alt="" />
+                  <a target="_blank" href="{{job.url}}">
+                    <img src="{{job.logo}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="work-role">{{job.position}}</div>
@@ -251,7 +257,9 @@ layout: template
           {% for blog in site.posts %} {% if blog.layout == "article" %}
           <li class="blog-item">
             <div class="banner-parent">
-              <img class="blog-banner" src="{{blog.image}}" alt="" />
+              <a href="{{blog.permalink}}">
+                <img class="blog-banner" src="{{blog.image}}" alt=""
+              /></a>
             </div>
 
             <div class="blog-details">
@@ -285,7 +293,9 @@ layout: template
           {% for contact in site.data.contacts %}
           <li class="contact-item">
             <div class="contact-logo">
-              <img src="{{contact.logo}}" alt="" />
+              <a target="_blank" href="{{contact.link}}"
+                ><img src="{{contact.logo}}" alt=""
+              /></a>
             </div>
             <div class="contact-title">
               <a target="_blank" href="{{contact.link}}">{{contact.type}}</a>

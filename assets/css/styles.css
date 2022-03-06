@@ -459,9 +459,14 @@ a:active {
   transition: 0.15s ease-in-out;
 }
 
-.company-logo > img {
+.company-logo > a > img {
   width: 150px;
   border-radius: 100%;
+}
+
+.company-logo > a > img:hover {
+  transform: scale(1.015);
+  transition: 0.2s ease-in-out;
 }
 
 .work-role {
@@ -730,7 +735,7 @@ a:active {
   margin-right: 25px;
 }
 
-.contact-logo > img {
+.contact-logo > a > img {
   opacity: 50%;
   border-radius: 80%;
   width: 72px;
@@ -738,7 +743,7 @@ a:active {
   background-color: white;
 }
 
-.contact-logo > img:hover {
+.contact-logo > a > img:hover {
   transform: scale(1.02);
   opacity: 90%;
   transition: 0.3s ease-in-out;
