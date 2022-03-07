@@ -13,14 +13,14 @@
 - [X] Refer to Templates
 - [ ] Shift achievements
 - [ ] Shift contacts
-- [ ] Update links on homepage
+- [X] Update links on homepage
 - [ ] Update homepage structure based on feedback
 - [ ] Update colors
 - [ ] Update fonts
 - [ ] Fix for lower-res
 - [ ] Fix for mobile
-- [ ] Update to new projects
-- [ ] Add code samples for the projects
+- [X] Update to new projects
+- [X] Add code samples for the projects
 - [X] Update to new blogs
-- [ ] Update  to new content
+- [X] Update  to new content
 - [ ] Highlight important content
