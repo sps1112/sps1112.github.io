@@ -2,21 +2,25 @@
 
 - [X] Make the navbar functional
 - [ ] New profile picture
-- [ ] Add favicon for website
-- [ ] Add awesome fonts icons to footer
-- [ ] Refer to portfolio websites
-- [ ] Refer to Templates
-- [ ] Shift achievements
-- [ ] Shift contacts
-- [ ] Update fonts
-- [ ] Update colors
-- [ ] Update homepage structure based on feedback
-- [ ] Update links on homepage
-- [ ] Fix for lower-res
-- [ ] Fix for mobile
+- [X] Add favicon for website
+- [X] Add icons to footer
 - [X] Add project page
 - [X] Add blog page
-- [ ] Add Error Page
-- [ ] Update to new projects
-- [ ] Update to new blogs
 - [X] Clean up repo
+- [X] Add Error Page
+- [X] Hide navbar on scroll
+- [ ] Refer to portfolio websites
+- [X] Refer to Templates
+- [ ] Shift achievements
+- [ ] Shift contacts
+- [X] Update links on homepage
+- [ ] Update homepage structure based on feedback
+- [ ] Update colors
+- [ ] Update fonts
+- [ ] Fix for lower-res
+- [ ] Fix for mobile
+- [X] Update to new projects
+- [X] Add code samples for the projects
+- [X] Update to new blogs
+- [X] Update  to new content
+- [ ] Highlight important content

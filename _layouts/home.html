@@ -5,6 +5,10 @@ layout: template
 <div class="home-page">
   <div class="banner">
     <div class="container">
+      <!-- <iframe
+        class="banner-img"
+        src="https://www.shadertoy.com/embed/fdtGRs?gui=false&t=0&paused=false&muted=true"
+      ></iframe> -->
       <img class="banner-img" src="{{site.banner-img}}" alt="" />
 
       <div class="banner-text">
@@ -25,6 +29,18 @@ layout: template
             <p class="intro-para">{{block.para}}</p>
             {% endfor %}
           </div>
+
+          <div class="hobbies">
+            <div class="hobby">
+              <div class="hobby-title">Things I like:-</div>
+              <div class="hobby-list">{{site.likes}}.</div>
+            </div>
+
+            <div class="hobby">
+              <div class="hobby-title">Favourite Games:-</div>
+              <div class="hobby-list">{{site.games}}.</div>
+            </div>
+          </div>
         </div>
 
         <div class="about-right">
@@ -34,11 +50,6 @@ layout: template
 
           <div class="work-status">{{site.work-status}}</div>
         </div>
-      </div>
-
-      <div class="hobbies">
-        Things I like:- {{site.likes}}. My favourite games include
-        {{site.games}}.
       </div>
 
       <div class="quote">{{site.quote}}</div>
@@ -57,7 +68,9 @@ layout: template
             <li class="portfolio-project">
               <div class="project-card">
                 <div class="img-border">
-                  <img class="project-img" src="{{project.image}}" alt="" />
+                  <a href="{{project.permalink}}">
+                    <img class="project-img" src="{{project.image}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="project-title">
@@ -70,9 +83,17 @@ layout: template
               </div>
 
               <div class="project-details">
-                <div class="engine-used">Engine:- {{project.engine}}</div>
+                <div class="project-detail-list">
+                  <div class="project-detail-item">
+                    <div class="project-detail-type">Engine:-</div>
+                    <div class="project-detail-val">{{project.engine}}</div>
+                  </div>
 
-                <div class="language-used">Language:- {{project.language}}</div>
+                  <div class="project-detail-item">
+                    <div class="project-detail-type">Language:-</div>
+                    <div class="project-detail-val">{{project.language}}</div>
+                  </div>
+                </div>
 
                 <div class="project-description">{{project.description}}</div>
               </div>
@@ -92,7 +113,9 @@ layout: template
             <li class="portfolio-project">
               <div class="project-card">
                 <div class="img-border">
-                  <img class="project-img" src="{{project.image}}" alt="" />
+                  <a href="{{project.permalink}}">
+                    <img class="project-img" src="{{project.image}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="project-title">
@@ -103,9 +126,17 @@ layout: template
               </div>
 
               <div class="project-details">
-                <div class="engine-used">Engine:- {{project.engine}}</div>
+                <div class="project-detail-list">
+                  <div class="project-detail-item">
+                    <div class="project-detail-type">Engine:-</div>
+                    <div class="project-detail-val">{{project.engine}}</div>
+                  </div>
 
-                <div class="language-used">Language:- {{project.language}}</div>
+                  <div class="project-detail-item">
+                    <div class="project-detail-type">Language:-</div>
+                    <div class="project-detail-val">{{project.language}}</div>
+                  </div>
+                </div>
 
                 <div class="project-description">{{project.description}}</div>
               </div>
@@ -128,11 +159,13 @@ layout: template
             <li class="work-item">
               <div class="work-location">
                 <div class="company-name">
-                  <a href="{{job.url}}">{{job.company}}</a>
+                  <a target="_blank" href="{{job.url}}">{{job.company}}</a>
                 </div>
 
                 <div class="company-logo">
-                  <img src="{{job.logo}}" alt="" />
+                  <a target="_blank" href="{{job.url}}">
+                    <img src="{{job.logo}}" alt=""
+                  /></a>
                 </div>
 
                 <div class="work-role">{{job.position}}</div>
@@ -142,7 +175,10 @@ layout: template
 
               <div class="work-description">
                 {% for point in job.tasks %}
-                <p class="work-point">{{point.task}}</p>
+                <div class="work-point">
+                  <div class="work-arrow">*</div>
+                  <div class="work-task">{{point.task}}</div>
+                </div>
                 {% endfor %}
               </div>
             </li>
@@ -164,11 +200,13 @@ layout: template
                 <li class="skill-section">
                   <div class="skill-type">{{skill.type}}</div>
 
-                  <ul class="type-list">
-                    {% for item in skill.list %}
-                    <li class="type-data">{{item.data}}</li>
-                    {% endfor %}
-                  </ul>
+                  <div class="skill-data-list">
+                    <ul class="type-list">
+                      {% for item in skill.list %}
+                      <li class="type-data">{{item.data}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </li>
                 {% endfor %}
               </ul>
@@ -184,11 +222,13 @@ layout: template
                 <li class="achievement-section">
                   <div class="achievement-type">{{ach.type}}</div>
 
-                  <ul class="type-list">
-                    {% for item in ach.list %}
-                    <li class="type-data">{{item.data}}</li>
-                    {% endfor %}
-                  </ul>
+                  <div class="skill-data-list">
+                    <ul class="type-list">
+                      {% for item in ach.list %}
+                      <li class="type-data">{{item.data}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
                 </li>
                 {% endfor %}
               </ul>
@@ -196,8 +236,9 @@ layout: template
           </div>
 
           <div class="resume-link">
-            You can access my complete resume at:-
+            You can download the pdf version of my complete resume from:-
             <a
+              target="_blank"
               href="https://drive.google.com/file/d/1DO-D4MC3ttFNIkbTeJICiuZNw1NvGhH5/view?usp=sharing"
               >Resume_Siddhartha</a
             >
@@ -216,17 +257,21 @@ layout: template
           {% for blog in site.posts %} {% if blog.layout == "article" %}
           <li class="blog-item">
             <div class="banner-parent">
-              <img class="blog-banner" src="{{blog.image}}" alt="" />
+              <a href="{{blog.permalink}}">
+                <img class="blog-banner" src="{{blog.image}}" alt=""
+              /></a>
             </div>
 
             <div class="blog-details">
-              <div class="headline">
-                <a href="{{blog.permalink}}">{{blog.title}}</a>
+              <div class="details-container">
+                <div class="headline">
+                  <a href="{{blog.permalink}}">{{blog.title}}</a>
+                </div>
+
+                <div class="blog-date">{{blog.time}}</div>
+
+                <div class="blog-description">{{blog.description}}</div>
               </div>
-
-              <div class="blog-date">{{blog.time}}</div>
-
-              <div class="blog-description">{{blog.description}}</div>
             </div>
           </li>
           {% endif %} {% endfor %}
@@ -248,14 +293,21 @@ layout: template
           {% for contact in site.data.contacts %}
           <li class="contact-item">
             <div class="contact-logo">
-              <img src="{{contact.logo}}" alt="" />
+              <a target="_blank" href="{{contact.link}}"
+                ><img src="{{contact.logo}}" alt=""
+              /></a>
             </div>
             <div class="contact-title">
-              <a href="{{contact.link}}">{{contact.type}}</a>
+              <a target="_blank" href="{{contact.link}}">{{contact.type}}</a>
             </div>
           </li>
           {% endfor %}
         </ul>
+
+        <div class="contact-method">
+          If you want to get in touch, mail at:
+          <a href="mailto:sidps@iitk.ac.in" class="email">sidps@iitk.ac.in</a>
+        </div>
       </div>
     </div>
   </div>

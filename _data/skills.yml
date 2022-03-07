@@ -4,6 +4,8 @@
     - data: "C#"
     - data: "Java"
     - data: "Python"
+    - data: "GLSL"
+    - data: "HTML/CSS"
 
 - type: "Engines + API"
   list:
@@ -12,6 +14,7 @@
     - data: "Godot"
     - data: "OpenGL"
     - data: "Twine"
+    - data: "SDL2"
 
 - type: "Utilities"
   list:
@@ -19,10 +22,12 @@
     - data: "Linux"
     - data: "CMake"
     - data: "Blender"
+    - data: "ImGUI"
 
 - type: "Fields"
   list:
     - data: "Game Programming"
     - data: "Computer Graphics"
+    - data: "Shader writing"
     - data: "Game Design"
     - data: "Worldbuilding"
