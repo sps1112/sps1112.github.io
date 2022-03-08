@@ -12,7 +12,7 @@
 - [ ] Refer to portfolio websites
 - [X] Refer to Templates
 - [ ] Shift achievements
-- [ ] Shift contacts
+- [X] Shift contacts
 - [X] Update links on homepage
 - [ ] Update homepage structure based on feedback
 - [ ] Update colors

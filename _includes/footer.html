@@ -1,6 +1,7 @@
 <div class="foot" id="footer">
   <div class="container">
     <div class="credits">
+      {% unless page.url=="/" %}
       <ul class="credits-list">
         {% for contact in site.data.contacts %}
         <li class="credits-link">
@@ -10,6 +11,7 @@
         </li>
         {% endfor %}
       </ul>
+      {% endunless %}
     </div>
 
     <div class="copyright">Copyright © 2022 • {{site.name}}</div>
