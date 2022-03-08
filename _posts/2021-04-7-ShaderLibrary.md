@@ -123,8 +123,8 @@ offset.y=-iTime*3.0f;
 offset.x=cos(iTime*0.5f)*2.0f;
 
 // Get Height Map
-float h=get_voronoi_noise(uv+offset);
-h=clamp(h,0.0f,1.0f);
+float h=get_voronoi_noise(uv+offset) + get_voronoi_noise(uv+offset*0.4f);
+h=clamp(h*0.7f,0.0f,1.0f);
 h=pow(h,p);
 
 // Final Color
@@ -143,43 +143,76 @@ fragColor = vec4(col,1.0);
 <div class="code-container">
 <pre class="code-block">
 ...
-// Get Height Map
-float h=get_octave_noise(pos);
-h=pow(h,1.1f);
+darkCol=vec3(0.0f,0.05f,0.1f);
+lightCol=vec3(0.0f,0.85f,0.15f);
 
-// Get Fractal height
-float fH=get_fractal_height(pos);
+// Get Octave Height
+float hF = get_octave_noise(pos*lF.x,lF.y,lF.z);
+float hB = get_octave_noise(pos*lB.x,lB.y,lB.z);
+hF=pow(hF,1.25f)*1.1f;
+hB*=0.75f;
 
-// Limits on X
-vec2 limits=xLimits+vec2(pos.y+0.3f,-(pos.y+0.3f));
-if((pos.x<limits.x || pos.x<xLimits.x) ||(pos.x>limits.y || pos.x>xLimits.y))
+// Get Fractal Height
+float fF=get_fractal_height(pos*lF.x,lF.y,lF.z);
+float fB=get_fractal_height(pos*lB.x,lB.y,lB.z);
+
+// Apply Limits
+vec4 limF=limitsF;
+if(pos.x<limF.x || pos.x>limF.y || pos.y<limF.z || pos.y > limF.w)
 {
-    h=0.0f;
+    hF=0.0f;
+}
+vec4 limB=limitsB;
+if(pos.x<limB.x || pos.x>limB.y || pos.y<limB.z || pos.y > limB.w)
+{
+    hB=0.0f;
 }
 
-// Get Circle limits
-float h2=distance(pos,cCenter)/cRadius;
-h2=smoothstep(0.0f,cRadius,h2);
+// Apply Alpha Limits
+float h1=distance(pos,cF.xy)/cF.z;
+h1=clamp(h1,0.0f,1.0f);
+h1=1.0f-h1;
+hF*=h1*1.5f;
+
+float h2=distance(pos,cB.xy)/cB.z;
+h2=clamp(h2,0.0f,1.0f);
 h2=1.0f-h2;
+hB*=h2*1.75f;
 
-// Apply circle's alpha map
-h2*=h;
+// Apply Fractal
+hF*=fF;
+hF=smoothstep(0.0f,0.35f,hF);
+hB*=fB;
+hB=smoothstep(0.0f,0.35f,hB);
 
-// Apply Fractal distortion
-h2*=fH;
-h2=smoothstep(0.0f,0.3f,h2);
 
-// Apply threshold
-if(h2<0.15f)
+// Apply Threshold
+if(hF<0.25f)
 {
-    h2=0.0f;
+    hF=0.0f;
 }
-
-// Set Final Color
-vec3 col=vec3(0.05f);
-if(h2>0.0f)
+if(hB<0.05f)
 {
-    col=mix(darkCol,lightCol,h2);
+    hB=0.0f;
+}
+    
+// Apply Color
+vec3 col=mix(darkCol, vec3(0.0f),pos.y-0.2f*sin(1.25f*iTime));
+if(hB>0.0f)
+{
+    col=mix(darkCol,mix(darkCol,lightCol,0.5f),hB*1.25f);
+    if(hB<=0.06f)
+    {
+        col=vec3(0.25f*darkCol);
+    }
+}
+if(hF>0.0f)
+{
+    col=mix(darkCol,lightCol,hF);
+    if(hF<=0.28f)
+    {
+        col=vec3(0.5f*darkCol);
+    }
 }
 return col;
 ...
