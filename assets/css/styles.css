@@ -370,6 +370,212 @@ a:active {
   padding-top: 15px;
 }
 
+.work-and-resume {
+  background: var(--foot-col);
+  color: white;
+}
+
+.work-container {
+  padding: 8px;
+}
+
+.work-list {
+  list-style: none;
+}
+
+.work-item {
+  background-color: var(--nav-col);
+  padding: 8px;
+  margin: 10px;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.work-location {
+  background-color: black;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.company-name {
+  padding: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
+.company-name > a:link,
+.company-name > a:visited {
+  color: white;
+  transition: 0.15s ease-in-out;
+}
+
+.company-name > a:hover,
+.company-name > a:active {
+  color: var(--alt-col);
+  font-weight: bold;
+  transition: 0.15s ease-in-out;
+}
+
+.company-logo > a > img {
+  width: 150px;
+  border-radius: 100%;
+  transition: 0.2s ease-in-out;
+}
+
+.company-logo > a > img:hover {
+  transform: scale(1.015);
+  transition: 0.2s ease-in-out;
+}
+
+.work-role {
+  font-weight: bold;
+}
+
+.work-timeline {
+  font-style: italic;
+  padding: 3px;
+}
+
+.work-description {
+  text-align: left;
+}
+
+.work-point {
+  display: grid;
+  grid-template-columns: 1fr 30fr;
+  margin: 7px;
+}
+
+.work-arrow {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.work-task {
+  margin-left: 3px;
+  font-size: 0.9em;
+  font-style: italic;
+}
+
+.resume-container {
+  padding: 7px;
+  background: var(--nav-col);
+}
+
+.skills {
+  margin: 5px;
+}
+
+.skills > .title {
+  text-transform: none;
+  font-size: 1.5em;
+  background: none;
+  color: white;
+  font-weight: bold;
+}
+
+.skill-container {
+  margin-bottom: 5px;
+  padding: 7px;
+}
+
+.skill-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 5px;
+}
+
+.skill-section {
+  margin: 10px;
+}
+
+.skill-type {
+  text-align: center;
+  color: var(--alt-col);
+  font-weight: bold;
+}
+
+.skill-data-list {
+  display: flex;
+  justify-content: center;
+}
+
+.type-list {
+  list-style: none;
+  padding-top: 5px;
+  text-align: center;
+}
+
+.type-data {
+  font-style: italic;
+  font-size: 0.85em;
+}
+
+.achievements {
+  margin: 5px;
+}
+
+.achievements > .title {
+  text-transform: none;
+  font-size: 1.5em;
+  background: none;
+  color: white;
+  font-weight: bold;
+}
+
+.achievement-container {
+  margin-bottom: 5px;
+  padding: 7px;
+}
+
+.achievement-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.achievement-section {
+  margin: 10px;
+}
+
+.achievement-type {
+  text-align: center;
+  color: var(--alt-col);
+  font-weight: bold;
+}
+
+.resume-link {
+  font-size: 1.05em;
+  padding: 7px;
+  text-align: center;
+}
+
+/* -------------------------- */
+
+.banner-parent {
+  width: 480px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.blog-banner {
+  height: 100%;
+  width: 100%;
+  opacity: 60%;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+
+.blog-banner:hover {
+  transform: scale(1.1);
+  opacity: 80%;
+  transition: 0.2s ease-in-out;
+}
+
 /* -----------------------------------
  CSS for the Project Page 
 ----------------------------------- */
@@ -408,6 +614,8 @@ For Higher Resolutions
   .nav-links {
     list-style: none;
     padding: 10px;
+    padding-top: 0px;
+    padding-bottom: 5px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -500,6 +708,86 @@ For Higher Resolutions
     padding-top: 3px;
     padding-bottom: 3px;
   }
+
+  .work-container {
+    padding: 15px;
+  }
+
+  .work-item {
+    background-color: var(--nav-col);
+    padding: 15px;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-radius: 5px;
+  }
+
+  .work-description {
+    padding-left: 25px;
+  }
+
+  .work-point {
+    margin: 15px;
+  }
+
+  .work-task {
+    margin-right: 5px;
+    font-size: 1em;
+  }
+
+  .resume-container {
+    padding: 10px;
+  }
+
+  .skills {
+    margin: 10px;
+  }
+
+  .skills > .title {
+    font-size: 2em;
+  }
+
+  .skill-container {
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+
+  .skill-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .type-list {
+    padding-top: 10px;
+  }
+
+  .type-data {
+    display: flex;
+    text-align: left;
+    font-size: 1em;
+  }
+
+  .achievements {
+    margin: 10px;
+  }
+
+  .achievements > .title {
+    font-size: 2em;
+  }
+
+  .achievement-container {
+    margin-bottom: 15px;
+    padding: 10px;
+  }
+
+  .achievement-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .resume-link {
+    font-size: 1.1em;
+    padding: 15px;
+    padding-top: 0px;
+  }
 }
 
 @media only screen and (min-width: 960px) {
@@ -545,6 +833,26 @@ For Higher Resolutions
   .project-container {
     margin-top: 10px;
     padding: 15px;
+  }
+
+  .work-item {
+    grid-template-columns: 1fr 3fr;
+  }
+
+  .work-task {
+    font-size: 1.1em;
+  }
+
+  .skill-type {
+    font-size: 1.25em;
+  }
+
+  .achievement-type {
+    font-size: 1.25em;
+  }
+
+  .resume-link {
+    font-size: 1.25em;
   }
 }
 
