@@ -116,6 +116,148 @@ a:active {
  CSS for Homepage
 ----------------------------------- */
 
+.home-page * {
+  margin: 0;
+  padding: 0;
+}
+
+.banner {
+  background-color: var(--foot-col);
+}
+
+.banner > .container {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-img {
+  opacity: 90%;
+  width: 100%;
+  min-height: 180px;
+}
+
+.banner-text {
+  background-color: rgba(0, 0, 0, 0.6);
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  position: absolute;
+  border-radius: 2px;
+  letter-spacing: 2px;
+  padding: 8px;
+}
+
+.banner-name {
+  font-size: 5vw;
+}
+
+.banner-role {
+  font-size: 2.5vw;
+  font-weight: bold;
+  padding-bottom: 4px;
+  padding-top: 6px;
+}
+
+.title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 2.5em;
+  letter-spacing: 1.25px;
+  font-family: "Poppins", sans-serif;
+  background-color: black;
+  color: var(--alt-col);
+}
+
+.about-me {
+  background-color: var(--nav-col);
+  color: white;
+}
+
+.about-me > .container {
+  text-align: center;
+  padding: 10px;
+}
+
+.about-container {
+  margin-top: 10px;
+  padding: 5px;
+  align-items: center;
+}
+
+.about-left {
+  text-align: left;
+  margin-top: 10px;
+}
+
+.introduction {
+  padding-right: 35px;
+  padding-left: 35px;
+}
+
+.intro-para {
+  padding: 8px;
+}
+
+.about-right {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.profile {
+  margin-bottom: 15px;
+  max-height: 270px;
+  border-radius: 100%;
+  border: 3px solid black;
+}
+
+.profile-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.work-status {
+  font-style: italic;
+  padding-top: 5px;
+  font-size: 0.85em;
+}
+
+.hobbies {
+  padding: 5px 0px 5px 0px;
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.hobby {
+  text-align: center;
+  display: grid;
+  grid-template-rows: 1fr 3fr;
+  margin-right: 10px;
+}
+
+.hobby-title {
+  color: var(--alt-col);
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.hobby-list {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.quote {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: var(--alt-col);
+  font-style: italic;
+  font-size: 0.9em;
+  margin-top: 5px;
+  padding: 8px;
+  border-radius: 3px;
+}
+
 /* -----------------------------------
  CSS for the Project Page 
 ----------------------------------- */
@@ -163,6 +305,62 @@ For Higher Resolutions
   .nav-item {
     font-size: 1em;
   }
+
+  .banner-text {
+    border-radius: 3px;
+    letter-spacing: 3px;
+    padding: 15px;
+  }
+
+  .banner-name {
+    font-size: 4.5vw;
+  }
+
+  .banner-role {
+    font-size: 2vw;
+    padding-bottom: 6px;
+    padding-top: 9px;
+  }
+
+  .title {
+    font-size: 3em;
+    letter-spacing: 1.5px;
+  }
+
+  .about-me > .container {
+    padding: 15px;
+  }
+
+  .about-left {
+    padding-right: 10px;
+    padding-left: 10px;
+    font-size: 1.1em;
+  }
+
+  .introduction {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+
+  .profile {
+    max-height: 330px;
+    border: 5px solid black;
+  }
+
+  .hobbies {
+    margin-top: 25px;
+  }
+
+  .hobby-list {
+    font-size: 0.9em;
+  }
+
+  .quote {
+    font-size: 1.2em;
+    margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+  }
 }
 
 @media only screen and (min-width: 960px) {
@@ -173,6 +371,36 @@ For Higher Resolutions
 
   .nav-links {
     justify-content: space-between;
+  }
+
+  .banner-name {
+    font-size: 3.8vw;
+  }
+
+  .banner-role {
+    font-size: 1.6vw;
+    padding-bottom: 10px;
+    padding-top: 15px;
+  }
+
+  .about-container {
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+  }
+
+  .about-left {
+    padding-right: 50px;
+    padding-left: 50px;
+    font-size: 1.15em;
+  }
+
+  .introduction {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+
+  .intro-para {
+    padding: 15px 10px 15px 0px;
   }
 }
 /* -----------------------------------
