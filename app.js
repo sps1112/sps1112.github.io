@@ -16,3 +16,21 @@ window.onscroll = function() {
     }
     pPos = cPos;
 }
+
+// Navbar Button
+const navButton = document.getElementById("nav-button");
+const navContent = document.getElementById("nav-contents");
+
+navButton.addEventListener("click", open_close);
+
+var navState = 0; // 0 is hidden and 1 is shown 
+function open_close() {
+  if(navState == 0){
+     navState = 1;
+     navContent.classList.remove("nav-contents"); // shows div
+  }
+  else {
+     navState = 0;
+     navContent.classList.add("nav-contents"); // hides div
+  }
+} 
