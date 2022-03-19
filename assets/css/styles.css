@@ -258,6 +258,118 @@ a:active {
   border-radius: 3px;
 }
 
+.projects {
+  background-color: var(--foot-col);
+  color: white;
+}
+
+.project-container {
+  margin-top: 8px;
+  padding: 10px;
+}
+
+.project-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.portfolio-project {
+  background-color: var(--nav-col);
+  color: white;
+  margin: 10px;
+  padding: 8px;
+  align-items: center;
+  border: 1px solid var(--alt-col);
+  border-radius: 3px;
+}
+
+.project-card {
+  text-align: center;
+}
+
+.img-border {
+  width: 100%;
+  max-width: 350px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 3px solid black;
+  opacity: 80%;
+  transition: 0.25s ease-in-out;
+}
+
+.project-img:hover {
+  transform: scale(1.05);
+  transition: 0.25s ease-in-out;
+  object-fit: cover;
+  opacity: 100%;
+}
+
+.project-title {
+  padding: 5px;
+  text-transform: uppercase;
+}
+
+.project-title > a:link,
+.project-title > a:visited {
+  color: white;
+  font-size: 1.2em;
+  transition: 0.15s ease-in-out;
+}
+
+.project-title > a:hover,
+.project-title > a:active {
+  color: var(--alt-col);
+  font-weight: bold;
+  transition: 0.15s ease-in-out;
+}
+
+.project-head {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
+.project-role {
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
+.project-details {
+  margin-top: 10px;
+  align-items: center;
+  text-align: left;
+}
+
+.project-detail-item {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.project-detail-type {
+  padding-right: 10px;
+}
+
+.project-detail-val {
+  margin-right: 10px;
+  color: var(--alt-col);
+  font-style: italic;
+}
+
+.project-description {
+  font-size: 0.95em;
+  padding-top: 15px;
+}
+
 /* -----------------------------------
  CSS for the Project Page 
 ----------------------------------- */
@@ -361,6 +473,33 @@ For Higher Resolutions
     padding: 15px;
     border-radius: 5px;
   }
+
+  .portfolio-project {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: 3fr 4fr;
+    border-radius: 5px;
+  }
+
+  .project-card {
+    padding-right: 5px;
+  }
+
+  .project-img {
+    border-radius: 10px;
+  }
+
+  .project-details {
+    margin-top: 0px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+  }
+
+  .project-detail-item {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
 }
 
 @media only screen and (min-width: 960px) {
@@ -401,6 +540,24 @@ For Higher Resolutions
 
   .intro-para {
     padding: 15px 10px 15px 0px;
+  }
+
+  .project-container {
+    margin-top: 10px;
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .project-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .img-border {
+    width: 300px;
+    height: 250px;
+    overflow: hidden;
+    margin: 0 auto;
   }
 }
 /* -----------------------------------
