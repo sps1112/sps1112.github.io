@@ -26,7 +26,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--nav-col);
+  background-color: var(--foot-col);
   color: white;
   font-family: "Montserrat", sans-serif;
 }
@@ -163,7 +163,7 @@ a:active {
 .title {
   text-align: center;
   text-transform: uppercase;
-  font-size: 2.5em;
+  font-size: 2.25em;
   letter-spacing: 1.25px;
   font-family: "Poppins", sans-serif;
   background-color: black;
@@ -201,13 +201,13 @@ a:active {
 }
 
 .about-right {
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
 .profile {
   margin-bottom: 15px;
-  max-height: 270px;
+  max-height: 240px;
   border-radius: 100%;
   border: 3px solid black;
 }
@@ -701,6 +701,10 @@ a:active {
   text-decoration: underline;
 }
 
+/* -----------------------------------
+ CSS for Footer
+----------------------------------- */
+
 .foot * {
   margin: 0;
   padding: 0;
@@ -709,6 +713,7 @@ a:active {
 .foot > .container {
   padding: 5px;
   text-align: center;
+  background-color: var(--nav-col);
 }
 
 .credits-list {
@@ -756,21 +761,273 @@ a:active {
  CSS for the Project Page 
 ----------------------------------- */
 
+.project {
+  background-color: var(--foot-col);
+}
+
+.project-banner {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-banner > img {
+  opacity: 90%;
+  width: 100%;
+  min-height: 180px;
+  max-height: 640px;
+}
+
+.project-article {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.article-container {
+  background-color: var(--nav-col);
+  border-radius: 3px;
+}
+
+.project-heading * {
+  margin: 0;
+  padding: 0;
+}
+
+.project-heading {
+  background-color: black;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-family: "Poppins", sans-serif;
+}
+
+.project-name {
+  font-size: 1.5em;
+  color: var(--alt-col);
+}
+
+.project-company {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.project-detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.project-detail {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  padding-top: 0px;
+}
+
 /* Detail List after blog section */
+
+.project-work {
+  padding: 5px 7px 5px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-content {
+  font-size: 0.7em;
+}
+
+.article-screenshot {
+  width: 40%;
+  min-height: 75px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.two-images {
+  display: flex;
+  justify-content: center;
+}
+
+.article-screenshots {
+  width: 30%;
+  min-height: 75px;
+  margin: 5px;
+}
+
+.code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.code-block {
+  font-size: 1.3vw;
+  background-color: black;
+  color: var(--code-col);
+  width: 90%;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.back-button {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  margin-top: 0px;
+}
+
+.button-bg {
+  background-color: black;
+  padding: 7px;
+  border-radius: 3px;
+}
+
+.button-text {
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.button-text:hover,
+.button-text:active {
+  font-weight: bold;
+}
 
 /* -----------------------------------
  CSS for the Blog Page
 ----------------------------------- */
 
+.blog {
+  background-color: var(--foot-col);
+}
+
+.banner-blog {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-blog > img {
+  opacity: 90%;
+  width: 100%;
+  min-height: 180px;
+  max-height: 640px;
+}
+
+.blog-article {
+  color: white;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.blog-container {
+  background-color: var(--nav-col);
+  border-radius: 3px;
+}
+
+.blog-heading * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-heading {
+  background-color: black;
+  text-align: center;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+}
+
+.blog-name {
+  font-size: 1.5em;
+  color: var(--alt-col);
+  text-transform: uppercase;
+}
+
+.blog-desc {
+  font-size: 0.9em;
+  padding-bottom: 5px;
+}
+
+.blog-detail * {
+  margin: 0;
+  padding: 0;
+}
+
+.blog-detail {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  padding-top: 0px;
+}
+
+.blog-work {
+  padding: 5px 7px 5px 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-content {
+  font-size: 0.7em;
+}
+
 /* -----------------------------------
 Detail list for Project and Blog
 ----------------------------------- */
+.detail-list {
+  font-size: 0.6em;
+  list-style: none;
+  text-align: center;
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.detail-tag {
+  font-weight: bold;
+  text-align: right;
+}
+
+.detail-val {
+  color: var(--alt-col);
+  font-weight: bold;
+  padding-left: 5px;
+  font-style: italic;
+  text-align: left;
+}
 
 /* -----------------------------------
-For Higher Resolutions
+For Other Resolutions
 ----------------------------------- */
 
 @media only screen and (min-width: 640px) {
+  /* -----------------------------------
+  CSS for Navbar
+  ----------------------------------- */
   .nav-image {
     display: none;
   }
@@ -801,6 +1058,10 @@ For Higher Resolutions
   .nav-item {
     font-size: 1em;
   }
+
+  /* -----------------------------------
+  CSS for Homepage
+  ----------------------------------- */
 
   .banner-text {
     border-radius: 3px;
@@ -1026,6 +1287,9 @@ For Higher Resolutions
     font-size: 1em;
   }
 
+  /* -----------------------------------
+  CSS for Footer
+  ----------------------------------- */
   .foot > .container {
     padding: 10px;
     padding-bottom: 5px;
@@ -1039,9 +1303,145 @@ For Higher Resolutions
     font-size: 1.05em;
     margin: 9px;
   }
+
+  /* -----------------------------------
+  CSS for Project Page
+  ----------------------------------- */
+
+  .project-banner > img {
+    min-height: 300px;
+    max-height: 480px;
+    width: auto;
+  }
+
+  .project-article {
+    padding: 50px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+  }
+
+  .article-container {
+    border-radius: 5px;
+  }
+
+  .project-heading {
+    letter-spacing: 2px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .project-name {
+    font-size: 2.5em;
+  }
+
+  .project-company {
+    font-size: 1.25em;
+    padding-bottom: 8px;
+  }
+
+  .project-detail {
+    padding: 10px;
+    padding-top: 3px;
+  }
+
+  /* Detail List after blog section */
+
+  .project-work {
+    padding: 10px 16px 10px 16px;
+  }
+
+  .project-content {
+    font-size: 0.85em;
+  }
+
+  .article-screenshots {
+    margin: 8px;
+  }
+
+  .code-block {
+    font-size: 1.2vw;
+    width: 80%;
+  }
+
+  .back-button {
+    margin: 17px;
+  }
+
+  .button-bg {
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .button-text {
+    font-size: 1.2em;
+    letter-spacing: 1px;
+  }
+
+  /* -----------------------------------
+  CSS for the Blog Page
+  ----------------------------------- */
+
+  .banner-blog > img {
+    min-height: 300px;
+    max-height: 480px;
+    width: auto;
+  }
+
+  .blog-article {
+    padding: 50px;
+    padding-top: 15px;
+    padding-bottom: 30px;
+  }
+
+  .blog-container {
+    border-radius: 5px;
+  }
+
+  .blog-heading {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    letter-spacing: 2px;
+  }
+
+  .blog-name {
+    font-size: 2.5em;
+    padding: 3px;
+  }
+
+  .blog-desc {
+    font-size: 1.05em;
+    padding-bottom: 7px;
+  }
+
+  .blog-detail {
+    padding: 10px;
+    padding-top: 3px;
+  }
+
+  .blog-work {
+    padding: 10px 16px 10px 16px;
+  }
+
+  .blog-content {
+    font-size: 0.85em;
+  }
+
+  /* -----------------------------------
+  Detail list for Project and Blog
+  ----------------------------------- */
+  .detail-list {
+    font-size: 0.75em;
+  }
+
+  .detail-val {
+    padding-left: 10px;
+  }
 }
 
 @media only screen and (min-width: 960px) {
+  /* -----------------------------------
+  CSS for Navbar
+  ----------------------------------- */
   .navbar > .container > nav {
     display: flex;
     justify-content: space-between;
@@ -1052,6 +1452,9 @@ For Higher Resolutions
     padding: 10px;
   }
 
+  /* -----------------------------------
+  CSS for Homepage
+  ----------------------------------- */
   .banner-name {
     font-size: 3.8vw;
   }
@@ -1161,6 +1564,10 @@ For Higher Resolutions
     font-size: 1.2em;
   }
 
+  /* -----------------------------------
+  CSS for Footer
+  ----------------------------------- */
+
   .credits-logo {
     width: 42px;
   }
@@ -1170,9 +1577,118 @@ For Higher Resolutions
     margin-top: 10px;
     margin-bottom: 15px;
   }
+
+  /* -----------------------------------
+  CSS for Project Page
+  ----------------------------------- */
+  .project-banner > img {
+    min-height: 300px;
+    max-height: 640px;
+  }
+
+  .project-article {
+    padding: 75px;
+    padding-top: 25px;
+    padding-bottom: 40px;
+  }
+
+  .project-name {
+    font-size: 3.5em;
+  }
+
+  .project-company {
+    font-size: 1.5em;
+    padding-bottom: 10px;
+  }
+
+  .project-detail {
+    padding: 15px;
+    padding-top: 5px;
+  }
+  /* Detail List after blog section */
+
+  .project-work {
+    padding: 15px 25px 15px 25px;
+  }
+
+  .project-content {
+    font-size: 1em;
+  }
+
+  .article-screenshots {
+    margin: 10px;
+  }
+
+  .code-block {
+    font-size: 0.9vw;
+    width: 75%;
+  }
+
+  .back-button {
+    margin: 25px;
+  }
+
+  .button-bg {
+    padding: 15px;
+  }
+
+  .button-text {
+    font-size: 1.3em;
+  }
+
+  /* -----------------------------------
+  CSS for the Blog Page
+  ----------------------------------- */
+
+  .blog-banner > img {
+    min-height: 300px;
+    max-height: 640px;
+  }
+
+  .blog-article {
+    padding: 75px;
+    padding-top: 25px;
+    padding-bottom: 40px;
+  }
+
+  .blog-name {
+    font-size: 3.25em;
+  }
+
+  .blog-desc {
+    font-size: 1.2em;
+    padding-bottom: 10px;
+  }
+
+  .blog-detail {
+    padding: 15px;
+    padding-top: 5px;
+  }
+
+  .blog-work {
+    padding: 15px 25px 15px 25px;
+  }
+
+  .blog-content {
+    font-size: 1em;
+  }
+
+  /* -----------------------------------
+  Detail list for Project and Blog
+  ----------------------------------- */
+  .detail-list {
+    font-size: 0.9em;
+  }
+
+  .detail-val {
+    padding-left: 15px;
+  }
 }
 
 @media only screen and (min-width: 1100px) {
+  /* -----------------------------------
+  CSS for Homepage
+  ----------------------------------- */
   .project-list {
     grid-template-columns: 1fr 1fr;
   }
@@ -1182,6 +1698,27 @@ For Higher Resolutions
     height: 250px;
     overflow: hidden;
     margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  /* -----------------------------------
+  CSS for Project page
+  ----------------------------------- */
+  .project-content {
+    font-size: 0.55em;
+  }
+
+  .code-block {
+    font-size: 1.5vw;
+    width: 100%;
+  }
+
+  /* -----------------------------------
+  CSS for the Blog Page
+  ----------------------------------- */
+  .blog-content {
+    font-size: 0.55em;
   }
 }
 /* -----------------------------------

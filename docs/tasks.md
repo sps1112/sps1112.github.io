@@ -11,14 +11,14 @@
 - [X] Hide navbar on scroll
 - [ ] Refer to portfolio websites
 - [X] Refer to Templates
-- [ ] Shift achievements
+- [X] Shift achievements
 - [X] Shift contacts
 - [X] Update links on homepage
 - [ ] Update homepage structure based on feedback
 - [ ] Update colors
 - [ ] Update fonts
-- [ ] Fix for lower-res
-- [ ] Fix for mobile
+- [X] Fix for lower-res
+- [X] Fix for mobile
 - [X] Update to new projects
 - [X] Add code samples for the projects
 - [X] Update to new blogs
