@@ -14,9 +14,9 @@
 - [X] Shift achievements
 - [X] Shift contacts
 - [X] Update links on homepage
-- [ ] Update homepage structure based on feedback
+- [X] Update homepage structure based on feedback
 - [X] Update colors
-- [ ] Update fonts
+- [X] Update fonts
 - [X] Fix for lower-res
 - [X] Fix for mobile
 - [X] Update to new projects
