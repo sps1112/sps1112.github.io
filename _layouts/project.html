@@ -7,51 +7,53 @@ layout: template
 
   <div class="project-article">
     <div class="article-container">
-      <div class="project-heading">
-        <div class="project-name">{{page.title}}</div>
-
-        {% unless page.type == "Self-project" %}
-        <div class="project-company">{{page.type}}</div>
-        {% endunless %}
-      </div>
-
-      <div class="project-detail">
-        <ul class="detail-list">
-          <li class="detail-item">
-            <div class="detail-tag">Project Type:-</div>
-            <div class="detail-val">
-              {% unless page.type == "Self-project" %}Professional{% else
-              %}Self{% endunless%}
-            </div>
-          </li>
-
-          <li class="detail-item">
-            <div class="detail-tag">Engine Used:-</div>
-            <div class="detail-val">{{page.engine}}</div>
-          </li>
-
-          <li class="detail-item">
-            <div class="detail-tag">Languages Used:-</div>
-            <div class="detail-val">{{page.language}}</div>
-          </li>
-
-          <li class="detail-item">
-            <div class="detail-tag">Target Platform:-</div>
-            <div class="detail-val">{{page.platform}}</div>
-          </li>
+      <div class="project-top">
+        <div class="project-heading">
+          <div class="project-name">{{page.title}}</div>
 
           {% unless page.type == "Self-project" %}
-          <li class="detail-item">
-            <div class="detail-tag">Role:-</div>
-            <div class="detail-val">{{page.role}}</div>
-          </li>
+          <div class="project-company">{{page.type}}</div>
           {% endunless %}
+        </div>
 
-          <!-- <li class="detail-item">
-            <div class="detail-tag">Gameplay:-</div>
-            <div class="detail-val"></div>
-          </li> -->
-        </ul>
+        <div class="project-detail">
+          <ul class="detail-list">
+            <li class="detail-item">
+              <div class="detail-tag">Project Type:-</div>
+              <div class="detail-val">
+                {% unless page.type == "Self-project" %}Professional{% else
+                %}Self{% endunless%}
+              </div>
+            </li>
+
+            <li class="detail-item">
+              <div class="detail-tag">Engine Used:-</div>
+              <div class="detail-val">{{page.engine}}</div>
+            </li>
+
+            <li class="detail-item">
+              <div class="detail-tag">Languages Used:-</div>
+              <div class="detail-val">{{page.language}}</div>
+            </li>
+
+            <li class="detail-item">
+              <div class="detail-tag">Target Platform:-</div>
+              <div class="detail-val">{{page.platform}}</div>
+            </li>
+
+            {% unless page.type == "Self-project" %}
+            <li class="detail-item">
+              <div class="detail-tag">Role:-</div>
+              <div class="detail-val">{{page.role}}</div>
+            </li>
+            {% endunless %}
+
+            <!-- <li class="detail-item">
+              <div class="detail-tag">Gameplay:-</div>
+              <div class="detail-val"></div>
+            </li> -->
+          </ul>
+        </div>
       </div>
 
       <div class="project-work">
@@ -60,9 +62,11 @@ layout: template
     </div>
   </div>
 
-  <div class="back-button">
-    <div class="button-bg">
-      <a href="/" class="button-text">Back</a>
+  <div class="button-container">
+    <div class="back-button">
+      <div class="button-bg">
+        <a href="/" class="button-text">Back</a>
+      </div>
     </div>
   </div>
 </div>

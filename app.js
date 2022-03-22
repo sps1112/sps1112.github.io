@@ -1,4 +1,5 @@
 var pPos = window.pageYOffset;
+var opac=  document.getElementById("navbar").style.opacity;
 
 // Scroll Function
 window.onscroll = function() { 
@@ -6,7 +7,7 @@ window.onscroll = function() {
     document.getElementById("navbar").style.transition= "all 0.35s";
     if(pPos > cPos)
     {
-        document.getElementById("navbar").style.opacity = "80%";
+        document.getElementById("navbar").style.opacity = opac;
         document.getElementById("navbar").style.zIndex="999";
     }
     else

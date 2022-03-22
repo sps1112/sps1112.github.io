@@ -1,4 +1,4 @@
-## Tasks to do with website
+## Tasks to do with the website
 
 - [X] Make the navbar functional
 - [ ] New profile picture
@@ -15,7 +15,7 @@
 - [X] Shift contacts
 - [X] Update links on homepage
 - [ ] Update homepage structure based on feedback
-- [ ] Update colors
+- [X] Update colors
 - [ ] Update fonts
 - [X] Fix for lower-res
 - [X] Fix for mobile

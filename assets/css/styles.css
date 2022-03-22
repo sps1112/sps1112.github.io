@@ -3,10 +3,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap");
 
 :root {
-  --alt-col: rgb(68, 146, 209);
+  --alt-col: rgb(70, 150, 225);
   --nav-col: rgb(10, 10, 10);
   --foot-col: rgb(60, 60, 60);
-  --code-col: rgb(30, 210, 70);
+  --code-col: rgb(40, 230, 90);
   --grad-col: rgb(5, 35, 50);
 }
 
@@ -26,7 +26,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--foot-col);
+  background-color: var(--nav-col);
   color: white;
   font-family: "Montserrat", sans-serif;
 }
@@ -53,7 +53,12 @@ a:active {
 }
 
 .navbar {
-  background: var(--nav-col);
+  background: linear-gradient(
+    to bottom,
+    black 0%,
+    var(--nav-col) 80%,
+    var(--grad-col) 100%
+  );
   position: fixed;
   z-index: 999;
   width: 100%;
@@ -139,7 +144,12 @@ a:active {
 }
 
 .banner-text {
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
   text-transform: uppercase;
   color: white;
   text-align: center;
@@ -166,7 +176,14 @@ a:active {
   font-size: 2.25em;
   letter-spacing: 1.25px;
   font-family: "Poppins", sans-serif;
-  background-color: black;
+  background: linear-gradient(
+    to bottom right,
+    var(--grad-col) 0%,
+    black 20%,
+    var(--nav-col) 50%,
+    black 80%,
+    var(--grad-col) 100%
+  );
   color: var(--alt-col);
 }
 
@@ -275,7 +292,11 @@ a:active {
 }
 
 .portfolio-project {
-  background-color: var(--nav-col);
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
   color: white;
   margin: 10px;
   padding: 8px;
@@ -394,7 +415,12 @@ a:active {
 }
 
 .work-location {
-  background-color: black;
+  background: linear-gradient(
+    to bottom,
+    black 0%,
+    var(--nav-col) 80%,
+    var(--grad-col) 100%
+  );
   border-radius: 10px;
   padding: 5px;
 }
@@ -409,14 +435,12 @@ a:active {
 .company-name > a:link,
 .company-name > a:visited {
   color: white;
-  transition: 0.15s ease-in-out;
 }
 
 .company-name > a:hover,
 .company-name > a:active {
   color: var(--alt-col);
   font-weight: bold;
-  transition: 0.15s ease-in-out;
 }
 
 .company-logo > a > img {
@@ -426,7 +450,7 @@ a:active {
 }
 
 .company-logo > a > img:hover {
-  transform: scale(1.015);
+  transform: scale(1.05);
   transition: 0.2s ease-in-out;
 }
 
@@ -574,7 +598,11 @@ a:active {
 
 .blog-item {
   margin: 10px;
-  background-color: var(--nav-col);
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
   align-items: center;
   border-radius: 3px;
 }
@@ -800,8 +828,19 @@ a:active {
   padding: 0;
 }
 
+.project-top {
+  background: linear-gradient(
+    to bottom right,
+    var(--grad-col) 0%,
+    black 20%,
+    black 80%,
+    var(--grad-col) 100%
+  );
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
 .project-heading {
-  background-color: black;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -826,7 +865,6 @@ a:active {
 }
 
 .project-detail {
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -881,11 +919,15 @@ a:active {
   border-radius: 3px;
 }
 
+.button-container {
+  background-color: var(--foot-col);
+}
+
 .back-button {
   display: flex;
   justify-content: center;
-  margin: 10px;
-  margin-top: 0px;
+  padding: 10px;
+  padding-top: 0px;
 }
 
 .button-bg {
@@ -943,13 +985,24 @@ a:active {
   border-radius: 3px;
 }
 
+.blog-top {
+  background: linear-gradient(
+    to bottom right,
+    var(--grad-col) 0%,
+    black 20%,
+    black 80%,
+    var(--grad-col) 100%
+  );
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
 .blog-heading * {
   margin: 0;
   padding: 0;
 }
 
 .blog-heading {
-  background-color: black;
   text-align: center;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
@@ -974,7 +1027,6 @@ a:active {
 }
 
 .blog-detail {
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1324,6 +1376,11 @@ For Other Resolutions
     border-radius: 5px;
   }
 
+  .project-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
   .project-heading {
     letter-spacing: 2px;
     border-top-left-radius: 5px;
@@ -1364,7 +1421,7 @@ For Other Resolutions
   }
 
   .back-button {
-    margin: 17px;
+    padding: 17px;
   }
 
   .button-bg {
@@ -1395,6 +1452,11 @@ For Other Resolutions
 
   .blog-container {
     border-radius: 5px;
+  }
+
+  .blog-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
 
   .blog-heading {
@@ -1625,7 +1687,7 @@ For Other Resolutions
   }
 
   .back-button {
-    margin: 25px;
+    padding: 25px;
   }
 
   .button-bg {

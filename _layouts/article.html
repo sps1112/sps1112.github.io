@@ -7,23 +7,25 @@ layout: template
 
   <div class="blog-article">
     <div class="blog-container">
-      <div class="blog-heading">
-        <div class="blog-name">{{page.title}}</div>
-        <div class="blog-desc">{{page.description}}</div>
-      </div>
+      <div class="blog-top">
+        <div class="blog-heading">
+          <div class="blog-name">{{page.title}}</div>
+          <div class="blog-desc">{{page.description}}</div>
+        </div>
 
-      <div class="blog-detail">
-        <ul class="detail-list">
-          <li class="detail-item">
-            <div class="detail-tag">Date:-</div>
-            <div class="detail-val">{{page.time}}</div>
-          </li>
+        <div class="blog-detail">
+          <ul class="detail-list">
+            <li class="detail-item">
+              <div class="detail-tag">Date:-</div>
+              <div class="detail-val">{{page.time}}</div>
+            </li>
 
-          <li class="detail-item">
-            <div class="detail-tag">Written By:-</div>
-            <div class="detail-val">{{page.author}}</div>
-          </li>
-        </ul>
+            <li class="detail-item">
+              <div class="detail-tag">Written By:-</div>
+              <div class="detail-val">{{page.author}}</div>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div class="blog-work">
@@ -32,9 +34,11 @@ layout: template
     </div>
   </div>
 
-  <div class="back-button">
-    <div class="button-bg">
-      <a href="/" class="button-text">Back</a>
+  <div class="button-container">
+    <div class="back-button">
+      <div class="button-bg">
+        <a href="/" class="button-text">Back</a>
+      </div>
     </div>
   </div>
 </div>
