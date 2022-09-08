@@ -1,7 +1,7 @@
 ## About
 
-Personal Website to host Portfolio and other personal details.
+Online portfolio website to act as a showcasing platform for personal and professional projects. 
 
-Made with:- Jekyll
+Utilized HTML layouts using Jekyll with custom CSS and JS. 
 
 Hosted via:- Github Pages
