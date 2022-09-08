@@ -566,6 +566,7 @@ a:active {
 
 .achievement-section {
   margin: 10px;
+  margin-bottom: -10px;
   display: grid;
   grid-template-rows: 1fr 6fr;
 }
@@ -1371,6 +1372,10 @@ For Other Resolutions
     grid-template-columns: 1fr 1fr;
   }
 
+  .achievement-section {
+    margin-bottom: -15px;
+  }
+
   .resume-link {
     font-size: 1.1em;
     padding: 15px;
@@ -1676,6 +1681,10 @@ For Other Resolutions
 
   .achievement-type {
     font-size: 1.25em;
+  }
+
+  .achievement-section {
+    margin-bottom: -45px;
   }
 
   .resume-link {
