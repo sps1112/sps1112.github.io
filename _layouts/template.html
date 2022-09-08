@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    {% include head.html %}
-  </head>
-  <body>
-    {% include header.html %} {{content}} {% include footer.html %}
+---
+layout: default
+---
 
-    <script src="/app.js" charset="utf-8"></script>
-  </body>
-</html>
+{% include header.html %} {{content}} {% include footer.html %}

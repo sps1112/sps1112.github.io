@@ -515,6 +515,8 @@ a:active {
 
 .skill-section {
   margin: 10px;
+  display: grid;
+  grid-template-rows: 1fr 5fr;
 }
 
 .skill-type {
@@ -564,6 +566,9 @@ a:active {
 
 .achievement-section {
   margin: 10px;
+  margin-bottom: -10px;
+  display: grid;
+  grid-template-rows: 1fr 6fr;
 }
 
 .achievement-type {
@@ -741,7 +746,6 @@ a:active {
 .foot > .container {
   padding: 5px;
   text-align: center;
-  background-color: var(--nav-col);
 }
 
 .credits-list {
@@ -1073,6 +1077,102 @@ Detail list for Project and Blog
 }
 
 /* -----------------------------------
+ CSS for the Error Page
+----------------------------------- */
+
+.error-container{
+    background: linear-gradient(
+    to bottom,
+    var(--nav-col) 0%,
+    black 20%
+  );
+  padding: 5px;
+}
+
+.error-content{
+  background-color: black;
+  padding: 5px;
+  text-align: center;
+  align-items: center;
+}
+
+.error-first{
+  width: 100%;
+  min-height: 180px;
+}
+
+.error-image{
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+}
+
+.error-second{
+  padding: 10px;
+}
+
+.error-text{
+  text-align: center;
+  font-size: 1.1em;
+  margin: 5px;
+}
+
+.error-code{
+  font-weight: bold;
+  font-size: 3.5em;
+}
+
+.error-message{
+  padding: 3px;
+}
+
+.error-desc{
+  padding: 3px;
+}
+
+.error-prompt{
+  font-style: italic;
+  font-size: 0.85em;
+  padding: 5px;
+}
+
+.home-button {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-button > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 1px solid rgb(192, 192, 192);
+}
+
+.home-button > a:link,
+.home-button > a:visited {
+  background-color: rgb(192, 192, 192);
+  transition: 0.15s ease-in-out;
+}
+
+.home-button > a:hover,
+.home-button > a:active {
+  background-color: white;
+  transition: 0.15s ease-in-out;
+} 
+
+.home-logo {
+  width: 30px;
+  border-radius: 100%;
+}
+
+.error-footer{
+  background-color: black;
+}
+
+/* -----------------------------------
 For Other Resolutions
 ----------------------------------- */
 
@@ -1270,6 +1370,10 @@ For Other Resolutions
 
   .achievement-list {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .achievement-section {
+    margin-bottom: -15px;
   }
 
   .resume-link {
@@ -1498,6 +1602,17 @@ For Other Resolutions
   .detail-val {
     padding-left: 10px;
   }
+
+  /* -----------------------------------
+  CSS for the Error Page
+  ----------------------------------- */
+  .error-text{
+    font-size: 1.2em;
+  }
+
+  .home-logo {
+    width: 36px;
+  }
 }
 
 @media only screen and (min-width: 960px) {
@@ -1566,6 +1681,10 @@ For Other Resolutions
 
   .achievement-type {
     font-size: 1.25em;
+  }
+
+  .achievement-section {
+    margin-bottom: -45px;
   }
 
   .resume-link {
@@ -1744,6 +1863,42 @@ For Other Resolutions
 
   .detail-val {
     padding-left: 15px;
+  }
+
+  /* -----------------------------------
+  CSS for the Error Page
+  ----------------------------------- */
+  .error-content{
+    display: flex;
+  }
+
+  .error-text{
+    font-size: 1.35em;
+    display: grid;
+  }
+
+  .error-code{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .error-message{
+    margin-top: 25px;
+    margin-bottom: 0px;
+  }
+
+  .error-desc{
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+
+  .error-prompt{
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+
+  .home-logo {
+    width: 42px;
   }
 }
 
