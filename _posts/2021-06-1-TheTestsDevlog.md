@@ -5,7 +5,7 @@ time: "Aug, 2020"
 author: Siddhartha
 permalink: /thetests-devlog/
 description: "Devlog for the game, \"The Tests\" developed for Fall Game Jam 2020"
-image: "/assets/projects/tests1.png"
+image: "/assets/projects/tests5.png"
 ---
 # Contents
 - [Concept](#concept)

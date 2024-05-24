@@ -7,20 +7,20 @@ type: "Self-project"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "A 3D dungeon-crawler/puzzle game made in 1 week for the Brackey's Game Jam 2020.02. This was a solo project and the time reversal mechanic, artwork was made from scratch."
+description: "A 3D dungeon-crawler made in 1 week for the Brackey's Game Jam 2020.02. This was a solo project with the various components such as time reversal mechanic, dungeon design and low poly artwork being made from scratch."
 image: "/assets/projects/roaming0.png"
 ---
 
-A 3D dungeon-crawler/puzzle game made in the Unity Game engine. This game was made for the Brackey's Game Jam 2020.02, a 1 week game jam whose theme was "Rewind". You can find the project at the following links:-
+Roaming Ruins is a 3D dungeon-crawler game made in the Unity Game engine. This game was made for the Brackey's Game Jam 2020.02, a 1 week game jam whose theme was "Rewind". You can find the project at the following links:-
 
 - Build: <a href="https://kingcrimson1112.itch.io/roaming-ruins">Roaming Ruins</a>
 - Source: <a href="https://github.com/sps1112/roaming-ruins">sps1112/roaming-ruins</a>
 
-The goal of each level is to reach the portal at the end of each dungeon. The player has to find their way inside a dungeon, unlock rooms to find loot, fight enemies, and solve puzzles.
+The goal is devided into various levels in form of small dungeons. A standard dungeon is made up of square rooms connected via pathways to other rooms. The goal of each level is to find the portal at the end of each dungeon and leading them to the next. The game involves the player finding their way through the dungeon, unlocking rooms, finding loot, fighting enemies and solving puzzles.
 
 <img class="article-screenshot" src="/assets/projects/roaming0.png" alt=""/>
 
-The main challenges of this project were:-
+The major components of the game where work was done includes:-
 - Implementing a 3D Character Controller with a movable camera as our Main Character. The player moves based on the direction of the camera.
 - Adding a Time Reversal mechanic. The Rigidbody’s position is recorded for the past few seconds at any instant. By holding a key, the player will retrace its position and orientation to give illusion of time reversal.
 <div class="code-container">
