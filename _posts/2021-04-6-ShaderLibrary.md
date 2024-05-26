@@ -6,8 +6,8 @@ permalink: /shader-library/
 type: "Self-project"
 engine: "ShaderToy"
 language: "GLSL"
-platform: "PC"
-description: "A collection of pixel shaders written on the ShaderToy platform. Utilizing perlin, fractal, voronoi noise to generate complex shaders."
+platform: "Web"
+description: "Collection of pixel shaders written in GLSL hosted on ShaderToy. Uses custom functions such as Perlin, fractal, voronoi noise, etc. to generate complex shader effects."
 image: "/assets/projects/shader0.png"
 ---
 
@@ -28,47 +28,49 @@ Example shaders implemented in ShaderToy:-
 
 <div class="code-container">
 <pre class="code-block">
-...
-// 1. Setup Data
-
-// Gets the Y limit for square grid
-float xLimit = (yLimit + 1.0f) * (iResolution.x / iResolution.y) - 1.0f;
-
-// From (0 to 1)
-vec2 uv = fragCoord / iResolution.xy;
-
-// From (-1 to 1)
-vec2 pos = (uv * 2.0f) - 1.0f;
-
-// From (-X to X, -Y to Y)
-pos.x *= (xLimit + 1.0f);
-pos.y *= (yLimit + 1.0f);
-
-// 2. Setup Color
-
-// a. Default Color is the Background
-vec3 col = bgColor;
-
-// b. If the point lies on the grid lines, then change color
-if(check_point(pos.x, xLimit , iResolution.x) || check_point(pos.y, yLimit, iResolution.y))
+// graph_2d.fs
+void mainImage(out vec4 fragColor, in vec2 fragCoord)
 {
-    col = gridColor;
-    if((check_point(pos.x, xLimit , iResolution.x) && get_int(pos.x) == 0.0f) || 
-        (check_point(pos.y, yLimit , iResolution.y) && get_int(pos.y) == 0.0f))
+    // 1. Setup Data
+
+    // Gets the Y limit for square grid
+    float xLimit = (yLimit + 1.0f) * (iResolution.x / iResolution.y) - 1.0f;
+    
+    // From (0 to 1)
+    vec2 uv = fragCoord / iResolution.xy;
+    
+    // From (-1 to 1)
+    vec2 pos = (uv * 2.0f) - 1.0f;
+    
+    // From (-X to X, -Y to Y)
+    pos.x *= (xLimit + 1.0f);
+    pos.y *= (yLimit + 1.0f);
+    
+    // 2. Setup Color
+    
+    // a. Default Color is the Background
+    vec3 col = bgColor;
+    
+    // b. If the point lies on the grid lines, then change color
+    if(check_point(pos.x, xLimit , iResolution.x) || check_point(pos.y, yLimit, iResolution.y))
     {
-        col = axesColor;
+        col = gridColor;
+        if((check_point(pos.x, xLimit , iResolution.x) && get_int(pos.x) == 0.0f) || 
+            (check_point(pos.y, yLimit , iResolution.y) && get_int(pos.y) == 0.0f))
+        {
+            col = axesColor;
+        }
     }
-}
+    
+    // c. If the point satisfies the Equation, then change color
+    if(check_equation(pos))
+    {
+        col = eqColor;
+    }
 
-// c. If the point satisfies the Equation, then change color
-if(check_equation(pos))
-{
-    col = eqColor;
+    // 3. Output to screen
+    fragColor = vec4(col,1.0);
 }
-
-// 3. Output to screen
-fragColor = vec4(col,1.0);
-...
 </pre>
 </div>
 
@@ -78,31 +80,33 @@ fragColor = vec4(col,1.0);
 
 <div class="code-container">
 <pre class="code-block">
-...
-vec2 uv=fragCoord/iResolution.xy;
-uv=uv*2.0f-1.0f;
-uv.x*=(iResolution.x/iResolution.y);
-uv*=xScale*yScale;
-
-float fac=4.0f;
-float freq=1.5f;
-float t=get_octave_noise(freq*uv/(xScale*yScale));
-
-float p = sqrt(pow(uv.x*xScale,2.0f)+pow(uv.y*yScale,2.0f));
-p += t*fac;
-float h = sin(p);
-
-h=h*h;
-h=1.0f-h;
-h+=0.2f;
-h=pow(h,2.0f);
-h=smoothstep(h,-1.0f,-0.2f);
-
-vec3 col=mix(baseCol,detailCol*h,h);  
-
-// Output to screen
-fragColor = vec4(col,1.0);
-...
+// wood_shader.fs
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    vec2 uv=fragCoord/iResolution.xy;
+    uv=uv*2.0f-1.0f;
+    uv.x*=(iResolution.x/iResolution.y);
+    uv*=xScale*yScale;
+    
+    float fac=4.0f;
+    float freq=1.5f;
+    float t=get_octave_noise(freq*uv/(xScale*yScale));
+    
+    float p = sqrt(pow(uv.x*xScale,2.0f)+pow(uv.y*yScale,2.0f));
+    p += t*fac;
+    float h = sin(p);
+    
+    h=h*h;
+    h=1.0f-h;
+    h+=0.2f;
+    h=pow(h,2.0f);
+    h=smoothstep(h,-1.0f,-0.2f);
+   
+    vec3 col=mix(baseCol,detailCol*h,h);  
+    
+    // Output to screen
+    fragColor = vec4(col,1.0);
+}
 </pre>
 </div>
 
@@ -112,27 +116,29 @@ fragColor = vec4(col,1.0);
 
 <div class="code-container">
 <pre class="code-block">
-...
-// Gets UVs
-vec2 uv=fragCoord/iResolution.y;
-uv*=float(GRID_HEIGHT);
-
-// Gets Offset
-vec2 offset=vec2(0.0f);
-offset.y=-iTime*3.0f;
-offset.x=cos(iTime*0.5f)*2.0f;
-
-// Get Height Map
-float h=get_voronoi_noise(uv+offset) + get_voronoi_noise(uv+offset*0.4f);
-h=clamp(h*0.7f,0.0f,1.0f);
-h=pow(h,p);
-
-// Final Color
-vec3 col=vec3(h)*highlightCol+waterCol;
-
-// Output to screen
-fragColor = vec4(col,1.0);
-...
+// water_shader.fs
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+    // Gets UVs
+    vec2 uv=fragCoord/iResolution.y;
+    uv*=float(GRID_HEIGHT);
+    
+    // Gets **Offset**
+    vec2 offset=vec2(0.0f);
+    offset.y=-iTime*3.0f;
+    offset.x=cos(iTime*0.5f)*2.0f;
+    
+    // Get Height Map
+    float h=get_voronoi_noise(uv+offset);
+    h=clamp(h,0.0f,1.0f);
+    h=pow(h,p);
+    
+    // Final Color
+    vec3 col=vec3(h)*highlightCol+waterCol;
+   
+    // Output to screen
+    fragColor = vec4(col,1.0);
+}
 </pre>
 </div>
 
@@ -142,80 +148,82 @@ fragColor = vec4(col,1.0);
 
 <div class="code-container">
 <pre class="code-block">
-...
-darkCol=vec3(0.0f,0.05f,0.1f);
-lightCol=vec3(0.0f,0.85f,0.15f);
-
-// Get Octave Height
-float hF = get_octave_noise(pos*lF.x,lF.y,lF.z);
-float hB = get_octave_noise(pos*lB.x,lB.y,lB.z);
-hF=pow(hF,1.25f)*1.1f;
-hB*=0.75f;
-
-// Get Fractal Height
-float fF=get_fractal_height(pos*lF.x,lF.y,lF.z);
-float fB=get_fractal_height(pos*lB.x,lB.y,lB.z);
-
-// Apply Limits
-vec4 limF=limitsF;
-if(pos.x<limF.x || pos.x>limF.y || pos.y<limF.z || pos.y > limF.w)
-{
-    hF=0.0f;
-}
-vec4 limB=limitsB;
-if(pos.x<limB.x || pos.x>limB.y || pos.y<limB.z || pos.y > limB.w)
-{
-    hB=0.0f;
-}
-
-// Apply Alpha Limits
-float h1=distance(pos,cF.xy)/cF.z;
-h1=clamp(h1,0.0f,1.0f);
-h1=1.0f-h1;
-hF*=h1*1.5f;
-
-float h2=distance(pos,cB.xy)/cB.z;
-h2=clamp(h2,0.0f,1.0f);
-h2=1.0f-h2;
-hB*=h2*1.75f;
-
-// Apply Fractal
-hF*=fF;
-hF=smoothstep(0.0f,0.35f,hF);
-hB*=fB;
-hB=smoothstep(0.0f,0.35f,hB);
-
-
-// Apply Threshold
-if(hF<0.25f)
-{
-    hF=0.0f;
-}
-if(hB<0.05f)
-{
-    hB=0.0f;
-}
+// fire_shader.fs
+vec3 get_color(vec2 pos)
+{  
+   darkCol=vec3(0.0f,0.05f,0.1f);
+   lightCol=vec3(0.0f,0.85f,0.15f);
+   
+   // Get Octave Height
+   float hF = get_octave_noise(pos*lF.x,lF.y,lF.z);
+   float hB = get_octave_noise(pos*lB.x,lB.y,lB.z);
+   hF=pow(hF,1.25f)*1.1f;
+   hB*=0.75f;
+   
+   // Get Fractal Height
+   float fF=get_fractal_height(pos*lF.x,lF.y,lF.z);
+   float fB=get_fractal_height(pos*lB.x,lB.y,lB.z);
+   
+   // Apply Limits
+   vec4 limF=limitsF;
+   if(pos.x<limF.x || pos.x>limF.y || pos.y<limF.z || pos.y > limF.w)
+   {
+       hF=0.0f;
+   }
+   vec4 limB=limitsB;
+   if(pos.x<limB.x || pos.x>limB.y || pos.y<limB.z || pos.y > limB.w)
+   {
+       hB=0.0f;
+   }
+   
+   // Apply Alpha Limits
+   float h1=distance(pos,cF.xy)/cF.z;
+   h1=clamp(h1,0.0f,1.0f);
+   h1=1.0f-h1;
+   hF*=h1*1.5f;
+   
+   float h2=distance(pos,cB.xy)/cB.z;
+   h2=clamp(h2,0.0f,1.0f);
+   h2=1.0f-h2;
+   hB*=h2*1.75f;
+   
+   // Apply Fractal
+   hF*=fF;
+   hF=smoothstep(0.0f,0.35f,hF);
+   hB*=fB;
+   hB=smoothstep(0.0f,0.35f,hB);
     
-// Apply Color
-vec3 col=mix(darkCol, vec3(0.0f),pos.y-0.2f*sin(1.25f*iTime));
-if(hB>0.0f)
-{
-    col=mix(darkCol,mix(darkCol,lightCol,0.5f),hB*1.25f);
-    if(hB<=0.06f)
-    {
-        col=vec3(0.25f*darkCol);
-    }
+
+   // Apply Threshold
+   if(hF<0.25f)
+   {
+       hF=0.0f;
+   }
+   if(hB<0.05f)
+   {
+       hB=0.0f;
+   }
+     
+   // Apply Color
+   vec3 col=mix(darkCol, vec3(0.0f),pos.y-0.2f*sin(1.25f*iTime));
+   if(hB>0.0f)
+   {
+       col=mix(darkCol,mix(darkCol,lightCol,0.5f),hB*1.25f);
+       if(hB<=0.06f)
+       {
+           col=vec3(0.25f*darkCol);
+       }
+   }
+   if(hF>0.0f)
+   {
+       col=mix(darkCol,lightCol,hF);
+       if(hF<=0.28f)
+       {
+           col=vec3(0.5f*darkCol);
+       }
+   }
+   return col;
 }
-if(hF>0.0f)
-{
-    col=mix(darkCol,lightCol,hF);
-    if(hF<=0.28f)
-    {
-        col=vec3(0.5f*darkCol);
-    }
-}
-return col;
-...
 </pre>
 </div>
 
@@ -225,7 +233,9 @@ return col;
 
 <div class="code-container">
 <pre class="code-block">
-...
+// map_2d.fs
+vec3 get_color(vec2 uv)
+{
     bool insideMap=true;
     float timeFac=0.85f;
     vec3 shadowMap=vec3(1.0f);
@@ -249,16 +259,19 @@ return col;
     float yDiff=(hP-h);
     float delH=tan(LIGHT_ELEVATION_ANGLE*(3.1416f/180.0f))*xDiff;
     
-    if(yDiff<delH)
+    if(insideMap)
     {
-        yDiff=0.0f;
+        if(yDiff<delH)
+        {
+            yDiff=0.0f;
+        }
+        yDiff=1.0f-yDiff;
+        if(yDiff>=0.0f)
+        {
+            yDiff=pow(yDiff,LIGHT_INTENSITY);
+        }
+        shadowMap=vec3(yDiff);
     }
-    yDiff=1.0f-yDiff;
-    if(yDiff>=0.0f)
-    {
-        yDiff=pow(yDiff,LIGHT_INTENSITY);
-    }
-    shadowMap=vec3(yDiff);
 #endif
     
 #if APPLY_FALLOFF 
@@ -312,6 +325,6 @@ return col;
     }
     
     return col;
-...
+}
 </pre>
 </div>

@@ -1,12 +1,13 @@
 - type: "Academic"
   list:
-    - data: "Cleared JEE Advanced 2019 with AIR 5012"
-    - data: "Cleared JEE Mains 2019 with AIR 2507"
-    - data: "Cleared UPSEE 2019 with Rank 47"
+    - data: "Secured All India Rank (AIR) 5012 in JEE Advanced, 2019"
+    - data: "Secured All India Rank (AIR) 2507 in JEE Mains, 2019"
+    - data: "Secured Rank 47 in UPSEE, 2019"
 
 - type: "Competitions"
   list:
-    - data: "Participated in Brackeys Game Jam 2020.2"
     - data: "Participated in GMTK Game Jam 2020"
+    - data: "Participated in Brackeys Game Jam 2020.2"
     - data: "First position in Fall Game Jam 2020, IITK"
     - data: "Participated in BYOG Game Jam 2021"
+    - data: "Participated in IGDC PS for Inter IIT Tech Meet 11.0"

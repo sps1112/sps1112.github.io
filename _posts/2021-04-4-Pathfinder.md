@@ -2,24 +2,24 @@
 layout: project
 title: "A* Pathfinder"
 author: Siddhartha
-permalink: /path-finder/
+permalink: /pathfinder/
 type: "Self-project"
 engine: "NA"
 language: "C++"
 platform: "PC"
-description: "A pathfinder utlizing the A* algorithm for finding the optimal path on a 2d map. Used the sbt_image library for rendering pixel data into a png file."
+description: "Pathfinder utlizing the A* algorithm for finding the optimal path on a 2D map between a start and target node. Grid gets rendered to show the grids and the path taken."
 image: "/assets/projects/path0.png"
 ---
 
-A 2D Pathfinder written in C++ using the stb_image library for image rendering. The pathfinder utlizes the A* algorithm to find the optimal path.
+A 2D Pathfinder written in C++ using the stb_image library for image rendering. The pathfinder utlizes the A* algorithm to find the optimal path between any 2 nodes on the grid.
 
 - Source: <a href="https://github.com/sps1112/pathfinder-2d">sps1112/pathfinder-2d</a>
 
-The pathfinder needs to be given a map, starting and ending point along with some configuration. Based on this data, it will output a map along with the solution.
-- White is free node
-- Black is blocked node
-- Blue is starting node
-- Red is ending node
+The pathfinder needs to be given a map, starting and target point. Based on this data and pathfinder configurations, it will output a map along with the solution.
+- White means its a free node
+- Black means its a blocked node or a wall
+- Blue means its the starting node
+- Red means its the target node
 - Green shows the path nodes
 
 <div class="two-images">
@@ -28,7 +28,7 @@ The pathfinder needs to be given a map, starting and ending point along with som
 <img class="article-screenshots" src="/assets/projects/path5.png" alt=""/>
 </div>
 
-If we change the ending node, a new optimal path will be calculated and shown in the output image.
+If we change the target node, a new optimal path will be calculated and shown in the output image.
 
 <div class="two-images">
 <img class="article-screenshots" src="/assets/projects/path6.png" alt=""/>
@@ -37,12 +37,11 @@ If we change the ending node, a new optimal path will be calculated and shown in
 </div>
 
 Specifications of the pathfinder:-
-- We have to give a 2D Map which will define the grid nodes. The map is in format of an array with integer values. 0 means empty space, 1 means wall, 2 is starting point and 3 is end point.
+- We have to give a 2D Map which will define the grid nodes. The map is in format of an array with integer values. 0 means empty space, 1 means wall, 2 is starting point and 3 is target point.
 
 <div class="code-container">
 <pre class="code-block">
-// The Grid State
-...
+// main.cpp
 int gridState[NUMBER_ROWS * NUMBER_COLUMNS] = {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0,
                                                0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -58,7 +57,6 @@ int gridState[NUMBER_ROWS * NUMBER_COLUMNS] = {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
                                                0, 0, 0, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0,
                                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
                                                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-...
 </pre>
 </div>
 
@@ -69,7 +67,7 @@ int gridState[NUMBER_ROWS * NUMBER_COLUMNS] = {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 - The data will be stored locally as a struct called GridNode. This node will allow us to access the distance cost values and check its corresponding neighbour nodes.
 <div class="code-container">
 <pre class="code-block">
-// The Grid Node Struct
+// grid.h
 struct GridNode
 {
     Position pos;                       // Position of node
@@ -80,15 +78,7 @@ struct GridNode
     int gCost;                          // Distance from start Node
     int hCost;                          // Distance from target Node
     int index;                          // Index in the heap
-
-    // Position Node Constuctor
-    GridNode(Position pos_, NODE_STATE state_ = EMPTY) : 
-    pos(pos_), state(state_), neighbourCount(0), index(0) {}
-
-    // Node Constuctor
-    GridNode(int x_ = 0, int y_ = 0, NODE_STATE state_ = EMPTY) : 
-    pos(Position(x_, y_)), state(state_), neighbourCount(0), index(0) {}
-
+    ...
     // Checks if Node is Traversable or not
     bool is_traversable()
     {
@@ -115,7 +105,7 @@ struct GridNode
 
 <div class="code-container">
 <pre class="code-block">
-// Returns a Path for the Grid
+// path.h
 Path find_path(Grid *grid)
 {
     ... // Setup open and closed list

@@ -2,6 +2,10 @@
   link: "mailto:sidps1112@gmail.com"
   logo: "/assets/svg/mail.svg"
 
+- type: "Alt Mail"
+  link: "mailto:sidps@iitk.ac.in"
+  logo: "/assets/svg/mail.svg"
+
 - type: "Github"
   link: "https://github.com/sps1112"
   logo: "/assets/svg/github.svg"
