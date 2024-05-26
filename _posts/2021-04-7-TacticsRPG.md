@@ -13,7 +13,10 @@ image: "/assets/projects/tactics0.png"
 
 An Isometric Tactics RPG made in the Unity game engine. The project is inspired by Tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the GameBoy Advance.
 
-There will be a grid of tiles which makes up our game map. We will place our player party on the map with enemy characters already placed there. The characters would take turns moving on the map and taking part in combat with the other characters. The player has to defeat all characters in the enemy team to win.
+- Build: <a href="https://kingcrimson1112.itch.io/tactics-rpg">Tactics RPG</a>
+- Source: <a href="https://github.com/sps1112/tactics-rpg">sps1112/tactics-rpg</a>
+
+The game is divided into various missions which take place on a certain level. The level will be an isometric 3D grid made of blocks. We can place our place character at any of the spawning points at the start of the mission and then start. The enemy character will already be spawned before. Future features for the game loop 
 
 The main mechanics which were developed for the project include:- 
 - A 10 X 10 map grid with configurable settings for:

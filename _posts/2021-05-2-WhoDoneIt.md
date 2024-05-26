@@ -117,4 +117,3 @@ void SetupAR()
 - After dialogue with a witness, their corresponding event will be added to the Events UI. The player will be able to access events based on the event and try to formulate a chain of events which took place. By choosing the correct events, the player will complete the game.
 
 <img class="article-screenshot" src="/assets/projects/who-done2.png" alt=""/>
-
