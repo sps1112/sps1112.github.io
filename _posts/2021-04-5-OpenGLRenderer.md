@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "OpenGL API, GLFW"
 language: "C++, GLSL"
 platform: "PC"
-description: "A 3D renderer written in C++ utlising the OpenGL API. Implemented a Scene system to rapidly test new scenes. Shaders use the Blinn-phong shading model for lighting."
+description: "3D renderer written in C++ utilizing the OpenGL API. Implemented a Scene system to faster debugging of features. Scene shader use the Blinn-phong shading model for lighting primitives and models."
 image: "/assets/projects/r12.png"
 ---
 
@@ -71,18 +71,19 @@ Renderer flags for settings such as Z-buffering, Stencil testing, Depth testing 
 <div class="code-container">
 <pre class="code-block">
 // Renderer.cpp
-...
-EnableTest(DEPTH_TEST);                            // Enable Z buffering
-glDepthFunc(GL_LESS);                              // Closer objects will be drawn in front
-EnableTest(STENCIL_TEST);                          // Enables editing Stencil
-glStencilFunc(GL_NOTEQUAL, 1, 0xFF);               // if (n!=1) ==> (n=1) =>Draw Everything
-EnableTest(BLEND_TEST);                            // Enables Blend test
-glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Set Blending mode as {x*a+y*(1-a)}
-stbi_set_flip_vertically_on_load(true);            // Set before loading model
-EnableTest(FACE_CULL);                             // Enable Face Culling
-glCullFace(GL_BACK);                               // To Cull Back Faces (do no draw)
-glFrontFace(GL_CCW);                               // Front faces are those with CCW motion
-...
+void Renderer::SetOtherData()
+{
+    EnableTest(DEPTH_TEST);                            // Enable Z buffering
+    glDepthFunc(GL_LESS);                              // Closer objects will be drawn in front
+    EnableTest(STENCIL_TEST);                          // Enables editing Stencil
+    glStencilFunc(GL_NOTEQUAL, 1, 0xFF);               // if (n!=1) ==> (n=1) =>Draw Everything
+    EnableTest(BLEND_TEST);                            // Enables Blend test
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // Set Blending mode as {x*a+y*(1-a)}
+    stbi_set_flip_vertically_on_load(true);            // Set before loading model
+    EnableTest(FACE_CULL);                             // Enable Face Culling
+    glCullFace(GL_BACK);                               // To Cull Back Faces (do no draw)
+    glFrontFace(GL_CCW);                               // Front faces are those with CCW motion
+}
 </pre>
 </div>
 
@@ -159,20 +160,28 @@ The vertex data is categorized into channels which are feeded into the vertex sh
 <div class="code-container">
 <pre class="code-block">
 // Primitive.cpp
-...
-vertexArray.GenerateBuffers();
-vertexArray.BindVAO();
-
-vertexArray.BindVBO(vertices2D.size(), sizeof(Vertex2D), &vertices2D[0]);
-vertexArray.BindEBO(indices.size(), &indices[0]);
-
-// vertex positions
-vertexArray.SetAttribArray(0, 3, sizeof(Vertex2D), (void *)0);
-// vertex color
-vertexArray.SetAttribArray(1, 3, sizeof(Vertex2D), (void *)offsetof(Vertex2D, Color));
-// vertex Texture coordinates
-vertexArray.SetAttribArray(2, 2, sizeof(Vertex2D), (void *)offsetof(Vertex2D, TexCoord));
-...
+void Primitive::SetupPrimitive()
+{
+    vertexArray.GenerateBuffers();
+    vertexArray.BindVAO();
+    if (is2D)
+    {
+        vertexArray.BindVBO(vertices2D.size(), sizeof(Vertex2D), &vertices2D[0]);
+        vertexArray.BindEBO(indices.size(), &indices[0]);
+    }
+    ...
+    
+    if (is2D)
+    {
+        // vertex positions
+        vertexArray.SetAttribArray(0, 3, sizeof(Vertex2D), (void *)0);
+        // vertex color
+        vertexArray.SetAttribArray(1, 3, sizeof(Vertex2D), (void *)offsetof(Vertex2D, Color));
+        // vertex Texture coordinates
+        vertexArray.SetAttribArray(2, 2, sizeof(Vertex2D), (void *)offsetof(Vertex2D, TexCoord));
+    }
+    ...
+}
 </pre>
 </div>
 
@@ -185,39 +194,42 @@ Image files can be converted into textures which can me uv-mapped to 3d models. 
 <div class="code-container">
 <pre class="code-block">
 // Texture.cpp
-...
-stbi_set_flip_vertically_on_load(true);
-unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
-
-// Setup texture data
-if (data)
+unsigned int load_texture_from_path(const char *path, bool isDiffuse, bool toClamp)
 {
-    GLenum format;
-    GLenum otherFormat;
-    if (nrComponents == 1)
+    ...
+    stbi_set_flip_vertically_on_load(true);
+    unsigned char *data = stbi_load(path, &width, &height, &nrComponents, 0);
+
+    // Setup texture data
+    if (data)
     {
-        format = GL_RED;
-        otherFormat = format;
+        GLenum format;
+        GLenum otherFormat;
+        if (nrComponents == 1)
+        {
+            format = GL_RED;
+            otherFormat = format;
+        }
+        else if (nrComponents == 3)
+        {
+            format = GL_RGB;
+            otherFormat = (gammaCorrection && isDiffuse) ? GL_SRGB : format;
+        }
+        else if (nrComponents == 4)
+        {
+            format = GL_RGBA;
+            otherFormat = (gammaCorrection && isDiffuse) ? GL_SRGB_ALPHA : format;
+        }
+        bind_texture(textureID);
+        ...
     }
-    else if (nrComponents == 3)
+    else
     {
-        format = GL_RGB;
-        otherFormat = (gammaCorrection && isDiffuse) ? GL_SRGB : format;
+        std::cout << "Failed to load texture" << std::endl;
     }
-    else if (nrComponents == 4)
-    {
-        format = GL_RGBA;
-        otherFormat = (gammaCorrection && isDiffuse) ? GL_SRGB_ALPHA : format;
-    }
-    bind_texture(textureID);
+    stbi_image_free(data);
     ...
 }
-else
-{
-    std::cout << "Failed to load texture" << std::endl;
-}
-stbi_image_free(data);
-...
 </pre>
 </div>
 
@@ -226,27 +238,29 @@ The vertex and fragment shader is written in .vs and .fs files. These are read t
 <div class="code-container">
 <pre class="code-block">
 // Shader.cpp
-...
-const char *vShaderCode = vertexCode.c_str();
-const char *fShaderCode = fragmentCode.c_str();
-unsigned int vertex, fragment;
-// vertex Shader
-vertex = CompileShader(vShaderCode, VERTEX_SHADER);
-CheckCompileErrors(vertex, "VERTEX");
-// fragment Shader
-fragment = CompileShader(fShaderCode, FRAGMENT_SHADER);
-CheckCompileErrors(fragment, "FRAGMENT");
+void Shader::CreateShader(const char *vertexPath, const char *fragmentPath)
+{
+    ...
+    const char *vShaderCode = vertexCode.c_str();
+    const char *fShaderCode = fragmentCode.c_str();
+    unsigned int vertex, fragment;
+    // vertex Shader
+    vertex = CompileShader(vShaderCode, VERTEX_SHADER);
+    CheckCompileErrors(vertex, "VERTEX");
+    // fragment Shader
+    fragment = CompileShader(fShaderCode, FRAGMENT_SHADER);
+    CheckCompileErrors(fragment, "FRAGMENT");
 
-// shader program
-ID = glCreateProgram();
-glAttachShader(ID, vertex);
-glAttachShader(ID, fragment);
-glLinkProgram(ID);
-CheckCompileErrors(ID, "PROGRAM");
-// delete individual shaders
-glDeleteShader(vertex);
-glDeleteShader(fragment);
-...
+    // shader program
+    ID = glCreateProgram();
+    glAttachShader(ID, vertex);
+    glAttachShader(ID, fragment);
+    glLinkProgram(ID);
+    CheckCompileErrors(ID, "PROGRAM");
+    // delete individual shaders
+    glDeleteShader(vertex);
+    glDeleteShader(fragment);
+}
 </pre>
 </div>
 
@@ -283,19 +297,20 @@ The camera supports 2 axis rotation using the mouse. If the cursor is moved, a f
 <div class="code-container">
 <pre class="code-block">
 // Camera.cpp
-...
-xoffset *= mouseSensitivity * deltaTime * 60;
-yoffset *= mouseSensitivity * deltaTime * 60;
-
-yaw += xoffset;
-pitch += yoffset;
-
-if (constrainPitch)
+void Camera::process_mouse(float xoffset, float yoffset, float deltaTime, GLboolean constrainPitch)
 {
-    pitch = clamp(pitch, -CAMERA_MAX_PITCH, CAMERA_MAX_PITCH);
+    xoffset *= mouseSensitivity * deltaTime * 60;
+    yoffset *= mouseSensitivity * deltaTime * 60;
+
+    yaw += xoffset;
+    pitch += yoffset;
+
+    if (constrainPitch)
+    {
+        pitch = clamp(pitch, -CAMERA_MAX_PITCH, CAMERA_MAX_PITCH);
+    }
+    update_camera_vectors();
 }
-update_camera_vectors();
-...
 </pre>
 </div>
 
@@ -304,22 +319,27 @@ Based on whether the camera is in perspective mode or orthographic mode, the pro
 <div class="code-container">
 <pre class="code-block">
 // Scene.cpp
-...
-Mat4 projection(1.0f);
-if (cam->isOrtho)
+void SceneData::DrawActor(RenderActor *actor, int actor_id, CameraActor *cam, Vec2 screen_dimension)
 {
-    float aspectRatio = (((float)screen_dimension.x) / ((float)screen_dimension.y));
-    float orthoSize = cam->camSize;
-    Vec2 camDimension(aspectRatio * orthoSize, orthoSize);
-    projection = glm::ortho(-camDimension.x / 2.0f, camDimension.x / 2.0f, -camDimension.y / 2.0f, 
-    camDimension.y / 2.0f, CAMERA_NEAR_PLANE, CAMERA_FAR_PLANE);
+    ...
+    Mat4 projection(1.0f);
+    screen_dimension.x = floor(screen_dimension.x, 0.0f);
+    screen_dimension.y = floor(screen_dimension.y, 0.0f);
+    if (cam->isOrtho)
+    {
+        float aspectRatio = (((float)screen_dimension.x) / ((float)screen_dimension.y));
+        float orthoSize = cam->camSize;
+        Vec2 camDimension(aspectRatio * orthoSize, orthoSize);
+        projection = glm::ortho(-camDimension.x / 2.0f, camDimension.x / 2.0f, -camDimension.y / 2.0f, 
+        camDimension.y / 2.0f, CAMERA_NEAR_PLANE, CAMERA_FAR_PLANE);
+    }
+    else
+    {
+        projection = glm::perspective(glm::radians(cam->GetCamera()->fovZoom), ((float)screen_dimension.x) / 
+        ((float)screen_dimension.y), CAMERA_NEAR_PLANE, CAMERA_FAR_PLANE);
+    }
+    ...
 }
-else
-{
-    projection = glm::perspective(glm::radians(cam->GetCamera()->fovZoom), ((float)screen_dimension.x) / 
-    ((float)screen_dimension.y), CAMERA_NEAR_PLANE, CAMERA_FAR_PLANE);
-}
-...
 </pre>
 </div>
 
@@ -333,11 +353,9 @@ else
 Integrated ASSIMP to help in loading pre-made 3D Assets from .obj files. Also allows importing blender models + textures when exported in the .obj format.
 
 A model is defined as a collection of meshes. A Mesh will be a single unit which defines the vertices needed for rendering and textures which are applied to the mesh. Each vertex hold some properties required by the vertex shader for rendering.
-
 <div class="code-container">
 <pre class="code-block">
 // Mesh.h
-...
 struct Vertex
 {
     glm::vec3 position;
@@ -357,10 +375,12 @@ public:
     VertexArray vertexArray;
     ...
 };
-...
+</pre>
+</div>
 
+<div class="code-container">
+<pre class="code-block">
 // Model.h
-...
 class Model
 {
 public:
@@ -371,7 +391,6 @@ public:
     bool gammaCorrection;
     ...
 };
-...
 </pre>
 </div>
 
@@ -388,29 +407,38 @@ The Shader and Light Class to set up multiple lights in a Scene. For given light
 
 <div class="code-container">
 <pre class="code-block">
-// Directional Light
-Colorf diffuse;
-Colorf ambient;
-Colorf specular;
-Vec3 direction;
+// modern/shader_scene.fs
+struct DirLight {
+  vec3 direction;
 
-// Point Light
-Colorf diffuse;
-Colorf ambient;
-Colorf specular;
-Vec3 position;
-float constant;
-float linear;
-float quadratic;
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+};
+...
+struct PointLight {
+  vec3 position;
 
+  float constant;
+  float linear;
+  float quadratic;
 
-// Spot Light
-Colorf diffuse;
-Colorf ambient;
-Colorf specular;
-Vec3 direction;
-float cutoff;
-float outerCutoff;
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+};
+...
+struct SpotLight {
+  vec3 position;
+  vec3 direction;
+
+  float cutoff;
+  float outerCutoff;
+
+  vec3 ambient;
+  vec3 diffuse;
+  vec3 specular;
+};
 </pre>
 </div>
 
@@ -418,49 +446,49 @@ The Scene fragment shader has a maximum limit of light sources which can be pres
 
 <div class="code-container">
 <pre class="code-block">
-//shader_scene.fs
-...
-// Scene Lighting
-vec3 norm = normalize(Normal);
-vec3 viewDir = normalize(viewPos - FragPos);
-vec3 result = vec3(0.0f);
+// modern/shader_scene.fs
+void main() {
+  // Scene Lighting
+  vec3 norm = normalize(Normal);
+  vec3 viewDir = normalize(viewPos - FragPos);
+  vec3 result = vec3(0.0f);
 
-// 1:- Directional Light
-if (useDirLight) {
-for (int i = 0; i < min(NR_DIRECTION_LIGHTS, dirLightCount); i++) {
-    result += CalculateDirLight(dirLights[i], norm, viewDir);
-}
-}
+  // 1:- Directional Light
+  if (useDirLight) {
+    for (int i = 0; i < min(NR_DIRECTION_LIGHTS, dirLightCount); i++) {
+      result += CalculateDirLight(dirLights[i], norm, viewDir);
+    }
+  }
 
-// 2:- Point Lights
-if (usePointLight) {
-for (int i = 0; i < min(NR_POINT_LIGHTS, pointLightCount); i++) {
-    result += CalculatePointLight(pointLights[i], norm, FragPos, viewDir);
-}
-}
+  // 2:- Point Lights
+  if (usePointLight) {
+    for (int i = 0; i < min(NR_POINT_LIGHTS, pointLightCount); i++) {
+      result += CalculatePointLight(pointLights[i], norm, FragPos, viewDir);
+    }
+  }
 
-// 3:- SpotLight
-if (useSpotLight) {
-for (int i = 0; i < min(NR_SPOT_LIGHTS, spotLightCount); i++) {
-    result += CalculateSpotLight(spotLights[i], norm, FragPos, viewDir);
-}
-}
+  // 3:- SpotLight
+  if (useSpotLight) {
+    for (int i = 0; i < min(NR_SPOT_LIGHTS, spotLightCount); i++) {
+      result += CalculateSpotLight(spotLights[i], norm, FragPos, viewDir);
+    }
+  }
 
-// Other effects
-vec3 emmision = vec3(0.0f);
-if (useTexture) {
-if (texture(material.texture_specular1, TexCoords).r == 0.0) {
-    emmision = vec3(texture(material.texture_emmision1, TexCoords));
-}
-}
+  // Other effects
+  vec3 emmision = vec3(0.0f);
+  if (useTexture) {
+    if (texture(material.texture_specular1, TexCoords).r == 0.0) {
+      emmision = vec3(texture(material.texture_emmision1, TexCoords));
+    }
+  }
 
-// Resultant Lighting
-result += (emmision);
-if (correctGamma) {
-result = pow(result.rgb, vec3(1.0 / gamma));
+  // Resultant Lighting
+  result += (emmision);
+  if (correctGamma) {
+    result = pow(result.rgb, vec3(1.0 / gamma));
+  }
+  FragColor = vec4(result, 1.0f);
 }
-FragColor = vec4(result, 1.0f);
-...
 </pre>
 </div>
 
@@ -484,7 +512,8 @@ The output of the renderer in a given loop is rendered to a framebuffer. We can 
 
 <div class="code-container">
 <pre class="code-block">
-...
+// modern/shader_frame.fs
+void main() {
   vec3 finalColor = vec3(texture(material.texture_diffuse1, TexCoord));
   if (filterChoice == 1) // Invert Colors
   {
@@ -495,7 +524,9 @@ The output of the renderer in a given loop is rendered to a framebuffer. We can 
     float average = 0.2126 * finalColor.r + 0.7152 * finalColor.g + 0.0722 * finalColor.b;
     finalColor = vec3(average);
   }
-...
+  ...
+  FragColor = vec4(finalColor, 1.0);
+}
 </pre>
 </div>
 

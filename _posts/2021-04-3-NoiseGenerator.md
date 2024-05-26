@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "NA"
 language: "C++"
 platform: "PC"
-description: "A Noise generation library written in C++ using stb_image for rendering to an image. Generate random noise, perlin noise and create 2d maps using octave noise."
+description: "Noise generation library written in C++ using stb_image for rendering to an image. Allows generation of random noise, perlin noise, octave noise and creation of 2D color maps."
 image: "/assets/projects/noise9.png"
 ---
 
@@ -29,7 +29,7 @@ Code sample for the random noise generation:-
 
 <div class="code-container">
 <pre class="code-block">
-// Gets a Random Noise Map
+// noise.h
 float *get_noisemap(int rows, int columns)
 {
     float *noiseMap = new float[rows * columns];
@@ -55,7 +55,7 @@ Code sample for the perlin noise generation:-
 
 <div class="code-container">
 <pre class="code-block">
-// Gets a Perlin Noise Map
+// noise.h
 float *get_noisemap(int rows, int columns, float scale)
 {
     ...
@@ -85,29 +85,42 @@ Code sample for the octave noise generation:-
 
 <div class="code-container">
 <pre class="code-block">
-...
-for (int y = 0; y < rows; y++)
+// noise.h
+float *get_noisemap(int rows, int columns, float scale,
+                    int octaves, float persistence, float lacunarity, float xOffset = 0, float yOffset = 0)
 {
-    for (int x = 0; x < columns; x++)
+    ...
+    for (int y = 0; y < rows; y++)
     {
-        float amplitude = 1;
-        float frequency = 1;
-        float noiseVal = 0;
-        for (int i = 0; i < octaves; i++)
+        for (int x = 0; x < columns; x++)
         {
-            float sampleX = (((x - halfX) / scale) * frequency) + octaveOffsets[(i * 2)];
-            float sampleY = (((y - halfY) / scale) * frequency) + octaveOffsets[(i * 2) + 1];
-            float noise = (get_perlin_noise(sampleX, sampleY, &pn) * 2) - 1;
-            noiseVal += noise * amplitude;
-            amplitude *= persistence;
-            frequency *= lacunarity;
+            float amplitude = 1;
+            float frequency = 1;
+            float noiseVal = 0;
+            for (int i = 0; i < octaves; i++)
+            {
+                float sampleX = (((x - halfX) / scale) * frequency) + octaveOffsets[(i * 2)];
+                float sampleY = (((y - halfY) / scale) * frequency) + octaveOffsets[(i * 2) + 1];
+                float noise = (get_perlin_noise(sampleX, sampleY, &pn) * 2) - 1;
+                noiseVal += noise * amplitude;
+                amplitude *= persistence;
+                frequency *= lacunarity;
+            }
+            maxNoise = max(maxNoise, noiseVal);
+            minNoise = min(minNoise, noiseVal);
+            noiseMap[(y * columns) + x] = noiseVal;
         }
-        maxNoise = max(maxNoise, noiseVal);
-        minNoise = min(minNoise, noiseVal);
-        noiseMap[(y * columns) + x] = noiseVal;
     }
+    ...
+    for (int y = 0; y < rows; y++)
+    {
+        for (int x = 0; x < columns; x++)
+        {
+            noiseMap[(y * columns) + x] = inverse_lerp(noiseMap[(y * columns) + x], minNoise, maxNoise);
+        }
+    }
+    return noiseMap;
 }
-...
 </pre>
 </div>
 
@@ -121,11 +134,26 @@ A color map of the octave noise can be made by defining region thresholds for th
 <img class="article-screenshots" src="/assets/projects/noise3.png" alt=""/>
 </div>
 
-Code sample for the color map:-
+Code sample for the color map generation:-
+<div class="code-container">
+<pre class="code-block">
+// config.h
+..
+#define DARK_BLUE Colorf(0.07f, 0.15f, 0.3f)
+#define OCEAN_BLUE Colorf(0.07f, 0.5f, 0.69f)
+#define DARK_YELLOW Colorf(0.8f, 0.7f, 0.4f)
+#define LAND_GREEN Colorf(0.07f, 0.7f, 0.13f)
+#define DARK_GREEN Colorf(0.06f, 0.375f, 0.1f)
+#define LIGHT_BROWN Colorf(0.35f, 0.25f, 0.11f)
+#define DARK_BROWN Colorf(0.2f, 0.16f, 0.16f)
+#define LIGHT_BLUE Colorf(0.80f, 0.9f, 0.9f)
+...
+</pre>
+</div>
 
 <div class="code-container">
 <pre class="code-block">
-// The Default Map Sections for a Color Map
+// mapgen.h
 const MapSection mapSections[MAP_REGIONS] = {
     MapSection(DARK_BLUE),
     MapSection(OCEAN_BLUE, 0.05f),
@@ -136,10 +164,7 @@ const MapSection mapSections[MAP_REGIONS] = {
     MapSection(DARK_BROWN, 0.85f),
     MapSection(LIGHT_BLUE, 0.925f)};
 
-...
-
-// Gets the Section from the pixel height
-Colorf get_color_from_sections(float height)
+int get_index_from_height(float height)
 {
     int n = 0;
     for (int i = 0; i < MAP_REGIONS; i++)
@@ -150,7 +175,12 @@ Colorf get_color_from_sections(float height)
         }
         n = i;
     }
-    return mapSections[n].col;
+    return n;
+}
+
+Colorf get_color_from_sections(float height)
+{
+    return mapSections[get_index_from_height(height)].col;
 }
 </pre>
 </div>
@@ -165,8 +195,18 @@ Code Sample for falloff map generation:-
 
 <div class="code-container">
 <pre class="code-block">
-// Gets a FallOff Map
-...
+// noise.h
+float eval_falloff_value(float val, float curve, float shift)
+{
+    float a = curve;
+    float b = shift;
+    val = pow(val, a) / (pow(val, a) + pow(b - (b * val), a));
+    return val;
+}
+
+float *get_falloffmap(int rows, int columns, float curve, float shift)
+{
+    float *falloffmap = new float[rows * columns];
     for (int i = 0; i < rows; i++)
     {
         for (int j = 0; j < columns; j++)
@@ -177,16 +217,7 @@ Code Sample for falloff map generation:-
             falloffmap[(i * columns) + j] = clamp(eval_falloff_value(val, curve, shift));
         }
     }
-...
-
-...
-// Function transformation for Falloff map
-float eval_falloff_value(float val, float curve, float shift)
-{
-    float a = curve;
-    float b = shift;
-    val = pow(val, a) / (pow(val, a) + pow(b - (b * val), a));
-    return val;
+    return falloffmap;
 }
 </pre>
 </div>
@@ -216,32 +247,48 @@ Code Sample for the color blending in color map:-
 
 <div class="code-container">
 <pre class="code-block">
-...
-    float height = texData->tex[texIndex];
-    int index = get_index_from_height(height);
-    Colorf col = mapSections[index].col;
+// mapgen.h
+Image get_colormap(TextureData *texData)
+{
+    ...
+    for (int i = 0; i < rows; i += 1 + imgLOD)
+    {
+        for (int j = 0; j < columns; j += 1 + imgLOD)
+        {
+            ...
+            for (int newI = i; newI <= iEnd; newI++)
+            {
+                for (int newJ = j; newJ <= jEnd; newJ++)
+                {
+                    float height = texData->tex[texIndex];
 
+                    int index = get_index_from_height(height);
+                    Colorf col = mapSections[index].col;
 #if BLEND_REGIONS
-    int indexB = index + 1;
-    float h2 = 1.0f;
-    Colorf col2(1.0f);
-    if (indexB < MAP_REGIONS)
-    {
-        h2 = mapSections[indexB].height;
-        col2 = mapSections[indexB].col;
-    }
+                    int indexB = index + 1;
+                    float h2 = 1.0f;
+                    Colorf col2(1.0f);
+                    if (indexB < MAP_REGIONS)
+                    {
+                        h2 = mapSections[indexB].height;
+                        col2 = mapSections[indexB].col;
+                    }
 
-    float off = inverse_lerp(height, mapSections[index].height, h2);
-    if (off > BLEND_THRESHOLD)
-    {
-        Colorf mixCol = col_lerp(col, col2, off);
-        col = col_lerp(col, mixCol, BLEND_FACTOR);
-    }
+                    float off = inverse_lerp(height, mapSections[index].height, h2);
+                    if (off > BLEND_THRESHOLD)
+                    {
+                        Colorf mixCol = col_lerp(col, col2, off);
+                        col = col_lerp(col, mixCol, BLEND_FACTOR);
+                    }
 #endif
-
-    int imgIndex = texData->get_index(newI, newJ);
-    img[imgIndex] = get_color(col);
-...
+                    int imgIndex = texData->get_index(newI, newJ);
+                    img[imgIndex] = get_color(col);
+                }
+            }
+        }
+    }
+    ...
+}
 </pre>
 </div>
 
@@ -267,27 +314,66 @@ Code sample for defining LODs for output image:-
 
 <div class="code-container">
 <pre class="code-block">
-// Without LODs
-//--------------------
+// mapgen.h
+Image get_colormap(TextureData *texData)
+{
+    int imgLOD = texData->lod - 1;
+    int rows = texData->rows;
+    int columns = texData->columns;
+    Image img = new Colori[rows * columns];
+    for (int i = 0; i < rows; i += 1 + imgLOD)
+    {
+        for (int j = 0; j < columns; j += 1 + imgLOD)
+        {
+            int texIndex = texData->get_index(i, j);
+            int iEnd = clampi(i + imgLOD, 0, rows - 1);
+            int jEnd = clamp(j + imgLOD, 0, columns - 1);
+            for (int newI = i; newI <= iEnd; newI++)
+            {
+                for (int newJ = j; newJ <= jEnd; newJ++)
+                {
+                    ...
+                    int imgIndex = texData->get_index(newI, newJ);
+                    img[imgIndex] = get_color(col);
+                }
+            }
+        }
+    }
+    return img;
+}
+</pre>
+</div>
+
+For texData->lod = 1, we get imgLOD = 0. Thus the for loop will increment as normal, otherwise it will increment with imgLOD more. This is shown as:-
+
+<div class="code-container">
+<pre class="code-block">
+// mapgen.h
+
+// A. Without LODs
 for (int i = 0; i < rows; i++)
 {
     for (int j = 0; j < columns; j++)
     {
-        ...
-        int imgIndex = texData->get_index(i, j);
-        img[imgIndex] = get_color(col);
+       ...
+        for (int newI = i; newI <= iEnd; newI++)
+        {
+            for (int newJ = j; newJ <= jEnd; newJ++)
+            {
+                ...
+                int imgIndex = texData->get_index(newI, newJ);
+                img[imgIndex] = get_color(col);
+            }
+        }
     }
 }
 
-// With LODs
-//--------------------
+// B. With LODs
 for (int i = 0; i < rows; i += 1 + imgLOD)
 {
     for (int j = 0; j < columns; j += 1 + imgLOD)
     {
-        int texIndex = texData->get_index(i, j);
-        int iEnd = clampi(i + imgLOD, 0, rows - 1);
-        int jEnd = clamp(j + imgLOD, 0, columns - 1);
+       ...
         for (int newI = i; newI <= iEnd; newI++)
         {
             for (int newJ = j; newJ <= jEnd; newJ++)

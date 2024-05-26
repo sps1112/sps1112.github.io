@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "A 3D dungeon-crawler made in 1 week for the Brackey's Game Jam 2020.02. This was a solo project with the various components such as time reversal mechanic, dungeon design and low poly artwork being made from scratch."
+description: "Dungeon-crawler game made in 1 week for the Brackey's Game Jam 2020.02. This was a solo project with the various components such as time reversal mechanic, dungeon design and low poly artwork being made from scratch."
 image: "/assets/projects/roaming0.png"
 ---
 
@@ -25,7 +25,7 @@ The major components of the game where work was done includes:-
 - Adding a Time Reversal mechanic. The Rigidbody’s position is recorded for the past few seconds at any instant. By holding a key, the player will retrace its position and orientation to give illusion of time reversal.
 <div class="code-container">
 <pre class="code-block">
-// Recording Code
+// RewindMotion.cs
 void Record()
 {
     if (positionList.Count >= (int)((1 / Time.fixedDeltaTime) * timeLimit))
@@ -35,23 +35,18 @@ void Record()
     MotionData newData = new MotionData(transform.position, transform.rotation);
     positionList.Insert(0, newData);
 }
-</pre>
-</div>
 
-<div class="code-container">
-<pre class="code-block">
-// Rewinding Code
 void Rewind()
 {
-      if (positionList.Count > 0)
-      {
-        ...
-          MotionData newData = positionList[0];
-          transform.position = newData.position;
-          transform.rotation = newData.rotation;
-          positionList.RemoveAt(0);
-      }
-      ...
+    if (positionList.Count > 0)
+    {
+       ...
+        MotionData newData = positionList[0];
+        transform.position = newData.position;
+        transform.rotation = newData.rotation;
+        positionList.RemoveAt(0);
+    }
+   ...
 }
 </pre>
 </div>

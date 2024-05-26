@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "An Isometric Tactics RPG inspired by games such as Final Fantasy Tactics. Includes team-based battle system and custom pathfinding."
+description: "Isometric Tactics RPG inspired by games such as Final Fantasy: Tactics. Includes designer tools for level generation, scriptable objects for characters, custom pathfinding implementation for grid traversal and refined turn-based flow."
 image: "/assets/projects/tactics0.png"
 ---
 

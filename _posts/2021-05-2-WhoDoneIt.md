@@ -4,11 +4,11 @@ title: "Who Done It?"
 author: Siddhartha
 permalink: /who-done-it/
 type: "GameDev Society, IITK"
-role: "Game Programmer, Designer"
+role: "Game Programmer and Designer"
 engine: "Unity"
 language: "C#"
 platform: "PC"
-description: "An mystery detective game made in Unity for the BYOG Game Jam 2021. Developed the camera system, Input manager and oversaw production/design of the game."
+description: "Mystery detective game made in Unity for the BYOG Game Jam 2021. Oversaw the remote production of the game, developed the dynamic camera system, input manager and designed the narrative beats."
 image: "/assets/projects/who-done0.jpg"
 ---
 
@@ -29,34 +29,37 @@ Word done as part of the developed process included:-
 
 <div class="code-container">
 <pre class="code-block">
-...
-if (Input.GetMouseButtonDown(0) && canClick)
+// ClickManager.cs
+void Update()
 {
-    Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-    RaycastHit hit;
-    if (Physics.Raycast(mRay, out hit, maxDistance, layerMask))
+    if (Input.GetMouseButtonDown(0) && canClick)
     {
-        if (hit.collider.gameObject.tag == "Ground")
+        Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(mRay, out hit, maxDistance, layerMask))
         {
-            playermovement.MovePlayer(hit.point);
-        }
-        else if (hit.collider.gameObject.tag == "Witness")
-        {
-            playermovement.MoveToTarget(hit.point);
-            canClick = false;
-            dialogueNPC = hit.collider.gameObject;
-        }
-        else if (hit.collider.gameObject.tag == "clue")
-        {
-            canClick = false;
-            clueObject = hit.collider.transform.gameObject;
-            Vector3 point = hit.point;
-            point.y = 0;
-            playermovement.MoveToTarget(point, true);
+            Debug.Log(hit.collider.gameObject.name + "  " + hit.point);
+            if (hit.collider.gameObject.tag == "Ground")
+            {
+                player.GetComponent&lt;PlayerMovement&gt;().MovePlayer(hit.point);
+            }
+            else if (hit.collider.gameObject.tag == "Witness")
+            {
+                player.GetComponent&lt;PlayerMovement&gt;().MoveToTarget(hit.point);
+                canClick = false;
+                dialogueNPC = hit.collider.gameObject;
+            }
+            else if (hit.collider.gameObject.tag == "clue")
+            {
+                canClick = false;
+                clueObject = hit.collider.transform.gameObject;
+                Vector3 point = hit.point;
+                point.y = 0;
+                player.GetComponent&lt;PlayerMovement&gt;().MoveToTarget(point, true);
+            }
         }
     }
 }
-...
 </pre>
 </div>
 
@@ -66,51 +69,48 @@ if (Input.GetMouseButtonDown(0) && canClick)
 
 <div class="code-container">
 <pre class="code-block">
-// Shift camera view
-...
-Vector3 direction = lookObject.transform.position - player.transform.position;
-direction.Normalize();
-Vector3 desiredForward = Vector3.Lerp(transform.forward, direction, moveFactor);
-
-Vector3 up = Vector3.up;
-Vector3 forward = desiredForward;
-Vector3 right = Vector3.Cross(up, forward);
-up = Vector3.Cross(forward, right);
-
-Vector3 desiredPos = player.transform.position +
-    forward * dialogueOffset.z + up * dialogueOffset.y + right * dialogueOffset.x;
-
-transform.position = Vector3.Lerp(transform.position, desiredPos, moveFactor / 2.0f);
-transform.forward = Vector3.Lerp(transform.forward, 
-                    (lookObject.transform.position - transform.position).normalized, moveFactor);
-...
-</pre>
-</div>
-
-<div class="code-container">
-<pre class="code-block">
-// Alter the aspect ratio
-...
-Vector2 currentRes = new Vector2(Screen.width, Screen.height);
-Vector2 targetRes = currentRes;
-if ((dialogueAR.x / dialogueAR.y) > (currentRes.x / currentRes.y))
+// CameraMovement.cs
+void FollowTarget()
 {
-    targetRes.y = (targetRes.x / dialogueAR.x) * dialogueAR.y;
-}
-else
-{
-    targetRes.x = (targetRes.y / dialogueAR.y) * dialogueAR.x;
+    Vector3 direction = lookObject.transform.position - player.transform.position;
+    direction.Normalize();
+    Vector3 desiredForward = Vector3.Lerp(transform.forward, direction, moveFactor);
+
+    Vector3 up = Vector3.up;
+    Vector3 forward = desiredForward;
+    Vector3 right = Vector3.Cross(up, forward);
+    up = Vector3.Cross(forward, right);
+
+    Vector3 desiredPos = player.transform.position +
+        forward * dialogueOffset.z + up * dialogueOffset.y + right * dialogueOffset.x;
+
+    transform.position = Vector3.Lerp(transform.position, desiredPos, moveFactor / 2.0f);
+    transform.forward = Vector3.Lerp(transform.forward, 
+                        (lookObject.transform.position - transform.position).normalized, moveFactor);
 }
 
-Vector2 offset = ((currentRes - targetRes) / currentRes) / 2.0f;
-offset = Vector2.Lerp(new Vector2(Camera.main.rect.x, Camera.main.rect.y), offset, moveFactor);
+void SetupAR()
+{
+    Vector2 currentRes = new Vector2(Screen.width, Screen.height);
+    Vector2 targetRes = currentRes;
+    if ((dialogueAR.x / dialogueAR.y) > (currentRes.x / currentRes.y))
+    {
+        targetRes.y = (targetRes.x / dialogueAR.x) * dialogueAR.y;
+    }
+    else
+    {
+        targetRes.x = (targetRes.y / dialogueAR.y) * dialogueAR.x;
+    }
 
-targetRes /= currentRes;
-targetRes = Vector2.Lerp(new Vector2(Camera.main.rect.width, Camera.main.rect.height), 
-                        targetRes, moveFactor);
+    Vector2 offset = ((currentRes - targetRes) / currentRes) / 2.0f;
+    offset = Vector2.Lerp(new Vector2(Camera.main.rect.x, Camera.main.rect.y), offset, moveFactor);
 
-Camera.main.rect = new Rect(offset.x, offset.y, targetRes.x, targetRes.y);
-...
+    targetRes /= currentRes;
+    targetRes = Vector2.Lerp(new Vector2(Camera.main.rect.width, Camera.main.rect.height), 
+                            targetRes, moveFactor);
+
+    Camera.main.rect = new Rect(offset.x, offset.y, targetRes.x, targetRes.y);
+}
 </pre>
 </div>
 

@@ -38,7 +38,7 @@ With two days spent on prototyping, I had to scrap the idea of creating original
 <img class="article-screenshot" src="https://img.itch.zone/aW1hZ2UvNzQzOTI1LzQxNDY5NDUucG5n/794x1000/CTF6Qz.png" alt="particles"/>
 
 
-With time running out, I set out to create a small tutorial and the goal of three more levels. The transitions between levels involved the use of long corridors and one way paths such that the player would not realise that they had switched between levels. 
+With time running out, I set out to create a small tutorial and the goal of three more levels. The transitions between levels involved the use of long corridors and one way paths such that the player would not realize that they had switched between levels. 
 
 <img class="article-screenshot" src="https://img.itch.zone/aW1hZ2UvNzQzOTI1LzQxNDY5NDIucG5n/794x1000/LWypHO.png" alt="tutorial"/>
 
