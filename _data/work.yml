@@ -4,11 +4,11 @@
   position: "Graphics Engineer Intern"
   timeline: "May 2022 - July 2022"
   tasks:
-    - task: "Worked as a Graphics Programmer in designing/refactoring 3D Model Loading classes for the Shutter Engine core codebase"
-    - task: "Employed the Open Asset Importer Library (ASSIMP) as a vendor submodule for the Model Loading classes in Shutter"
-    - task: "Developed a Proof of Concept (POC) using GLFW for window rendering with custom classes to render 3d models as .obj files"
-    - task: "Integrated the ASSIMP POC into Shutter as a Linux Platform executable using Platform and Feature flags through CMake"
-    - task: "Overhauled the shutter code to utilize the platform flags for fixing the compilation and runtime errors for the Design Studio Tool"
+    - task: "Worked as a Graphics programmer to enhance the Shutter engine with 3D model loading solutions, redesigning the existing mesh rendering classes in core codebase"
+    - task: "Employed the Open Asset Importer Library (ASSIMP) as a vendor submodule and integrated in Shutter for seamless model loading"
+    - task: "Developed custom rendering solutions using GLFW for enhanced visual representation resulting in faster Proof of Concept (POC) prototyping"
+    - task: "Successfully integrated ASSIMP POC into Shutter as a Linux executable module, enhancing the engine capabilities and improving compatibility across systems"
+    - task: "Resolved compilation and runtime errors overhauling the Shutter code using platform feature flags, optimising the Design Studio Tool"
 
 - company: "Studio Centauri, IITK"
   logo: "/assets/logos/gamedev.png"
@@ -16,9 +16,10 @@
   position: "Group Leader"
   timeline: "April 2021 - April 2022"
   tasks:
-    - task: "Shortlisted for the position of Group Leader of the Game Development Society, IIT Kanpur also known as Studio Centauri"
-    - task: "Spearheaded the 4 member team responsible for the conduction and planning of lectures and workshops organized by the society on topics such as Game Programming, Procedural Generation, Level Design, etc."
-    - task: "Organized and mentored GameDev projects for the SNT Semester Projects 2021 for 75+ mentees with topics such as Intro to GameDev, 3D Modelling, Game Design and Advanced GameDev"
+    - task: "Shortlisted for the position of Group Leader of Game Development Society, IIT Kanpur also known as Studio Centauri"
+    - task: "Spearheaded a 4-member team with 25 secretaries in planning and conducting 10+ lectures and workshops on advanced topics in GamDev such as Procedural Generation, Lightning Shaders, etc."
+    - task: "Coordinated with the SnT Core Team in conducting SnT Summer Projects '21, facilitating 70+ mentees on topics such as Intro to GameDev, Art, Design and Advanced GameDev"
+    - task: "Supervised the society secretaries in producing and designing 14+ projects in team over a constrained 3-weeks deadline"
 
 - company: "Counselling Service, IITK"
   logo: "/assets/logos/cs.png"
@@ -26,6 +27,7 @@
   position: "Student Guide"
   timeline: "October 2020 - July 2021"
   tasks:
-    - task: "Shortlisted by the Counselling Service, IITK to act as a Student Guide for the Y20 UG batch during their freshman year"
-    - task: "Personally guided and mentored 5 freshers and helped them aclimating to the Institute environment during the online semesters"
-    - task: "Helped them in their academics and provided holistic support by regularing organizing meetups and awareness sessions"
+    - task: "Shortlisted by the Conselling Serivce, IITK to act as a Student Guide for Y20 fresher batch"
+    - task: "Personally guided and mentored 5 Y20 freshmen students, helping them acclimate to the Institute environment during their online semesters"
+    - task: "Helped them with their academics and provided holistic support by arranging regular meetings with their mentors while maintaining a good rapport with them"
+    - task: "Coordinated with the Counselling Service and helped in organizing the online Orientation Ceremony 2020 for Y20s"

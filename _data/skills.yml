@@ -25,6 +25,7 @@
     - data: "OpenGL"
     - data: "WebGL"
     - data: "ImGUI"
+    - data: "Jekyll"
 
 - type: "Fields"
   list:

@@ -11,7 +11,7 @@ description: "An Isometric Tactics RPG inspired by games such as Final Fantasy T
 image: "/assets/projects/tactics0.png"
 ---
 
-An Isometric Tactics RPG made in the Unity game engine. Currently, the project is not hosted anywhere. The project is inspired by Tactical turn-based JRPGs such as Final Fantasy Tactics for SNES.
+An Isometric Tactics RPG made in the Unity game engine. The project is inspired by Tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the GameBoy Advance.
 
 There will be a grid of tiles which makes up our game map. We will place our player party on the map with enemy characters already placed there. The characters would take turns moving on the map and taking part in combat with the other characters. The player has to defeat all characters in the enemy team to win.
 
