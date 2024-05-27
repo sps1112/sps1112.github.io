@@ -11,18 +11,18 @@ description: "Metroidvania/platformer game made in Unity as part of Fall Game Ja
 image: "/assets/projects/tests0.png"
 ---
 
-A Platformer/Metroidvania made in Unity as part of a 3-day Game Jam. Inspired by games such as Super Metriod and Hollow Knight. 
+A Platformer/Metroidvania made in Unity as part of a 3-day Game Jam. Inspired by games such as Super Metroid and Hollow Knight. 
 
 - Build: <a href="https://kingcrimson1112.itch.io/the-tests">The Tests</a>
 - Source: <a href="https://github.com/sps1112/The-Tests">sps1112/The-Tests</a>
 
-The game is made up of a tutorial level and 2 other levels. The player has to reach the end of each level to reach the next one. The player will encounter locked gates and enemy. The player can dash to attack the enemies and open gates. Some gates requires keys to open.
+The game consists of a tutorial level and two other levels. The player has to reach the end of each level to reach the next one. The player will encounter locked gates and enemies. The player can dash to attack the enemies and open gates. Some gates require keys to open.
 
 <img class="article-screenshot" src="/assets/projects/tests0.png" alt=""/>
 
-The main features were implemented as:-
-- A 2D Rigidbody character controller with a Camera following it. Extensive work was put in to tweak the Player to provide a smooth movement.
-- A Smooth camera which lerps to the player position but is bound to the confines of the current room. All of this was done via Code without using third-party Plugins.
+The main features were implemented as follows:
+- A 2D Rigidbody character controller with a camera following it. Extensive work was put in to tweak the player to provide smooth movement.
+- A smooth camera that interpolates to the player's position but is bound to the confines of the current room. All of this was done via code without using third-party plugins.
 <div class="code-container">
 <pre class="code-block">
 // CameraFollow.cs
@@ -57,11 +57,11 @@ private Vector2[] CalculateBounds()
 
 <img class="article-screenshot" src="/assets/projects/tests1.png" alt=""/>
 
-- A Modular Room system where enemies are allotted a room in the world environment and they are reset/turned off based on the room the player is in. This was done mainly to save processing power.
+- A modular room system where enemies are allotted a room in the world environment and are reset or turned off based on the room the player is in. This was primarily done to save processing power.
 
 <img class="article-screenshot" src="/assets/projects/tests2.png" alt=""/>
 
-- A Simple Dash functions as an alternate form of movement and also a mode of interaction with the world. The Dash would also be used to open doors and thus act as a versatile action available to the player.
+- A simple dash functions as an alternate form of movement and also a mode of interaction with the world. The dash is also used to open doors, making it a versatile action available to the player.
 
 <div class="code-container">
 <pre class="code-block">
@@ -97,7 +97,7 @@ void OnTriggerStay2D(Collider2D other)
 
 <img class="article-screenshot" src="/assets/projects/tests3.png" alt=""/>
 
-- Enemies which patrol in rooms in an oscillating fashion. If the player gets in contact with the enemies, they will take some damage. The player can damage the enemies by using the Dash.
+- Enemies patrol rooms in an oscillating fashion. If the player contacts the enemies, they will take damage. The player can damage the enemies by using the dash attack.
 
 <img class="article-screenshot" src="/assets/projects/tests5.png" alt=""/>
 

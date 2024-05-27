@@ -11,18 +11,18 @@ description: "Collection of pixel shaders written in GLSL hosted on ShaderToy. U
 image: "/assets/projects/shader0.png"
 ---
 
-A library of pixel shaders written on ShaderToy. Most of these shaders are based on the concepts of procedural generation.
+This is a library of pixel shaders written on ShaderToy, with most shaders based on concepts of procedural generation.
 
 - ShaderToy: <a href="https://www.shadertoy.com/user/kingcrimson1112">kingcrimson1112</a>
 - Source: <a href="https://github.com/sps1112/shader-library">sps1112/shader-library</a>
 
-Pixel Shaders run for every single pixel on the screen. For each pixel we will have the pixel position as the input. Pixel position is in the format (X, Y) which ranges from (0, 0)[bottom left] to(MaxX, MaxY)[top right]. 
+Pixel shaders run for every single pixel on the screen. For each pixel, we will have the pixel position as the input. Pixel position is in the format (X, Y), ranging from (0, 0) [bottom left] to (MaxX, MaxY) [top right].
 
-The pixel code will output a color value which will be the color of that pixel. The combined output for all the pixels will give us the image. By using the time variable, we can create shaders which loop or change overtime.
+The pixel code will output a value that determines the color of that pixel. The combined output for all the pixels will give us the image. By using the time variable, we can create shaders that loop or change over time.
 
-Example shaders implemented in ShaderToy:-
+Example shaders implemented in ShaderToy:
 
-- A 2D Graph shader where we can give an equation of the format [f(x, y) = 0]. The output graph or area under the graph will be displayed.
+- A 2D graph shader that takes an equation in the format [f(x, y) = 0]. The output graph or area under the graph is displayed.
 
 <img class="article-screenshot" src="/assets/projects/shader0.png" alt=""/>
 
@@ -74,7 +74,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
 </pre>
 </div>
 
-- A wood shader using octave for distoring the grooves. Cyclic loops of increasing radii are rendered, their width and distance is altered and distorition is applied by applying octave noise.
+- A wood shader using octave noise for distorting the grooves. Cyclic loops of increasing radii are rendered, their width and distance is altered and distorition is applied by applying octave noise.
 
 <img class="article-screenshot" src="/assets/projects/shader1.png" alt=""/>
 
@@ -142,7 +142,7 @@ void mainImage( out vec4 fragColor, in vec2 fragCoord )
 </pre>
 </div>
 
-- A fire shader using octave and fractal noise. Height map is generated using octave noise, limited to a cone like shape and passed through a circular alpha map. The output is mixed with a fractal noise to get wavy fire-like patterns. These colored and translated over-time to give the fire shader.
+- A fire shader using octave and fractal noise. Height map is generated using octave noise, limited to a cone like shape and passed through a circular alpha map. The output is mixed with a fractal noise to get wavy fire-like patterns. These are colored and translated over time to create the fire shader.
 
 <img class="article-screenshot" src="/assets/projects/shader3.png" alt=""/>
 

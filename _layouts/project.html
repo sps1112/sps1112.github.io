@@ -19,7 +19,7 @@ layout: template
         <div class="project-detail">
           <ul class="detail-list">
             <li class="detail-item">
-              <div class="detail-tag">Project Type:-</div>
+              <div class="detail-tag">Project Type:</div>
               <div class="detail-val">
                 {% unless page.type == "Self-project" %}Professional{% else
                 %}Self{% endunless%}
@@ -27,23 +27,23 @@ layout: template
             </li>
 
             <li class="detail-item">
-              <div class="detail-tag">Engine Used:-</div>
+              <div class="detail-tag">Engine Used:</div>
               <div class="detail-val">{{page.engine}}</div>
             </li>
 
             <li class="detail-item">
-              <div class="detail-tag">Languages Used:-</div>
+              <div class="detail-tag">Languages Used:</div>
               <div class="detail-val">{{page.language}}</div>
             </li>
 
             <li class="detail-item">
-              <div class="detail-tag">Target Platform:-</div>
+              <div class="detail-tag">Target Platform:</div>
               <div class="detail-val">{{page.platform}}</div>
             </li>
 
             {% unless page.type == "Self-project" %}
             <li class="detail-item">
-              <div class="detail-tag">Role:-</div>
+              <div class="detail-tag">Role:</div>
               <div class="detail-val">{{page.role}}</div>
             </li>
             {% endunless %}

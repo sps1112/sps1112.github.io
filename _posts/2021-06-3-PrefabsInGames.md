@@ -17,15 +17,15 @@ image: "/assets/projects/prefab.png"
   - [Prefab Variants](#prefab-variants)
 - [Bonus Content: Nested Prefabs](#bonus-content-nested-prefabs)
   - [Parent-Child Relationship](#parent-child-relationship)
-- [Refereneces](#refereneces)
+- [References](#references)
 
-As the scale of your game increases, it becomes more and more difficult to track all the objects or entities being used. There may also be situations where you need multiple copies of the same object. For instance, coins in a level, bullets fired from a gun, etc. One solution to this problem is to use `Prefabs`.
+As the scale of your game increases, tracking all the objects or entities being used becomes increasingly difficult. There may also be situations where you need multiple copies of the same object. For instance, coins in a level or bullets fired from a gun. One solution to this problem is to use `Prefabs`.
 
 ## Overview
 
-Prefabs can be understood as templates or blueprints of a `GameObject` that can be used in other parts of the game. This template is stored in your project as an _asset file_ which can later be used wherever required.
+Prefabs are templates or blueprints of a `GameObject` that can be used in other parts of the game. This template is stored in your project as an _asset file_ which can later be used wherever required.
 
-Prefabs greatly improve the game development process by speeding up development and make debugging simpler. To understand their usage, consider coins (or any pickup) in a game. Let's say you need to place 20 coins in level. Your initial approach would be to
+Prefabs greatly improve the game development process by speeding up development and simplifying debugging. To understand their usage, consider coins (or any pickup) in a game. Let's say you need to place 20 coins in level. Your initial approach would be to
 
 1. Create a `Coin` object
 2. Make multiple copies of that object
@@ -43,7 +43,7 @@ Each coin now is an _instance_ of the prefab. This means that if you change the 
 
 ### Creating and Editing Prefabs
 
-The game engine's UI will allow users to create prefab assets. As mentioned earlier, these contain all the information necessary to create a `GameObject` of a particular type, namely
+The game engine's UI allows users to create prefab assets. As mentioned earlier, these contain all the information necessary to create a `GameObject` of a particular type, namely:
 
 1. All components of the object
 2. All child objects and their components
@@ -57,7 +57,7 @@ Prefabs can be manually placed in your scenes to be used. This is what we did wh
 
 ### Initialization During Runtime
 
-Prefabs can be created dynamically as your game runs based on user input or some other event (the `Bullet` prefab is spawned when a gun is fired). Let's take two examples
+Prefabs can be created dynamically as your game runs based on user input or other events (such as the `Bullet` prefab being spawned when a gun is fired). Let's take two examples
 
 - A bullet is fired when `Space` is pressed
 
@@ -101,7 +101,7 @@ void Update()
 
 ## Overriding Prefab Data
 
-All instances of the prefab have the same properties as configured in the original asset. We can also tweak these values per-instance if needed. By *overriding* a value in an instance you indicate that value to be different. Consider a situation where you're implementing a sword, with an `Attack` parameter initially set to 5 (figure a).
+All instances of the prefab share the properties configured in the original asset. We can also tweak these values per-instance if needed. By *overriding* a value in an instance you indicate that value to be different. Consider a situation where you're implementing a sword, with an `Attack` parameter initially set to 5 (figure a).
 
 <img class="article-screenshot" src="/assets/projects/prefab.png" alt="sword"/>
 
@@ -109,7 +109,7 @@ This sword is shared by multiple characters in your game, but you want to give o
 
 ### Prefab Variants
 
-Overriding works well when we have a small number of objects to work with. If the number of objects increases, using a prefab variant is much simpler. To understand this, lets take the example of a healing potion.
+Overriding works well with a small number of objects. However, as the number of objects increases, using prefab variants becomes the much simpler option. To understand this, lets take the example of a healing potion.
 
 - A `HealthPotion` heals the user by a certain amount when used.
 - You can have Multiple Types of Prefabs as:
@@ -127,7 +127,7 @@ There is now a hierarchy. A change to `SmallHealthPotion` will be propagated to 
 
 ## Bonus Content: Nested Prefabs
 
-Prefabs can also be nested inside other prefabs. These can be used for dividing the development process into smaller chunks. Let's take the example of an RPG game with enemy characters with weapons. The features of the game are
+Prefabs can also be nested inside other prefabs. These can be used to divide the development process into smaller, manageable parts. Let's take the example of an RPG game with enemy characters with weapons. The features of the game are
 
 - There are enemy characters which can be found throughout the world (Ex - Raider)
 - Each enemy also has items such as
@@ -192,7 +192,7 @@ When nesting prefabs, we have objects that contain other objects. This forms a p
 - Scale
 - Colliders
 
-## Refereneces
+## References
 
 1. [Prefabs - Unity Documentation](https://docs.unity3d.com/Manual/Prefabs.html)
 2. [Scenes - Godot Documentation](https://docs.godotengine.org/en/stable/getting_started/step_by_step/nodes_and_scenes.html)

@@ -8,21 +8,21 @@ role: "Graphics Programmer"
 engine: "OpenGL API, GLFW"
 language: "C++, GLSL"
 platform: "PC"
-description: "Lead mentor for summer project on Real-time computer graphics and shader writing. Designed an improved version of the OpenGL renderer project and overhauled code for user-friendly experience"
+description: "Lead mentor for summer project on Real-time computer graphics and shader writing. Designed an improved version of the OpenGL renderer project and overhauled code for user-friendly experience."
 image: "/assets/projects/gs5.png"
 ---
 
-Introduction to Graphics and Shaders was a summer project offered by GameDev Society, IITK as part of SnT Summer Projects 2022. I acted as the lead mentor of the project. It was aimed to teach students about real-time computer graphics and shader writing through regular meetups and assignments where they worked on extending a 3D renderer with features of their own.
+Introduction to Graphics and Shaders was a summer project offered by the GameDev Society, IITK, as part of SnT Summer Projects 2022. I acted as the lead mentor of the project. It was aimed to teach students about real-time computer graphics and shader writing through regular meetups and assignments where they worked on extending a 3D renderer with features of their own.
 
 - Source: <a href="https://github.com/studiocentauri/graphics-and-shaders-22">studiocentauri/graphics-and-shaders-22</a>
 
-The 3D Renderer for the project was built on OpenGL using GLFW for window context and ImGUI was used to create GUI windows. This is a new and improved version of the 3D Renderer which I already built as a self-project(<a href="/opengl-renderer/">OpenGL Renderer</a>). You should access it regarding information on the features of the Renderer and its low level code implementation.
+The 3D Renderer for the project was built on OpenGL using GLFW for window context, and ImGUI was used to create GUI windows. This is a new and improved version of the 3D Renderer which I had already built as a self-project(<a href="/opengl-renderer/">OpenGL Renderer</a>). You should refer to it for information on the features of the Renderer and its low-level code implementation.
 
 <img class="article-screenshot" src="/assets/projects/gs2.png" alt=""/>
 
-This new renderer was by developed from scratch by a team of 3 programmers including myself. We analyzed and reinvented the previous renderer using much less code and better compatability across various systems. We used insight and features from the existing codebase to write and this resulted in a cleaner and easier to understand library. This version of the renderer is aimed to give a more user-friendly experience while the code is also optimised for faster implementation of subsequent features.
+This new renderer was developed from scratch by a team of 3 programmers, including myself. We analyzed and reinvented the previous renderer using much less code and better compatibility across various systems. We used insights and features from the existing codebase to create a cleaner and easier-to-understand library. This version of the renderer is aimed at giving a more user-friendly experience while the code is also optimized for faster implementation of subsequent features.
 
-The project has uses CMake build system for building the renderer. It allows for easy switching of build target and builds via a common renderer library. The CMake is also adjusted for files needed to build the library with the various types of project files being grouped based on type.
+The project uses CMake build system for building the renderer. It allows for easy switching of build targets and builds via a common renderer library. The CMake is also adjusted for files needed to build the library, with the various types of project files being grouped based on type.
 
 <div class="code-container">
 <pre class="code-block">
@@ -172,9 +172,9 @@ private:
 </pre>
 </div>
 
-GUI has been provided to access the actor properties. All the actors of a given scene are listed in a GUI window named as **SCENE ACTOR LIST**. Each actor can have its name changed, visibility toggled, transform altered.
+A GUI has been provided to access the actor properties. All the actors of a given scene are listed in a GUI window named **SCENE ACTOR LIST**. Each actor can have its name changed, visibility toggled, transform altered.
 
-As we stated each actor has a material. The materials are based on the various shader templates. Each shader template will have a material instance which defines this specific actor's color or texture. This data gets used in the shader code to render the object to scene. The various point, directional and spot lights give a combined lighting effect as we render each actor.
+As stated, each actor has a material. The materials are based on various shader templates. Each shader template will have a material instance that defines this specific actor's color or texture. This data gets used in the shader code to render the object to scene. The various point, directional, and spot lights give a combined lighting effect as we render each actor.
 
 <img class="article-screenshot" src="/assets/projects/gs0.png" alt=""/>
 

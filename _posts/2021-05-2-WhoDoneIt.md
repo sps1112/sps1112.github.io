@@ -12,18 +12,18 @@ description: "Mystery detective game made in Unity for the BYOG Game Jam 2021. O
 image: "/assets/projects/who-done0.jpg"
 ---
 
-A mystery-detective game made in a 9-membered team as part of Studio Centauri, the game development society of IIT Kanpur. The game developed for BYOG Game Jam 2021, a 3-day game jam organized by the Gamedev.in, a community of Indian game developers. The theme of the game jam that we used was "2 views".
+A mystery-detective game made in a 9-member team as part of Studio Centauri, the game development society of IIT Kanpur. The game was developed for BYOG Game Jam 2021, a 3-day game jam organized by Gamedev.in, a community of Indian game developers. The theme of the game jam that we used was "2 views".
 
 - Build: <a href="https://studiocentauri.itch.io/who-done-it">Who Done It?</a>
 - Source: <a href="https://github.com/studiocentauri/byog21-gamedev">studiocentauri/byog21-gamedev</a>
 
-Who done it? is a detective game where you dig into a murder case with differing point of views. There are 2 major witnesses of the murder, both of which tell a different story. You have to look for clues, listen to witness testimonies for said clues and piece-together what truly happend that fateful night!
+Who Done It? is a detective game where you dig into a murder case with differing points of view. There are 2 major witnesses to the murder, both of whom tell a different story. You have to look for clues, listen to witness testimonies for said clues, and piece-together what truly happened that fateful night!
 
 <img class="article-screenshot" src="/assets/projects/who-done0.jpg" alt=""/>
 
-Word done as part of the developed process included:-
-- Design of the murder event, clues, witnesses, testimonies and the methods of interacting with the crime scene.
-- The input manager allowing player movement by clicking on the game map. Player AI moves with the help of Unity's NavMesh system and traverse the scene. Click on a witness to initiate dialogue and click on a clue to inspect it.
+Work done as part of the development process included:
+- Design of the murder event, clues, witnesses, testimonies, and the methods of interacting with the crime scene.
+- The input manager allows player movement by clicking on the game map. Player AI moves with the help of Unity's NavMesh system and traverses the scene. Click on a witness to initiate dialogue, and click on a clue to inspect it.
 
 <img class="article-screenshot" src="/assets/projects/who-done3.png" alt=""/>
 
@@ -63,7 +63,7 @@ void Update()
 </pre>
 </div>
 
-- The Camera system for the dialogue window and the clue inspect window. The cam view shifts when the player accesses the witness's testimony to look at the witness. Dynamically change the camera rect for the dialogue window to focus on more the conversation and show.
+- The camera system for the dialogue window and the clue inspection window. The camera view shifts when the player accesses the witness's testimony to look at the witness. Dynamically change the camera rect for the dialogue window to focus more on the conversation and show the characters.
 
 <img class="article-screenshot" src="/assets/projects/who-done1.png" alt=""/>
 
@@ -114,6 +114,6 @@ void SetupAR()
 </pre>
 </div>
 
-- After dialogue with a witness, their corresponding event will be added to the Events UI. The player will be able to access events based on the event and try to formulate a chain of events which took place. By choosing the correct events, the player will complete the game.
+- After dialogue with a witness, their corresponding event will be added to the Events UI. The player will be able to access events based on the event and try to formulate a chain of events that took place. By choosing the correct events, the player will complete the game.
 
 <img class="article-screenshot" src="/assets/projects/who-done2.png" alt=""/>
