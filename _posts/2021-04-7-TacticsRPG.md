@@ -16,33 +16,33 @@ image: "/assets/projects/tactics0.png"
   - [Turn Based Flow](#turn-based-flow)
   - [Grid Movement](#grid-movement)
 
-An Isometric Tactics RPG made in the Unity. The project is inspired by tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the GameBoy Advance.
+An isometric tactics RPG made in Unity. The project is inspired by tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the Game Boy Advance.
 
 - Web Build: <a href="https://kingcrimson1112.itch.io/tactics-rpg">Tactics RPG</a>
 - Source: <a href="https://github.com/sps1112/tactics-rpg">sps1112/tactics-rpg</a>
 
-The game is divided into various missions with each mission taking place on a defined template level. Each level is an Isometric 3D grid made of grid blocks. We can place our player character at any one of the spawning points at the start of the mission and then begin. The enemy character will have been spawned already. Future features for the game loop will include party based gameplay, combat system and radiant missions.
+The game is divided into various missions, with each mission taking place on a defined template level. Each level is an Isometric 3D grid made up of grid blocks. We can place our player character at any one of the spawning points at the start of the mission, and then begin. The enemy character will already be spawned. Future features for the game loop will include party-based gameplay, a combat system, and radiant missions.
 
 <img class="article-screenshot" src="/assets/projects/tactics10.png" alt=""/>
 
 ### Level Generation
 
-The project requires the creation of complex 3D grids and placement of obstacles on that grid. Since it can become tedious to generate or edit each element and assign references, we used Unity editor scripting to provide level generation tools. The editor tools will edit a scriptable object which holds the grid data.
+The project requires the creation of complex 3D grids and placement of obstacles on that grid. Since it can become tedious to generate or edit each element and assign references, we use Unity editor scripting to provide level generation tools. The editor tools edit a scriptable object that holds the grid data.
 
 For the isometric 3D grid, we have defined its structure as:- 
 - A 2D array of grid blocks. We can understand it as a N X M array.
   - We can define the number of rows and columns in the editor window.
 - Each grid element in the grid can have a height value.
-  - A height value of 0 means no grid for that position.
-  - Any other value means this will be used in level generation.
-- Prefabs needed to generate the level need to assigned as:
+  - A height value of 0 means no grid at that position.
+  - Any other value indicates it will be used in level generation.
+- Prefabs needed to generate the level need to be assigned as:
   - *Bottom*: At the bottom of the each grid block.
-  - *Mid*: At the middle. The number of middle blocks is the same as height.
+  - *Mid*: At the middle. The number of middle blocks is the same as the height.
   - *Top*:  At the top of each block.
   
 <img class="article-screenshot" src="/assets/projects/tactics6.png" alt=""/>
 
-This window was created via Editor scripting. Here we can either create a new **Level layout** or edit an existing level and its properties. Once we have done that, we can save the layout asset and use it accordingly.
+This window was created using Editor scripting. Here we can either create a new **Level layout** or edit an existing level and its properties. Once we have done that, we can save the layout asset and use it accordingly.
 
 <div class="code-container">
 <pre class="code-block">
@@ -107,11 +107,11 @@ void OnGUI()
 </pre>
 </div>
 
-In the same way, we can define another window to edit the **Obstacle layout**. We can give it the rows and columns of the grid and define the obstacle prefab to place in a given position. We can place special grids such as **No Action Grids**, where actions such as combat cannot be performed. We also mark the possible spawn points for the enemies and player character.
+In the same way, we can define another window to edit the **Obstacle layout**. We can specify the rows and columns of the grid, and define the obstacle prefab to place in a given position. We can place special grids such as **No Action Grids**, where actions such as combat cannot be performed. We also mark the possible spawn points for the enemies and player character.
 
 <img class="article-screenshot" src="/assets/projects/tactics7.png" alt=""/>
 
-Once we have both level layout and obstacle layout assets, we can define a mission asset. This mission will take in variables such as mission name, level layout, obstacle layout and enemy list. We assign the mission to a template empty scene and here we will generate our grid with the obstacles placed on it. Once the mission starts, the enemies get spawned at random on the possible spawn points.
+Once we have both level layout and obstacle layout assets, we can define a Mission asset. This mission will take in variables such as mission name, level layout, obstacle layout and enemy list. We assign the mission to a template empty scene and here we will generate our grid with the obstacles placed on it. Once the mission starts, the enemies get spawned at random on the possible spawn points.
 
 <div class="two-images">
 <img class="article-screenshots" src="/assets/projects/tactics8.png" alt=""/>
@@ -121,7 +121,7 @@ Once we have both level layout and obstacle layout assets, we can define a missi
 
 ### Basic Interactions
 
-Various input options have been given to the player such that they can interact with the level. Some of them are:
+Various input options have been given to the player so that they can interact with the level. Some of them are:
 - We can enter scan mode by holding Left-Shift button. This will allow us to scan any grid block. A UI widget will show the grid block's position, row, column and it will be colored to show whether it is a free grid or has an obstacle/enemy on it. This is done by a simple raycast from the cursor to the grid block.
   - Green means free grid.
   - Red means occupied grid.
@@ -131,8 +131,8 @@ Various input options have been given to the player such that they can interact 
 
 <img class="article-screenshot" src="/assets/projects/tactics11.png" alt=""/>
 
-- By holding down right-click and dragging the mouse, the player can move the camera and see other parts of the grid. The player can press F to focus on the player as the camera lerps back to player's posistion. Otherwise if they use any action, the camera snaps back by itself.
-- Pressing Q and E allows the player to zoom in or zoom out. This is done by changing the orthographic camera's size.
+- By holding down right-click and dragging the mouse, the player can move the camera and see other parts of the grid. The player can press F to focus on the player as the camera lerps back to player's position. Otherwise if they use any action, the camera snaps back by itself.
+- Pressing Q and E allows the player to zoom in and out. This is done by changing the orthographic camera's size.
 - Pressing Esc or P will open the pause menu which the player can use to go back to the menu and try out any other level.
 
 <div class="code-container">
@@ -181,8 +181,8 @@ void Update()
 ### Turn Based Flow
 Each mission flows through a turn system. There are two parts of a mission:
 - **Player Spawning**.
-  - The spawning process takes place as the mission starts. We have a splash screen of the mission and level name. Then the camera pans to show the player spawning points.
-  - Here we have to options to drag the camera and see the level and enemy placements. Satisfied, we can focus back on the spawn points.
+  - The spawning process begins as the mission starts. We have a splash screen of the mission and level name. Then the camera pans to show the player spawning points.
+  - Here we have the option to drag the camera and see the level and enemy placements. Satisfied, we can focus back on the spawn points.
   - We can left click on any of the possible grids to spawn the player. If you want to undo, simply press the Space to spawn again.
   - Once clicked, confirm your choice to start the mission.
 
@@ -275,7 +275,7 @@ public enum TurnPhase
     SPAWN, // Spawning a player character
     CHECK, // Checking whether action left to go to menu
     MENU, // Choosing action in Action Menu
-    MOVE, // Chossing grid to move to
+    MOVE, // Choosing grid to move to
     MOVING, // Moving to chosen grid
     ATTACK, // Choosing grid to attack
     ATTACKING, // Attacking chosen grid
@@ -287,13 +287,13 @@ public enum TurnPhase
 <img class="article-screenshot" src="/assets/projects/tactics2.png" alt=""/>
 
 ### Grid Movement
-Both the player and enemy characters can move on the 3D grid using a custom implementation of the **A* algorithm** to find the optimal path between two grid blocks. You can access info on the implementation for A* algorithm through this <a href="/pathfinder/">project</a>. 
+Both the player and enemy characters can move on the 3D grid using a custom implementation of the **A* algorithm** to find the optimal path between two grid blocks. You can access information on the implementation of the A* algorithm through this <a href="/pathfinder/">project</a>. 
 
 For our 3D grid, the algorithm takes in the character's jump stat to define whether it can move from one block to the next. An example of this is, if the jump stat is 2 and the height gap between two blocks is 3, then the character cannot directly move to that block.
 
 Now, the motion for the two types of character's takes place as:
 - **Player Movement**
-  - If its the player's turn, we can click on the Move button to engage in the movement process. This changes the turn phase to **MOVE**.
+  - If it’s the player’s turn, we can click on the Move button to engage in the movement process. This changes the turn phase to **MOVE**.
   - We will be shown a list of possible grids we can move to and it will be highlighted as blue. The grids shown is dependent on the number of actions available to the player. 
     - This will be the same as the number of steps the player can move this turn.
   - We can click on any of these possible grids and the player will move to it. The A* algorithm will find the optimal path.
@@ -306,8 +306,6 @@ Now, the motion for the two types of character's takes place as:
 <div class="code-container">
 <pre class="code-block">
 // TurnManager.cs
-
-// Process Grid Clcks based on current phase
 public void ProcessGridClick(GridElement element)
 {
     if (phase == TurnPhase.SPAWN) // Currently spawning for player
@@ -355,7 +353,7 @@ public IEnumerator MoveCharacterAlongPath(Path path)
 
 - **Enemy Movement**
   - If it's the enemy's turn, it will try to get close to the player character. Based on the actions, the enemy will show all the possible grids it can move to and turn phase changes to **MOVE**.
-  - The enemy will try to process a path to the player. It will select all 4 neighbour grids to the player's current grid and try to find a path to all of them. Some of them, the enemy can reach while some he cannot. 
+  - The enemy will try to process a path to the player. It will select all 4 neighbour grids to the player's current grid and try to find a path to all of them. Some of them, the enemy can reach while some it cannot. 
   - We should now have lists of paths to the player, both complete and incomplete. Out of all of these paths, we choose the path with the complete path with smallest length.
   - Now we have a path we need to follow. We can fix the path for the possible grids we can move to. 
     - Here, we will trace the path as long as it is inside our pool of grids. This gives the grid which will get us the closest to the player.
@@ -428,6 +426,6 @@ IEnumerator StartEnemyTurn()
 </pre>
 </div>
 
-In the current version, the player and enemy turns can take place one after the another the enemy AI will try to find a way to the player character. As stated at the start, future versions of the project will include the combat system and party based gameplay. 
+In the current version, the player and enemy turns can take place one after the another. The enemy AI will try to find a way to the player character. As stated at the start, future versions of the project will include the combat system and party based gameplay. 
 
 You can access the web build of the project <a href="https://kingcrimson1112.itch.io/tactics-rpg">here</a>.

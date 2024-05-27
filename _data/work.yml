@@ -4,11 +4,11 @@
   position: "Graphics Engineer Intern"
   timeline: "May 2022 - July 2022"
   tasks:
-    - task: "Worked as a Graphics programmer to enhance the Shutter engine with 3D model loading solutions, redesigning the existing mesh rendering classes in core codebase"
+    - task: "Worked as a Graphics Programmer to enhance the Shutter engine with 3D model loading solutions, redesigning the existing mesh rendering classes in core codebase"
     - task: "Employed the Open Asset Importer Library (ASSIMP) as a vendor submodule and integrated in Shutter for seamless model loading"
     - task: "Developed custom rendering solutions using GLFW for enhanced visual representation resulting in faster Proof of Concept (POC) prototyping"
     - task: "Successfully integrated ASSIMP POC into Shutter as a Linux executable module, enhancing the engine capabilities and improving compatibility across systems"
-    - task: "Resolved compilation and runtime errors overhauling the Shutter code using platform feature flags, optimising the Design Studio Tool"
+    - task: "Resolved compilation and runtime errors overhauling the Shutter code using platform feature flags, optimizing the Design Studio Tool"
 
 - company: "Studio Centauri, IITK"
   logo: "/assets/logos/gamedev.png"
@@ -27,7 +27,7 @@
   position: "Student Guide"
   timeline: "October 2020 - July 2021"
   tasks:
-    - task: "Shortlisted by the Conselling Serivce, IITK to act as a Student Guide for Y20 fresher batch"
+    - task: "Shortlisted by the Counselling Service, IITK to act as a Student Guide for Y20 fresher batch"
     - task: "Personally guided and mentored 5 Y20 freshmen students, helping them acclimate to the Institute environment during their online semesters"
     - task: "Helped them with their academics and provided holistic support by arranging regular meetings with their mentors while maintaining a good rapport with them"
     - task: "Coordinated with the Counselling Service and helped in organizing the online Orientation Ceremony 2020 for Y20s"
