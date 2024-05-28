@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "NA"
 language: "C++"
 platform: "PC"
-description: "Noise generation library written in C++ using stb_image for rendering to an image. Allows generation of random noise, perlin noise, octave noise and creation of 2D color maps."
+description: "Noise generation library written in C++ using stb_image for rendering images. Allows generation of random noise, perlin noise, octave noise and creation of 2D color maps."
 image: "/assets/projects/noise9.png"
 ---
 

@@ -7,7 +7,7 @@ type: "Self-project"
 engine: "NA"
 language: "C++"
 platform: "PC"
-description: "Pathfinder utlizing the A* algorithm for finding the optimal path on a 2D map between a start and target node. Grid gets rendered to show the grids and the path taken."
+description: "Pathfinder utilizing the A* algorithm for finding the optimal path on a 2D map between a start and target node. Grid gets rendered to show the grids and the path taken."
 image: "/assets/projects/path0.png"
 ---
 
