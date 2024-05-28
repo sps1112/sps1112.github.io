@@ -8,7 +8,7 @@ role: "Graphics Programmer"
 engine: "OpenGL API, GLFW"
 language: "C++, GLSL"
 platform: "PC"
-description: "Lead mentor for summer project on Real-time computer graphics and shader writing. Designed an improved version of the OpenGL renderer project and overhauled code for user-friendly experience."
+description: "Lead mentor for a summer project on Real-time computer graphics and shader writing. Designed an improved version of the OpenGL renderer project and overhauled code for user-friendly experience."
 image: "/assets/projects/gs5.png"
 ---
 
