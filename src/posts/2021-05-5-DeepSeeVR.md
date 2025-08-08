@@ -1,0 +1,131 @@
+---
+layout: project
+title: "DeepSeeVR"
+author: Siddhartha
+permalink: /switch/
+type: "IndieVerse Studio"
+role: "Game Programmer"
+engine: "Unity"
+language: "C#"
+platform: "Quest 3"
+description: "A"
+image: "/assets/projects/switch0.png"
+---
+
+Switch is a split-screen platformer game made in Unity. The project was developed for Inter IIT Tech Meet 11.0 as a submission by GameDev Society, IITK for the IGDC Problem Statement. 
+
+The problem statement was structured as a 10-day game jam where we had to submit a finished game. There were multiple themes for the game jam, and we developed Switch around the themes, 'India' and 'Mirror'. There were over 10 members in the team with 5 programmers and rest artists and designers.
+
+- Source: <a href="https://github.com/studiocentauri/switch">studiocentauri/switch</a>
+
+Switch is designed as your standard platformer game. The character has a 2D Character controller which allows it to move and jump across the level. We use the theme "Mirror" to create a split screen game. We have 2 screens which are mirror images of each other. The platforms may be different in each screen and we have 2 characters to control.
+
+<img class="article-screenshot" src="/assets/projects/switch2.png" alt=""/>
+
+Each character also has its own special ability. The character in the top screen has a stomp power it can use to destroy breakable objects and cause the character on the bottom screen to jump great heights. The character on the bottom has a Dash ability which can be used to cover lengthy gaps in the level or pass over deadly traps. 
+
+<div class="code-container">
+<pre class="code-block">
+// Controller.cs
+private void Smash()
+{
+    rb.gameObject.GetComponentInChildren&lt;Animator&gt;().SetBool("isJump", false);
+    rb.gameObject.GetComponentInChildren&lt;Animator&gt;().SetBool("isSmash", true);
+    rb.AddForce(isGroundDown ? Vector2.up * jumpPow : Vector2.down * jumpPow);
+    canSpecial = false;
+    rb.velocity = isGroundDown ? Vector2.down * smashvel : Vector2.up * smashvel;
+    isSmashing = true;
+}
+
+private void Dash()
+{
+    rb.gameObject.GetComponentInChildren&lt;Animator&gt;().SetBool("isJump", false);
+    rb.gameObject.GetComponentInChildren&lt;Animator&gt;().SetBool("isSmash", true);
+    parSys.gameObject.SetActive(true);
+    
+    Vector2 dashDirection = lookDirection * Vector2.right;
+    rb.AddForce(dashDirection * dashForce, ForceMode2D.Impulse);
+    canSpecial = false;
+    AudioManager.instance.PlaySound("Dash");
+    SyncParticles();
+    Invoke("StopDash", dashDuration);
+}
+
+void StopDash()
+{
+    parSys.gameObject.SetActive(false);
+    Vector2 velocity = rb.velocity;
+    velocity.x = 0.0f;
+    rb.velocity = velocity;
+}
+</pre>
+</div>
+
+
+The game is divided into 2 tutorial levels and 3 main levels. The main levels are based on 3 cities in India: Chennai, Delhi and Srinagar. The game also has special cutscenes that take place between the levels. It is accompanied by splash screen artwork and scrolling text dialogues by our character.
+
+<img class="article-screenshot" src="/assets/projects/switch1.png" alt=""/>
+
+There are also 2 main mechanics that the player uses to control the 2 characters. 
+- The player can switch between the characters at the press of a button. They can then control each character to overcome the obstacles and clear the levels. 
+
+<img class="article-screenshot" src="/assets/projects/switch3.png" alt=""/>
+
+- Sometimes, though, a character cannot clear an obstacle in front of it but can be cleared by its mirror character. Here, the player can morph and flip the map upside down. Now the mirror character can clear said obstacle with ease.
+
+<div class="code-container">
+<pre class="code-block">
+// InputManager.cs
+public void OnMapSwitch()
+{
+    if (canSwitch)
+    {
+        ... // Check if any character will not collide with map if it flips
+        if(tileflip.transform.Find("Obstacles"))
+        {
+            tileflip.transform.Find("Obstacles").GetComponent&lt;FixRigidBodies&gt;().SwapGravity();
+        }
+        map_timer = 0; // reset cooldown timer
+        AudioManager.instance.PlaySound("Map Switch");
+        if (tileflip.transform.rotation.eulerAngles.y == 0)
+        {
+            tileflip.gameObject.GetComponent&lt;Animator&gt;().Play("TileFlipTo");
+        }
+        else
+        {
+            tileflip.gameObject.GetComponent&lt;Animator&gt;().Play("TileFlipFrom");
+        }
+        ...
+    }
+}
+</pre>
+</div>
+
+We also freeze both characters in place as the map flips. Once the animation has played and the colliders are active, we can restart the player rigidbodies and control them again.
+
+<div class="code-container">
+<pre class="code-block">
+// TileFlip.cs
+public void OnFlipTo()
+{
+    P1.constraints = RigidbodyConstraints2D.FreezeAll;        
+    P1.gameObject.GetComponentInChildren&lt;Animator&gt;().speed = 0;
+    P2.constraints = RigidbodyConstraints2D.FreezeAll;        
+    P2.gameObject.GetComponentInChildren&lt;Animator&gt;().speed = 0;
+    ...
+}
+
+public void OnFlipFrom()
+{
+    P1.constraints = RigidbodyConstraints2D.FreezeRotation;
+    P1.gameObject.GetComponentInChildren&lt;Animator&gt;().speed = 1;
+    P2.constraints = RigidbodyConstraints2D.FreezeRotation;
+    P2.gameObject.GetComponentInChildren&lt;Animator&gt;().speed = 1;
+    ...
+}
+</pre>
+</div>
+
+The game also features other mechanics such as parallax scrolling, a time-based scoring system, in-level hints and more. The player can access each level by a level select screen available in the main menu. There are a variety of obstacles, such as static, movable and breakable ones. Some obstacles are in the form of traps, such that if the character touches them, they will lose, and the level will reset.
+
+<img class="article-screenshot" src="/assets/projects/switch4.png" alt=""/>
