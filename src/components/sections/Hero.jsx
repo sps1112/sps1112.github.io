@@ -216,7 +216,7 @@ function Hero({ onNavigate }) {
     background: 'linear-gradient(145deg, rgba(10,10,10,0.1) 0%, rgba(26,26,26,0.08) 50%, rgba(10,10,10,0.12) 100%)',
     borderRadius: '24px',
     backdropFilter: 'blur(8px) saturate(120%)',
-    border: '1px solid rgba(255,255,255,0.05)',
+    border: '2px solid rgba(255,255,255,0.05)',
     borderTop: '1px solid rgba(255,255,255,0.1)',
     marginTop: '80px',
     boxShadow: '0 20px 60px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1)',

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import { siteConfig } from './data/config'
 
 // Apply professional typography-focused global styles
 document.body.style.cssText = `
@@ -20,6 +21,8 @@ document.body.style.cssText = `
 
 // Simple global styles
 const globalStyle = document.createElement('style');
+const mobileMax = (siteConfig && siteConfig.breakpoints && siteConfig.breakpoints.mobileMax) || 700
+const tabletMax = (siteConfig && siteConfig.breakpoints && siteConfig.breakpoints.tabletMax) || 1150
 globalStyle.textContent = `
   * {
     margin: 0;
@@ -79,54 +82,7 @@ globalStyle.textContent = `
     }
   }
   
-  @keyframes modalSlideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: -1000px 0;
-    }
-    100% {
-      background-position: 1000px 0;
-    }
-  }
-  
-  @keyframes glow {
-    0%, 100% {
-      text-shadow: 0 0 20px rgba(74,158,255,0.3), 0 0 40px rgba(74,158,255,0.1);
-    }
-    50% {
-      text-shadow: 0 0 25px rgba(74,158,255,0.5), 0 0 50px rgba(74,158,255,0.2);
-    }
-  }
-  
-  @keyframes bannerSlide {
-    0% {
-      transform: scale(1.05) translateX(30px);
-      opacity: 0;
-    }
-    100% {
-      transform: scale(1) translateX(0);
-      opacity: 0.8;
-    }
-  }
   
   @keyframes bannerEntry {
     0% {
@@ -148,27 +104,30 @@ globalStyle.textContent = `
     }
   }
   
-  @keyframes fadeInScale {
-    0% {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
 
-  @media (max-width: 768px) {
+
+  /* Global responsive nav synced with siteConfig breakpoints */
+  .mobile-nav { display: none; }
+
+  @media (max-width: ${mobileMax}px) {
     .desktop-nav {
       display: none !important;
     }
     .mobile-nav {
       display: flex !important;
     }
+    /* About mobile order */
+    .about-grid { grid-template-columns: 1fr !important; }
+    .about-photo { order: 1; }
+    .about-name { order: 2; }
+    .about-intro { order: 3; }
+    .about-status { order: 4; }
+    .about-skills { order: 5; }
+    .about-hobbies { order: 6; }
+    .about-quote { order: 7; grid-column: auto !important; }
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: ${mobileMax + 1}px) {
     .mobile-nav {
       display: none !important;
     }

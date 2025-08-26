@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "Noise Generator"
+date: "June, 2021"
 author: Siddhartha
 permalink: /noise-gen/
 type: "Personal"

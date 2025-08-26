@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Modal from '../ui/Modal'
+import ContentModal from '../ui/ContentModal'
 
 function ArticleModal({ article, isOpen, onClose }) {
   const [readingProgress, setReadingProgress] = useState(0)
@@ -277,75 +277,30 @@ function ArticleModal({ article, isOpen, onClose }) {
   }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} maxWidth="800px">
-      <div style={progressBarStyles}></div>
-      <div style={contentStyles} data-article-content>
-        <div style={headerStyles}>
-          <h1 style={titleStyles}>{article.title}</h1>
-          
-          <div style={metaStyles}>
-            <div style={metaItemStyles}>
-              <span>📅</span>
-              <span>{article.date}</span>
-            </div>
-            <div style={metaItemStyles}>
-              <span>⏱️</span>
-              <span>{article.readTime}</span>
-            </div>
-            <div style={categoryBadgeStyles}>
-              {getCategoryIcon(article.category)} {article.category}
-            </div>
-          </div>
-
-          <p style={{
-            fontSize: '1.1rem',
-            color: '#ccc',
-            fontStyle: 'italic',
-            marginTop: '1rem'
-          }}>
-            {article.description}
-          </p>
-        </div>
-
-        {article.image ? (
-          <>
-            <img
-              src={article.image}
-              alt={article.title}
-              style={heroImageStyles}
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.nextSibling.style.display = 'flex'
-              }}
-            />
-            <div style={{...placeholderImageStyles, display: 'none'}}>
-              {getCategoryIcon(article.category)}
-            </div>
-          </>
-        ) : (
-          <div style={placeholderImageStyles}>
-            {getCategoryIcon(article.category)}
-          </div>
-        )}
-
+    <ContentModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={article.title}
+      typeLabel={null}
+      image={article.image}
+      meta={{ date: article.date, readTime: article.readTime, tag: `${getCategoryIcon(article.category)} ${(article.categoryLabel || (article.category ? (article.category.charAt(0).toUpperCase() + article.category.slice(1)) : ''))}` }}
+      description={article.description}
+      content={article.content}
+      renderContent={(c) => (
         <div style={articleContentStyles}>
-          {renderMarkdownContent(article.content)}
+          {renderMarkdownContent(c)}
+          <div style={{
+            marginTop: '3rem',
+            paddingTop: '2rem',
+            borderTop: '1px solid rgba(70, 150, 225, 0.2)',
+            textAlign: 'center',
+            color: '#ccc'
+          }}>
+            <p>Thank you for reading! 🎉</p>
+          </div>
         </div>
-
-        <div style={{
-          marginTop: '3rem',
-          paddingTop: '2rem',
-          borderTop: '1px solid rgba(70, 150, 225, 0.2)',
-          textAlign: 'center',
-          color: '#ccc'
-        }}>
-          <p>Thank you for reading! 🎉</p>
-          <p style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>
-            Progress: {Math.round(readingProgress)}% complete
-          </p>
-        </div>
-      </div>
-    </Modal>
+      )}
+    />
   )
 }
 

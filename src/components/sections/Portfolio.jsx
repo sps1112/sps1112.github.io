@@ -1,10 +1,27 @@
 import React, { useState } from 'react'
-import { categories, getProjectsByCategory } from '../../data/projects'
-import ProjectCard from '../ui/ProjectCard'
+import { categories, projects as initialProjects } from '../../data/projects'
+import ContentCard from '../ui/ContentCard'
 
 function Portfolio({ onProjectClick }) {
   const [activeCategory, setActiveCategory] = useState('all')
-  const filteredProjects = getProjectsByCategory(activeCategory)
+  const [projectsList, setProjectsList] = useState(initialProjects)
+
+  const filteredProjects = projectsList.filter(p => {
+    if (activeCategory === 'all') return true
+    if (activeCategory === 'professional') return p.type === 'Professional'
+    if (activeCategory === 'personal') return p.type === 'Personal'
+    if (activeCategory === 'games') return p.category === 'Games'
+    if (activeCategory === 'graphics') return p.category === 'Graphics'
+    if (activeCategory === 'other') return p.category === 'Other'
+    return true
+  }).reverse()
+
+  if (import.meta && import.meta.hot) {
+    import.meta.hot.accept('../../data/projects', async () => {
+      const mod = await import('../../data/projects.js?ts=' + Date.now())
+      setProjectsList(mod.projects)
+    })
+  }
 
   const portfolioStyles = {
     minHeight: '100vh',
@@ -109,10 +126,23 @@ function Portfolio({ onProjectClick }) {
 
         <div style={gridStyles}>
           {filteredProjects.map((project, index) => (
-            <ProjectCard
+            <ContentCard
               key={project.id}
-              project={project}
-              onClick={onProjectClick}
+              item={{
+                id: project.id,
+                title: project.title,
+                image: project.image,
+                description: project.description,
+                date: project.date,
+                readTime: project.readTime,
+                tagLabel: project.categoryLabel || (project.category ? (project.category.charAt(0).toUpperCase() + project.category.slice(1)) : ''),
+                organization: project.organization,
+                role: project.role,
+                engine: project.engine,
+                languages: project.language
+              }}
+              onClick={() => onProjectClick && onProjectClick(project)}
+              staggerIndex={index}
             />
           ))}
         </div>

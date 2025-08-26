@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "The Tests"
+date: "Sept, 2020"
 author: Siddhartha
 permalink: /the-tests/
 type: "Personal"

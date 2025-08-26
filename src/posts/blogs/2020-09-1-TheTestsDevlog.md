@@ -1,17 +1,19 @@
 ---
 layout: article
 title: "The Tests: Devlog"
-time: "Aug, 2020"
+date: "Sept, 2020"
 author: Siddhartha
 permalink: /thetests-devlog/
 description: "Devlog for the game, \"The Tests\" developed for Fall Game Jam 2020"
 image: "/assets/projects/tests5.png"
+category: "GameDev"
 ---
 # Contents
-- [Concept](#concept)
-- [Gameplay](#gameplay)
-- [Finishing](#finishing)
-- [Conclusion](#conclusion)
+- [Contents](#contents)
+  - [Concept](#concept)
+  - [Gameplay](#gameplay)
+  - [Finishing](#finishing)
+  - [Conclusion](#conclusion)
 
 ## Concept
 

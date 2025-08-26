@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "OpenGL Renderer"
+date: "July, 2021"
 author: Siddhartha
 permalink: /opengl-renderer/
 type: "Personal"

@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
-import { getArticlesByCategory } from '../../data/articles'
+import { articles as initialArticles } from '../../data/articles'
+import ContentCard from '../ui/ContentCard'
 
 function Blogs({ onArticleClick }) {
   const [activeCategory, setActiveCategory] = useState('all')
-  const filteredArticles = getArticlesByCategory(activeCategory)
+  const [articlesList, setArticlesList] = useState(initialArticles)
+
+  const filteredArticles = articlesList.filter(a => {
+    if (activeCategory === 'all') return true
+    return a.category === activeCategory
+  }).reverse()
+
+  if (import.meta && import.meta.hot) {
+    import.meta.hot.accept('../../data/articles', async () => {
+      const mod = await import('../../data/articles.js?ts=' + Date.now())
+      setArticlesList(mod.articles)
+    })
+  }
 
   const categories = [
     { id: 'all', label: 'All' },
@@ -74,42 +87,6 @@ function Blogs({ onArticleClick }) {
     gap: '2rem'
   }
 
-  const cardStyles = {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 255, 255, 0.12)',
-    borderRadius: '12px',
-    overflow: 'hidden',
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-  }
-
-  const imageStyles = {
-    width: '100%',
-    height: '180px',
-    objectFit: 'cover'
-  }
-
-  const cardBodyStyles = {
-    padding: '1rem 1.25rem'
-  }
-
-  const cardTitleStyles = {
-    color: '#ffffff',
-    fontSize: '1.1rem',
-    fontWeight: '700',
-    marginBottom: '0.5rem'
-  }
-
-  const cardMetaStyles = {
-    color: '#aaaaaa',
-    fontSize: '0.85rem',
-    marginBottom: '0.5rem'
-  }
-
-  const cardDescStyles = {
-    color: '#cccccc',
-    fontSize: '0.95rem'
-  }
 
   return (
     <section style={sectionStyles}>
@@ -149,29 +126,21 @@ function Blogs({ onArticleClick }) {
         </div>
 
         <div style={gridStyles}>
-          {filteredArticles.map((article) => (
-            <div
+          {filteredArticles.map((article, idx) => (
+            <ContentCard
               key={article.id}
-              style={cardStyles}
+              item={{
+                id: article.id,
+                title: article.title,
+                image: article.image,
+                description: article.description,
+                date: article.date,
+                readTime: article.readTime,
+                tagLabel: article.categoryLabel || (article.category ? (article.category.charAt(0).toUpperCase() + article.category.slice(1)) : ''),
+              }}
               onClick={() => onArticleClick && onArticleClick(article)}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-4px)'
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(74,158,255,0.15)'
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
-            >
-              {article.image && (
-                <img src={article.image} alt={article.title} style={imageStyles} />
-              )}
-              <div style={cardBodyStyles}>
-                <div style={cardTitleStyles}>{article.title}</div>
-                <div style={cardMetaStyles}>{article.date} • {article.readTime}</div>
-                <div style={cardDescStyles}>{article.description}</div>
-              </div>
-            </div>
+              staggerIndex={idx}
+            />
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "Tactics: RPG"
+date: "Dec, 2023"
 author: Siddhartha
 permalink: /tactics-rpg/
 type: "Personal"
@@ -12,10 +13,11 @@ description: "Isometric Tactics RPG inspired by games such as Final Fantasy: Tac
 image: "/assets/projects/tactics0.png"
 ---
 # Contents
-  - [Level Generation](#level-generation)
-  - [Basic Interactions](#basic-interactions)
-  - [Turn Based Flow](#turn-based-flow)
-  - [Grid Movement](#grid-movement)
+- [Contents](#contents)
+    - [Level Generation](#level-generation)
+    - [Basic Interactions](#basic-interactions)
+    - [Turn Based Flow](#turn-based-flow)
+    - [Grid Movement](#grid-movement)
 
 An isometric tactics RPG made in Unity. The project is inspired by tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the Game Boy Advance.
 

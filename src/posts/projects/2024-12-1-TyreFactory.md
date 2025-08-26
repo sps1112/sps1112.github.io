@@ -1,11 +1,13 @@
 ---
 layout: project
 title: "Tyre Factory"
+date: "Dec, 2024"
 author: Siddhartha
 permalink: /tyre-factory/
 type: "Professional"
+organization: "Indieverse Studio"
 category: "Other"
-role: "Graphics Programmer"
+role: "Game Programmer"
 engine: "None"
 language: "C++"
 platform: "PC"

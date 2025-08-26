@@ -2,7 +2,7 @@
 export const workExperience = [
   {
     id: "indieverse",
-    company: "IndieVerse Studio",
+    company: "Indieverse Studio",
     logo: "/assets/logos/sharechat.png",
     url: "https://sharechat.com/",
     position: "Game Developer",

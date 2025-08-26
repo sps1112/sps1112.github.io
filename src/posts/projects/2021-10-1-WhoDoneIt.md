@@ -1,9 +1,11 @@
 ---
 layout: project
 title: "Who Done It?"
+date: "Oct, 2021"
 author: Siddhartha
 permalink: /who-done-it/
 type: "Professional"
+organization: "GameDev Society, IITK"
 category: "Games"
 role: "Game Programmer and Designer"
 engine: "Unity"

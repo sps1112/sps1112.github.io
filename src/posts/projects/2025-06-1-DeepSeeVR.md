@@ -1,9 +1,11 @@
 ---
 layout: project
 title: "DeepSeeVR"
+date: "June, 2025"
 author: Siddhartha
 permalink: /deepsee-vr/
 type: "Professional"
+organization: "Indieverse Studio"
 category: "Games"
 role: "Game Programmer"
 engine: "Unity"

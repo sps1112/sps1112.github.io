@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "Beyblade Simulator"
+date: "June, 2024"
 author: Siddhartha
 permalink: /beyblade-simulator/
 type: "Personal"

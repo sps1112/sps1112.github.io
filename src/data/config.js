@@ -82,6 +82,10 @@ export const siteConfig = {
     "Fallout: New Vegas, Disco Elysium, Castlevania: Symphony of the Night, Mass Effect 2, Final Fantasy IX, Stardew Valley and Civilization V.",
   quote:
     '"In the darkest times, hope is something you give yourself. That is the meaning of inner strength" - Iroh',
+  breakpoints: {
+    mobileMax: 700,
+    tabletMax: 1150,
+  },
 };
 
 export default siteConfig;

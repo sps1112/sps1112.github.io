@@ -1,8 +1,16 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useViewport } from '../../hooks/useViewport'
 import { siteConfig } from '../../data/config'
 
 function Header({ activeTab, onTabChange }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const { isMobile, isTablet } = useViewport()
+
+  // viewport handled globally by useViewport
+
+  useEffect(() => {
+    document.body.style.overflow = isMobile && isMobileMenuOpen ? 'hidden' : 'auto'
+  }, [isMobile, isMobileMenuOpen])
 
   const headerStyles = {
     position: 'fixed',
@@ -18,13 +26,15 @@ function Header({ activeTab, onTabChange }) {
 
   const containerStyles = {
     display: 'flex',
-    justifyContent: 'flex-start',
+    flexDirection: isTablet ? 'column' : 'row',
+    justifyContent: isTablet ? 'center' : 'space-between',
     alignItems: 'center',
     width: '100%',
     maxWidth: '100%',
     margin: 0,
     paddingLeft: 0,
-    gap: '2rem'
+    paddingRight: 0,
+    gap: isTablet ? '0.5rem' : 'clamp(0.5rem, 2vw, 1rem)'
   }
 
   const logoStyles = {
@@ -38,16 +48,20 @@ function Header({ activeTab, onTabChange }) {
     fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     textShadow: '0 1px 8px rgba(74, 158, 255, 0.15)',
-    marginRight: 'auto',
-    marginLeft: '0',
+    marginRight: isTablet ? 0 : 'auto',
+    marginLeft: isTablet ? 0 : '0',
     flexShrink: 0,
     lineHeight: 1.2
   }
 
   const navStyles = {
-    display: 'flex',
-    gap: '2rem',
-    alignItems: 'center'
+    display: isMobile ? 'none' : 'flex',
+    gap: 'clamp(0.4rem, 1.5vw, 1rem)',
+    alignItems: 'center',
+    marginLeft: isTablet ? 0 : 'auto',
+    flexWrap: 'wrap',
+    justifyContent: isTablet ? 'center' : 'flex-end',
+    width: isTablet ? '100%' : 'auto'
   }
 
   const navItemStyles = {
@@ -79,25 +93,31 @@ function Header({ activeTab, onTabChange }) {
   }
 
   const mobileMenuButtonStyles = {
-    display: 'none',
+    display: isMobile ? 'flex' : 'none',
     flexDirection: 'column',
     gap: '4px',
     background: 'none',
     border: 'none',
     cursor: 'pointer',
-    padding: '0.5rem'
+    padding: '0.5rem',
+    zIndex: 1002
   }
 
   const mobileMenuStyles = {
-    position: 'absolute',
-    top: '100%',
+    position: 'fixed',
+    top: '56px',
     left: 0,
     right: 0,
     backgroundColor: 'rgba(10, 10, 10, 0.98)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-    display: isMobileMenuOpen ? 'flex' : 'none',
+    display: 'flex',
     flexDirection: 'column',
-    padding: '1rem 2rem'
+    padding: '0 1.25rem',
+    zIndex: 1001,
+    maxHeight: isMobileMenuOpen ? '60vh' : '0px',
+    overflow: 'hidden',
+    opacity: isMobileMenuOpen ? 1 : 0,
+    transition: 'max-height 0.25s ease, opacity 0.2s ease'
   }
 
   const navigationItems = [
@@ -160,6 +180,8 @@ function Header({ activeTab, onTabChange }) {
           style={mobileMenuButtonStyles}
           className="mobile-nav"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-expanded={isMobileMenuOpen}
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
         >
           <img 
             src={siteConfig.assets.icons.menu} 
@@ -180,7 +202,7 @@ function Header({ activeTab, onTabChange }) {
         </button>
       </div>
 
-      <nav style={mobileMenuStyles} className="mobile-nav">
+      <nav style={mobileMenuStyles} className="mobile-nav" onClick={() => setIsMobileMenuOpen(false)}>
         {navigationItems.map((item) => (
           <button
             key={item.id}

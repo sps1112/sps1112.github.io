@@ -1,9 +1,11 @@
 ---
 layout: project
 title: "Intro to Graphics and Shaders"
+date: "July, 2022"
 author: Siddhartha
 permalink: /graphics-and-shaders/
 type: "Professional"
+organization: "GameDev Society, IITK"
 category: "Graphics"
 role: "Graphics Programmer"
 engine: "OpenGL API, GLFW"

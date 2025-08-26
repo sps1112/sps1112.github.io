@@ -17,25 +17,26 @@ function Footer({ activeTab }) {
   const socialLinksStyles = {
     display: 'flex',
     justifyContent: 'center',
-    gap: '1.5rem',
-    marginBottom: '1.5rem',
+    gap: '1.2rem',
+    marginBottom: '1.2rem',
     flexWrap: 'wrap'
   }
 
   const socialLinkStyles = {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    gap: '0.6rem',
+    gap: '0.5rem',
     color: '#4a9eff',
     textDecoration: 'none',
     fontSize: '0.95rem',
-    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    padding: '0.55rem 0.6rem',
-    borderRadius: '0.5rem',
+    transition: 'color 0.2s ease, background-color 0.2s ease',
+    padding: '0.4rem 0.5rem',
+    borderRadius: '0.4rem',
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
-    fontWeight: '500',
+    fontWeight: '600',
     letterSpacing: '0.01em',
-    lineHeight: 1.3
+    lineHeight: 1.2,
+    backgroundColor: 'transparent'
   }
 
   const iconStyles = {
@@ -69,16 +70,8 @@ function Footer({ activeTab }) {
               target="_blank"
               rel="noopener noreferrer"
               style={socialLinkStyles}
-              onMouseEnter={(e) => {
-                const t = e.currentTarget
-                t.style.backgroundColor = 'rgba(74, 158, 255, 0.1)'
-                t.style.color = 'white'
-              }}
-              onMouseLeave={(e) => {
-                const t = e.currentTarget
-                t.style.backgroundColor = 'transparent'
-                t.style.color = '#4a9eff'
-              }}
+              onMouseEnter={(e) => { const t=e.currentTarget; t.style.backgroundColor='rgba(74,158,255,0.1)'; t.style.color='#ffffff' }}
+              onMouseLeave={(e) => { const t=e.currentTarget; t.style.backgroundColor='transparent'; t.style.color='#4a9eff' }}
             >
               <img 
                 src={link.icon} 

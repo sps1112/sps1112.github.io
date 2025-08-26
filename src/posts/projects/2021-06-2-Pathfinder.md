@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "A* Pathfinder"
+date: "June, 2021"
 author: Siddhartha
 permalink: /pathfinder/
 type: "Personal"

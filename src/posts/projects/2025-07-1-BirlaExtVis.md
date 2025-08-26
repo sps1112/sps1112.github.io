@@ -1,11 +1,13 @@
 ---
 layout: project
 title: "Birla External Visualization"
+date: "July, 2025"
 author: Siddhartha
 permalink: /birla-ext-vis/
 type: "Professional"
+organization: "Indieverse Studio"
 category: "Other"
-role: "Graphics Programmer"
+role: "Fullstack Developer"
 engine: "None"
 language: "C++"
 platform: "PC"

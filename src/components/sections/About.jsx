@@ -1,8 +1,10 @@
 import React from 'react'
 import { siteConfig } from '../../data/config'
 import { articles } from '../../data/articles'
+import { useViewport } from '../../hooks/useViewport'
 
 function About({ onArticleClick }) {
+  const { isMobile } = useViewport()
   const aboutStyles = {
     minHeight: '100vh',
     padding: '6rem 2rem 4rem 2rem',
@@ -25,11 +27,16 @@ function About({ onArticleClick }) {
     lineHeight: 1.2
   }
 
-  const contentStyles = {
+  const contentStyles = isMobile ? {
+    display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem'
+  } : {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '2rem',
-    marginBottom: '3rem'
+    gridTemplateColumns: '1fr 0.5rem 1fr',
+    columnGap: '0.5rem',
+    rowGap: '1.25rem',
+    marginBottom: '2rem',
+    alignItems: 'start',
+    justifyContent: 'center'
   }
 
   const sectionStyles = {
@@ -104,22 +111,13 @@ function About({ onArticleClick }) {
     backgroundColor: 'rgba(255, 255, 255, 0.06)',
     borderRadius: '12px',
     border: '1px solid rgba(255, 255, 255, 0.15)',
-    margin: '1rem 0',
-    gridColumn: '1 / -1',
+    margin: '0.5rem 0 1.25rem 0',
     boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
   }
 
-  const leftColumnStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1.5rem'
-  }
+  const leftColumnStyles = { display: 'flex', flexDirection: 'column', gap: '1.25rem', gridColumn: '1 / 2' }
 
-  const rightColumnStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1.5rem'
-  }
+  const rightColumnStyles = { display: 'flex', flexDirection: 'column', gap: '1.25rem', gridColumn: '3 / 4' }
 
   const photoCardStyles = {
     padding: 0,
@@ -131,6 +129,21 @@ function About({ onArticleClick }) {
     flexDirection: 'column',
     alignItems: 'center',
     gap: '0.5rem'
+  }
+
+  const resumeLinkStyles = {
+    marginTop: '0.5rem',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    backgroundColor: '#4696e1',
+    color: 'white',
+    padding: '0.6rem 1rem',
+    borderRadius: '8px',
+    textDecoration: 'none',
+    fontWeight: 600,
+    fontSize: '0.9rem',
+    border: '1px solid rgba(70,150,225,0.4)'
   }
 
   const photoStyles = {
@@ -153,7 +166,7 @@ function About({ onArticleClick }) {
     "Languages": ["C", "C++", "C#", "Java", "Python", "GLSL", "HTML/CSS", "JavaScript"],
     "Engines & Software": ["Unity", "Godot", "Blender", "ShaderToy", "Android Studio"],
     "Utilities & Libraries": ["Linux", "Git/Github", "CMake", "OpenGL", "WebGL", "ImGUI", "Jekyll"],
-    "Fields": ["Game Programming", "Graphics Programming", "Shader Writing", "Game Design", "Worldbuilding"]
+    "Domains": ["Game Programming", "Graphics Programming", "Shader Writing", "Game Design", "Worldbuilding"]
   }
 
   return (
@@ -161,69 +174,100 @@ function About({ onArticleClick }) {
       <div style={containerStyles}>
         <h2 style={titleStyles}>About Me</h2>
         
-        <div style={contentStyles}>
-          {/* Left Column */}
-          <div style={leftColumnStyles}>
-            <div style={sectionStyles}>
-              <h3 style={sectionTitleStyles}>Introduction</h3>
-              {introduction.map((paragraph, index) => (
-                <p key={index} style={paragraphStyles}>
-                  {paragraph}
-                </p>
-              ))}
-            </div>
-
-            <div style={sectionStyles}>
-              <h3 style={sectionTitleStyles}>Current Status</h3>
-              <p style={paragraphStyles}>
-                {siteConfig.workStatus}
-              </p>
-            </div>
-
-            <div style={hobbiesStyles}>
-              <h3 style={sectionTitleStyles}>Interests & Hobbies</h3>
-              <div style={hobbyItemStyles}>
-                <div style={hobbyTitleStyles}>Favorite Games:</div>
-                <p style={paragraphStyles}>{siteConfig.games}</p>
+        <div style={contentStyles} className="about-grid">
+          {isMobile ? (
+            <>
+              {/* Mobile: single column in requested order */}
+              <div style={photoCardStyles} className="about-photo">
+                <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
+                <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
               </div>
-              <div style={hobbyItemStyles}>
-                <div style={hobbyTitleStyles}>Other Interests:</div>
-                <p style={paragraphStyles}>{siteConfig.likes}</p>
+              <div style={sectionStyles} className="about-intro">
+                <h3 style={sectionTitleStyles}>Introduction</h3>
+                {introduction.map((paragraph, index) => (
+                  <p key={index} style={paragraphStyles}>
+                    {paragraph}
+                  </p>
+                ))}
               </div>
-            </div>
-          </div>
-          
-          {/* Right Column */}
-          <div style={rightColumnStyles}>
-            <div style={photoCardStyles}>
-              <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
-              <div style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
-            </div>
-
-            <div style={sectionStyles}>
-              <h3 style={sectionTitleStyles}>Technical Skills</h3>
-              {Object.entries(skills).map(([category, skillList]) => (
-                <div key={category} style={skillCategoryStyles}>
-                  <h4 style={skillCategoryTitleStyles}>{category}</h4>
-                  <div style={skillListStyles}>
-                    {skillList.map((skill, index) => (
-                      <span key={index} style={skillTagStyles}>
-                        {skill}
-                      </span>
-                    ))}
+              <div style={sectionStyles} className="about-status">
+                <h3 style={sectionTitleStyles}>Current Status</h3>
+                <p style={paragraphStyles}>{siteConfig.workStatus}</p>
+              </div>
+              <div style={sectionStyles} className="about-skills">
+                <h3 style={sectionTitleStyles}>Technical Skills</h3>
+                {Object.entries(skills).map(([category, skillList]) => (
+                  <div key={category} style={skillCategoryStyles}>
+                    <h4 style={skillCategoryTitleStyles}>{category}</h4>
+                    <div style={skillListStyles}>
+                      {skillList.map((skill, index) => (
+                        <span key={index} style={skillTagStyles}>{skill}</span>
+                      ))}
+                    </div>
                   </div>
+                ))}
+              </div>
+              <div style={hobbiesStyles} className="about-hobbies">
+                <h3 style={sectionTitleStyles}>Interests & Hobbies</h3>
+                <div style={hobbyItemStyles}>
+                  <div style={hobbyTitleStyles}>Favorite Games:</div>
+                  <p style={paragraphStyles}>{siteConfig.games}</p>
                 </div>
-              ))}
-            </div>
-          </div>
+                <div style={hobbyItemStyles}>
+                  <div style={hobbyTitleStyles}>Other Interests:</div>
+                  <p style={paragraphStyles}>{siteConfig.likes}</p>
+                </div>
+              </div>
+              <div style={quoteStyles} className="about-quote">{siteConfig.quote}</div>
+            </>
+          ) : (
+            <>
+              {/* Desktop/Tablet: two columns with thin spacer */}
+              <div style={leftColumnStyles} className="about-left">
+                <div style={sectionStyles} className="about-intro">
+                  <h3 style={sectionTitleStyles}>Introduction</h3>
+                  {introduction.map((paragraph, index) => (
+                    <p key={index} style={paragraphStyles}>{paragraph}</p>
+                  ))}
+                </div>
+                <div style={sectionStyles} className="about-status">
+                  <h3 style={sectionTitleStyles}>Current Status</h3>
+                  <p style={paragraphStyles}>{siteConfig.workStatus}</p>
+                </div>
+                <div style={hobbiesStyles} className="about-hobbies">
+                  <h3 style={sectionTitleStyles}>Interests & Hobbies</h3>
+                  <div style={hobbyItemStyles}><div style={hobbyTitleStyles}>Favorite Games:</div><p style={paragraphStyles}>{siteConfig.games}</p></div>
+                  <div style={hobbyItemStyles}><div style={hobbyTitleStyles}>Other Interests:</div><p style={paragraphStyles}>{siteConfig.likes}</p></div>
+                </div>
+              </div>
+              <div style={rightColumnStyles} className="about-right">
+                <div style={photoCardStyles} className="about-photo">
+                  <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
+                  <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
+                </div>
+                <div style={sectionStyles} className="about-skills">
+                  <h3 style={sectionTitleStyles}>Technical Skills</h3>
+                  {Object.entries(skills).map(([category, skillList]) => (
+                    <div key={category} style={skillCategoryStyles}>
+                      <h4 style={skillCategoryTitleStyles}>{category}</h4>
+                      <div style={skillListStyles}>
+                        {skillList.map((skill, index) => (
+                          <span key={index} style={skillTagStyles}>{skill}</span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
         </div>
-        
-        {/* Quote spanning both columns */}
-        <div style={quoteStyles}>
-          {siteConfig.quote}
-        </div>
+        {!isMobile && (
+          <div style={{...quoteStyles, maxWidth: '820px', margin: '0.5rem auto 1.25rem' }}>{siteConfig.quote}</div>
+        )}
 
-        {/* Removed Recent Articles section */}
+        {/* Resume Button at bottom */}
+        {/* Removed as requested; CV and bottom placement remain */}
       </div>
     </section>
   )

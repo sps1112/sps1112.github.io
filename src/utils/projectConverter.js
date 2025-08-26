@@ -124,7 +124,7 @@ function convertContentToProjectFormat(content) {
 
 // Main function to convert markdown files to projects
 export function convertMarkdownToProjects() {
-  const postsDir = path.join(__dirname, "../posts");
+  const postsDir = path.join(__dirname, "../posts/projects");
   const projects = [];
 
   try {
@@ -148,12 +148,28 @@ export function convertMarkdownToProjects() {
           id: projectId,
           title: frontmatter.title,
           type: frontmatter.type || "Personal",
+          organization:
+            frontmatter.organization ||
+            (frontmatter.type &&
+            frontmatter.type.toLowerCase() !== "self-project"
+              ? frontmatter.type
+              : "Self"),
+          role: frontmatter.role || "",
           engine: frontmatter.engine || "NA",
           language: frontmatter.language || "NA",
           platform: frontmatter.platform || "NA",
           description: frontmatter.description || "",
           image: frontmatter.image || "",
           category: frontmatter.category || "Other",
+          categoryLabel: (frontmatter.category || "Other").toString().trim(),
+          date: frontmatter.date || frontmatter.time || "",
+          readTime: (() => {
+            const wordCount = content
+              .replace(/^---[\s\S]*?---\s*/, "")
+              .split(/\s+/)
+              .filter(Boolean).length;
+            return `${Math.max(1, Math.round(wordCount / 200))} min read`;
+          })(),
           links,
           featured: isFeatured({ category: frontmatter.category }),
           content: convertContentToProjectFormat(content),
@@ -235,7 +251,7 @@ if (import.meta.url === `file://${process.argv[1]}`) {
 }
 
 export function convertMarkdownToArticles() {
-  const postsDir = path.join(__dirname, "../posts");
+  const postsDir = path.join(__dirname, "../posts/blogs");
   const articles = [];
   try {
     const files = fs.readdirSync(postsDir);
@@ -247,19 +263,26 @@ export function convertMarkdownToArticles() {
       if (!fm) return;
       if (fm.layout !== "article") return; // only articles
       const id = generateProjectId(fm.title);
+      const categoryLabel = (fm.category || "gamedev").toString().trim();
+      const lower = categoryLabel.toLowerCase();
+      const category = lower === "technical" ? "gamedev" : lower;
+      const timeOrDate = fm.date || fm.time || "";
+      const wordCount = content
+        .replace(/^---[\s\S]*?---\s*/, "")
+        .split(/\s+/)
+        .filter(Boolean).length;
+      const minutes = Math.max(1, Math.round(wordCount / 200));
       const article = {
         id,
         title: fm.title,
         author: fm.author || "Siddhartha",
-        date: fm.date || "",
+        date: timeOrDate,
         description: fm.description || "",
         image: fm.image || "",
         content: convertContentToProjectFormat(content),
-        category:
-          (fm.category || "gamedev").toLowerCase() === "technical"
-            ? "gamedev"
-            : fm.category || "gamedev",
-        readTime: fm.readTime || "",
+        category,
+        categoryLabel,
+        readTime: fm.readTime || `${minutes} min read`,
       };
       articles.push(article);
     });

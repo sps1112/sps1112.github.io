@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "Roaming Ruins"
+date: "Aug, 2020"
 author: Siddhartha
 permalink: /roaming-ruins/
 type: "Personal"

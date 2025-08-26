@@ -1,21 +1,23 @@
 ---
 layout: article
 title: "Motion in Games"
-time: "March, 2021"
+date: "March, 2021"
 author: Siddhartha
 permalink: /motion-games/
 description: "Article showcasing various methods of implementing motion in games"
 image: "/assets/projects/motion.png"
+category: "GameDev"
 ---
 # Contents
-- [Overview](#overview)
-- [Transform Manipulation](#transform-manipulation)
-- [Rigidbody Manipulation](#rigidbody-manipulation)
-  - [The Velocity Approach](#the-velocity-approach)
-  - [The Force Approach](#the-force-approach)
-- [Bonus Content: Frame vs Physics Frame](#bonus-content-frame-vs-physics-frame)
-  - [DeltaTime vs FixedDeltaTime](#deltatime-vs-fixeddeltatime)
-- [References](#references)
+- [Contents](#contents)
+  - [Overview](#overview)
+  - [Transform Manipulation](#transform-manipulation)
+  - [Rigidbody Manipulation](#rigidbody-manipulation)
+    - [The Velocity Approach](#the-velocity-approach)
+    - [The Force Approach](#the-force-approach)
+  - [Bonus Content: Frame vs Physics Frame](#bonus-content-frame-vs-physics-frame)
+    - [DeltaTime vs FixedDeltaTime](#deltatime-vs-fixeddeltatime)
+  - [References](#references)
 
 One of the ways you can influence the objects in a game is by moving them. This is usually done in scripts attached to objects. Movement is seen throughout games such as a moving player character, fired bullets from a gun, etc. We've seen a few examples of movement already, but let's dive into some details.
    

@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import Modal from '../ui/Modal'
+import React, { useEffect, useState } from 'react'
+import ContentModal from '../ui/ContentModal'
 
 function ProjectModal({ project, isOpen, onClose }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  if (!project) return null
+  // Always run hooks to keep hook order stable across renders
+  const safeProject = project || {}
 
-  const contentStyles = {
-    padding: '3rem 2rem 2rem 2rem'
-  }
+  const contentStyles = {}
 
   const headerStyles = {
     marginBottom: '2rem'
@@ -346,126 +345,60 @@ function ProjectModal({ project, isOpen, onClose }) {
     }).filter(Boolean)
   }
 
+  const details = [
+    { label: 'Organization', value: safeProject.organization },
+    { label: 'Role', value: safeProject.role },
+    { label: 'Engine', value: safeProject.engine },
+    { label: 'Language', value: safeProject.language },
+    { label: 'Platform', value: safeProject.platform },
+    { label: 'Type', value: safeProject.type },
+  ]
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} maxWidth="900px">
-      <div style={contentStyles}>
-        <div style={headerStyles}>
-          <h2 style={titleStyles}>{project.title}</h2>
-          <div style={typeStyles}>
-            {project.type} • {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
-          </div>
-          <div style={metaStyles}>
-            {/* Optional date if present in content id; otherwise omit */}
-            {project.date && (
-              <div style={metaItemStyles}><span>📅</span><span>{project.date}</span></div>
-            )}
-            {project.readTime && (
-              <div style={metaItemStyles}><span>⏱️</span><span>{project.readTime}</span></div>
-            )}
-            <div style={tagBadgeStyles}>{project.category}</div>
-          </div>
-        </div>
-
-        {project.image ? (
-          <>
-            <img
-              src={project.image}
-              alt={project.title}
-              style={heroImageStyles}
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.nextSibling.style.display = 'flex'
-              }}
-            />
-            <div style={{...placeholderImageStyles, display: 'none'}}>
-              {getProjectIcon(project.category)}
+    <ContentModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={safeProject.title}
+      typeLabel={safeProject.type && safeProject.category ? `${safeProject.type} • ${safeProject.category.charAt(0).toUpperCase() + safeProject.category.slice(1)}` : safeProject.type}
+      image={safeProject.image}
+      meta={{ date: safeProject.date, readTime: safeProject.readTime, tag: (safeProject.categoryLabel || safeProject.category) }}
+      description={safeProject.description}
+      details={details}
+      content={safeProject.content}
+      renderContent={(c) => (
+        <div style={{ marginTop: '2rem', fontSize: '1rem', lineHeight: '1.7', color: '#e0e0e0' }}>
+          {renderProjectContent(c)}
+          {safeProject.links && (
+            <div style={linksContainerStyles}>
+              {safeProject.links.build && (
+                <a
+                  href={safeProject.links.build}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={linkButtonStyles}
+                  onMouseEnter={(e) => { e.target.style.backgroundColor = '#3a7bc8'; e.target.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={(e) => { e.target.style.backgroundColor = '#4696e1'; e.target.style.transform = 'translateY(0)' }}
+                >
+                  🚀 Live Demo
+                </a>
+              )}
+              {safeProject.links.source && (
+                <a
+                  href={safeProject.links.source}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={secondaryLinkStyles}
+                  onMouseEnter={(e) => { e.target.style.backgroundColor = '#4696e1'; e.target.style.color = 'white'; e.target.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = '#4696e1'; e.target.style.transform = 'translateY(0)' }}
+                >
+                  📁 Source Code
+                </a>
+              )}
             </div>
-          </>
-        ) : (
-          <div style={placeholderImageStyles}>
-            {getProjectIcon(project.category)}
-          </div>
-        )}
-
-        <div style={detailsGridStyles}>
-          <div style={detailItemStyles}>
-            <span style={detailLabelStyles}>Engine</span>
-            <span style={detailValueStyles}>{project.engine}</span>
-          </div>
-          <div style={detailItemStyles}>
-            <span style={detailLabelStyles}>Language</span>
-            <span style={detailValueStyles}>{project.language}</span>
-          </div>
-          <div style={detailItemStyles}>
-            <span style={detailLabelStyles}>Platform</span>
-            <span style={detailValueStyles}>{project.platform}</span>
-          </div>
-          <div style={detailItemStyles}>
-            <span style={detailLabelStyles}>Type</span>
-            <span style={detailValueStyles}>{project.type}</span>
-          </div>
+          )}
         </div>
-
-        <p style={descriptionStyles}>{project.description}</p>
-        
-        {/* Full Project Content */}
-        {project.content && (
-          <div style={{
-            marginTop: '2rem',
-            fontSize: '1rem',
-            lineHeight: '1.7',
-            color: '#e0e0e0'
-          }}>
-            {renderProjectContent(project.content)}
-          </div>
-        )}
-
-        {project.links && (
-          <div style={linksContainerStyles}>
-            {project.links.build && (
-              <a
-                href={project.links.build}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={linkButtonStyles}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#3a7bc8'
-                  e.target.style.transform = 'translateY(-2px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = '#4696e1'
-                  e.target.style.transform = 'translateY(0)'
-                }}
-              >
-                🚀 Live Demo
-              </a>
-            )}
-            {project.links.source && (
-              <a
-                href={project.links.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={secondaryLinkStyles}
-                onMouseEnter={(e) => {
-                  e.target.style.backgroundColor = '#4696e1'
-                  e.target.style.color = 'white'
-                  e.target.style.transform = 'translateY(-2px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.backgroundColor = 'transparent'
-                  e.target.style.color = '#4696e1'
-                  e.target.style.transform = 'translateY(0)'
-                }}
-              >
-                📁 Source Code
-              </a>
-            )}
-          </div>
-        )}
-
-
-      </div>
-    </Modal>
+      )}
+    />
   )
 }
 

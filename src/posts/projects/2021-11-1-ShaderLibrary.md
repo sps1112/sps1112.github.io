@@ -1,6 +1,7 @@
 ---
 layout: project
 title: "Shader Library"
+date: "Nov, 2021"
 author: Siddhartha
 permalink: /shader-library/
 type: "Personal"
