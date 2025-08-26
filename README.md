@@ -1,213 +1,150 @@
-# 🎯 Siddhartha Pratap Singh - Modern React Portfolio
+# SPS Portfolio Website
 
-A complete reimplementation of the original Jekyll portfolio website using modern React architecture with enhanced UX and interactive features.
+A React-based portfolio website for Siddhartha Pratap Singh, showcasing projects and technical articles.
 
-## ✨ Features
+## Features
 
-### 🎨 Modern Design
-- **Dark Theme**: Professional dark color scheme with blue accents
-- **Tab-Based Navigation**: Instant switching between sections
-- **Responsive Design**: Perfect experience on all devices
-- **Smooth Animations**: Polished transitions and hover effects
-- **Interactive Modals**: Detailed project and article viewers
+- **Hero Section**: Dynamic banner with smooth transitions
+- **Portfolio Section**: Project showcase with category filtering
+- **Responsive Design**: Modern UI with responsive layouts
+- **Project Management**: Automated conversion from markdown files
 
-### 📱 User Experience
-- **Mobile-First**: Touch-friendly interface with hamburger navigation
-- **Fast Performance**: Inline CSS and optimized components
-- **Accessibility**: Keyboard navigation and screen reader support
-- **Error Handling**: Graceful error boundaries and fallbacks
+## Project Structure
 
-### 🎮 Portfolio Showcase
-- **Project Filtering**: Filter by Games, Graphics, Tools, Professional
-- **Modal Details**: In-depth project information with galleries
-- **Technical Articles**: Blog posts with reading progress tracking
-- **Work Timeline**: Interactive experience visualization
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation & Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/sps1112/sps1112.github.io.git
-   cd sps1112.github.io
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-   
-   *If you encounter PowerShell execution policy issues on Windows:*
-   ```powershell
-   # Option 1: Enable scripts (recommended)
-   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-   npm run dev
-   
-   # Option 2: Use Command Prompt
-   cmd
-   npm run dev
-   
-   # Option 3: Run Vite directly
-   node node_modules/vite/bin/vite.js
-   ```
-
-4. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-## 🏗️ Project Architecture
-
-### Component Structure
 ```
 src/
-├── App.jsx                     # Main app with state management
 ├── components/
-│   ├── layout/
-│   │   ├── Header.jsx         # Fixed navigation with mobile menu
-│   │   └── Footer.jsx         # Social links and copyright
 │   ├── sections/
-│   │   ├── Hero.jsx           # Landing with typewriter animation
-│   │   ├── About.jsx          # Personal intro and skills
-│   │   ├── Portfolio.jsx      # Project showcase with filtering
-│   │   ├── Experience.jsx     # Work timeline and achievements
-│   │   └── Contact.jsx        # Contact info and availability
-│   ├── ui/
-│   │   ├── Modal.jsx          # Reusable modal component
-│   │   ├── ProjectCard.jsx    # Interactive project cards
-│   │   └── ErrorBoundary.jsx  # Error handling
-│   └── modals/
-│       ├── ProjectModal.jsx   # Detailed project viewer
-│       └── ArticleModal.jsx   # Blog post reader
+│   │   ├── Hero.jsx          # Main banner section
+│   │   └── Portfolio.jsx     # Project showcase section
+│   └── ...
 ├── data/
-│   ├── config.js              # Site configuration
-│   ├── projects.js            # Project data (10 projects)
-│   ├── experience.js          # Work history and achievements
-│   └── articles.js            # Blog posts and technical articles
-└── main.jsx                   # Entry point with global styles
+│   └── projects.js           # Generated project data
+├── posts/                    # Markdown project files
+│   ├── 2021-04-1-RoamingRuins.md
+│   ├── 2021-04-2-TheTests.md
+│   └── ...
+├── utils/
+│   └── projectConverter.js   # Markdown to projects converter
+└── ...
+scripts/
+└── update-projects.js        # Build script for updating projects
 ```
 
-### Technology Stack
-- **Framework**: React 18 with hooks
-- **Build Tool**: Vite (fast development and building)
-- **Styling**: Inline CSS (no external dependencies)
-- **State Management**: React useState for component state
-- **Deployment**: GitHub Pages ready
+## Project Data Management
 
-## 📊 Content Overview
+The website uses an automated system to convert markdown files from the `src/posts/` directory into the `projects.js` data file.
 
-### Projects (10 total)
-- **4 Games**: Roaming Ruins, The Tests, Tactics RPG, etc.
-- **3 Graphics**: OpenGL Renderer, PBR, Shader Library
-- **2 Tools**: Noise Generator, Pathfinder
-- **2 Professional**: ShareChat work, VR applications
+### Markdown File Format
 
-### Articles (3 technical posts)
-- Motion in Games (technical guide)
-- The Tests Devlog (development retrospective)
-- Prefabs in Games (technical tutorial)
+Each project should be a markdown file with the following frontmatter:
 
-### Experience
-- **ShareChat**: Graphics Engineer Intern
-- **Studio Centauri, IITK**: Group Leader
-- **Counselling Service**: Student Guide
-
-## 🎯 Key Improvements Over Original
-
-| Aspect | Original Jekyll | New React Version |
-|--------|----------------|-------------------|
-| **Navigation** | Long vertical scroll | Instant tab switching |
-| **Project Discovery** | All projects at once | Filterable categories |
-| **Mobile Experience** | Basic responsive | Touch-optimized interface |
-| **Interactivity** | Static content | Modals, animations, hover effects |
-| **Performance** | Page loads | Fast component switching |
-| **Code Organization** | Jekyll templates | Modern React architecture |
-
-## 🛠️ Development Guide
-
-### Adding New Projects
-```javascript
-// In src/data/projects.js
-{
-  id: "project-name",
-  title: "Project Title",
-  type: "Self-project" | "Professional",
-  engine: "Unity",
-  language: "C#",
-  platform: "PC",
-  description: "Project description",
-  image: "/assets/projects/image.png",
-  category: "games" | "graphics" | "tools" | "professional",
-  links: {
-    build: "https://...",
-    source: "https://github.com/..."
-  },
-  featured: true | false
-}
-```
-
-### Adding New Articles
-```javascript
-// In src/data/articles.js
-{
-  id: "article-slug",
-  title: "Article Title",
-  author: "Siddhartha",
-  date: "Month Year",
-  description: "Brief description",
-  content: "Markdown content...",
-  category: "technical" | "devlog" | "tutorial",
-  readTime: "X min read"
-}
-```
-
-### Customizing Styles
-All styling is done through inline CSS objects in components. Key color variables:
-- **Primary**: `#4696e1` (blue accent)
-- **Background**: `#0a0a0a` (dark)
-- **Text**: `white` and `#e0e0e0`
-- **Secondary**: `rgba(70, 150, 225, 0.2)` (translucent blue)
-
-## 🚀 Deployment
-
-### GitHub Pages
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to GitHub Pages
-3. Configure custom domain if needed
-
-### Manual Deployment
-```bash
-npm run build
-# Upload dist/ contents to your web server
-```
-
-## 📱 Browser Support
-
-- **Modern Browsers**: Chrome, Firefox, Safari, Edge (latest versions)
-- **Mobile**: iOS Safari, Android Chrome
-- **Features**: CSS Grid, Flexbox, ES6+ JavaScript
-
-## 🤝 Contributing
-
-This is a personal portfolio, but feel free to:
-- Report bugs or issues
-- Suggest improvements
-- Use as inspiration for your own portfolio
-
-## 📄 License
-
-MIT License - feel free to use this code for your own portfolio projects.
-
+```yaml
 ---
+layout: project
+title: "Project Title"
+author: Siddhartha
+permalink: /project-url/
+type: "Personal"           # Personal or Professional
+category: "Games"          # Games, Graphics, or Other
+engine: "Unity"            # Engine used (or "NA")
+language: "C#"             # Programming language
+platform: "PC"             # Target platform
+description: "Project description"
+image: "/assets/projects/image.png"
+---
+```
 
-**Built with ❤️ using React and modern web technologies**
+### Project Categories
+
+- **Games**: Game development projects
+- **Graphics**: Graphics programming, shaders, rendering
+- **Other**: Utility tools, libraries, other projects
+
+### Project Types
+
+- **Personal**: Self-initiated projects, game jams, learning projects
+- **Professional**: Work projects, client work, commercial projects
+
+## Development Workflow
+
+### 1. Adding New Projects
+
+1. Create a new markdown file in `src/posts/` with the naming convention: `YYYY-MM-D-ProjectName.md`
+2. Add frontmatter with all required fields
+3. Write your project content in markdown format
+4. Run the converter to update `projects.js`
+
+### 2. Updating Existing Projects
+
+1. Edit the markdown file in `src/posts/`
+2. Run the converter to update `projects.js`
+
+### 3. Running the Converter
+
+The converter automatically runs before starting the development server:
+
+```bash
+npm run dev          # Automatically runs converter + starts dev server
+npm run build        # Automatically runs converter + builds for production
+npm run update-projects  # Manually run converter only
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server (auto-updates projects)
+- `npm run build` - Build for production (auto-updates projects)
+- `npm run preview` - Preview production build
+- `npm run update-projects` - Manually update projects.js from markdown files
+
+## Technical Details
+
+### Banner Animation System
+
+The Hero section uses a sophisticated animation system with:
+- State-driven transitions
+- Smooth fade effects
+- Transform preservation during transitions
+- CSS keyframe animations
+
+### Portfolio Filtering
+
+Projects can be filtered by:
+- **All**: Shows all projects
+- **Professional**: Work projects only
+- **Personal**: Personal projects only
+- **Games**: Game development projects
+- **Graphics**: Graphics programming projects
+- **Other**: Utility and other projects
+
+### Content Conversion
+
+The converter automatically:
+- Parses markdown frontmatter
+- Extracts project metadata
+- Converts markdown content to React-compatible format
+- Generates proper project objects
+- Maintains consistent data structure
+
+## Dependencies
+
+- React 18.2.0
+- Vite 7.0.6
+- Modern CSS features (clamp, CSS Grid, Flexbox)
+
+## Browser Support
+
+- Modern browsers with ES6+ support
+- CSS Grid and Flexbox support required
+- Responsive design for mobile and desktop
+
+## Contributing
+
+1. Follow the existing code style
+2. Update markdown files for content changes
+3. Run the converter after making changes
+4. Test the website locally before committing
+
+## License
+
+This project is for personal portfolio use.

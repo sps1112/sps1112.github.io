@@ -6,7 +6,7 @@ function About({ onArticleClick }) {
   const aboutStyles = {
     minHeight: '100vh',
     padding: '6rem 2rem 4rem 2rem',
-    background: 'linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(5, 35, 50, 0.8) 100%)'
+    backgroundColor: '#0a0a0a'
   }
 
   const containerStyles = {
@@ -16,7 +16,7 @@ function About({ onArticleClick }) {
 
   const titleStyles = {
     fontSize: 'clamp(2rem, 5vw, 3rem)',
-    color: '#4a9eff',
+    color: '#ffffff',
     textAlign: 'center',
     marginBottom: '3rem',
     fontWeight: '700',
@@ -27,52 +27,41 @@ function About({ onArticleClick }) {
 
   const contentStyles = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '3rem',
-    marginBottom: '4rem'
-  }
-
-  const leftColumnStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '2rem'
-  }
-
-  const rightColumnStyles = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '2rem'
+    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gap: '2rem',
+    marginBottom: '3rem'
   }
 
   const sectionStyles = {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    padding: '2rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    padding: '1.5rem',
     borderRadius: '12px',
-    border: '1px solid rgba(70, 150, 225, 0.2)'
+    border: '1px solid rgba(255, 255, 255, 0.14)',
+    boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
   }
 
   const sectionTitleStyles = {
-    fontSize: '1.5rem',
-    color: '#4696e1',
-    marginBottom: '1rem',
-    fontWeight: '600'
+    fontSize: '1.35rem',
+    color: '#ffffff',
+    marginBottom: '0.85rem',
+    fontWeight: '700'
   }
 
   const paragraphStyles = {
     lineHeight: '1.8',
-    color: '#e0e0e0',
-    marginBottom: '1rem',
+    color: '#d6d6d6',
+    marginBottom: '0.85rem',
     fontSize: '1rem'
   }
 
   const skillCategoryStyles = {
-    marginBottom: '1.5rem'
+    marginBottom: '1.25rem'
   }
 
   const skillCategoryTitleStyles = {
-    fontSize: '1.1rem',
-    color: '#4696e1',
-    marginBottom: '0.5rem',
+    fontSize: '1rem',
+    color: '#ffffff',
+    marginBottom: '0.4rem',
     fontWeight: '600'
   }
 
@@ -83,42 +72,74 @@ function About({ onArticleClick }) {
   }
 
   const skillTagStyles = {
-    backgroundColor: 'rgba(70, 150, 225, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
     color: 'white',
-    padding: '0.3rem 0.8rem',
-    borderRadius: '20px',
+    padding: '0.35rem 0.75rem',
+    borderRadius: '10px',
     fontSize: '0.9rem',
-    border: '1px solid rgba(70, 150, 225, 0.3)'
+    border: '1px solid rgba(255, 255, 255, 0.12)'
   }
 
   const hobbiesStyles = {
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    padding: '2rem',
-    borderRadius: '12px',
-    border: '1px solid rgba(70, 150, 225, 0.2)',
-    gridColumn: '1 / -1'
+    ...sectionStyles,
+    gridColumn: 'auto'
   }
 
   const hobbyItemStyles = {
-    marginBottom: '1rem'
+    marginBottom: '0.75rem'
   }
 
   const hobbyTitleStyles = {
-    color: '#4696e1',
+    color: '#ffffff',
     fontWeight: '600',
-    marginBottom: '0.5rem'
+    marginBottom: '0.35rem'
   }
 
   const quoteStyles = {
     fontStyle: 'italic',
     fontSize: '1.1rem',
-    color: '#4696e1',
+    color: '#ffffff',
     textAlign: 'center',
-    padding: '2rem',
-    backgroundColor: 'rgba(70, 150, 225, 0.1)',
+    padding: '1.5rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
     borderRadius: '12px',
-    border: '1px solid rgba(70, 150, 225, 0.3)',
-    margin: '2rem 0'
+    border: '1px solid rgba(255, 255, 255, 0.15)',
+    margin: '1rem 0',
+    gridColumn: '1 / -1',
+    boxShadow: '0 6px 18px rgba(0,0,0,0.25)'
+  }
+
+  const leftColumnStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem'
+  }
+
+  const rightColumnStyles = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1.5rem'
+  }
+
+  const photoCardStyles = {
+    padding: 0,
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderRadius: '0',
+    boxShadow: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '0.5rem'
+  }
+
+  const photoStyles = {
+    width: '80%',
+    height: 'auto',
+    maxHeight: '380px',
+    borderRadius: '8px',
+    objectFit: 'cover',
+    border: '3px solid rgba(255,255,255,0.25)'
   }
 
   const introduction = [
@@ -141,6 +162,7 @@ function About({ onArticleClick }) {
         <h2 style={titleStyles}>About Me</h2>
         
         <div style={contentStyles}>
+          {/* Left Column */}
           <div style={leftColumnStyles}>
             <div style={sectionStyles}>
               <h3 style={sectionTitleStyles}>Introduction</h3>
@@ -150,16 +172,34 @@ function About({ onArticleClick }) {
                 </p>
               ))}
             </div>
-            
+
             <div style={sectionStyles}>
               <h3 style={sectionTitleStyles}>Current Status</h3>
               <p style={paragraphStyles}>
                 {siteConfig.workStatus}
               </p>
             </div>
+
+            <div style={hobbiesStyles}>
+              <h3 style={sectionTitleStyles}>Interests & Hobbies</h3>
+              <div style={hobbyItemStyles}>
+                <div style={hobbyTitleStyles}>Favorite Games:</div>
+                <p style={paragraphStyles}>{siteConfig.games}</p>
+              </div>
+              <div style={hobbyItemStyles}>
+                <div style={hobbyTitleStyles}>Other Interests:</div>
+                <p style={paragraphStyles}>{siteConfig.likes}</p>
+              </div>
+            </div>
           </div>
           
+          {/* Right Column */}
           <div style={rightColumnStyles}>
+            <div style={photoCardStyles}>
+              <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
+              <div style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
+            </div>
+
             <div style={sectionStyles}>
               <h3 style={sectionTitleStyles}>Technical Skills</h3>
               {Object.entries(skills).map(([category, skillList]) => (
@@ -178,80 +218,12 @@ function About({ onArticleClick }) {
           </div>
         </div>
         
-        <div style={hobbiesStyles}>
-          <h3 style={sectionTitleStyles}>Interests & Hobbies</h3>
-          <div style={hobbyItemStyles}>
-            <div style={hobbyTitleStyles}>Favorite Games:</div>
-            <p style={paragraphStyles}>{siteConfig.games}</p>
-          </div>
-          <div style={hobbyItemStyles}>
-            <div style={hobbyTitleStyles}>Other Interests:</div>
-            <p style={paragraphStyles}>{siteConfig.likes}</p>
-          </div>
-        </div>
-        
+        {/* Quote spanning both columns */}
         <div style={quoteStyles}>
           {siteConfig.quote}
         </div>
 
-        {/* Blog Articles Section */}
-        <div style={sectionStyles}>
-          <h3 style={sectionTitleStyles}>Recent Articles</h3>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '1.5rem'
-          }}>
-            {articles.slice(0, 3).map(article => (
-              <div
-                key={article.id}
-                style={{
-                  backgroundColor: 'rgba(255, 255, 255, 0.05)',
-                  borderRadius: '12px',
-                  padding: '1.5rem',
-                  border: '1px solid rgba(70, 150, 225, 0.2)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-                onClick={() => onArticleClick && onArticleClick(article)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(70, 150, 225, 0.1)'
-                  e.currentTarget.style.transform = 'translateY(-4px)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)'
-                  e.currentTarget.style.transform = 'translateY(0)'
-                }}
-              >
-                <h4 style={{
-                  color: '#4696e1',
-                  marginBottom: '0.5rem',
-                  fontSize: '1.1rem',
-                  fontWeight: '600'
-                }}>
-                  {article.title}
-                </h4>
-                <p style={{
-                  color: '#ccc',
-                  fontSize: '0.9rem',
-                  marginBottom: '0.5rem'
-                }}>
-                  {article.description}
-                </p>
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  fontSize: '0.8rem',
-                  color: '#999'
-                }}>
-                  <span>{article.date}</span>
-                  <span>{article.readTime}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Removed Recent Articles section */}
       </div>
     </section>
   )

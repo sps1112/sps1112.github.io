@@ -25,12 +25,12 @@ function Footer({ activeTab }) {
   const socialLinkStyles = {
     display: 'flex',
     alignItems: 'center',
-    gap: '0.5rem',
+    gap: '0.6rem',
     color: '#4a9eff',
     textDecoration: 'none',
-    fontSize: '0.875rem',
+    fontSize: '0.95rem',
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-    padding: '0.5rem',
+    padding: '0.55rem 0.6rem',
     borderRadius: '0.5rem',
     fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, sans-serif',
     fontWeight: '500',
@@ -39,8 +39,8 @@ function Footer({ activeTab }) {
   }
 
   const iconStyles = {
-    width: '20px',
-    height: '20px',
+    width: '22px',
+    height: '22px',
     filter: 'brightness(0) saturate(100%) invert(40%) sepia(99%) saturate(1447%) hue-rotate(198deg) brightness(96%) contrast(91%)'
   }
 
@@ -54,7 +54,7 @@ function Footer({ activeTab }) {
   const socialLinks = siteConfig.socialLinks || []
 
   // Conditional display - don't show on hero page (like original)
-  if (activeTab === 'hero') {
+  if (activeTab === 'hero' || activeTab === 'contact') {
     return null
   }
 
@@ -70,12 +70,14 @@ function Footer({ activeTab }) {
               rel="noopener noreferrer"
               style={socialLinkStyles}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = 'rgba(74, 158, 255, 0.1)'
-                e.target.style.color = 'white'
+                const t = e.currentTarget
+                t.style.backgroundColor = 'rgba(74, 158, 255, 0.1)'
+                t.style.color = 'white'
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = 'transparent'
-                e.target.style.color = '#4a9eff'
+                const t = e.currentTarget
+                t.style.backgroundColor = 'transparent'
+                t.style.color = '#4a9eff'
               }}
             >
               <img 

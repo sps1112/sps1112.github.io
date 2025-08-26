@@ -1,6 +1,22 @@
 // Work experience data
 export const workExperience = [
   {
+    id: "indieverse",
+    company: "IndieVerse Studio",
+    logo: "/assets/logos/sharechat.png",
+    url: "https://sharechat.com/",
+    position: "Game Developer",
+    timeline: "May 2022 - July 2022",
+    type: "full-time",
+    tasks: [
+      "Worked as a Graphics Programmer to enhance the Shutter engine with 3D model loading solutions, redesigning the existing mesh rendering classes in core codebase",
+      "Employed the Open Asset Importer Library (ASSIMP) as a vendor submodule and integrated in Shutter for seamless model loading",
+      "Developed custom rendering solutions using GLFW for enhanced visual representation resulting in faster Proof of Concept (POC) prototyping",
+      "Successfully integrated ASSIMP POC into Shutter as a Linux executable module, enhancing the engine capabilities and improving compatibility across systems",
+      "Resolved compilation and runtime errors overhauling the Shutter code using platform feature flags, optimizing the Design Studio Tool",
+    ],
+  },
+  {
     id: "sharechat",
     company: "ShareChat",
     logo: "/assets/logos/sharechat.png",

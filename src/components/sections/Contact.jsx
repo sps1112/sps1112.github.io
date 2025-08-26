@@ -72,20 +72,21 @@ function Contact() {
     display: 'flex',
     alignItems: 'center',
     gap: '0.75rem',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#111315',
     padding: '1rem 1.5rem',
     borderRadius: '0.75rem',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    border: '1px solid rgba(255, 255, 255, 0.14)',
     textDecoration: 'none',
     color: '#ffffff',
-    transition: 'all 0.3s ease',
-    fontWeight: '500'
+    transition: 'all 0.25s ease',
+    fontWeight: '600',
+    boxShadow: '0 2px 10px rgba(0,0,0,0.25)'
   }
 
   const iconStyles = {
-    width: '20px',
-    height: '20px',
-    fill: 'currentColor'
+    width: '22px',
+    height: '22px',
+    filter: 'brightness(0) saturate(100%) invert(72%) sepia(16%) saturate(1399%) hue-rotate(183deg) brightness(102%) contrast(96%)'
   }
 
   return (
@@ -116,14 +117,16 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'rgba(74, 158, 255, 0.1)'
+                e.currentTarget.style.backgroundColor = 'rgba(74, 158, 255, 0.12)'
                 e.currentTarget.style.borderColor = '#4a9eff'
                 e.currentTarget.style.transform = 'translateY(-2px)'
+                e.currentTarget.style.boxShadow = '0 8px 24px rgba(74,158,255,0.2)'
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#1a1a1a'
-                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)'
+                e.currentTarget.style.backgroundColor = '#111315'
+                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.14)'
                 e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.25)'
               }}
             >
               {social.icon && (

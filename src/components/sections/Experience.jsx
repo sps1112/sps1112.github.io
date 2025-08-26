@@ -42,17 +42,30 @@ function Experience() {
     left: '15px',
     top: 0,
     bottom: 0,
-    width: '2px',
-    backgroundColor: 'rgba(74, 158, 255, 0.3)'
+    width: '3px',
+    background: 'linear-gradient(180deg, rgba(74,158,255,0.4), rgba(74,158,255,0))'
   }
 
   const experienceItemStyles = {
     position: 'relative',
-    backgroundColor: '#1a1a1a',
+    backgroundColor: '#101214',
     padding: '2rem',
-    borderRadius: '0.75rem',
+    borderRadius: '12px',
     border: '1px solid rgba(255, 255, 255, 0.1)',
-    marginBottom: '2rem'
+    marginBottom: '2rem',
+    boxShadow: '0 6px 18px rgba(0,0,0,0.25)',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+  }
+
+  const headerCardStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '1rem',
+    marginBottom: '1rem',
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    border: '1px solid rgba(255, 255, 255, 0.14)',
+    borderRadius: '10px',
+    padding: '0.8rem 1rem'
   }
 
   const experienceDotStyles = {
@@ -66,22 +79,42 @@ function Experience() {
     border: '3px solid #0a0a0a'
   }
 
-  const companyStyles = {
-    fontSize: '1.25rem',
-    color: '#ffffff',
-    fontWeight: '600',
+  const companyRowStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.9rem',
     marginBottom: '0.5rem'
+  }
+
+  const logoStyles = {
+    width: '100px',
+    height: '100px',
+    objectFit: 'contain',
+    borderRadius: '8px',
+    backgroundColor: 'rgba(255,255,255,0.06)'
+  }
+
+  const companyStyles = {
+    fontSize: '1.35rem',
+    color: '#ffffff',
+    fontWeight: '700',
+    marginBottom: 0
   }
 
   const roleStyles = {
     fontSize: '1.1rem',
     color: '#4a9eff',
     marginBottom: '0.5rem',
-    fontWeight: '500'
+    fontWeight: '600'
   }
 
-  const periodStyles = {
-    color: '#aaaaaa',
+  const periodBadgeStyles = {
+    display: 'inline-block',
+    padding: '0.25rem 0.6rem',
+    borderRadius: '0.5rem',
+    border: '1px solid rgba(255,255,255,0.15)',
+    backgroundColor: 'rgba(255,255,255,0.05)',
+    color: '#cccccc',
     fontSize: '0.9rem',
     marginBottom: '1rem'
   }
@@ -127,15 +160,23 @@ function Experience() {
           <div style={timelineStyles}>
             <div style={timelineLineStyles}></div>
             {workExperience.map((experience, index) => (
-              <div key={index} style={experienceItemStyles}>
+              <div key={index} style={experienceItemStyles}
+                   onMouseEnter={(e)=>{ e.currentTarget.style.transform='translateY(-3px)'; e.currentTarget.style.boxShadow='0 12px 28px rgba(0,0,0,0.35)'}}
+                   onMouseLeave={(e)=>{ e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 6px 18px rgba(0,0,0,0.25)'}}
+              >
                 <div style={experienceDotStyles}></div>
-                <div style={companyStyles}>{experience.company}</div>
+                <div style={headerCardStyles}>
+                  {experience.logo && (
+                    <img src={experience.logo} alt={experience.company} style={logoStyles} onError={(e) => { e.target.style.display = 'none' }} />
+                  )}
+                  <div style={companyStyles}>{experience.company}</div>
+                </div>
                 <div style={roleStyles}>{experience.position}</div>
-                <div style={periodStyles}>{experience.timeline}</div>
+                <div style={periodBadgeStyles}>{experience.timeline}</div>
                 <div style={descriptionStyles}>
                   <ul style={{margin: 0, paddingLeft: '1.2rem'}}>
                     {experience.tasks.map((task, taskIndex) => (
-                      <li key={taskIndex} style={{marginBottom: '0.5rem'}}>{task}</li>
+                      <li key={taskIndex} style={{marginBottom: '0.6rem'}}>{task}</li>
                     ))}
                   </ul>
                 </div>

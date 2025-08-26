@@ -41,8 +41,9 @@ function ArticleModal({ article, isOpen, onClose }) {
 
   const contentStyles = {
     padding: '2rem',
-    maxHeight: '90vh',
-    overflow: 'auto'
+    maxHeight: 'calc(90vh - 3px)',
+    overflowY: 'auto',
+    overflowX: 'hidden'
   }
 
   const headerStyles = {
@@ -118,8 +119,8 @@ function ArticleModal({ article, isOpen, onClose }) {
 
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'technical':
-        return '⚙️'
+      case 'gamedev':
+        return '📄'
       case 'devlog':
         return '📝'
       case 'tutorial':
@@ -286,10 +287,6 @@ function ArticleModal({ article, isOpen, onClose }) {
             <div style={metaItemStyles}>
               <span>📅</span>
               <span>{article.date}</span>
-            </div>
-            <div style={metaItemStyles}>
-              <span>👤</span>
-              <span>By {article.author}</span>
             </div>
             <div style={metaItemStyles}>
               <span>⏱️</span>

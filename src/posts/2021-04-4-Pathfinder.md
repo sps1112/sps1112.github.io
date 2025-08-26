@@ -3,7 +3,8 @@ layout: project
 title: "A* Pathfinder"
 author: Siddhartha
 permalink: /pathfinder/
-type: "Self-project"
+type: "Personal"
+category: "Other"
 engine: "NA"
 language: "C++"
 platform: "PC"

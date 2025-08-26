@@ -3,7 +3,8 @@ layout: project
 title: "Who Done It?"
 author: Siddhartha
 permalink: /who-done-it/
-type: "GameDev Society, IITK"
+type: "Professional"
+category: "Games"
 role: "Game Programmer and Designer"
 engine: "Unity"
 language: "C#"

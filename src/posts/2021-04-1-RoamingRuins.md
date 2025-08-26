@@ -3,7 +3,8 @@ layout: project
 title: "Roaming Ruins"
 author: Siddhartha
 permalink: /roaming-ruins/
-type: "Self-project"
+type: "Personal"
+category: "Games"
 engine: "Unity"
 language: "C#"
 platform: "PC"

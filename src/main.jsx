@@ -128,6 +128,26 @@ globalStyle.textContent = `
     }
   }
   
+  @keyframes bannerEntry {
+    0% {
+      opacity: 0;
+      transform: scale(1.1) translateX(-20px) translateY(-10px);
+    }
+    100% {
+      opacity: 0.85;
+      transform: scale(1.05) translateX(0) translateY(0);
+    }
+  }
+  
+  @keyframes bannerFloat {
+    0%, 100% {
+      transform: scale(1.05) translateX(0) translateY(0);
+    }
+    50% {
+      transform: scale(1.08) translateX(5px) translateY(-3px);
+    }
+  }
+  
   @keyframes fadeInScale {
     0% {
       opacity: 0;

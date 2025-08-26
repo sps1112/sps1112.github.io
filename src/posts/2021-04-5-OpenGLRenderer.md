@@ -3,7 +3,8 @@ layout: project
 title: "OpenGL Renderer"
 author: Siddhartha
 permalink: /opengl-renderer/
-type: "Self-project"
+type: "Personal"
+category: "Graphics"
 engine: "OpenGL API, GLFW"
 language: "C++, GLSL"
 platform: "PC"
@@ -12,21 +13,22 @@ image: "/assets/projects/r12.png"
 ---
 
 # Contents
-- [Renderer Class](#renderer-class)
-- [Primitive System](#primitive-system)
-- [Textures, Shaders and Materials](#textures-shaders-and-materials)
-- [Camera System](#camera-system)
-- [Model Loading](#model-loading)
-- [Blinn-Phong Shading Model](#blinn-phong-shading-model)
-- [GUI with ImGui](#gui-with-imgui)
-- [FrameBuffer and Render Loops](#framebuffer-and-render-loops)
-- [Scene System](#scene-system)
-  - [Empty Window](#empty-window)
-  - [New Scene](#new-scene)
-  - [Adding New Actors](#adding-new-actors)
-  - [Changing Actor properties](#changing-actor-properties)
-  - [Applying Template Textures](#applying-template-textures)
-  - [Importing 3D Models](#importing-3d-models)
+- [Contents](#contents)
+    - [Renderer Class](#renderer-class)
+    - [Primitive System](#primitive-system)
+    - [Textures, Shaders and Materials](#textures-shaders-and-materials)
+    - [Camera System](#camera-system)
+    - [Model Loading](#model-loading)
+    - [Blinn-Phong Shading Model](#blinn-phong-shading-model)
+    - [GUI with ImGui](#gui-with-imgui)
+    - [FrameBuffer and Render Loops](#framebuffer-and-render-loops)
+    - [Scene System](#scene-system)
+      - [Empty Window](#empty-window)
+      - [New Scene](#new-scene)
+      - [Adding New Actors](#adding-new-actors)
+      - [Changing Actor properties](#changing-actor-properties)
+      - [Applying Template Textures](#applying-template-textures)
+      - [Importing 3D Models](#importing-3d-models)
 
 A 3D Renderer written in C++ based on the OpenGL API. Third party libraries used for the renderer include GLFW and GLAD for the OpenGL context, GLM as the math engine, ASSIMP for loading 3D models and ImGui for rendering UI.
 

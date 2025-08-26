@@ -13,21 +13,22 @@ function Header({ activeTab, onTabChange }) {
     backdropFilter: 'blur(10px)',
     borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
     zIndex: 1000,
-    padding: '1rem 2rem'
+    padding: '0.75rem 1rem'
   }
 
   const containerStyles = {
     display: 'flex',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    maxWidth: '1200px',
-    margin: '0 auto',
-    paddingLeft: '1rem', // Extra padding to push content left
-    gap: '4rem' // Larger gap
+    width: '100%',
+    maxWidth: '100%',
+    margin: 0,
+    paddingLeft: 0,
+    gap: '2rem'
   }
 
   const logoStyles = {
-    fontSize: 'clamp(1rem, 3vw, 1.3rem)',
+    fontSize: 'clamp(1.15rem, 3.2vw, 1.6rem)',
     fontWeight: '700',
     color: '#4a9eff',
     textDecoration: 'none',
@@ -52,7 +53,7 @@ function Header({ activeTab, onTabChange }) {
   const navItemStyles = {
     color: 'rgba(255, 255, 255, 0.85)',
     textDecoration: 'none',
-    fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
+    fontSize: 'clamp(0.95rem, 2.5vw, 1.05rem)',
     fontWeight: '500',
     padding: '0.6rem 1.2rem',
     borderRadius: '0.5rem',
@@ -74,7 +75,7 @@ function Header({ activeTab, onTabChange }) {
     fontWeight: '700',
     textShadow: '0 0 8px rgba(74, 158, 255, 0.4)',
     boxShadow: '0 0 15px rgba(74, 158, 255, 0.2)',
-    transform: 'translateY(-2px) scale(1.05)' // Same scale as hover
+    transform: 'none'
   }
 
   const mobileMenuButtonStyles = {
@@ -103,6 +104,7 @@ function Header({ activeTab, onTabChange }) {
     { id: 'about', label: 'About' },
     { id: 'portfolio', label: 'Portfolio' },
     { id: 'experience', label: 'CV' },
+    { id: 'blogs', label: 'Blogs' },
     { id: 'contact', label: 'Contact' }
   ]
 
@@ -115,12 +117,10 @@ function Header({ activeTab, onTabChange }) {
           onMouseEnter={(e) => {
             e.target.style.color = '#ffffff'
             e.target.style.textShadow = '0 0 12px rgba(255, 255, 255, 0.4)'
-            e.target.style.transform = 'translateY(-1px)'
           }}
           onMouseLeave={(e) => {
             e.target.style.color = '#4a9eff'
             e.target.style.textShadow = '0 0 8px rgba(74, 158, 255, 0.2)'
-            e.target.style.transform = 'translateY(0)'
           }}
         >
           {siteConfig.name}
@@ -136,16 +136,16 @@ function Header({ activeTab, onTabChange }) {
                 if (activeTab !== item.id) {
                   e.target.style.color = '#ffffff' // White color on hover
                   e.target.style.backgroundColor = 'rgba(74, 158, 255, 0.15)'
-                  e.target.style.transform = 'translateY(-2px) scale(1.05)' // Slight size increase
                   e.target.style.textShadow = '0 0 8px rgba(74, 158, 255, 0.4)'
                   e.target.style.fontWeight = '700' // Bold on hover
+                  e.target.style.transform = 'none'
                 }
               }}
               onMouseLeave={(e) => {
                 if (activeTab !== item.id) {
                   e.target.style.color = 'rgba(255, 255, 255, 0.9)'
                   e.target.style.backgroundColor = 'transparent'
-                  e.target.style.transform = 'translateY(0) scale(1)'
+                  e.target.style.transform = 'none'
                   e.target.style.textShadow = 'none'
                   e.target.style.fontWeight = '500' // Back to normal weight
                 }

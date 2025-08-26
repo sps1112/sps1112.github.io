@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
-import { categories, getProjectsByCategory } from '../../data/projects'
-import ProjectCard from '../ui/ProjectCard'
+import { getArticlesByCategory } from '../../data/articles'
 
-function Portfolio({ onProjectClick }) {
+function Blogs({ onArticleClick }) {
   const [activeCategory, setActiveCategory] = useState('all')
-  const filteredProjects = getProjectsByCategory(activeCategory)
+  const filteredArticles = getArticlesByCategory(activeCategory)
 
-  const portfolioStyles = {
+  const categories = [
+    { id: 'all', label: 'All' },
+    { id: 'gamedev', label: 'GameDev' },
+  ]
+
+  const sectionStyles = {
     minHeight: '100vh',
     padding: '6rem 2rem 4rem 2rem',
     backgroundColor: '#0a0a0a'
@@ -70,11 +74,48 @@ function Portfolio({ onProjectClick }) {
     gap: '2rem'
   }
 
+  const cardStyles = {
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    border: '1px solid rgba(255, 255, 255, 0.12)',
+    borderRadius: '12px',
+    overflow: 'hidden',
+    cursor: 'pointer',
+    transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+  }
+
+  const imageStyles = {
+    width: '100%',
+    height: '180px',
+    objectFit: 'cover'
+  }
+
+  const cardBodyStyles = {
+    padding: '1rem 1.25rem'
+  }
+
+  const cardTitleStyles = {
+    color: '#ffffff',
+    fontSize: '1.1rem',
+    fontWeight: '700',
+    marginBottom: '0.5rem'
+  }
+
+  const cardMetaStyles = {
+    color: '#aaaaaa',
+    fontSize: '0.85rem',
+    marginBottom: '0.5rem'
+  }
+
+  const cardDescStyles = {
+    color: '#cccccc',
+    fontSize: '0.95rem'
+  }
+
   return (
-    <section style={portfolioStyles}>
+    <section style={sectionStyles}>
       <div style={containerStyles}>
-        <h2 style={titleStyles}>My Portfolio</h2>
-        
+        <h2 style={titleStyles}>My Articles</h2>
+
         <div style={filterContainerStyles}>
           {categories.map((category) => (
             <button
@@ -108,12 +149,29 @@ function Portfolio({ onProjectClick }) {
         </div>
 
         <div style={gridStyles}>
-          {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              project={project}
-              onClick={onProjectClick}
-            />
+          {filteredArticles.map((article) => (
+            <div
+              key={article.id}
+              style={cardStyles}
+              onClick={() => onArticleClick && onArticleClick(article)}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-4px)'
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(74,158,255,0.15)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'translateY(0)'
+                e.currentTarget.style.boxShadow = 'none'
+              }}
+            >
+              {article.image && (
+                <img src={article.image} alt={article.title} style={imageStyles} />
+              )}
+              <div style={cardBodyStyles}>
+                <div style={cardTitleStyles}>{article.title}</div>
+                <div style={cardMetaStyles}>{article.date} • {article.readTime}</div>
+                <div style={cardDescStyles}>{article.description}</div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -121,4 +179,4 @@ function Portfolio({ onProjectClick }) {
   )
 }
 
-export default Portfolio
+export default Blogs

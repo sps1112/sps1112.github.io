@@ -3,7 +3,8 @@ layout: project
 title: "Noise Generator"
 author: Siddhartha
 permalink: /noise-gen/
-type: "Self-project"
+type: "Personal"
+category: "Other"
 engine: "NA"
 language: "C++"
 platform: "PC"

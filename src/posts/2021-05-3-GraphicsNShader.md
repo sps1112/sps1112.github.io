@@ -3,7 +3,8 @@ layout: project
 title: "Intro to Graphics and Shaders"
 author: Siddhartha
 permalink: /graphics-and-shaders/
-type: "GameDev Society, IITK"
+type: "Professional"
+category: "Graphics"
 role: "Graphics Programmer"
 engine: "OpenGL API, GLFW"
 language: "C++, GLSL"

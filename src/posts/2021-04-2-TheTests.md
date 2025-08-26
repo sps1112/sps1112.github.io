@@ -3,7 +3,8 @@ layout: project
 title: "The Tests"
 author: Siddhartha
 permalink: /the-tests/
-type: "Self-project"
+type: "Personal"
+category: "Games"
 engine: "Unity"
 language: "C#"
 platform: "PC"

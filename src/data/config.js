@@ -13,8 +13,8 @@ export const siteConfig = {
   // Asset paths
   assets: {
     // Profile images
-    profileImg: "/assets/profile2.jpg",
-    profileImgAlt: "/assets/Profile.jpg",
+    profileImg: "/assets/profile3.jpg",
+    profileImgAlt: "/assets/profile2.jpg",
 
     // Banner images
     bannerImg: "/assets/banner2.png",
@@ -44,7 +44,7 @@ export const siteConfig = {
 
   // Legacy paths for backward compatibility
   bannerImg: "/assets/banner2.png",
-  profileImg: "/assets/profile2.jpg",
+  profileImg: "/assets/profile3.jpg",
 
   // Social links with proper icons
   socialLinks: [
@@ -53,12 +53,6 @@ export const siteConfig = {
       url: "mailto:sidps1112@gmail.com",
       icon: "/assets/svg/mail.svg",
       username: "sidps1112@gmail.com",
-    },
-    {
-      name: "Alt Email",
-      url: "mailto:sidps@iitk.ac.in",
-      icon: "/assets/svg/mail.svg",
-      username: "sidps@iitk.ac.in",
     },
     {
       name: "GitHub",

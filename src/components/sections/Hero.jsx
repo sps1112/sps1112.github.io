@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { siteConfig } from '../../data/config'
 
 function Hero({ onNavigate }) {
   const [isLoaded, setIsLoaded] = useState(false)
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0)
+  const [bannerState, setBannerState] = useState('entry') // 'entry', 'active', 'exit'
+  const bannerRef = useRef(null)
+  const [currentTransform, setCurrentTransform] = useState('scale(1.05) translateX(0) translateY(0)')
+  const [isExiting, setIsExiting] = useState(false)
 
   // ===== EASY-TO-EDIT BANNER IMAGE LIST =====
   // Add, remove, or modify images here:
@@ -37,8 +41,26 @@ function Hero({ onNavigate }) {
   }, [bannerImages.length])
 
   useEffect(() => {
-    // Banner carousel auto-rotation with random order
-    const bannerInterval = setInterval(() => {
+    // Banner state management
+    const entryTimer = setTimeout(() => {
+      setBannerState('active')
+    }, 2000) // 2s for entry animation
+
+    const activeTimer = setTimeout(() => {
+      // Capture current transform before transitioning to exit
+      if (bannerRef.current) {
+        const computedStyle = window.getComputedStyle(bannerRef.current)
+        const transform = computedStyle.transform
+        if (transform && transform !== 'none') {
+          setCurrentTransform(transform)
+        }
+      }
+      setIsExiting(true)
+      setBannerState('exit')
+    }, 6000) // 6s active time (8s total - 2s entry)
+
+    const exitTimer = setTimeout(() => {
+      // Change to next image
       setCurrentShuffleIndex((prevShuffleIndex) => {
         const nextShuffleIndex = (prevShuffleIndex + 1) % shuffledIndices.length
 
@@ -53,10 +75,37 @@ function Hero({ onNavigate }) {
 
         return nextShuffleIndex
       })
-    }, 8000) // Change every 8 seconds
+      setBannerState('entry')
+    }, 7500) // 7.5s total (8s - 0.5s exit)
 
-    return () => clearInterval(bannerInterval)
-  }, [shuffledIndices])
+    return () => {
+      clearTimeout(entryTimer)
+      clearTimeout(activeTimer)
+      clearTimeout(exitTimer)
+    }
+  }, [shuffledIndices, currentBannerIndex])
+
+  // Handle exit animation after state change
+  useEffect(() => {
+    if (bannerState === 'exit' && bannerRef.current) {
+      // Apply exit animation after a brief delay to ensure current state is rendered
+      const exitAnimationTimer = setTimeout(() => {
+        if (bannerRef.current) {
+          bannerRef.current.style.opacity = '0'
+          bannerRef.current.style.transform = 'scale(1.1) translateX(20px) translateY(10px)'
+        }
+      }, 50)
+
+      return () => clearTimeout(exitAnimationTimer)
+    }
+  }, [bannerState])
+
+  // Reset exiting state when transitioning to entry
+  useEffect(() => {
+    if (bannerState === 'entry') {
+      setIsExiting(false)
+    }
+  }, [bannerState])
 
   const heroStyles = {
     minHeight: '100vh',
@@ -84,21 +133,65 @@ function Hero({ onNavigate }) {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100%', // Normal size to show full content
+    width: '100%',
     height: '100%',
     objectFit: 'cover',
-    opacity: 0.8, // More visible banner
-    transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)', // Smoother easing
-    filter: 'blur(1px)', // Minimal blur
-    transform: 'scale(1) translateX(0)', // No zoom by default
-    animation: `bannerSlide 2s ease-in-out`
+    objectPosition: 'center',
+    opacity: 0,
+    transition: 'opacity 2s ease-in-out, transform 2s ease-in-out',
+    filter: 'none',
+    transform: 'scale(1.1) translateX(-20px) translateY(-10px)',
+    animation: 'bannerEntry 2s ease-out forwards'
+  }
+
+  const bannerImageActiveStyles = {
+    ...bannerImageStyles,
+     opacity: 0.85,
+    transform: 'scale(1.05) translateX(0) translateY(0)',
+    transition: 'opacity 1s ease-in-out, transform 1s ease-in-out',
+    animation: 'bannerFloat 8s ease-in-out infinite'
   }
 
   const bannerImageExitStyles = {
     ...bannerImageStyles,
     opacity: 0,
-    transform: 'scale(1.1) translateX(-100px)', // Slide out effect
-    transition: 'all 1s ease-in-out'
+    transform: 'scale(1.1) translateX(20px) translateY(10px)',
+    transition: 'opacity 1.5s ease-in-out, transform 1.5s ease-in-out',
+    animation: 'none'
+  }
+
+  // Get current banner styles based on state
+  const getCurrentBannerStyles = () => {
+    switch (bannerState) {
+      case 'entry':
+        return bannerImageStyles
+      case 'active':
+        return bannerImageActiveStyles
+      case 'exit':
+        // For exit, start from the current active position to prevent black flash
+        if (isExiting) {
+          return {
+            ...bannerImageStyles,
+            opacity: 0.85, // Start from current opacity
+            transform: currentTransform, // Start from current transform
+            transition: 'opacity 1.5s ease-in-out, transform 1.5s ease-in-out',
+            animation: 'none' // Stop the floating animation
+          }
+        }
+        return bannerImageStyles
+      default:
+        return bannerImageStyles
+    }
+  }
+
+  // Handle state transitions more smoothly
+  const handleBannerStateChange = (newState) => {
+    if (newState === 'exit' && bannerRef.current) {
+      // When transitioning to exit, ensure we start from current position
+      const currentTransform = bannerRef.current.style.transform
+      // Apply current transform as starting point for exit animation
+    }
+    setBannerState(newState)
   }
 
   const bannerOverlayStyles = {
@@ -107,8 +200,8 @@ function Hero({ onNavigate }) {
     left: 0,
     width: '100%',
     height: '100%',
-    background: 'rgba(10,10,10,0.3)', // Much more transparent overlay
-    backdropFilter: 'blur(1px)', // Blur overlay instead of dark overlay
+    background: 'rgba(10,10,10,0.4)',
+    backdropFilter: 'none',
     zIndex: 2
   }
 
@@ -142,15 +235,15 @@ function Hero({ onNavigate }) {
   }
 
   const profileImageStyles = {
-    width: '140px',
-    height: '140px',
+    width: '220px',
+    height: '220px',
     borderRadius: '50%',
-    border: '4px solid transparent',
-    background: 'linear-gradient(135deg, #4a9eff, #64b5f6, #4a9eff)',
-    padding: '4px',
+    border: '2px solid rgba(255,255,255,0.8)',
+    background: 'transparent',
+    padding: '2px',
     marginBottom: '2rem',
     objectFit: 'cover',
-    boxShadow: '0 0 30px rgba(74, 158, 255, 0.3), inset 0 0 20px rgba(74, 158, 255, 0.1)',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.35)',
     transition: 'all 0.4s ease',
     position: 'relative',
     overflow: 'hidden'
@@ -223,17 +316,7 @@ function Hero({ onNavigate }) {
   }
 
   const secondaryButtonStyles = {
-    backgroundColor: 'transparent',
-    color: '#4a9eff',
-    border: '2px solid #4a9eff',
-    padding: '1rem 2rem',
-    fontSize: '1rem',
-    fontWeight: '600',
-    borderRadius: '0.5rem',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    textDecoration: 'none',
-    display: 'inline-block'
+    ...primaryButtonStyles
   }
 
   return (
@@ -241,9 +324,10 @@ function Hero({ onNavigate }) {
       {/* Banner Carousel Background */}
       <div style={bannerContainerStyles}>
         <img
+          ref={bannerRef}
           src={bannerImages[currentBannerIndex]}
           alt="Background banner"
-          style={bannerImageStyles}
+          style={getCurrentBannerStyles()}
           key={currentBannerIndex} // Force re-render for transition
         />
         <div style={bannerOverlayStyles}></div>
@@ -254,12 +338,12 @@ function Hero({ onNavigate }) {
         <div
           style={profileImageStyles}
           onMouseEnter={(e) => {
-            e.target.style.transform = 'scale(1.05) rotate(1deg)'
-            e.target.style.boxShadow = '0 0 40px rgba(74, 158, 255, 0.5), inset 0 0 25px rgba(74, 158, 255, 0.15)'
+            e.target.style.transform = 'scale(1) rotate(0deg)'
+            e.target.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.35)'
           }}
           onMouseLeave={(e) => {
             e.target.style.transform = 'scale(1) rotate(0deg)'
-            e.target.style.boxShadow = '0 0 30px rgba(74, 158, 255, 0.3), inset 0 0 20px rgba(74, 158, 255, 0.1)'
+            e.target.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.35)'
           }}
         >
           <img
@@ -298,14 +382,12 @@ function Hero({ onNavigate }) {
             style={secondaryButtonStyles}
             onClick={() => onNavigate('about')}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#4a9eff'
-              e.target.style.color = '#ffffff'
+              e.target.style.backgroundColor = '#3a8eef'
               e.target.style.transform = 'translateY(-3px)'
               e.target.style.boxShadow = '0 10px 25px rgba(74,158,255,0.3)'
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'transparent'
-              e.target.style.color = '#4a9eff'
+              e.target.style.backgroundColor = '#4a9eff'
               e.target.style.transform = 'translateY(0)'
               e.target.style.boxShadow = 'none'
             }}

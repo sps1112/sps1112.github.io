@@ -9,6 +9,7 @@ import Contact from './components/sections/Contact'
 import ProjectModal from './components/modals/ProjectModal'
 import ArticleModal from './components/modals/ArticleModal'
 import ErrorBoundary from './components/ui/ErrorBoundary'
+import Blogs from './components/sections/Blogs'
 
 function App() {
   const [activeTab, setActiveTab] = useState('hero')
@@ -61,6 +62,8 @@ function App() {
         return <Portfolio onProjectClick={handleProjectClick} />
       case 'experience':
         return <Experience />
+      case 'blogs':
+        return <Blogs onArticleClick={handleArticleClick} />
       case 'contact':
         return <Contact />
       default:

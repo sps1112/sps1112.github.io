@@ -3,7 +3,8 @@ layout: project
 title: "Tactics: RPG"
 author: Siddhartha
 permalink: /tactics-rpg/
-type: "Self-project"
+type: "Personal"
+category: "Games"
 engine: "Unity"
 language: "C#"
 platform: "PC"

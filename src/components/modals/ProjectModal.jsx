@@ -28,6 +28,33 @@ function ProjectModal({ project, isOpen, onClose }) {
     marginBottom: '1rem'
   }
 
+  const metaStyles = {
+    display: 'flex',
+    gap: '1rem',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    marginTop: '0.5rem',
+    marginBottom: '1rem'
+  }
+
+  const metaItemStyles = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.4rem',
+    color: '#ccc',
+    fontSize: '0.9rem'
+  }
+
+  const tagBadgeStyles = {
+    backgroundColor: 'rgba(70, 150, 225, 0.2)',
+    color: '#4696e1',
+    padding: '0.25rem 0.6rem',
+    borderRadius: '12px',
+    fontSize: '0.8rem',
+    fontWeight: '600',
+    border: '1px solid rgba(70, 150, 225, 0.3)'
+  }
+
   const heroImageStyles = {
     width: '100%',
     height: '300px',
@@ -326,6 +353,16 @@ function ProjectModal({ project, isOpen, onClose }) {
           <h2 style={titleStyles}>{project.title}</h2>
           <div style={typeStyles}>
             {project.type} • {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
+          </div>
+          <div style={metaStyles}>
+            {/* Optional date if present in content id; otherwise omit */}
+            {project.date && (
+              <div style={metaItemStyles}><span>📅</span><span>{project.date}</span></div>
+            )}
+            {project.readTime && (
+              <div style={metaItemStyles}><span>⏱️</span><span>{project.readTime}</span></div>
+            )}
+            <div style={tagBadgeStyles}>{project.category}</div>
           </div>
         </div>
 

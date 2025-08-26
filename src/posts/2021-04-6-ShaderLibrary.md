@@ -3,7 +3,8 @@ layout: project
 title: "Shader Library"
 author: Siddhartha
 permalink: /shader-library/
-type: "Self-project"
+type: "Personal"
+category: "Graphics"
 engine: "ShaderToy"
 language: "GLSL"
 platform: "Web"
