@@ -133,7 +133,6 @@ function ArticleModal({ article, isOpen, onClose }) {
   const renderMarkdownContent = (content) => {
     // Enhanced markdown-like rendering for article content
     const cleanContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
-    
     return cleanContent.split('\n').map((line, index) => {
       // Headers
       if (line.startsWith('# ')) {

@@ -6,7 +6,7 @@ author: Siddhartha
 permalink: /opengl-renderer/
 type: "Personal"
 category: "Graphics"
-engine: "OpenGL API, GLFW"
+engine: "OpenGL"
 language: "C++, GLSL"
 platform: "PC"
 description: "3D renderer written in C++ utilizing the OpenGL API. Implemented a Scene system to faster debugging of features. Scene shader use the Blinn-phong shading model for lighting primitives and models."

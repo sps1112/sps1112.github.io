@@ -1,25 +1,24 @@
 ---
 layout: article
-title: "Prefabs in Games"
-date: "March, 2021"
+title: Prefabs in Games
+date: March, 2021
 author: Siddhartha
 permalink: /prefabs-games/
-description: "Why and how prefabs/templates are used in Game Development"
-image: "/assets/projects/prefab.png"
-category: "GameDev"
+description: Why and how prefabs/templates are used in Game Development
+image: /assets/projects/prefab.png
+category: GameDev
 ---
 # Contents
-- [Contents](#contents)
-  - [Overview](#overview)
-  - [Common Usage](#common-usage)
-    - [Creating and Editing Prefabs](#creating-and-editing-prefabs)
-    - [Manual Placement in Scenes](#manual-placement-in-scenes)
-    - [Initialization During Runtime](#initialization-during-runtime)
-  - [Overriding Prefab Data](#overriding-prefab-data)
-    - [Prefab Variants](#prefab-variants)
-  - [Bonus Content: Nested Prefabs](#bonus-content-nested-prefabs)
-    - [Parent-Child Relationship](#parent-child-relationship)
-  - [References](#references)
+- [Overview](#overview)
+- [Common Usage](#common-usage)
+  - [Creating and Editing Prefabs](#creating-and-editing-prefabs)
+  - [Manual Placement in Scenes](#manual-placement-in-scenes)
+  - [Initialization During Runtime](#initialization-during-runtime)
+- [Overriding Prefab Data](#overriding-prefab-data)
+  - [Prefab Variants](#prefab-variants)
+- [Bonus Content: Nested Prefabs](#bonus-content-nested-prefabs)
+  - [Parent-Child Relationship](#parent-child-relationship)
+- [References](#references)
 
 As the scale of your game increases, tracking all the objects or entities being used becomes increasingly difficult. There may also be situations where you need multiple copies of the same object. For instance, coins in a level or bullets fired from a gun. One solution to this problem is to use `Prefabs`.
 

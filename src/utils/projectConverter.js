@@ -78,46 +78,34 @@ function isFeatured(project) {
 
 // Function to convert markdown content to HTML-like format for projects.js
 function convertContentToProjectFormat(content) {
-  // Remove frontmatter completely
+  // Remove frontmatter
   let projectContent = content.replace(/^---\s*\n[\s\S]*?\n---\s*\n/, "");
 
-  // Convert markdown images to React-style img tags
+  // Convert <img class="article-screenshot" src="..." alt="..." /> to markdown image syntax
   projectContent = projectContent.replace(
     /<img\s+class="article-screenshot"\s+src="([^"]+)"\s+alt="([^"]*)"\s*\/?>/g,
-    '<img style={{width: "100%", borderRadius: "8px", margin: "1rem 0"}}" src="$1" alt="$2" />'
+    (m, src, alt) => `![${alt || ""}](${src})`
   );
 
-  // Convert markdown images with two-images class
+  // Convert <div class="code-container"><pre class="code-block">...</pre></div> to markdown code blocks
   projectContent = projectContent.replace(
-    /<img\s+class="article-screenshots"\s+src="([^"]+)"\s+alt="([^"]*)"\s*\/?>/g,
-    '<img style={{width: "100%", borderRadius: "8px", margin: "1rem 0"}}" src="$1" alt="$2" />'
+    /<div class="code-container">\s*<pre class="code-block">([\s\S]*?)<\/pre>\s*<\/div>/g,
+    (m, code) => {
+      // Remove only blank lines before/after, never the first code line
+      let cleaned = code.replace(/^[\r\n]+/, "").replace(/[\r\n]+$/, "");
+      return `\n\`\`\`\n${cleaned}\n\`\`\`\n`;
+    }
   );
 
-  // Convert div with two-images class to a simple div
+  // Only convert actual code blocks (triple backticks), preserve inline code
+  // This regex matches triple backtick blocks, not single backtick inline code
   projectContent = projectContent.replace(
-    /<div\s+class="two-images">\s*\n/g,
-    "<div>\n"
+    /(^|\n)```([\s\S]*?)```(\n|$)/g,
+    (m, before, code, after) => {
+      let cleaned = code.replace(/^[\r\n]+/, "").replace(/[\r\n]+$/, "");
+      return `\n\`\`\`\n${cleaned}\n\`\`\`\n`;
+    }
   );
-
-  // Convert markdown code blocks to React format
-  projectContent = projectContent.replace(/```([\s\S]*?)```/g, "```$1```");
-
-  // Convert markdown links to React format
-  projectContent = projectContent.replace(
-    /\[([^\]]+)\]\(([^)]+)\)/g,
-    '<a href="$2">$1</a>'
-  );
-
-  // Convert markdown headers
-  projectContent = projectContent.replace(/^### (.*$)/gm, "### $1");
-  projectContent = projectContent.replace(/^## (.*$)/gm, "## $1");
-  projectContent = projectContent.replace(/^# (.*$)/gm, "# $1");
-
-  // Convert markdown lists
-  projectContent = projectContent.replace(/^- (.*$)/gm, "- $1");
-
-  // Escape single quotes for JavaScript string
-  projectContent = projectContent.replace(/'/g, "\\'");
 
   return projectContent;
 }
@@ -134,6 +122,11 @@ export function convertMarkdownToProjects() {
       if (file.endsWith(".md")) {
         const filePath = path.join(postsDir, file);
         const content = fs.readFileSync(filePath, "utf8");
+
+        // Skip files that already contain template tags
+        if (/\{\{(IMG|TWOIMAGES|CODEBLOCK|LINK|THANKYOU)\}\}/.test(content)) {
+          return;
+        }
 
         const frontmatter = parseFrontmatter(content);
 
@@ -233,7 +226,11 @@ export function updateProjectsJS() {
     const projectsJSContent = generateProjectsJS(projects);
 
     const projectsJSPath = path.join(__dirname, "../data/projects.js");
-    fs.writeFileSync(projectsJSPath, projectsJSContent, "utf8");
+    // Overwrite the file with fresh content
+    fs.writeFileSync(projectsJSPath, projectsJSContent, {
+      encoding: "utf8",
+      flag: "w",
+    });
 
     console.log(
       `Successfully updated projects.js with ${projects.length} projects`
@@ -259,6 +256,10 @@ export function convertMarkdownToArticles() {
       if (!file.endsWith(".md")) return;
       const filePath = path.join(postsDir, file);
       const content = fs.readFileSync(filePath, "utf8");
+      // Skip files that already contain template tags
+      if (/\{\{(IMG|TWOIMAGES|CODEBLOCK|LINK|THANKYOU)\}\}/.test(content)) {
+        return;
+      }
       const fm = parseFrontmatter(content);
       if (!fm) return;
       if (fm.layout !== "article") return; // only articles
@@ -303,7 +304,8 @@ export function updateArticlesJS() {
     const articles = convertMarkdownToArticles();
     const content = generateArticlesJS(articles);
     const outPath = path.join(__dirname, "../data/articles.js");
-    fs.writeFileSync(outPath, content, "utf8");
+    // Overwrite the file with fresh content
+    fs.writeFileSync(outPath, content, { encoding: "utf8", flag: "w" });
     console.log(
       `Successfully updated articles.js with ${articles.length} articles`
     );

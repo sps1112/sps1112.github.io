@@ -1,25 +1,29 @@
-import React, { useEffect } from 'react'
+
+import React, { useEffect, useState } from 'react'
+
 
 function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
+  // All hooks must be called unconditionally at the top
+  const [isHovered, setIsHovered] = useState(false);
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
-        onClose()
+        onClose();
       }
-    }
+    };
 
     if (isOpen) {
-      document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden'
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
     }
 
     return () => {
-      document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'auto'
-    }
-  }, [isOpen, onClose])
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'auto';
+    };
+  }, [isOpen, onClose]);
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   const overlayStyles = {
     position: 'fixed',
@@ -27,15 +31,15 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    background: 'rgba(36, 36, 36, 0.45)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
     padding: '2rem',
-    backdropFilter: 'blur(8px)',
-    WebkitBackdropFilter: 'blur(8px)'
-  }
+    backdropFilter: 'blur(16px) saturate(1.2)',
+    WebkitBackdropFilter: 'blur(16px) saturate(1.2)'
+  };
 
   const modalStyles = {
     backgroundColor: '#1a1a1a',
@@ -49,32 +53,35 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
     position: 'relative',
     animation: 'fadeIn 0.3s ease-out',
     margin: '1rem'
-  }
+  };
 
   const closeButtonStyles = {
     position: 'absolute',
     top: '1rem',
     right: '1rem',
-    background: 'rgba(255, 255, 255, 0.1)',
+    background: isHovered ? '#4696e1' : 'rgba(36, 36, 36, 0.85)',
     border: 'none',
     borderRadius: '50%',
-    width: '40px',
-    height: '40px',
+    width: '36px',
+    height: '36px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     cursor: 'pointer',
-    color: 'white',
-    fontSize: '1.5rem',
-    transition: 'all 0.3s ease',
+    color: isHovered ? '#fff' : '#4696e1',
+    fontSize: '1.35rem',
+    fontWeight: '700',
+    boxShadow: '0 2px 8px rgba(70,150,225,0.10)',
+    border: isHovered ? '1.5px solid #4696e1' : '1.5px solid #2a3444',
+    transition: 'all 0.2s cubic-bezier(.4,2,.3,1)',
     zIndex: 10001
-  }
+  };
 
   const handleOverlayClick = (e) => {
     if (e.target === e.currentTarget) {
-      onClose()
+      onClose();
     }
-  }
+  };
 
   return (
     <div 
@@ -90,19 +97,18 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
           onClick={onClose}
           aria-label="Close modal"
           title="Close modal (Esc)"
-          onMouseEnter={(e) => {
-            e.target.style.backgroundColor = 'rgba(74, 158, 255, 0.3)'
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
-          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          ✕
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4.5" y1="4.5" x2="13.5" y2="13.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            <line x1="13.5" y1="4.5" x2="4.5" y2="13.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
         </button>
         {children}
       </div>
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;

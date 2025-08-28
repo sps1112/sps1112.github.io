@@ -113,14 +113,8 @@ function ContentCard({
       </div>
       <div style={cardBodyStyles}>
         <div style={titleStyles}>{item.title}</div>
-        {/* Line 2: Date • Time to Read */}
-        <div style={metaStyles}>
-          {item.date && <span>{item.date}</span>}
-          <span>•</span>
-          {item.readTime && <span>{item.readTime}</span>}
-        </div>
-        {/* Line 3: Organization • Role (only for professional projects) */}
-        {item.organization && item.organization !== 'Self' && (
+        {/* Organization • Role (only for professional projects) */}
+        {item.organization && item.organization !== 'Self' && item.organization !== 'Personal' && (
           <div style={metaStyles}>
             <span>{item.organization}</span>
             {item.role && (
@@ -131,26 +125,45 @@ function ContentCard({
             )}
           </div>
         )}
-        {/* Line 4: Category • Engine • Languages */}
+        {/* Date • Time to Read • Category */}
         <div style={metaStyles}>
-          <span style={tagBadgeStyles}>{item.tagLabel}</span>
-          {item.engine && item.engine !== 'NA' && (
+          {item.date && <span>{item.date}</span>}
+          {item.readTime && (
             <>
-              <span>•</span>
-              <span style={tagBadgeStyles}>{item.engine}</span>
+              {item.date && <span>•</span>}
+              <span>{item.readTime}</span>
             </>
           )}
-          {Array.isArray(item.languages) ? item.languages.map((lang, i) => (
+          {item.tagLabel && (
             <>
-              <span key={i}>•</span>
-              <span key={`lang-${i}`} style={tagBadgeStyles}>{lang}</span>
+              {(item.date || item.readTime) && <span>•</span>}
+              <span style={tagBadgeStyles}>{item.tagLabel}</span>
             </>
-          )) : (item.languages && item.languages !== 'NA' ? item.languages.split(',').map((lang, i) => (
-            <>
-              <span key={i}>•</span>
-              <span key={`lang-${i}`} style={tagBadgeStyles}>{lang.trim()}</span>
-            </>
-          )) : null)}
+          )}
+        </div>
+        {/* Engine • Languages */}
+        <div style={metaStyles}>
+          {(() => {
+            const tags = [];
+            if (item.engine && item.engine !== 'NA') {
+              tags.push(<span key="engine" style={tagBadgeStyles}>{item.engine}</span>);
+            }
+            let langs = [];
+            if (Array.isArray(item.languages)) {
+              langs = item.languages;
+            } else if (item.languages && item.languages !== 'NA') {
+              langs = item.languages.split(',').map(l => l.trim());
+            }
+            langs.forEach((lang, i) => {
+              tags.push(<span key={`lang-${i}`} style={tagBadgeStyles}>{lang}</span>);
+            });
+            return tags.map((tag, i) => (
+              <React.Fragment key={`tagfrag-${i}`}>
+                {i > 0 && <span>•</span>}
+                {tag}
+              </React.Fragment>
+            ));
+          })()}
         </div>
         {item.description && (
           <div style={descStyles}>{item.description}</div>

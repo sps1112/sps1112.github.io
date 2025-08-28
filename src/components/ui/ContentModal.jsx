@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import Modal from './Modal'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
+import CodeBlock from './CodeBlock'
 import MetaBar from './MetaBar'
 
 function ContentModal({
@@ -8,6 +12,7 @@ function ContentModal({
   title,
   typeLabel,
   image,
+  zoomFactor = 1,
   meta: { date, readTime, tag } = {},
   description,
   content,
@@ -39,7 +44,7 @@ function ContentModal({
     left: 0,
     width: `${readingProgress}%`,
     height: '3px',
-    backgroundColor: '#4696e1',
+  backgroundColor: '#232a3a',
     zIndex: 10002,
     transition: 'width 0.1s ease'
   }
@@ -51,12 +56,18 @@ function ContentModal({
     overflowX: 'hidden',
     fontSize: '1rem',
     lineHeight: 1.7,
-    color: '#e0e0e0'
+    color: '#e0e0e0',
+    background: 'rgba(24, 24, 24, 0.98)',
+    borderRadius: '16px',
+    boxShadow: '0 2px 24px rgba(70,150,225,0.08)',
+    scrollbarWidth: 'thin',
+  scrollbarColor: '#444 #232a3a',
   }
 
   const titleStyles = {
+    textAlign: 'center',
     fontSize: 'clamp(1.8rem, 4vw, 2.5rem)',
-    color: '#4696e1',
+  color: '#b0b0b0',
     fontWeight: '700',
     marginBottom: '0.5rem'
   }
@@ -69,12 +80,17 @@ function ContentModal({
   }
 
   const heroImageStyles = {
-    width: '100%',
-    height: '260px',
-    objectFit: 'cover',
-    borderRadius: '12px',
-    marginBottom: '2rem',
-    border: '1px solid rgba(70, 150, 225, 0.2)'
+  width: '100%',
+  height: '260px',
+  objectFit: 'cover',
+  borderRadius: '12px',
+  marginBottom: '2rem',
+  border: '1px solid rgba(70, 150, 225, 0.2)',
+  transform: `scale(${zoomFactor})`,
+  transition: 'transform 0.2s cubic-bezier(.4,2,.3,1)',
+  display: 'block',
+  marginLeft: 'auto',
+  marginRight: 'auto'
   }
 
   const detailsGridStyles = {
@@ -96,7 +112,7 @@ function ContentModal({
 
   const detailLabelStyles = {
     fontSize: '0.9rem',
-    color: '#4696e1',
+  color: '#b0b0b0',
     fontWeight: '600',
     textTransform: 'uppercase',
     letterSpacing: '1px'
@@ -108,39 +124,41 @@ function ContentModal({
     fontWeight: '500'
   }
 
-  const renderHtmlContent = (raw) => {
-    // Normalize CRLF
-    let html = raw.replace(/\r\n/g, '\n').replace(/\r/g, '\n')
-    
-    // Convert <code-container>/<code-block> to pre/code blocks
-    html = html.replace(/<div class="code-container">[\s\S]*?<pre class="code-block">([\s\S]*?)<\/pre>[\s\S]*?<\/div>/g,
-      (m, code) => `<pre class="rendered-code"><code>${code.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</code></pre>`)
-    
-    // Convert article-screenshot images to centered responsive images
-    html = html.replace(/<img class="article-screenshot"[^>]*src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>/g,
-      (m, src, alt) => `<div class="rendered-image"><img src="${src}" alt="${alt}"/></div>`)
-    
-    // two-images container -> flex row of images
-    html = html.replace(/<div class="two-images">([\s\S]*?)<\/div>/g, (m, inner) => {
-      const imgs = Array.from(inner.matchAll(/<img[^>]*src="([^"]+)"[^>]*alt="([^"]*)"[^>]*>/g))
-      return `<div class="rendered-two-images">${imgs.map(([_, s, a])=>`<img src="${s}" alt="${a}"/>`).join('')}</div>`
-    })
-    
-    return html
-  }
 
   const injectedCss = `
-    .rendered-code { 
-      background: rgba(0,0,0,0.5); 
-      border: 1px solid rgba(70,150,225,0.2); 
-      border-radius: 8px; 
-      padding: 1rem; 
-      overflow: auto; 
-      color: #e6e6e6; 
-      font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin: 1.5rem 0;
+    [data-content-scroll]::-webkit-scrollbar {
+      width: 8px;
+      background: #232a3a;
+      border-radius: 8px;
+    }
+    [data-content-scroll]::-webkit-scrollbar-thumb {
+    background: #444;
+      border-radius: 8px;
+      min-height: 24px;
+    }
+    [data-content-scroll]::-webkit-scrollbar-thumb:hover {
+    background: #666;
+    }
+    .rendered-code {
+      background: linear-gradient(90deg, #232a3a 0%, #1a1f2b 100%);
+  border: 2px solid #444;
+  box-shadow: 0 4px 24px rgba(44,44,44,0.12), 0 1.5px 0 #444 inset;
+      border-radius: 12px;
+      padding: 1.25rem 1rem;
+      overflow: auto;
+      color: #e6f1ff;
+      font-family: 'Fira Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin: 2rem 0;
+      position: relative;
+    }
+    .rendered-code code {
+      background: none;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      padding: 0;
     }
     .rendered-image { 
       text-align: center; 
@@ -175,12 +193,12 @@ function ContentModal({
       color: #e0e0e0;
     }
     .content-body a { 
-      color: #5aa3ff; 
+  color: #b0b0b0; 
       text-decoration: underline; 
       transition: color 0.2s ease;
     }
     .content-body a:hover { 
-      color: #7bb8ff; 
+  color: #e0e0e0; 
     }
     .content-body p { 
       margin-bottom: 1.2rem; 
@@ -201,7 +219,7 @@ function ContentModal({
       margin-bottom: 0.5rem; 
     }
     .content-body blockquote { 
-      border-left: 4px solid #4696e1; 
+  border-left: 4px solid #444; 
       padding-left: 1rem; 
       margin: 1.5rem 0; 
       font-style: italic; 
@@ -210,44 +228,185 @@ function ContentModal({
   `
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} maxWidth="900px">
+    <Modal isOpen={isOpen} onClose={onClose} maxWidth="1200px">
       <div style={progressBarStyles}></div>
       <div style={contentStyles} data-content-scroll>
-        <style>{injectedCss}</style>
+        <style>{injectedCss}
+          {`
+            .inline-tag {
+              font-style: italic;
+              font-family: inherit;
+              font-size: 1em;
+              background: none !important;
+              border: none !important;
+              color: inherit !important;
+              padding: 0 !important;
+              border-radius: 0 !important;
+              box-shadow: none !important;
+              margin: 0 !important;
+              white-space: normal !important;
+              position: static !important;
+              display: inline !important;
+            }
+            pre > code {
+              /* Your block code styling here */
+            }
+          `}
+        </style>
         <h2 style={titleStyles}>{title}</h2>
-        {typeLabel && <div style={typeStyles}>{typeLabel}</div>}
-        <MetaBar date={hideDate ? null : date} readTime={readTime} tag={tag} />
+  {typeLabel && !details && <div style={typeStyles}>{typeLabel}</div>}
+        <MetaBar
+          date={hideDate ? null : date}
+          readTime={readTime}
+          tag={tag}
+        />
 
         {image && (
-          <img
-            src={image}
-            alt={title}
-            style={heroImageStyles}
-            onError={(e) => { e.target.style.display = 'none' }}
-          />
-        )}
-
-        {details && details.length > 0 && (
-          <div style={detailsGridStyles}>
-            {details.map((d, i) => (
-              <div key={i} style={detailItemStyles}>
-                <span style={detailLabelStyles}>{d.label}</span>
-                <span style={detailValueStyles}>{d.value}</span>
-              </div>
-            ))}
+          <div style={{position:'relative',width:'100%',height:'220px',marginBottom:'2rem',overflow:'hidden',borderRadius:'12px'}}>
+            <img
+              src={image}
+              alt={title}
+              style={{
+                ...heroImageStyles,
+                position:'absolute',
+                top:0,
+                left:0,
+                width:'100%',
+                height:'100%',
+                objectFit:'cover',
+                zIndex:1
+              }}
+              onError={(e) => { e.target.style.display = 'none' }}
+            />
+            {/* Mask removed, image displays with no overlay */}
           </div>
         )}
 
+        {details && details.length > 0 && (() => {
+          // Hide Organization and Role for Personal projects
+          let filteredDetails = details;
+          // Check if type is Personal (from typeLabel or details)
+          const isPersonal = (typeLabel && typeLabel.toLowerCase().includes('personal')) ||
+            details.some(d => d.label && d.label.toLowerCase() === 'type' && d.value && d.value.toLowerCase() === 'personal');
+          if (isPersonal) {
+            filteredDetails = details.filter(d => {
+              const label = d.label && d.label.toLowerCase();
+              return label !== 'organization' && label !== 'role';
+            });
+          }
+          return (
+            <div style={detailsGridStyles}>
+              {filteredDetails.map((d, i) => (
+                <div key={i} style={detailItemStyles}>
+                  <span style={detailLabelStyles}>{d.label}</span>
+                  <span style={detailValueStyles}>{d.value}</span>
+                </div>
+              ))}
+            </div>
+          );
+        })()}
+
         {description && (
-          <p style={{ fontSize: '1.1rem', lineHeight: '1.7', color: '#e0e0e0', marginBottom: '2rem' }}>{description}</p>
+          <div
+            style={{
+              background: 'rgba(44,44,44,0.85)',
+              border: '1.5px solid rgba(255,255,255,0.10)',
+              borderRadius: '10px',
+              padding: '1rem 1.5rem',
+              marginBottom: '2rem',
+              fontStyle: 'italic',
+              fontWeight: 500,
+              color: '#e0e0e0',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              boxShadow: '0 2px 12px rgba(0,0,0,0.10)'
+            }}
+          >
+            <span style={{fontSize:'1.3rem',opacity:0.7}}>📝</span>
+            <span>{description}</span>
+          </div>
         )}
 
         {content && (
-          renderContent ? (
-            renderContent(content)
-          ) : (
-            <div className="content-body" dangerouslySetInnerHTML={{ __html: renderHtmlContent(content) }} />
-          )
+          <div className="content-body">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                 // handle fenced code blocks
+pre({ node, children, ...props }) {
+      return <CodeBlock {...props}>{children.props.children}</CodeBlock>
+    },
+    // handle inline code
+    code({ node, className, children, ...props }) {
+      // if className exists, it's probably already handled by <pre> above
+      if (className) {
+        return <code className={className} {...props}>{children}</code>
+      }
+      return (
+        <code
+          className="inline-code"
+          style={{
+            backgroundColor: 'rgba(70, 150, 225, 0.18)',
+            color: '#e1a340',
+            fontFamily: 'Fira Mono, Monaco, Menlo, Ubuntu Mono, monospace',
+            fontSize: '0.97em',
+            padding: '0.1em 0.1em',
+            borderRadius: '4px',
+            margin: '0 2px',
+          }}
+          {...props}
+        >
+          {children}
+        </code>
+      )
+    },
+                img({node, ...props}) {
+                  return <img style={{maxWidth:'100%',borderRadius:'8px',border:'1px solid rgba(255,255,255,0.12)',boxShadow:'0 4px 12px rgba(0,0,0,0.3)',display:'block',margin:'1.5rem auto'}} {...props} />;
+                },
+                a({node, ...props}) {
+                  const { href } = props;
+                  if (href && href.startsWith('#')) {
+                    return (
+                      <a
+                        style={{color:'#4a9eff',textDecoration:'none', cursor:'pointer'}}
+                        href={href}
+                        onClick={e => {
+                          e.preventDefault();
+                          const el = document.getElementById(href.slice(1));
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
+                        }}
+                      >
+                        {props.children}
+                      </a>
+                    );
+                  }
+                  return <a style={{color:'#4a9eff',textDecoration:'underline'}} target="_blank" rel="noopener noreferrer" {...props} />;
+                },
+                h1({node, ...props}) {
+                  const text = String(props.children).replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').toLowerCase();
+                  return <h1 id={text} {...props} />;
+                },
+                h2({node, ...props}) {
+                  const text = String(props.children).replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').toLowerCase();
+                  return <h2 id={text} {...props} />;
+                },
+                h3({node, ...props}) {
+                  const text = String(props.children).replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').toLowerCase();
+                  return <h3 id={text} {...props} />;
+                },
+                h4({node, ...props}) {
+                  const text = String(props.children).replace(/\s+/g, '-').replace(/[^\w\-]+/g, '').toLowerCase();
+                  return <h4 id={text} {...props} />;
+                }
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          </div>
         )}
       </div>
     </Modal>

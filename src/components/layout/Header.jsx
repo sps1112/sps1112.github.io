@@ -133,7 +133,10 @@ function Header({ activeTab, onTabChange }) {
       <div style={containerStyles}>
         <a
           style={logoStyles}
-          onClick={() => onTabChange('hero')}
+          onClick={() => {
+            onTabChange('hero');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           onMouseEnter={(e) => {
             e.target.style.color = '#ffffff'
             e.target.style.textShadow = '0 0 12px rgba(255, 255, 255, 0.4)'
@@ -151,7 +154,10 @@ function Header({ activeTab, onTabChange }) {
             <button
               key={item.id}
               style={activeTab === item.id ? activeNavItemStyles : navItemStyles}
-              onClick={() => onTabChange(item.id)}
+              onClick={() => {
+                onTabChange(item.id);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
               onMouseEnter={(e) => {
                 if (activeTab !== item.id) {
                   e.target.style.color = '#ffffff' // White color on hover
@@ -208,8 +214,9 @@ function Header({ activeTab, onTabChange }) {
             key={item.id}
             style={activeTab === item.id ? activeNavItemStyles : navItemStyles}
             onClick={() => {
-              onTabChange(item.id)
-              setIsMobileMenuOpen(false)
+              onTabChange(item.id);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              setIsMobileMenuOpen(false);
             }}
           >
             {item.label}

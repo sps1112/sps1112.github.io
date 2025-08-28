@@ -3,6 +3,7 @@ import React from 'react'
 function MetaBar({ date, readTime, tag }) {
   const containerStyles = {
     display: 'flex',
+    justifyContent: 'center',
     gap: '1rem',
     alignItems: 'center',
     flexWrap: 'wrap',

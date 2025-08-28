@@ -7,7 +7,7 @@ permalink: /who-done-it/
 type: "Professional"
 organization: "GameDev Society, IITK"
 category: "Games"
-role: "Game Programmer and Designer"
+role: "Project Lead"
 engine: "Unity"
 language: "C#"
 platform: "PC"

@@ -6,9 +6,9 @@ author: Siddhartha
 permalink: /beyblade-simulator/
 type: "Personal"
 category: "Graphics"
-engine: "Unity"
-language: "C#"
-platform: "PC"
+engine: "Three.JS"
+language: "JS"
+platform: "Web"
 description: "Beyblade battle simulator game made in Unity. Features physics-based battles, customizable beyblades, and arena environments."
 image: "/assets/projects/tactics0.png"
 ---
