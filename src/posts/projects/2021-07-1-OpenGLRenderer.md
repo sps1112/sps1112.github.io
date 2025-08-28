@@ -14,22 +14,21 @@ image: "/assets/projects/r12.png"
 ---
 
 # Contents
-- [Contents](#contents)
-    - [Renderer Class](#renderer-class)
-    - [Primitive System](#primitive-system)
-    - [Textures, Shaders and Materials](#textures-shaders-and-materials)
-    - [Camera System](#camera-system)
-    - [Model Loading](#model-loading)
-    - [Blinn-Phong Shading Model](#blinn-phong-shading-model)
-    - [GUI with ImGui](#gui-with-imgui)
-    - [FrameBuffer and Render Loops](#framebuffer-and-render-loops)
-    - [Scene System](#scene-system)
-      - [Empty Window](#empty-window)
-      - [New Scene](#new-scene)
-      - [Adding New Actors](#adding-new-actors)
-      - [Changing Actor properties](#changing-actor-properties)
-      - [Applying Template Textures](#applying-template-textures)
-      - [Importing 3D Models](#importing-3d-models)
+- [Renderer Class](#renderer-class)
+- [Primitive System](#primitive-system)
+- [Textures, Shaders and Materials](#textures-shaders-and-materials)
+- [Camera System](#camera-system)
+- [Model Loading](#model-loading)
+- [Blinn-Phong Shading Model](#blinn-phong-shading-model)
+- [GUI with ImGui](#gui-with-imgui)
+- [FrameBuffer and Render Loops](#framebuffer-and-render-loops)
+- [Scene System](#scene-system)
+  - [Empty Window](#empty-window)
+  - [New Scene](#new-scene)
+  - [Adding New Actors](#adding-new-actors)
+  - [Changing Actor properties](#changing-actor-properties)
+  - [Applying Template Textures](#applying-template-textures)
+  - [Importing 3D Models](#importing-3d-models)
 
 A 3D Renderer written in C++ based on the OpenGL API. Third party libraries used for the renderer include GLFW and GLAD for the OpenGL context, GLM as the math engine, ASSIMP for loading 3D models and ImGui for rendering UI.
 
@@ -41,7 +40,7 @@ The Renderer uses model data to render 2D/3D Models to the screen. The models ut
 
 Features developed for the Renderer include things such as:-
 
-### Renderer Class
+## Renderer Class
 
 Intializing GLFW, window-creation, window-settings, input-handling and other configuration settings for the renderer is done in the Renderer class.
 
@@ -92,7 +91,7 @@ void Renderer::SetOtherData()
 
 <img class="article-screenshot" src="/assets/projects/r0.png" alt=""/>
 
-### Primitive System
+## Primitive System
 
 A Primitive system to render primitives models such as Cubes, Rects and Planes. FileReader functions read the primitive .2d/.3d files and convert them into vertex data.
 
@@ -190,7 +189,7 @@ void Primitive::SetupPrimitive()
 
 <img class="article-screenshot" src="/assets/projects/r1.png" alt=""/>
 
-### Textures, Shaders and Materials
+## Textures, Shaders and Materials
 
 Image files can be converted into textures which can me uv-mapped to 3d models. The UV coordinate is present in the primitive data file or model .obj file. By specifying the path of the texture file, we can load it and return a texture-id.
 
@@ -292,7 +291,7 @@ struct Material
 
 <img class="article-screenshot" src="/assets/projects/r2.png" alt=""/>
 
-### Camera System
+## Camera System
 A movable Camera system with Orthographic and Perspective cameras with easily configurable properties. The camera can move in all directions and rotate along the it axes.
 
 The camera supports 2 axis rotation using the mouse. If the cursor is moved, a function callback will be made to the rotate function which will change the pitch and yaw of the camera leading to a new orientation.
@@ -352,7 +351,7 @@ void SceneData::DrawActor(RenderActor *actor, int actor_id, CameraActor *cam, Ve
 <img class="article-screenshots" src="/assets/projects/r4.png" alt=""/>
 </div>
 
-### Model Loading
+## Model Loading
 Integrated ASSIMP to help in loading pre-made 3D Assets from .obj files. Also allows importing blender models + textures when exported in the .obj format.
 
 A model is defined as a collection of meshes. A Mesh will be a single unit which defines the vertices needed for rendering and textures which are applied to the mesh. Each vertex hold some properties required by the vertex shader for rendering.
@@ -399,7 +398,7 @@ public:
 
 <img class="article-screenshot" src="/assets/projects/r5.png" alt=""/>
 
-### Blinn-Phong Shading Model
+## Blinn-Phong Shading Model
 
 The Scene shaders for primitives and models use the Blinn-phong shading model. The lights that can be used in a scene include:-
 - Directional Lights
@@ -497,7 +496,7 @@ void main() {
 
 <img class="article-screenshot" src="/assets/projects/r11.png" alt=""/>
 
-### GUI with ImGui
+## GUI with ImGui
 
 GUI with ImGui to debug the scene and alter the properties of Scene Objects and Renderer. The GUI is abstracted to instantiate multiple windows with configurable properties.
 
@@ -505,7 +504,7 @@ GUI with ImGui to debug the scene and alter the properties of Scene Objects and 
 
 <img class="article-screenshot" src="/assets/projects/r6.png" alt=""/>
 
-### FrameBuffer and Render Loops
+## FrameBuffer and Render Loops
 
 The output of the renderer in a given loop is rendered to a framebuffer. We can apply this framebuffer texture to a screen rect spanning the screen. The screen rect is rendered using a framebuffer shader through which various filters can be applied to the scene.
 
@@ -570,23 +569,23 @@ Render Loops used for the rendering of game objects will be done in the Applicat
 </pre>
 </div>
 
-### Scene System
+## Scene System
 
 The latest build of the renderer comes with the new Scene-Actor system. The architecture includes:-
 
-#### Empty Window
+### Empty Window
 
 This is the default state in which no scene is running and no assets are loaded.
 
 <img class="article-screenshot" src="/assets/projects/r0.png" alt=""/>
 
-#### New Scene
+### New Scene
 
 The user can create a new scene. At any given time, maximum of 3 scenes can be loaded in the renderer and the user can shift between scenes easily. The user can edit properties such as draw mode and background color. The Object List gui will be shown which includes the default camera.
 
 <img class="article-screenshot" src="/assets/projects/r13.png" alt=""/>
 
-#### Adding New Actors
+### Adding New Actors
 
 The user can add new Actors to a scene in the form of 2D objects, 3D objects, Camera and Lights. Any new actor will be added to the object list and shown in the Object List gui. 
 
@@ -596,20 +595,20 @@ The user can add new Actors to a scene in the form of 2D objects, 3D objects, Ca
 <img class="article-screenshots" src="/assets/projects/r15.png" alt=""/>
 </div>
 
-#### Changing Actor properties
+### Changing Actor properties
 
 Predefined properties of the loaded actors such as color, position, name can be altered using the gui.
 These would help the user in creating their own scenes and easily debug effects on template scenes.
 
 <img class="article-screenshot" src="/assets/projects/r16.png" alt=""/>
 
-#### Applying Template Textures
+### Applying Template Textures
 
 Textures can also be added to a primitive shape. This will change the shader type/material of the actor and the change will reflect in the window.
 
 <img class="article-screenshot" src="/assets/projects/r17.png" alt=""/>
 
-#### Importing 3D Models
+### Importing 3D Models
 
 Third party models can also be added like primitives using the UI. The models are loaded at runtime. Adding a pre-loaded model does not require runtime.
 

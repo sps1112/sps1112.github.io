@@ -145,13 +145,13 @@ function ContentCard({
         <div style={metaStyles}>
           {(() => {
             const tags = [];
-            if (item.engine && item.engine !== 'NA') {
+            if (item.engine && item.engine !== 'N/A') {
               tags.push(<span key="engine" style={tagBadgeStyles}>{item.engine}</span>);
             }
             let langs = [];
             if (Array.isArray(item.languages)) {
               langs = item.languages;
-            } else if (item.languages && item.languages !== 'NA') {
+            } else if (item.languages && item.languages !== 'N/A') {
               langs = item.languages.split(',').map(l => l.trim());
             }
             langs.forEach((lang, i) => {

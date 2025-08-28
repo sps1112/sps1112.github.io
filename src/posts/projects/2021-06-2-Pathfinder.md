@@ -6,7 +6,7 @@ author: Siddhartha
 permalink: /pathfinder/
 type: "Personal"
 category: "Other"
-engine: "NA"
+engine: "N/A"
 language: "C++"
 platform: "PC"
 description: "Pathfinder utilizing the A* algorithm for finding the optimal path on a 2D map between a start and target node. Grid gets rendered to show the grids and the path taken."
@@ -62,7 +62,7 @@ int gridState[NUMBER_ROWS * NUMBER_COLUMNS] = {0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 </pre>
 </div>
 
-- This map data in converted into grid nodes whose data is stored locally. The Map will get rendered based on the previously defined color scheme.
+- This map data is converted into grid nodes whose data is stored locally. The Map will get rendered based on the previously defined color scheme.
 
 <img class="article-screenshot" src="/assets/projects/path1.png" alt=""/>
 

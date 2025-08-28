@@ -13,11 +13,10 @@ description: "Isometric Tactics RPG inspired by games such as Final Fantasy: Tac
 image: "/assets/projects/tactics0.png"
 ---
 # Contents
-- [Contents](#contents)
-    - [Level Generation](#level-generation)
-    - [Basic Interactions](#basic-interactions)
-    - [Turn Based Flow](#turn-based-flow)
-    - [Grid Movement](#grid-movement)
+- [Level Generation](#level-generation)
+- [Basic Interactions](#basic-interactions)
+- [Turn Based Flow](#turn-based-flow)
+- [Grid Movement](#grid-movement)
 
 An isometric tactics RPG made in Unity. The project is inspired by tactical turn-based JRPGs such as Final Fantasy Tactics for the Playstation and Final Fantasy Tactics: Advance for the Game Boy Advance.
 
@@ -28,7 +27,7 @@ The game is divided into various missions, with each mission taking place on a d
 
 <img class="article-screenshot" src="/assets/projects/tactics10.png" alt=""/>
 
-### Level Generation
+## Level Generation
 
 The project requires the creation of complex 3D grids and placement of obstacles on that grid. Since it can become tedious to generate or edit each element and assign references, we use Unity editor scripting to provide level generation tools. The editor tools edit a scriptable object that holds the grid data.
 
@@ -122,7 +121,7 @@ Once we have both level layout and obstacle layout assets, we can define a Missi
 <img class="article-screenshots" src="/assets/projects/tactics9.png" alt=""/>
 </div>
 
-### Basic Interactions
+## Basic Interactions
 
 Various input options have been given to the player so that they can interact with the level. Some of them are:
 - We can enter scan mode by holding Left-Shift button. This will allow us to scan any grid block. A UI widget will show the grid block's position, row, column and it will be colored to show whether it is a free grid or has an obstacle/enemy on it. This is done by a simple raycast from the cursor to the grid block.
@@ -181,7 +180,7 @@ void Update()
 </pre>
 </div>
 
-### Turn Based Flow
+## Turn Based Flow
 Each mission flows through a turn system. There are two parts of a mission:
 - **Player Spawning**.
   - The spawning process begins as the mission starts. We have a splash screen of the mission and level name. Then the camera pans to show the player spawning points.
@@ -289,7 +288,7 @@ public enum TurnPhase
 
 <img class="article-screenshot" src="/assets/projects/tactics2.png" alt=""/>
 
-### Grid Movement
+## Grid Movement
 Both the player and enemy characters can move on the 3D grid using a custom implementation of the **A* algorithm** to find the optimal path between two grid blocks. You can access information on the implementation of the A* algorithm through this <a href="/pathfinder/">project</a>. 
 
 For our 3D grid, the algorithm takes in the character's jump stat to define whether it can move from one block to the next. An example of this is, if the jump stat is 2 and the height gap between two blocks is 3, then the character cannot directly move to that block.

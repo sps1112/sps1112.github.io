@@ -1,10 +1,8 @@
-
 import React, { useEffect, useState } from 'react'
 
-
 function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
-  // All hooks must be called unconditionally at the top
   const [isHovered, setIsHovered] = useState(false);
+
   useEffect(() => {
     const handleEscape = (e) => {
       if (e.key === 'Escape') {
@@ -20,6 +18,7 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
     return () => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'auto';
+      setIsHovered(false); // <-- reset hover when modal unmounts / closes
     };
   }, [isOpen, onClose]);
 

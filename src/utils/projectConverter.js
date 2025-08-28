@@ -110,6 +110,16 @@ function convertContentToProjectFormat(content) {
   return projectContent;
 }
 
+// helper: normalize permalink strings (ensure leading slash, remove trailing .html if present)
+function normalizePermalink(p) {
+  if (!p) return p;
+  let s = p.toString().trim();
+  if (!s.startsWith("/")) s = "/" + s;
+  // optional: strip .html if present so lookups become friendlier
+  // s = s.replace(/\.html$/, "");
+  return s;
+}
+
 // Main function to convert markdown files to projects
 export function convertMarkdownToProjects() {
   const postsDir = path.join(__dirname, "../posts/projects");
@@ -137,9 +147,15 @@ export function convertMarkdownToProjects() {
         const links = extractLinks(content);
         const projectId = generateProjectId(frontmatter.title);
 
+        // permalink: prefer frontmatter.permalink, otherwise default to /projects/<id>
+        const permalink = frontmatter.permalink
+          ? normalizePermalink(frontmatter.permalink)
+          : `/projects/${projectId}`;
+
         const project = {
           id: projectId,
           title: frontmatter.title,
+          permalink, // <-- saved permalink here
           type: frontmatter.type || "Personal",
           organization:
             frontmatter.organization ||
@@ -148,9 +164,9 @@ export function convertMarkdownToProjects() {
               ? frontmatter.type
               : "Self"),
           role: frontmatter.role || "",
-          engine: frontmatter.engine || "NA",
-          language: frontmatter.language || "NA",
-          platform: frontmatter.platform || "NA",
+          engine: frontmatter.engine || "N/A",
+          language: frontmatter.language || "N/A",
+          platform: frontmatter.platform || "N/A",
           description: frontmatter.description || "",
           image: frontmatter.image || "",
           category: frontmatter.category || "Other",
@@ -216,6 +232,19 @@ export const getProjectsByCategory = (category) => {
     return projects.filter((p) => p.category === "Other");
   return projects;
 };
+
+// Helper: get project by permalink (normalizes trailing slash)
+function _normalize(p) {
+  if (!p) return p;
+  return p.toString().replace(/\\/+$/,'');
+}
+
+export const getProjectByPermalink = (permalink) => {
+  const norm = _normalize(permalink);
+  return projects.find(p => _normalize(p.permalink) === norm);
+};
+
+export const getProjectById = (id) => projects.find(p => p.id === id);
 `;
 }
 
@@ -273,6 +302,12 @@ export function convertMarkdownToArticles() {
         .split(/\s+/)
         .filter(Boolean).length;
       const minutes = Math.max(1, Math.round(wordCount / 200));
+
+      // permalink: prefer frontmatter.permalink, otherwise default to /articles/<id>
+      const permalink = fm.permalink
+        ? normalizePermalink(fm.permalink)
+        : `/articles/${id}`;
+
       const article = {
         id,
         title: fm.title,
@@ -284,6 +319,7 @@ export function convertMarkdownToArticles() {
         category,
         categoryLabel,
         readTime: fm.readTime || `${minutes} min read`,
+        permalink, // <-- saved permalink here
       };
       articles.push(article);
     });
@@ -296,7 +332,31 @@ export function convertMarkdownToArticles() {
 
 export function generateArticlesJS(articles) {
   const articlesArray = JSON.stringify(articles, null, 2);
-  return `// Blog articles data - converted from Jekyll posts\nexport const articles = ${articlesArray};\n\nexport const getArticlesByCategory = (category) => {\n  if (category === "all") return articles;\n  return articles.filter((article) => article.category === category);\n};\n\nexport const getArticleById = (id) => {\n  return articles.find((article) => article.id === id);\n};\n\nexport default articles;\n`;
+  return `// Blog articles data - converted from Jekyll posts
+export const articles = ${articlesArray};
+
+export const getArticlesByCategory = (category) => {
+  if (category === "all") return articles;
+  return articles.filter((article) => article.category === category);
+};
+
+export const getArticleById = (id) => {
+  return articles.find((article) => article.id === id);
+};
+
+// Helper: normalize trailing slash and compare permalinks
+function _normalize(p) {
+  if (!p) return p;
+  return p.toString().replace(/\\/+$/,'');
+}
+
+export const getArticleByPermalink = (permalink) => {
+  const norm = _normalize(permalink);
+  return articles.find(a => _normalize(a.permalink) === norm);
+};
+
+export default articles;
+`;
 }
 
 export function updateArticlesJS() {

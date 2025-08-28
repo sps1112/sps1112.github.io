@@ -6,7 +6,7 @@ author: Siddhartha
 permalink: /noise-gen/
 type: "Personal"
 category: "Other"
-engine: "NA"
+engine: "N/A"
 language: "C++"
 platform: "PC"
 description: "Noise generation library written in C++ using stb_image for rendering images. Allows generation of random noise, perlin noise, octave noise and creation of 2D color maps."
