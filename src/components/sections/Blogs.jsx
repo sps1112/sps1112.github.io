@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { articles as initialArticles } from '../../data/articles'
 import ContentCard from '../ui/ContentCard'
+import { useViewport } from '../../hooks/useViewport'
 
 function Blogs({ onArticleClick }) {
   const [activeCategory, setActiveCategory] = useState('all')
   const [articlesList, setArticlesList] = useState(initialArticles)
+  const { isMobile, isTablet } = useViewport()
 
   const filteredArticles = articlesList.filter(a => {
     if (activeCategory === 'all') return true
@@ -25,13 +27,14 @@ function Blogs({ onArticleClick }) {
 
   const sectionStyles = {
     minHeight: '100vh',
-    padding: '6rem 2rem 4rem 2rem',
+    padding: isMobile? '6rem 1rem 3rem 1rem' : '6rem 2rem 3rem 2rem',
     backgroundColor: '#0a0a0a'
   }
 
   const containerStyles = {
-    maxWidth: '1200px',
-    margin: '0 auto'
+    maxWidth: '1250px',
+    margin: '0 auto',
+    paddingTop: isTablet? '2rem':'0',
   }
 
   const titleStyles = {
@@ -46,11 +49,12 @@ function Blogs({ onArticleClick }) {
   }
 
   const filterContainerStyles = {
-    display: 'flex',
+    display: isMobile? 'grid':'flex',
     justifyContent: 'center',
+    gridTemplateColumns: isMobile? '1fr 1fr':'none',
     flexWrap: 'wrap',
     gap: 'clamp(1rem, 3vw, 1.5rem)',
-    marginBottom: '3rem',
+    marginBottom: isMobile?'1.5rem':'3rem',
     padding: '0 1rem',
     alignItems: 'center'
   }
@@ -61,7 +65,7 @@ function Blogs({ onArticleClick }) {
     borderStyle: 'solid',
     borderWidth: '2px',
     borderColor: 'rgba(255, 255, 255, 0.2)',
-    padding: '1rem 2rem',
+    padding: isMobile? '0.75rem' : '1rem 2rem',
     borderRadius: '2rem',
     cursor: 'pointer',
     fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
@@ -83,7 +87,7 @@ function Blogs({ onArticleClick }) {
 
   const gridStyles = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+    gridTemplateColumns: isMobile? 'repeat(auto-fill, minmax(300px, 1fr))' : 'repeat(auto-fill, minmax(320px, 1fr))',
     gap: '2rem'
   }
 

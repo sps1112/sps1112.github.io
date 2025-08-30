@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { siteConfig } from '../../data/config'
+import { useViewport } from '../../hooks/useViewport'
 
 function Hero({ onNavigate }) {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -8,6 +9,7 @@ function Hero({ onNavigate }) {
   const bannerRef = useRef(null)
   const [currentTransform, setCurrentTransform] = useState('scale(1.05) translateX(0) translateY(0)')
   const [isExiting, setIsExiting] = useState(false)
+  const { isMobile } = useViewport()
 
   // ===== EASY-TO-EDIT BANNER IMAGE LIST =====
   // Add, remove, or modify images here:
@@ -209,7 +211,8 @@ function Hero({ onNavigate }) {
     position: 'relative',
     zIndex: 3,
     maxWidth: '800px',
-    padding: '3rem 2rem',
+    margin: '1rem',
+    padding: isMobile? '1.5rem 1rem' : '3rem 2rem',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -235,8 +238,8 @@ function Hero({ onNavigate }) {
   }
 
   const profileImageStyles = {
-    width: '220px',
-    height: '220px',
+    width: isMobile? '160px' : '240px',
+    height: isMobile? '160px' : '240px',
     borderRadius: '50%',
     border: '2px solid rgba(255,255,255,0.8)',
     background: 'transparent',
@@ -259,7 +262,7 @@ function Hero({ onNavigate }) {
   }
 
   const nameStyles = {
-    fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+    fontSize: 'clamp(1.8rem, 5vw, 4rem)',
     fontWeight: '700',
     color: '#ffffff',
     marginBottom: '0.8rem',
@@ -273,7 +276,7 @@ function Hero({ onNavigate }) {
   }
 
   const roleStyles = {
-    fontSize: 'clamp(1.1rem, 3vw, 1.6rem)',
+    fontSize: 'clamp(1rem, 3vw, 1.6rem)',
     color: '#4a9eff',
     marginBottom: '2rem',
     fontWeight: '500',
@@ -287,7 +290,7 @@ function Hero({ onNavigate }) {
   }
 
   const descriptionStyles = {
-    fontSize: '1rem',
+    fontSize: 'clamp(0.9rem, 2.7vw, 1.4rem)',
     color: '#aaaaaa',
     marginBottom: '2rem',
     maxWidth: '600px',
@@ -305,8 +308,8 @@ function Hero({ onNavigate }) {
     backgroundColor: '#4a9eff',
     color: '#ffffff',
     border: 'none',
-    padding: '1rem 2rem',
-    fontSize: '1rem',
+    padding: isMobile? '0.6rem 0.7rem':'1rem 2rem',
+    fontSize: 'clamp(0.9rem, 2.7vw, 1.4rem)',
     fontWeight: '600',
     borderRadius: '0.5rem',
     cursor: 'pointer',

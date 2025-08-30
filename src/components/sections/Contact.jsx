@@ -1,16 +1,20 @@
 import React from 'react'
 import { siteConfig } from '../../data/config'
+import { useViewport } from '../../hooks/useViewport'
 
 function Contact() {
+  const { isTablet } = useViewport()
+  
   const contactStyles = {
     minHeight: '100vh',
-    padding: '6rem 2rem 4rem 2rem',
+    padding: '6rem 2rem 2rem 2rem',
     backgroundColor: '#0a0a0a'
   }
 
   const containerStyles = {
-    maxWidth: '800px',
+    maxWidth: '900px',
     margin: '0 auto',
+    paddingTop: isTablet? '2rem':'0',
     textAlign: 'center'
   }
 

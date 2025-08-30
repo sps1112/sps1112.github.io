@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import CodeBlock from './CodeBlock'
 import MetaBar from './MetaBar'
+import { useViewport } from '../../hooks/useViewport'
 
 // attempt to import your generated data modules; shape can vary so we try common exports
 import * as ArticlesModule from '../../data/articles'
@@ -17,6 +18,10 @@ function ContentModal({
   typeLabel,
   image,
   zoomFactor = 1,
+  textZoomFactor = 1.6,
+  barZoomFactor = 1.3,
+  blurFactor = 3,
+  brightnessFactor = 0.6,
   meta = {}, // safer default
   description,
   content,
@@ -31,6 +36,7 @@ function ContentModal({
 }) {
   // destructure meta safely
   const { date, readTime, tag } = meta
+  const { isMobile } = useViewport()
 
   // local state that may be swapped in-place if we resolve a permalink without a parent handler
   const [localTitle, setLocalTitle] = useState(title)
@@ -52,6 +58,14 @@ function ContentModal({
     setLocalDescription(description)
     setLocalContent(content)
     setLocalDetails(details)
+    
+    // BUG FIX: Reset progress and scroll position when content changes
+    setReadingProgress(0);
+    const el = document.querySelector('[data-content-scroll]');
+    if (el) {
+      el.scrollTop = 0;
+    }
+
   }, [title, typeLabel, image, meta, description, content, details, isOpen])
 
   useEffect(() => {
@@ -71,19 +85,21 @@ function ContentModal({
   }, [isOpen])
 
   const progressBarStyles = {
-    position: 'fixed',
+    position: 'absolute',
     top: 0,
     left: 0,
     width: `${readingProgress}%`,
     height: '3px',
-    backgroundColor: '#232a3a',
+    backgroundColor: '#4a9eff',
     zIndex: 10002,
-    transition: 'width 0.1s ease'
+    transition: 'width 0.33s ease-in-out' // Faster transition for responsiveness
   }
 
   const contentStyles = {
-    padding: '2rem',
-    maxHeight: 'calc(90vh - 3px)',
+    padding: isMobile? '0.8rem' : '3rem',
+    marginTop: '3px',
+    height: 'calc(100% - 3px)',
+    maxHeight: isMobile? '100vh': '90vh',
     overflowY: 'auto',
     overflowX: 'hidden',
     fontSize: '1rem',
@@ -104,30 +120,19 @@ function ContentModal({
     marginBottom: '0.5rem'
   }
 
-  const typeStyles = {
-    fontSize: '1rem',
-    color: '#ccc',
-    fontWeight: '500',
-    marginBottom: '1rem'
-  }
-
   const heroImageStyles = {
     width: '100%',
-    height: '260px',
+    height: '100%',
     objectFit: 'cover',
-    borderRadius: '12px',
-    marginBottom: '2rem',
-    border: '1px solid rgba(70, 150, 225, 0.2)',
     transform: `scale(${zoomFactor})`,
-    transition: 'transform 0.2s cubic-bezier(.4,2,.3,1)',
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto'
+    filter: `blur(${blurFactor}px) brightness(${brightnessFactor})`,
+    transition: 'transform 0.3s ease-out, filter 0.3s ease-out',
   }
 
   const detailsGridStyles = {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gridTemplateColumns: isMobile? '1fr 1fr' : 'repeat(auto-fit, minmax(200px, 1fr))',
+    textAlign: isMobile? 'center':'none',
     gap: '1rem',
     marginBottom: '2rem',
     padding: '1.5rem',
@@ -293,8 +298,8 @@ function ContentModal({
   }
 
   // Get arrays from imported modules (support multiple export shapes)
-  const articlesArray = ArticlesModule.articles || ArticlesModule.default || ArticlesModule || []
-  const projectsArray = ProjectsModule.projects || ProjectsModule.default || ProjectsModule || []
+  const articlesArray = ArticlesModule.articles || ArticlesModule || []
+  const projectsArray = ProjectsModule.projects || ProjectsModule || []
 
   // Normalize target keys to string and remove leading slash for id comparisons
   const stripLeadingSlash = (s) => (typeof s === 'string' ? s.replace(/^\/+/,'') : s)
@@ -416,33 +421,72 @@ function ContentModal({
             }
           `}
         </style>
-
-        <h2 style={titleStyles}>{localTitle}</h2>
-
-        <MetaBar
-          date={hideDate ? null : localMeta.date}
-          readTime={localMeta.readTime || localMeta.read_time}
-          tag={localMeta.tag}
-        />
-
-        {localImage && (
-          <div style={{position:'relative',width:'100%',height:'220px',marginBottom:'2rem',overflow:'hidden',borderRadius:'12px'}}>
+        
+        {localImage ? (
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            height: '400px',
+            marginBottom: '2rem',
+            borderRadius: '12px',
+            overflow: 'hidden',
+            border: '1px solid rgba(70, 150, 225, 0.2)',
+            background: '#222'
+          }}>
             <img
               src={localImage}
               alt={localTitle}
-              style={{
-                ...heroImageStyles,
-                position:'absolute',
-                top:0,
-                left:0,
-                width:'100%',
-                height:'100%',
-                objectFit:'cover',
-                zIndex:1
-              }}
+              style={heroImageStyles}
               onError={(e) => { e.target.style.display = 'none' }}
             />
+            <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                top: 0,
+                background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0) 100%)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                padding: '1.5rem',
+            }}>
+                <h2 style={{
+                    ...titleStyles,
+                    fontSize: `clamp(${1.8 * textZoomFactor}rem, ${4 * textZoomFactor}vw, ${2.5 * textZoomFactor}rem)`,
+                    textAlign: 'center',
+                    color: '#ffffff',
+                    textShadow: '5px 5px 5px rgba(0,0,0,0.8)',
+                    marginBottom: '0.75rem',
+                    padding: '0 0.5rem',
+                    transition: 'font-size 0.3s ease-out',
+                }}>{localTitle}</h2>
+
+                <div style={{
+                  marginTop: '10px',
+                  padding: '0 0.5rem',
+                  transform: `scale(${barZoomFactor})`,
+                  transformOrigin: 'center',
+                  transition: 'transform 0.3s ease-out',
+                }}>
+                    <MetaBar
+                        date={hideDate ? null : localMeta.date}
+                        readTime={localMeta.readTime || localMeta.read_time}
+                        tag={localMeta.tag}
+                    />
+                </div>
+            </div>
           </div>
+        ) : (
+          <>
+            <h2 style={titleStyles}>{localTitle}</h2>
+            <MetaBar
+              date={hideDate ? null : localMeta.date}
+              readTime={localMeta.readTime || localMeta.read_time}
+              tag={localMeta.tag}
+            />
+             <div style={{ marginBottom: '2rem' }}></div>
+          </>
         )}
 
         {localDetails && localDetails.length > 0 && (() => {
@@ -484,7 +528,7 @@ function ContentModal({
               boxShadow: '0 2px 12px rgba(0,0,0,0.10)'
             }}
           >
-            <span style={{fontSize:'1.3rem',opacity:0.7}}>📝</span>
+            {isMobile ? (<> </>) : (<>   <span style={{fontSize:'1.3rem',opacity:0.7}}>📝</span> </>)}
             <span>{localDescription}</span>
           </div>
         )}
@@ -514,7 +558,7 @@ function ContentModal({
                       className="inline-code"
                       style={{
                         backgroundColor: 'rgba(70, 150, 225, 0.18)',
-                        color: '#e1a340',
+                        color: '#ffbe4a',
                         fontFamily: 'Fira Mono, Monaco, Menlo, Ubuntu Mono, monospace',
                         fontSize: '0.97em',
                         padding: '0.1em 0.1em',

@@ -4,7 +4,7 @@ import { siteConfig } from '../../data/config'
 import { useViewport } from '../../hooks/useViewport'
 
 function Experience() {
-  const { isMobile } = useViewport()
+  const { isMobile, isTablet } = useViewport()
   const [activeIndex, setActiveIndex] = useState(0)
   const [progressPct, setProgressPct] = useState(0)
   const [dotPercents, setDotPercents] = useState([])
@@ -12,13 +12,14 @@ function Experience() {
   const timelineRef = useRef(null)
   const experienceStyles = {
     minHeight: '100vh',
-    padding: '6rem 2rem 2rem 2rem',
+    padding: '6rem 2rem 1rem 2rem',
     backgroundColor: '#0a0a0a'
   }
 
   const containerStyles = {
-    maxWidth: '1200px',
-    margin: '0 auto'
+    maxWidth: '1250px',
+    margin: '0 auto',
+    paddingTop: isTablet? '2rem':'0',
   }
 
   const mainTitleStyles = {
@@ -79,13 +80,13 @@ function Experience() {
 
   const getAlternatingContainerStyles = (index) => {
     if (isMobile) {
-      return { display: 'flex', justifyContent: 'flex-start', paddingLeft: '2rem' }
+      return { display: 'flex', justifyContent: 'flex-start', paddingLeft: '1rem' }
     }
     const isRight = index % 2 === 1
     return {
       display: 'flex',
       justifyContent: isRight ? 'flex-end' : 'flex-start',
-      paddingLeft: isRight ? '2rem' : '0',
+      paddingLeft: isRight ? '5rem' : (isTablet? '1.5rem': '2rem'),
     }
   }
 
@@ -261,7 +262,7 @@ function Experience() {
                 top: `${(dotPercents.length ? Math.min(...dotPercents) : 0)}%`,
                 height: `${(dotPercents.length ? Math.max(0, Math.min(progressPct, Math.max(...dotPercents)) - Math.min(...dotPercents)) : 0)}%`,
                 width: '100%',
-                backgroundColor: '#5aa3ff',
+                backgroundColor: '#4a9eff',
                 borderRadius: '3px',
                 transition: 'height 0.25s ease'
               }}></div>
@@ -270,8 +271,8 @@ function Experience() {
               <div key={i} style={{
                 ...experienceDotStyles,
                 top: `${p}%`,
-                backgroundColor: i <= activeIndex ? '#5aa3ff' : 'rgba(255,255,255,0.12)',
-                boxShadow: i <= activeIndex ? '0 0 0 2px rgba(90,163,255,0.6), 0 0 8px rgba(90,163,255,0.45)' : experienceDotStyles.boxShadow
+                backgroundColor: i <= activeIndex ? '#4a9eff' : 'rgba(255,255,255,0.12)',
+                boxShadow: i <= activeIndex ? '0 0 0 2px rgba(74,158,255,0.6), 0 0 8px rgba(74,158,255,0.45)' : experienceDotStyles.boxShadow
               }}></div>
             ))}
             {workExperience.map((experience, index) => (

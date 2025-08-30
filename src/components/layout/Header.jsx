@@ -38,7 +38,7 @@ function Header({ activeTab, onTabChange }) {
   }
 
   const logoStyles = {
-    fontSize: 'clamp(1.15rem, 3.2vw, 1.6rem)',
+    fontSize: 'clamp(1.0rem, 3.2vw, 1.6rem)',
     fontWeight: '700',
     color: '#4a9eff',
     textDecoration: 'none',

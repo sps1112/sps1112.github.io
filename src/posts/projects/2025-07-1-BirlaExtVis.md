@@ -12,7 +12,7 @@ engine: "N/A"
 language: "JS"
 platform: "PC"
 description: "External visualization project for Birla using OpenGL. Features include 3D models, lighting, and interactive camera controls."
-image: "/assets/projects/switch0.png"
+image: "/assets/projects/tactics0.png"
 ---
 
 \item Setup the React Project with the backend functions uploaded on Beam

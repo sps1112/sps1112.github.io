@@ -243,8 +243,10 @@ Various framebuffer filters are also given. The renderer renders the scene to a 
 <img class="article-screenshots" src="/assets/projects/gs4.png" alt=""/>
 </div>
 
-In the same vein, we have provided another version of the project which is a Pixel shader viewer. This is structured in such a way that you can import your pixel shader from ShaderToy directly into the renderer and run it. Minor modifications need to be made in your shader code after importing and you can view the shader by running the executable. To build the project as Shader viewer, we can just change the **BUILD_SHADER_VIEWER** variable in the *CMakeLists.txt* to *1* instead of *0* and build.
+In the same vein, we have provided another version of the project which is a Pixel shader viewer. This is structured in such a way that you can import your pixel shader from ShaderToy directly into the renderer and run it. Minor modifications need to be made in your shader code after importing and you can view the shader by running the executable. To build the project as Shader viewer, we can just change the `BUILD_SHADER_VIEWER` variable in the `CMakeLists.txt` to `1` instead of `0` and build.
 
 <img class="article-screenshot" src="/assets/projects/gs7.png" alt=""/>
+
+Thus our renderer is comptabile with any single pass shader on ShaderToy. Multi-pass shaders or those which employs buffers can be imported by bundling the buffers into a single file. As you see above, this renderer is compatible with all the shaders we listed in our <a href="/shader-library/">Shader Library</a>.
 
 These are just some features of the renderer. For more, access info on the original 3D Renderer <a href="/opengl-renderer/">here</a>.

@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useViewport } from '../../hooks/useViewport'
 
-function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
+function Modal({ isOpen, onClose, children, maxWidth = '1250px' }) {
   const [isHovered, setIsHovered] = useState(false);
+  const { isMobile } = useViewport();
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -35,7 +37,7 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
     alignItems: 'center',
     justifyContent: 'center',
     zIndex: 1000,
-    padding: '2rem',
+    padding: isMobile? '0rem' : '2rem',
     backdropFilter: 'blur(16px) saturate(1.2)',
     WebkitBackdropFilter: 'blur(16px) saturate(1.2)'
   };
@@ -43,26 +45,25 @@ function Modal({ isOpen, onClose, children, maxWidth = '800px' }) {
   const modalStyles = {
     backgroundColor: '#1a1a1a',
     border: '1px solid rgba(255, 255, 255, 0.1)',
-    borderRadius: '12px',
+    borderRadius: isMobile?'0px':'12px',
     maxWidth: maxWidth,
     width: '100%',
-    maxHeight: '90vh',
+    maxHeight: 'auto',
     overflow: 'auto',
     boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
     position: 'relative',
     animation: 'fadeIn 0.3s ease-out',
-    margin: '1rem'
+    margin: isMobile? '0rem' : '1rem',
   };
 
   const closeButtonStyles = {
     position: 'absolute',
-    top: '1rem',
-    right: '1rem',
-    background: isHovered ? '#4696e1' : 'rgba(36, 36, 36, 0.85)',
-    border: 'none',
+    top: '0.5rem',
+    left: '0.4rem',
+    background: isHovered ? '#4696e1' : 'rgba(36, 36, 36, 0.55)',
     borderRadius: '50%',
-    width: '36px',
-    height: '36px',
+    width: '39px',
+    height: '39px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',

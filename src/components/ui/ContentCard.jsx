@@ -1,10 +1,12 @@
 import React from 'react'
+import { useViewport } from '../../hooks/useViewport'
 
 function ContentCard({
   item, // { organization, role, engine, languages }
   onClick,
   staggerIndex = 0,
 }) {
+    const { isMobile } = useViewport()
   const cardStyles = {
     backgroundColor: 'rgba(255, 255, 255, 0.05)',
     border: '2px solid rgba(255, 255, 255, 0.12)',
@@ -42,12 +44,12 @@ function ContentCard({
   }
 
   const cardBodyStyles = {
-    padding: '1.1rem 1.25rem 1.25rem 1.25rem'
+    padding: isMobile? '1.1rem' :'1.1rem 1.25rem 1.25rem 1.25rem'
   }
 
   const titleStyles = {
     color: '#ffffff',
-    fontSize: 'clamp(1.05rem, 2.8vw, 1.2rem)',
+    fontSize: 'clamp(1.1rem, 2.8vw, 1.4rem)',
     fontWeight: '800',
     marginBottom: '0.55rem',
     letterSpacing: '-0.01em'

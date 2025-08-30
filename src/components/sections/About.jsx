@@ -4,23 +4,24 @@ import { articles } from '../../data/articles'
 import { useViewport } from '../../hooks/useViewport'
 
 function About({ onArticleClick }) {
-  const { isMobile } = useViewport()
+  const { isMobile, isTablet } = useViewport()
   const aboutStyles = {
     minHeight: '100vh',
-    padding: '6rem 2rem 4rem 2rem',
+    padding: isMobile? '6rem 1.25rem 1rem 1.25rem' : '6rem 2rem 2rem 2rem',
     backgroundColor: '#0a0a0a'
   }
 
   const containerStyles = {
-    maxWidth: '1200px',
-    margin: '0 auto'
+    maxWidth: '1250px',
+    margin: '0 auto',
+    paddingTop: isTablet? '2rem':'0',
   }
 
   const titleStyles = {
     fontSize: 'clamp(2rem, 5vw, 3rem)',
     color: '#ffffff',
     textAlign: 'center',
-    marginBottom: '3rem',
+    marginBottom: '2rem',
     fontWeight: '700',
     fontFamily: '"Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, sans-serif',
     letterSpacing: '-0.02em',
@@ -28,7 +29,7 @@ function About({ onArticleClick }) {
   }
 
   const contentStyles = isMobile ? {
-    display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2rem'
+    display: 'flex', flexDirection: 'column', gap: '1.1rem', marginBottom: '1rem'
   } : {
     display: 'grid',
     gridTemplateColumns: '1fr 0.5rem 1fr',
@@ -79,11 +80,12 @@ function About({ onArticleClick }) {
   }
 
   const skillTagStyles = {
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-    color: 'white',
-    padding: '0.35rem 0.75rem',
+    backgroundColor: 'rgba(70, 150, 225, 0.18)',
+    color: '#ffbe4a',
+    padding: '0.25rem 0.6rem',
     borderRadius: '10px',
     fontSize: '0.9rem',
+    fontFamily: 'Fira Mono, Monaco, Menlo, Ubuntu Mono, monospace',
     border: '1px solid rgba(255, 255, 255, 0.12)'
   }
 
@@ -180,7 +182,7 @@ function About({ onArticleClick }) {
               {/* Mobile: single column in requested order */}
               <div style={photoCardStyles} className="about-photo">
                 <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
-                <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
+                <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: 'clamp(1.1rem, 4vw, 1.6rem)', textAlign: 'center' }}>{siteConfig.name}</div>
               </div>
               <div style={sectionStyles} className="about-intro">
                 <h3 style={sectionTitleStyles}>Introduction</h3>
@@ -243,7 +245,7 @@ function About({ onArticleClick }) {
               <div style={rightColumnStyles} className="about-right">
                 <div style={photoCardStyles} className="about-photo">
                   <img src={siteConfig.assets.profileImg} alt={siteConfig.name} style={photoStyles} onError={(e) => { e.target.src = siteConfig.assets.profileImgAlt }} />
-                  <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.1rem', textAlign: 'center' }}>{siteConfig.name}</div>
+                  <div className="about-name" style={{ color: '#e8e8e8', fontWeight: 700, fontSize: '1.4rem', textAlign: 'center' }}>{siteConfig.name}</div>
                 </div>
                 <div style={sectionStyles} className="about-skills">
                   <h3 style={sectionTitleStyles}>Technical Skills</h3>
